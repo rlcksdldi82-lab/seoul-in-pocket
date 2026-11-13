@@ -62,14 +62,16 @@
       border-bottom: 1px solid var(--border);
     }
     .logo {
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       font-weight: 800;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.4px;
       color: var(--primary);
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .logo span { color: var(--text-main); }
     .header-actions { display: flex; gap: 10px; }
@@ -389,21 +391,34 @@
       color: var(--primary-accent);
       border-color: var(--primary-accent);
     }
-    .header-social {
-      font-size: 0.95rem;
-      text-decoration: none;
-      padding: 4px 7px;
-      border-radius: 8px;
+    .bgm-btn {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 5px 9px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.2s;
+      cursor: pointer;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .header-social:hover {
-      transform: scale(1.05);
+    .bgm-btn:active {
+      transform: scale(0.92);
+    }
+    .bgm-btn.playing {
+      background: rgba(255, 43, 91, 0.1);
       border-color: var(--primary-accent);
+      box-shadow: 0 0 12px rgba(255, 43, 91, 0.25);
+    }
+    .bgm-btn.playing .bgm-icon {
+      display: inline-block;
+      animation: pulseNote 1s infinite alternate ease-in-out;
+    }
+    @keyframes pulseNote {
+      0% { transform: scale(1) rotate(-5deg); }
+      100% { transform: scale(1.25) rotate(10deg); }
     }
     .site-footer {
       padding: 30px 20px 80px;
@@ -631,12 +646,13 @@
       <span>SEOUL</span> IN POCKET ✨
     </div>
     <div class="header-actions">
-      <a href="https://www.instagram.com/seoulinpocket/" target="_blank" class="header-social" title="Instagram">📸</a>
-      <a href="https://www.tiktok.com/@seoulinpocket" target="_blank" class="header-social" title="TikTok">🎵</a>
-      <a href="http://xhslink.com/o/4tE6Fn1NFnE" target="_blank" class="header-social" title="小红书 RedNote">📕</a>
+      <button class="bgm-btn" id="bgmBtn" onclick="toggleBgm()" title="Play/Pause K-Lofi BGM">
+        <span class="bgm-icon" id="bgmIcon">🎵</span>
+      </button>
       <span class="lang-badge" id="langBtn" onclick="toggleLang()">🇺🇸 EN | 🇨🇳 中文</span>
     </div>
   </header>
+  <audio id="bgmAudio" src="audio/bgm.mp3" loop preload="auto"></audio>
 
   <!-- Hero Section -->
   <div class="hero">
@@ -1873,6 +1889,32 @@
     setTimeout(() => {
       toast.classList.remove('show');
     }, 2400);
+  }
+
+  // BGM Player
+  let isBgmPlaying = false;
+  function toggleBgm() {
+    const audio = document.getElementById('bgmAudio');
+    const btn = document.getElementById('bgmBtn');
+    const icon = document.getElementById('bgmIcon');
+    
+    if (!isBgmPlaying) {
+      audio.play().then(() => {
+        isBgmPlaying = true;
+        btn.classList.add('playing');
+        icon.innerText = '🎶';
+        showToast('🎵 Playing Seoul Chill BGM ✨');
+      }).catch(err => {
+        console.log('Audio play error:', err);
+        showToast('Tap again to play audio');
+      });
+    } else {
+      audio.pause();
+      isBgmPlaying = false;
+      btn.classList.remove('playing');
+      icon.innerText = '🎵';
+      showToast('🔇 BGM Paused');
+    }
   }
 
   // Language Toggle
