@@ -379,6 +379,77 @@
       align-items: center;
       gap: 4px;
       cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      transition: all 0.2s;
+    }
+    .social-btn:hover {
+      color: var(--primary-accent);
+      border-color: var(--primary-accent);
+    }
+    .header-social {
+      font-size: 0.95rem;
+      text-decoration: none;
+      padding: 4px 7px;
+      border-radius: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .header-social:hover {
+      transform: scale(1.05);
+      border-color: var(--primary-accent);
+    }
+    .site-footer {
+      padding: 30px 20px 80px;
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+      margin-top: 40px;
+      background: var(--bg-card);
+      border-radius: 20px 20px 0 0;
+    }
+    .footer-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+    .footer-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+    .footer-social-box {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-social-link {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary-accent);
+      text-decoration: none;
+      padding: 6px 12px;
+      background: var(--bg-app);
+      border-radius: 100px;
+      border: 1px solid var(--border-color);
+      transition: all 0.2s;
+    }
+    .footer-social-link:hover {
+      border-color: var(--primary-accent);
+    }
+    .footer-copy {
+      font-size: 0.7rem;
+      color: var(--text-muted);
     }
     .btn-vip {
       background: var(--text-main);
@@ -560,6 +631,8 @@
       <span>SEOUL</span> IN POCKET ✨
     </div>
     <div class="header-actions">
+      <a href="https://www.instagram.com/seoulinpocket/" target="_blank" class="header-social" title="Instagram">📸</a>
+      <a href="https://www.tiktok.com/@seoulinpocket" target="_blank" class="header-social" title="TikTok">🎵</a>
       <span class="lang-badge" id="langBtn" onclick="toggleLang()">🇺🇸 EN | 🇨🇳 中文</span>
     </div>
   </header>
@@ -1627,12 +1700,23 @@
     <button class="btn-contact" onclick="openPartnerModal()">Submit Listing / B2B Inquiry →</button>
   </div>
 
+  <!-- Modern Footer -->
+  <footer class="site-footer">
+    <div class="footer-logo">SEOUL IN POCKET ✨</div>
+    <p class="footer-desc">Curated Seoul travel cheat codes & VIP reservation passes for global Gen-Z travelers.</p>
+    <div class="footer-social-box">
+      <a href="https://www.instagram.com/seoulinpocket/" target="_blank" class="footer-social-link">📸 Instagram @seoulinpocket</a>
+      <a href="https://www.tiktok.com/@seoulinpocket" target="_blank" class="footer-social-link">🎵 TikTok @seoulinpocket</a>
+    </div>
+    <p class="footer-copy">© 2026 Seoul in Pocket. Official Partner of Creatrip.</p>
+  </footer>
+
   <!-- Floating Mobile Bar -->
   <div class="bottom-bar">
     <div class="social-links">
-      <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">Follow:</span>
-      <span class="social-btn" onclick="showToast('TikTok @seoulinpocket launching soon!')">📱 TikTok</span>
-      <span class="social-btn" onclick="showToast('小红书 @首尔口袋指南 launching soon!')">📕 小红书</span>
+      <span style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted);">Follow:</span>
+      <a href="https://www.instagram.com/seoulinpocket/" target="_blank" class="social-btn">📸 IG</a>
+      <a href="https://www.tiktok.com/@seoulinpocket" target="_blank" class="social-btn">🎵 TikTok</a>
     </div>
     <button class="btn-vip" onclick="openVipModal()">Get VIP Pass ✨</button>
   </div>
