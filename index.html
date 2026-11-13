@@ -632,6 +632,224 @@
       transform: translateX(-50%) translateY(0);
       opacity: 1;
     }
+
+    /* View Switcher */
+    .view-switcher-wrap {
+      padding: 0 20px 14px;
+      display: flex;
+      gap: 10px;
+    }
+    .view-switch-btn {
+      flex: 1;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-sub);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
+    }
+    .view-switch-btn:active {
+      transform: scale(0.97);
+    }
+    .view-switch-btn.active {
+      background: var(--text-main);
+      color: #FFF;
+      border-color: var(--text-main);
+      box-shadow: 0 4px 12px rgba(25, 31, 40, 0.15);
+    }
+    .hot-badge {
+      background: var(--primary-accent);
+      color: #FFF;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    /* Map View Container */
+    .map-container {
+      display: none;
+      padding: 0 20px 30px;
+    }
+    .map-container.show {
+      display: block;
+      animation: fadeIn 0.25s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .map-header-card {
+      background: linear-gradient(135deg, #191F28 0%, #2D3748 100%);
+      color: #FFF;
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .map-header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 43, 91, 0.2);
+      color: #FF8FA3;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 4px 8px;
+      border-radius: 100px;
+      margin-bottom: 8px;
+    }
+    .map-header-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      letter-spacing: -0.3px;
+    }
+    .map-header-desc {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.45;
+    }
+
+    /* Metro Hubs */
+    .metro-hub-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 18px;
+      transition: all 0.2s;
+    }
+    .metro-hub-card:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+    .hub-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .hub-title-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .hub-station-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      color: #FFF;
+      align-self: flex-start;
+    }
+    .line-2 { background: #00B140; }
+    .line-3 { background: #FF7300; }
+    .line-5 { background: #8B50A4; }
+    .line-sb { background: #EAA300; }
+
+    .hub-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.3px;
+    }
+    .hub-subtitle {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .btn-google-map {
+      background: var(--bg-app);
+      border: 1px solid var(--border-color);
+      color: var(--text-sub);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 5px 9px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+    .btn-google-map:hover {
+      color: var(--primary-accent);
+      border-color: var(--primary-accent);
+    }
+
+    .hub-spots-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .hub-spot-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-app);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    .hub-spot-item:active {
+      transform: scale(0.98);
+    }
+    .hub-spot-item:hover {
+      border-color: var(--primary-accent);
+      background: rgba(255, 43, 91, 0.03);
+    }
+    .hub-spot-left {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+    }
+    .hub-spot-icon {
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+    .hub-spot-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+    .hub-spot-title {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .hub-spot-perk {
+      font-size: 0.72rem;
+      color: var(--primary-accent);
+      font-weight: 700;
+    }
+    .hub-spot-action {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--primary-accent);
+      background: rgba(255, 43, 91, 0.08);
+      padding: 4px 9px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      margin-left: 8px;
+    }
+
   </style>
 </head>
 <body>
@@ -692,6 +910,254 @@
     <div class="chip" onclick="filterCategory('kpop', this)">🎤 K-Pop Hotspots</div>
     <div class="chip" onclick="filterCategory('cafe', this)">☕ Seongsu & Cafes</div>
     <div class="chip" onclick="filterCategory('stay', this)">🏮 Hanok & Stays</div>
+  </div>
+
+  <!-- View Mode Switcher -->
+  <div class="view-switcher-wrap">
+    <div class="view-switch-btn active" id="btnListView" onclick="switchView('list')">
+      <span>📋 List View (리스트)</span>
+    </div>
+    <div class="view-switch-btn" id="btnMapView" onclick="switchView('map')">
+      <span>🗺️ Seoul Metro Map (지하철 핫플 지도)</span>
+      <span class="hot-badge">HOT</span>
+    </div>
+  </div>
+
+  <!-- Interactive Seoul Metro & Tourist Map View -->
+  <div class="map-container" id="mapView">
+    <div class="map-header-card">
+      <div class="map-header-badge" id="mapHeaderBadge">🚇 4 Essential Seoul Tourist Hubs</div>
+      <div class="map-header-title" id="mapHeaderTitle">Interactive Seoul Metro Food & Beauty Map</div>
+      <div class="map-header-desc" id="mapHeaderDesc">
+        Google Maps walking navigation doesn't work well in Korea. Use our subway station hub guide to navigate top clinics, cafes & K-pop spots with instant VIP discount passes!
+      </div>
+    </div>
+
+    <!-- Hub 1: Gangnam & Cheongdam -->
+    <div class="metro-hub-card">
+      <div class="hub-top">
+        <div class="hub-title-wrap">
+          <div class="hub-station-badge line-2">🚇 Line 2 & Suin-Bundang</div>
+          <div class="hub-name" data-en="Gangnam & Cheongdam Hub" data-zh="江南·清潭洞 医美时尚核心区">Gangnam & Cheongdam Hub</div>
+          <div class="hub-subtitle" data-en="World Epicenter of K-Beauty, Clinics & Scalp Spas" data-zh="韩国高端皮肤管理、头皮SPA与爱豆造型发廊圣地">World Epicenter of K-Beauty, Clinics & Scalp Spas</div>
+        </div>
+        <a href="https://maps.google.com/?q=Gangnam+Station+Seoul" target="_blank" class="btn-google-map">📍 Google Map</a>
+      </div>
+      <div class="hub-spots-grid">
+        <div class="hub-spot-item" onclick="openBookingModal('Cheongdam Glass Skin & Aqua Facial', 'SEOULSKIN15', '15% Exclusive Discount & Pore Pack', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">💄</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Cheongdam Glass Skin & Aqua Facial" data-zh="清潭洞 水光微针与毛孔清洁管理">Cheongdam Glass Skin & Aqua Facial</span>
+              <span class="hub-spot-perk">15% OFF VIP • 7% Tax Refund • English Doctor</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book Pass →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Gangnam 15-Step Herbal Scalp & Head Spa', 'HEADSPA20', '20% OFF Waterfall Treatment & Ampoule', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">💆</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Gangnam 15-Step Herbal Head Spa" data-zh="江南 15步草本瀑布头皮理疗SPA">Gangnam 15-Step Herbal Head Spa</span>
+              <span class="hub-spot-perk">20% OFF VIP • TikTok 50M Viral • Apgujeong</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book Pass →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Garosugil Shurink Universe & Rejuran Skin Booster', 'LIFTING15', '15% OFF + Cryo Calming Care', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">✨</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Garosugil Shurink Universe & Rejuran" data-zh="新沙林荫道 超声刀抗衰与三文鱼针">Garosugil Shurink Universe & Rejuran</span>
+              <span class="hub-spot-perk">15% OFF • Minimal Downtime • Sinsa Stn</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book Pass →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Cheongdam K-Pop Idol Stage Makeup & Styling', 'GLAMVIP10', '10% OFF + Makeup Setting Mist', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">💄</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Cheongdam K-Pop Idol Stage Makeup" data-zh="清潭洞 现役K-Pop爱豆同款妆造工作室">Cheongdam K-Pop Idol Stage Makeup</span>
+              <span class="hub-spot-perk">10% OFF • Active Girl-Group Stylists</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book Pass →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Gangnam 1-Day Laser Teeth Whitening Express', 'DENTALVIP15', '15% OFF + Anti-Stain Coating', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">🦷</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Gangnam 1-Day Laser Teeth Whitening" data-zh="江南 60分钟急速激光冷光美白">Gangnam 1-Day Laser Teeth Whitening</span>
+              <span class="hub-spot-perk">15% OFF VIP • 3~5 Shades Whiter • English Dental</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book Pass →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hub 2: Jongno, Anguk & Bukchon -->
+    <div class="metro-hub-card">
+      <div class="hub-top">
+        <div class="hub-title-wrap">
+          <div class="hub-station-badge line-3">🚇 Line 3 (Anguk) & Line 1</div>
+          <div class="hub-name" data-en="Jongno & Bukchon Heritage Hub" data-zh="钟路·安国·北村 传统韩屋美学区">Jongno & Bukchon Heritage Hub</div>
+          <div class="hub-subtitle" data-en="Royal Palaces, Silk Hanbok & Viral Hanok Bakeries" data-zh="景福宫夜游、高端丝绸韩服与排队王贝果咖啡馆">Royal Palaces, Silk Hanbok & Viral Hanok Bakeries</div>
+        </div>
+        <a href="https://maps.google.com/?q=Anguk+Station+Seoul" target="_blank" class="btn-google-map">📍 Google Map</a>
+      </div>
+      <div class="hub-spots-grid">
+        <div class="hub-spot-item" onclick="openBookingModal('London Bagel Museum & Hanok Cafe Guide', 'BAGELVIP', 'Free Remote Queue Guide & Map', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">🥯</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="London Bagel Museum CatchTable Pass" data-zh="伦敦贝果博物馆 远程免排队攻略指南">London Bagel Museum CatchTable Pass</span>
+              <span class="hub-spot-perk">Skip 3H Lines • Remote Guide • Anguk Stn Exit 2</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Get Pass →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Royal Gyeongbokgung Night Walk & Silk Hanbok', 'HANBOKVIP', 'Free Hair Accessories & Bag Rental', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">🏮</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Royal Gyeongbokgung Silk Hanbok Rental" data-zh="景福宫高级丝绸韩服体验（含免费编发）">Royal Gyeongbokgung Silk Hanbok Rental</span>
+              <span class="hub-spot-perk">Free Palace Entry • Complimentary Hair Braiding</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Get Pass →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Gwangjang Market Night Foodie Tasting Tour', 'MARKETFOOD', 'Free Traditional Rice Wine Sample', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">🍲</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Gwangjang Market Night Foodie Tour" data-zh="广藏市场 夜市美食深度探索之旅">Gwangjang Market Night Foodie Tour</span>
+              <span class="hub-spot-perk">Live Octopus & Yukhoe • 6 Food Tastings</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Get Pass →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Bukchon Traditional Hanok Private Villa', 'HANOKVIP', 'Complimentary Tea Ceremony Experience', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">🏡</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Bukchon Traditional Hanok Villa" data-zh="北村韩屋村 百年独栋私享庭院别墅">Bukchon Traditional Hanok Villa</span>
+              <span class="hub-spot-perk">Private Courtyard • Hinoki Bath • Superhost</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Check Dates →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hub 3: Hongdae & Yeonnam -->
+    <div class="metro-hub-card">
+      <div class="hub-top">
+        <div class="hub-title-wrap">
+          <div class="hub-station-badge line-2">🚇 Line 2 & AREX (Hongik Univ)</div>
+          <div class="hub-name" data-en="Hongdae & Yeonnam Youth Hub" data-zh="弘大·延南洞 潮流文化与美妆区">Hongdae & Yeonnam Youth Hub</div>
+          <div class="hub-subtitle" data-en="Personal Color Analysis, K-Pop Studios & Creator Lofts" data-zh="个人色彩诊断、K-Pop录音棚与年轻设计师买手店">Personal Color Analysis, K-Pop Studios & Creator Lofts</div>
+        </div>
+        <a href="https://maps.google.com/?q=Hongik+University+Station+Seoul" target="_blank" class="btn-google-map">📍 Google Map</a>
+      </div>
+      <div class="hub-spots-grid">
+        <div class="hub-spot-item" onclick="openBookingModal('Hongdae 1:1 K-Personal Color & Glow Makeup', 'SEOULCOLOR10', '10% Discount & Free Swatch Card', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">🎨</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Hongdae 1:1 K-Personal Color Test" data-zh="弘大 1对1 个人色彩季型鉴定与彩妆诊断">Hongdae 1:1 K-Personal Color Test</span>
+              <span class="hub-spot-perk">10% OFF • English Report • Olive Young Guide</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book Pass →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('K-Pop Stage Idol Profile Shoot & Makeover', 'IDOLSHOOT15', '15% OFF + Free High-Res Raw Files', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">📸</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="K-Pop Stage Idol Profile Shoot" data-zh="弘大 K-Pop爱豆舞台概念写真拍摄">K-Pop Stage Idol Profile Shoot</span>
+              <span class="hub-spot-perk">15% OFF • Pro Idol Makeup • 2 Retouched Prints</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book Pass →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('K-Pop Vocal Recording Session & Audio Master', 'VOCALVIP', '15% OFF + Raw Vocals Stem Files', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">🎙️</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="K-Pop Vocal Recording & Audio Master" data-zh="K-Pop 商业录音棚体验与数字单曲母带制作">K-Pop Vocal Recording & Audio Master</span>
+              <span class="hub-spot-perk">15% OFF • Pitch Correction • MP3 Track Included</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book Pass →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Mapo Traditional Soy Sauce Crab (Ganjang Gejang)', 'MAPOCRAB', 'Complimentary Sikhye Drink & Table Pass', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">🦀</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Mapo Michelin Soy Sauce Crab (Gejang)" data-zh="麻浦 30年老字号米其林酱油蟹（偷饭贼）">Mapo Michelin Soy Sauce Crab (Gejang)</span>
+              <span class="hub-spot-perk">Michelin Selected • Priority Table Pass</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Table Reserve →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hub 4: Seongsu-dong -->
+    <div class="metro-hub-card">
+      <div class="hub-top">
+        <div class="hub-title-wrap">
+          <div class="hub-station-badge line-2">🚇 Line 2 (Seongsu & Ttukseom)</div>
+          <div class="hub-name" data-en="Seongsu-dong Brooklyn Hub" data-zh="圣水洞 工业风红砖首尔布鲁克林区">Seongsu-dong Brooklyn Hub</div>
+          <div class="hub-subtitle" data-en="Trendsetting Popups, 1MILLION Dance & Red-brick Cafes" data-zh="爆款快闪店、1MILLION舞蹈教室与设计买手店">Trendsetting Popups, 1MILLION Dance & Red-brick Cafes</div>
+        </div>
+        <a href="https://maps.google.com/?q=Seongsu+Station+Seoul" target="_blank" class="btn-google-map">📍 Google Map</a>
+      </div>
+      <div class="hub-spots-grid">
+        <div class="hub-spot-item" onclick="openBookingModal('Seongsu Red-Brick Bakery & Popup Walk', 'SEONGSU10', '10% Discount Coupon & Fast Pass', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">☕</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Seongsu Red-Brick Bakery Walk" data-zh="圣水洞 红砖工业风面包坊与快闪漫步">Seongsu Red-Brick Bakery Walk</span>
+              <span class="hub-spot-perk">10% OFF Coupon • Skip-The-Line • Seongsu Stn Exit 3</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Get Pass →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('1MILLION Dance Studio Rookie K-Pop Class', 'DANCE10', '10% Discount + 1MILLION Eco Bottle', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">💃</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="1MILLION Dance Studio Rookie Class" data-zh="1MILLION 舞蹈工作室 零基础K-Pop舞蹈体验课">1MILLION Dance Studio Rookie Class</span>
+              <span class="hub-spot-perk">10% OFF • Idol Choreographers • Video Included</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book Pass →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('HYBE & SM Idol Route + Creator Studio', 'KPOPVIP', 'Free Limited Photo Card Included', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">🎤</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="SM Kwangya & Idol Spot Pilgrimage" data-zh="SM旷野旗舰店与K-Pop爱豆圣地巡礼路线">SM Kwangya & Idol Spot Pilgrimage</span>
+              <span class="hub-spot-perk">Free Photocard • Idol Visited Spots • English Map</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Get Pass →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Seongsu Trendsetter Hair Salon (Cut & Balayage)', 'HAIRVIP15', '15% Discount + Hair Essence Gift', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">💇</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Seongsu Layered Cut & Balayage Salon" data-zh="圣水洞 潮流韩系层次剪发与渐变染发">Seongsu Layered Cut & Balayage Salon</span>
+              <span class="hub-spot-perk">15% OFF VIP • Idol Stylists • Drink Bar</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book Pass →</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Cards List -->
@@ -1917,6 +2383,37 @@
     }
   }
 
+
+  // View Switcher (Cards List vs Map View)
+  let currentView = 'list';
+  function switchView(mode) {
+    currentView = mode;
+    const btnList = document.getElementById('btnListView');
+    const btnMap = document.getElementById('btnMapView');
+    const cardsList = document.getElementById('cardsList');
+    const mapView = document.getElementById('mapView');
+    const secHeader = document.querySelector('.section-header');
+    const chipGroup = document.getElementById('chipGroup');
+
+    if (mode === 'map') {
+      btnList.classList.remove('active');
+      btnMap.classList.add('active');
+      cardsList.style.display = 'none';
+      secHeader.style.display = 'none';
+      chipGroup.style.display = 'none';
+      mapView.classList.add('show');
+      showToast('🗺️ Switched to Seoul Metro Map View!');
+    } else {
+      btnMap.classList.remove('active');
+      btnList.classList.add('active');
+      cardsList.style.display = 'grid';
+      secHeader.style.display = 'flex';
+      chipGroup.style.display = 'flex';
+      mapView.classList.remove('show');
+      showToast('📋 Switched to List View!');
+    }
+  }
+
   // Language Toggle
   let isChinese = false;
   function toggleLang() {
@@ -1931,12 +2428,24 @@
       heroTitle.innerHTML = '像<em>首尔本地人</em>一样探索首尔';
       heroDesc.innerText = '精选K-Pop打卡地、弘大圣水美学咖啡馆、江南高端医美水光针与精品韩屋住宿。';
       secTitle.innerText = '本周热门推荐';
+      document.getElementById('mapHeaderBadge').innerText = '🚇 4大首尔核心旅游商圈导航';
+      document.getElementById('mapHeaderTitle').innerText = '首尔地铁互动美食美妆游玩地图';
+      document.getElementById('mapHeaderDesc').innerText = '在韩国谷歌地图无法正常步行导航！使用我们的首尔地铁商圈指南，探索顶级皮肤科、咖啡馆与K-Pop圣地，一键领取专属85折优惠！';
+      document.querySelectorAll('[data-zh]').forEach(el => {
+        el.innerText = el.getAttribute('data-zh');
+      });
       showToast('已切换至中文模式 🇨🇳');
     } else {
       btn.innerText = '🇺🇸 EN | 🇨🇳 中文';
       heroTitle.innerHTML = 'Explore Seoul Like a <em>True Local</em>';
       heroDesc.innerText = 'Hand-picked K-Pop spots, aesthetic cafes, medical-grade skin clinics & boutique stays with exclusive foreign tourist perks.';
       secTitle.innerText = 'Must-Visit This Week';
+      document.getElementById('mapHeaderBadge').innerText = '🚇 4 Essential Seoul Tourist Hubs';
+      document.getElementById('mapHeaderTitle').innerText = 'Interactive Seoul Metro Food & Beauty Map';
+      document.getElementById('mapHeaderDesc').innerText = 'Google Maps walking navigation doesn't work well in Korea. Use our subway station hub guide to navigate top clinics, cafes & K-pop spots with instant VIP discount passes!';
+      document.querySelectorAll('[data-en]').forEach(el => {
+        el.innerText = el.getAttribute('data-en');
+      });
       showToast('Switched to English 🇺🇸');
     }
   }
