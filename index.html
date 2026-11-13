@@ -2465,6 +2465,86 @@
     document.getElementById('bookingModal').classList.add('show');
   }
 
+  function openVipModal() {
+    document.getElementById('vipModal').classList.add('show');
+  }
+
+  function openPartnerModal() {
+    document.getElementById('partnerModal').classList.add('show');
+  }
+
+  function closeModal(id) {
+    const modal = document.getElementById(id);
+    if (modal) {
+      modal.classList.remove('show');
+    }
+  }
+
+  function closeModalOnBackdrop(e, backdrop) {
+    if (e.target === backdrop) {
+      backdrop.classList.remove('show');
+    }
+  }
+
+  function copyPromoCode() {
+    const codeEl = document.getElementById('modalCode');
+    const code = codeEl ? codeEl.innerText.trim() : 'SEOUL15';
+    if (!code) return;
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(code).then(() => {
+        showToast(`Copied ${code} to clipboard! ✨`);
+      }).catch(() => {
+        fallbackCopyText(code);
+      });
+    } else {
+      fallbackCopyText(code);
+    }
+  }
+
+  function fallbackCopyText(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-9999px';
+    textArea.style.top = '0';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand('copy');
+      showToast(`Copied ${text} to clipboard! ✨`);
+    } catch (err) {
+      console.error('Fallback copy failed', err);
+      showToast(`Promo Code: ${text}`);
+    }
+    document.body.removeChild(textArea);
+  }
+
+  function submitVipPass() {
+    const email = document.getElementById('vipEmail').value.trim();
+    if (!email) {
+      showToast('Please enter your email or WhatsApp number!');
+      return;
+    }
+    showToast('🎉 VIP Passes sent to your email/phone! Welcome to Seoul!');
+    closeModal('vipModal');
+    document.getElementById('vipEmail').value = '';
+  }
+
+  function submitPartnerInquiry() {
+    const shop = document.getElementById('partnerShop').value.trim();
+    const contact = document.getElementById('partnerContact').value.trim();
+    if (!shop || !contact) {
+      showToast('Please fill in your shop name & contact info!');
+      return;
+    }
+    showToast('📨 Inquiry received! Our B2B team will contact you within 24h.');
+    closeModal('partnerModal');
+    document.getElementById('partnerShop').value = '';
+    document.getElementById('partnerContact').value = '';
+  }
+
   function handleAffiliateClick(e) {
     showToast('Redirecting to partner reservation platform... 🚀');
     setTimeout(() => {
