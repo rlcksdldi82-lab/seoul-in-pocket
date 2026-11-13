@@ -578,10 +578,12 @@
       text-transform: uppercase;
     }
     .promo-code-wrap .promo-code {
-      font-size: 1.1rem;
+      font-size: 0.86rem;
       font-weight: 800;
       color: var(--primary);
-      letter-spacing: 0.5px;
+      letter-spacing: 0.2px;
+      word-break: break-all;
+      line-height: 1.35;
     }
     .btn-copy {
       background: var(--primary);
@@ -1011,7 +1013,7 @@
 
 <div class="mobile-frame">
   <!-- Toast Notification -->
-  <div class="toast" id="toast">Copied promo code to clipboard! ✨</div>
+  <div class="toast" id="toast">Link copied ✨</div>
 
   <!-- Top Navigation -->
   <header>
@@ -1031,25 +1033,25 @@
   <div class="hero">
     <div class="hero-badge">🔥 2026 Trending Seoul Insider Guide</div>
     <h1 id="heroTitle">Explore Seoul Like a <em>True Local</em></h1>
-    <p id="heroDesc">Hand-picked K-Pop spots, aesthetic cafes, medical-grade skin clinics & boutique stays with exclusive foreign tourist perks.</p>
+    <p id="heroDesc">Hand-picked K-Pop spots, aesthetic cafes, skin clinics & boutique stays — every card links to a real, bookable Creatrip product.</p>
   </div>
 
   <!-- Quick Proof / Stats -->
   <div class="quick-stats">
-    <div class="stat-pill" onclick="showToast('📍 150+ verified local spots in Seoul!')">
+    <div class="stat-pill" onclick="showToast('📍 36 official Creatrip products, hand-picked across 4 Seoul hubs.')">
       <div class="icon">📍</div>
-      <div class="label">150+</div>
-      <div class="sub">Curated</div>
+      <div class="label">36</div>
+      <div class="sub">Creatrip Spots</div>
     </div>
-    <div class="stat-pill" onclick="openVipModal()">
-      <div class="icon">🎟️</div>
-      <div class="label">15% OFF</div>
-      <div class="sub">Discounts</div>
+    <div class="stat-pill" onclick="showToast('⭐ Our 36 picks average ★4.69 across 141,639 reviews on Creatrip.')">
+      <div class="icon">⭐</div>
+      <div class="label">★4.7</div>
+      <div class="sub">Avg. Rating</div>
     </div>
-    <div class="stat-pill" onclick="showToast('💬 100% English & Chinese menu support guaranteed!')">
+    <div class="stat-pill" onclick="showToast('💬 Every booking link opens the English or 中文 page on Creatrip.')">
       <div class="icon">💬</div>
-      <div class="label">EN Menu</div>
-      <div class="sub">Verified</div>
+      <div class="label">EN·中文</div>
+      <div class="sub">Creatrip Pages</div>
     </div>
     <div class="stat-pill" onclick="showToast('✨ Curated from trending TikTok & Xiaohongshu reels!')">
       <div class="icon">✨</div>
@@ -1082,7 +1084,7 @@
     <div class="chip active" onclick="filterCategory('all', this)">✨ All Trending</div>
     <div class="chip" onclick="filterCategory('kbeauty', this)">💄 K-Beauty Clinics</div>
     <div class="chip" onclick="filterCategory('kpop', this)">🎤 K-Pop Hotspots</div>
-    <div class="chip" onclick="filterCategory('cafe', this)">☕ Seongsu & Cafes</div>
+    <div class="chip" onclick="filterCategory('cafe', this)">☕ Food & Cafes</div>
     <div class="chip" onclick="filterCategory('stay', this)">🏮 Hanok & Stays</div>
   </div>
 
@@ -1104,121 +1106,47 @@
       <div class="map-header-badge" id="mapHeaderBadge">🚇 4 Essential Seoul Tourist Hubs</div>
       <div class="map-header-title" id="mapHeaderTitle">Interactive Seoul Metro Food & Beauty Map</div>
       <div class="map-header-desc" id="mapHeaderDesc">
-        Google Maps walking navigation doesn't work well in Korea. Use our subway station hub guide to navigate top clinics, cafes & K-pop spots with instant VIP discount passes!
+        Google Maps walking navigation doesn't work well in Korea. Use our subway station hub guide to navigate top clinics, cafes & K-pop spots, with live prices and reviews on Creatrip.
       </div>
     </div>
 
-    <!-- Hub 1: Gangnam & Cheongdam -->
+    <!-- Hub 1: Gangnam & Cheongdam Hub -->
     <div class="metro-hub-card">
       <div class="hub-top">
         <div class="hub-title-wrap">
-          <div class="hub-station-badge line-2">🚇 Line 2 & Suin-Bundang</div>
-          <div class="hub-name" data-en="Gangnam & Cheongdam Hub" data-zh="江南·清潭洞 医美时尚核心区">Gangnam & Cheongdam Hub</div>
-          <div class="hub-subtitle" data-en="World Epicenter of K-Beauty, Clinics & Scalp Spas" data-zh="韩国高端皮肤管理、头皮SPA与爱豆造型发廊圣地">World Epicenter of K-Beauty, Clinics & Scalp Spas</div>
+          <div class="hub-station-badge line-2">🚇 Line 2 · Shinbundang</div>
+          <div class="hub-name" data-en="Gangnam &amp; Cheongdam Hub">Gangnam &amp; Cheongdam Hub</div>
+          <div class="hub-subtitle" data-en="Skin clinics, celebrity hair salons &amp; Gangnam 5-star stays">Skin clinics, celebrity hair salons &amp; Gangnam 5-star stays</div>
         </div>
         <a href="https://maps.google.com/?q=Gangnam+Station+Seoul" target="_blank" class="btn-google-map">📍 Google Map</a>
       </div>
       <div class="hub-spots-grid">
-        <div class="hub-spot-item" onclick="openBookingModal('Cheongdam Glass Skin & Aqua Facial', 'SEOULSKIN15', '15% Exclusive Discount & Pore Pack', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+        <div class="hub-spot-item" onclick="openBookingModal('Cheongdam Éclat De Clinic', 'https://creatrip.com/en/spot/13214?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (262) · Free Reservation')">
           <div class="hub-spot-left">
-            <span class="hub-spot-icon">💄</span>
+            <span class="hub-spot-icon">💎</span>
             <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Cheongdam Glass Skin & Aqua Facial" data-zh="清潭洞 水光微针与毛孔清洁管理">Cheongdam Glass Skin & Aqua Facial</span>
-              <span class="hub-spot-perk">15% OFF VIP • 7% Tax Refund • English Doctor</span>
+              <span class="hub-spot-title" data-en="Cheongdam Éclat De Clinic">Cheongdam Éclat De Clinic</span>
+              <span class="hub-spot-perk">★4.9 (262) · Free Reservation</span>
             </div>
           </div>
-          <span class="hub-spot-action">Book Pass →</span>
+          <span class="hub-spot-action">Book →</span>
         </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Gangnam 15-Step Herbal Scalp & Head Spa', 'HEADSPA20', '20% OFF Waterfall Treatment & Ampoule', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">💆</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Gangnam 15-Step Herbal Head Spa" data-zh="江南 15步草本瀑布头皮理疗SPA">Gangnam 15-Step Herbal Head Spa</span>
-              <span class="hub-spot-perk">20% OFF VIP • TikTok 50M Viral • Apgujeong</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book Pass →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Garosugil Shurink Universe & Rejuran Skin Booster', 'LIFTING15', '15% OFF + Cryo Calming Care', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+        <div class="hub-spot-item" onclick="openBookingModal('Medicube Clinic Gangnam', 'https://creatrip.com/en/spot/13573?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5 (929) · From ₩20,000')">
           <div class="hub-spot-left">
             <span class="hub-spot-icon">✨</span>
             <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Garosugil Shurink Universe & Rejuran" data-zh="新沙林荫道 超声刀抗衰与三文鱼针">Garosugil Shurink Universe & Rejuran</span>
-              <span class="hub-spot-perk">15% OFF • Minimal Downtime • Sinsa Stn</span>
+              <span class="hub-spot-title" data-en="Medicube Clinic Gangnam">Medicube Clinic Gangnam</span>
+              <span class="hub-spot-perk">★5 (929) · From ₩20,000</span>
             </div>
           </div>
-          <span class="hub-spot-action">Book Pass →</span>
+          <span class="hub-spot-action">Book →</span>
         </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Cheongdam K-Pop Idol Stage Makeup & Styling', 'GLAMVIP10', '10% OFF + Makeup Setting Mist', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+        <div class="hub-spot-item" onclick="openBookingModal('Grand Mercure Imperial Palace Seoul Gangnam', 'https://creatrip.com/en/stays/664ae65d4928b1fe5fb838c6?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.2 (2,947) · From $209 / night')">
           <div class="hub-spot-left">
-            <span class="hub-spot-icon">💄</span>
+            <span class="hub-spot-icon">🏨</span>
             <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Cheongdam K-Pop Idol Stage Makeup" data-zh="清潭洞 现役K-Pop爱豆同款妆造工作室">Cheongdam K-Pop Idol Stage Makeup</span>
-              <span class="hub-spot-perk">10% OFF • Active Girl-Group Stylists</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book Pass →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Gangnam 1-Day Laser Teeth Whitening Express', 'DENTALVIP15', '15% OFF + Anti-Stain Coating', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">🦷</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Gangnam 1-Day Laser Teeth Whitening" data-zh="江南 60分钟急速激光冷光美白">Gangnam 1-Day Laser Teeth Whitening</span>
-              <span class="hub-spot-perk">15% OFF VIP • 3~5 Shades Whiter • English Dental</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book Pass →</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Hub 2: Jongno, Anguk & Bukchon -->
-    <div class="metro-hub-card">
-      <div class="hub-top">
-        <div class="hub-title-wrap">
-          <div class="hub-station-badge line-3">🚇 Line 3 (Anguk) & Line 1</div>
-          <div class="hub-name" data-en="Jongno & Bukchon Heritage Hub" data-zh="钟路·安国·北村 传统韩屋美学区">Jongno & Bukchon Heritage Hub</div>
-          <div class="hub-subtitle" data-en="Royal Palaces, Silk Hanbok & Viral Hanok Bakeries" data-zh="景福宫夜游、高端丝绸韩服与排队王贝果咖啡馆">Royal Palaces, Silk Hanbok & Viral Hanok Bakeries</div>
-        </div>
-        <a href="https://maps.google.com/?q=Anguk+Station+Seoul" target="_blank" class="btn-google-map">📍 Google Map</a>
-      </div>
-      <div class="hub-spots-grid">
-        <div class="hub-spot-item" onclick="openBookingModal('London Bagel Museum & Hanok Cafe Guide', 'BAGELVIP', 'Free Remote Queue Guide & Map', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">🥯</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="London Bagel Museum CatchTable Pass" data-zh="伦敦贝果博物馆 远程免排队攻略指南">London Bagel Museum CatchTable Pass</span>
-              <span class="hub-spot-perk">Skip 3H Lines • Remote Guide • Anguk Stn Exit 2</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Get Pass →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Royal Gyeongbokgung Night Walk & Silk Hanbok', 'HANBOKVIP', 'Free Hair Accessories & Bag Rental', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">🏮</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Royal Gyeongbokgung Silk Hanbok Rental" data-zh="景福宫高级丝绸韩服体验（含免费编发）">Royal Gyeongbokgung Silk Hanbok Rental</span>
-              <span class="hub-spot-perk">Free Palace Entry • Complimentary Hair Braiding</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Get Pass →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Gwangjang Market Night Foodie Tasting Tour', 'MARKETFOOD', 'Free Traditional Rice Wine Sample', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">🍲</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Gwangjang Market Night Foodie Tour" data-zh="广藏市场 夜市美食深度探索之旅">Gwangjang Market Night Foodie Tour</span>
-              <span class="hub-spot-perk">Live Octopus & Yukhoe • 6 Food Tastings</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Get Pass →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Bukchon Traditional Hanok Private Villa', 'HANOKVIP', 'Complimentary Tea Ceremony Experience', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">🏡</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Bukchon Traditional Hanok Villa" data-zh="北村韩屋村 百年独栋私享庭院别墅">Bukchon Traditional Hanok Villa</span>
-              <span class="hub-spot-perk">Private Courtyard • Hinoki Bath • Superhost</span>
+              <span class="hub-spot-title" data-en="Grand Mercure Imperial Palace Seoul Gangnam">Grand Mercure Imperial Palace Seoul Gangnam</span>
+              <span class="hub-spot-perk">★4.2 (2,947) · From $209 / night</span>
             </div>
           </div>
           <span class="hub-spot-action">Check Dates →</span>
@@ -1226,110 +1154,194 @@
       </div>
     </div>
 
-    <!-- Hub 3: Hongdae & Yeonnam -->
+    <!-- Hub 2: Jongno, Myeongdong & Bukchon Hub -->
     <div class="metro-hub-card">
       <div class="hub-top">
         <div class="hub-title-wrap">
-          <div class="hub-station-badge line-2">🚇 Line 2 & AREX (Hongik Univ)</div>
-          <div class="hub-name" data-en="Hongdae & Yeonnam Youth Hub" data-zh="弘大·延南洞 潮流文化与美妆区">Hongdae & Yeonnam Youth Hub</div>
-          <div class="hub-subtitle" data-en="Personal Color Analysis, K-Pop Studios & Creator Lofts" data-zh="个人色彩诊断、K-Pop录音棚与年轻设计师买手店">Personal Color Analysis, K-Pop Studios & Creator Lofts</div>
+          <div class="hub-station-badge line-3">🚇 Line 3 (Anguk) & Line 1</div>
+          <div class="hub-name" data-en="Jongno, Myeongdong &amp; Bukchon Hub">Jongno, Myeongdong &amp; Bukchon Hub</div>
+          <div class="hub-subtitle" data-en="Royal palaces, hanbok rentals, hanok teahouses &amp; hanok stays">Royal palaces, hanbok rentals, hanok teahouses &amp; hanok stays</div>
         </div>
-        <a href="https://maps.google.com/?q=Hongik+University+Station+Seoul" target="_blank" class="btn-google-map">📍 Google Map</a>
+        <a href="https://maps.google.com/?q=Anguk+Station+Seoul" target="_blank" class="btn-google-map">📍 Google Map</a>
       </div>
       <div class="hub-spots-grid">
-        <div class="hub-spot-item" onclick="openBookingModal('Hongdae 1:1 K-Personal Color & Glow Makeup', 'SEOULCOLOR10', '10% Discount & Free Swatch Card', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+        <div class="hub-spot-item" onclick="openBookingModal('YES Hanbok Rental Gyeongbokgung', 'https://creatrip.com/en/spot/11006?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5 (3,763) · From ₩25,000')">
           <div class="hub-spot-left">
-            <span class="hub-spot-icon">🎨</span>
+            <span class="hub-spot-icon">🏮</span>
             <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Hongdae 1:1 K-Personal Color Test" data-zh="弘大 1对1 个人色彩季型鉴定与彩妆诊断">Hongdae 1:1 K-Personal Color Test</span>
-              <span class="hub-spot-perk">10% OFF • English Report • Olive Young Guide</span>
+              <span class="hub-spot-title" data-en="YES Hanbok Rental Gyeongbokgung">YES Hanbok Rental Gyeongbokgung</span>
+              <span class="hub-spot-perk">★5 (3,763) · From ₩25,000</span>
             </div>
           </div>
-          <span class="hub-spot-action">Book Pass →</span>
+          <span class="hub-spot-action">Book →</span>
         </div>
-        <div class="hub-spot-item" onclick="openBookingModal('K-Pop Stage Idol Profile Shoot & Makeover', 'IDOLSHOOT15', '15% OFF + Free High-Res Raw Files', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+        <div class="hub-spot-item" onclick="openBookingModal('Ari Hanbok Gyeongbokgung', 'https://creatrip.com/en/spot/13241?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5 (515) · From ₩40,000')">
           <div class="hub-spot-left">
-            <span class="hub-spot-icon">📸</span>
+            <span class="hub-spot-icon">👘</span>
             <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="K-Pop Stage Idol Profile Shoot" data-zh="弘大 K-Pop爱豆舞台概念写真拍摄">K-Pop Stage Idol Profile Shoot</span>
-              <span class="hub-spot-perk">15% OFF • Pro Idol Makeup • 2 Retouched Prints</span>
+              <span class="hub-spot-title" data-en="Ari Hanbok Gyeongbokgung">Ari Hanbok Gyeongbokgung</span>
+              <span class="hub-spot-perk">★5 (515) · From ₩40,000</span>
             </div>
           </div>
-          <span class="hub-spot-action">Book Pass →</span>
+          <span class="hub-spot-action">Book →</span>
         </div>
-        <div class="hub-spot-item" onclick="openBookingModal('K-Pop Vocal Recording Session & Audio Master', 'VOCALVIP', '15% OFF + Raw Vocals Stem Files', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+        <div class="hub-spot-item" onclick="openBookingModal('On6.5 Anguk Dining Bar', 'https://creatrip.com/en/spot/13359?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.6 (119) · From ₩33,000')">
           <div class="hub-spot-left">
-            <span class="hub-spot-icon">🎙️</span>
+            <span class="hub-spot-icon">🍶</span>
             <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="K-Pop Vocal Recording & Audio Master" data-zh="K-Pop 商业录音棚体验与数字单曲母带制作">K-Pop Vocal Recording & Audio Master</span>
-              <span class="hub-spot-perk">15% OFF • Pitch Correction • MP3 Track Included</span>
+              <span class="hub-spot-title" data-en="On6.5 Anguk Dining Bar">On6.5 Anguk Dining Bar</span>
+              <span class="hub-spot-perk">★4.6 (119) · From ₩33,000</span>
             </div>
           </div>
-          <span class="hub-spot-action">Book Pass →</span>
+          <span class="hub-spot-action">Book →</span>
         </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Mapo Traditional Soy Sauce Crab (Ganjang Gejang)', 'MAPOCRAB', 'Complimentary Sikhye Drink & Table Pass', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+        <div class="hub-spot-item" onclick="openBookingModal('Korea House Kohojae Tea', 'https://creatrip.com/en/spot/15462?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (67) · From ₩30,000')">
           <div class="hub-spot-left">
-            <span class="hub-spot-icon">🦀</span>
+            <span class="hub-spot-icon">🍵</span>
             <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Mapo Michelin Soy Sauce Crab (Gejang)" data-zh="麻浦 30年老字号米其林酱油蟹（偷饭贼）">Mapo Michelin Soy Sauce Crab (Gejang)</span>
-              <span class="hub-spot-perk">Michelin Selected • Priority Table Pass</span>
+              <span class="hub-spot-title" data-en="Korea House Kohojae Tea">Korea House Kohojae Tea</span>
+              <span class="hub-spot-perk">★4.9 (67) · From ₩30,000</span>
             </div>
           </div>
-          <span class="hub-spot-action">Table Reserve →</span>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Bukchon Yeonwoo Hanok Stay', 'https://creatrip.com/en/stays/65f35256d68cf4126470e9e8?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.8 (26) · From $113 / night')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">🏡</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Bukchon Yeonwoo Hanok Stay">Bukchon Yeonwoo Hanok Stay</span>
+              <span class="hub-spot-perk">★4.8 (26) · From $113 / night</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Check Dates →</span>
         </div>
       </div>
     </div>
 
-    <!-- Hub 4: Seongsu-dong -->
+    <!-- Hub 3: Hongdae & Yeonnam Youth Hub -->
+    <div class="metro-hub-card">
+      <div class="hub-top">
+        <div class="hub-title-wrap">
+          <div class="hub-station-badge line-2">🚇 Line 2 & AREX (Hongik Univ)</div>
+          <div class="hub-name" data-en="Hongdae &amp; Yeonnam Youth Hub">Hongdae &amp; Yeonnam Youth Hub</div>
+          <div class="hub-subtitle" data-en="Most-booked hair salons, personal colour, charcoal BBQ &amp; photocard shops">Most-booked hair salons, personal colour, charcoal BBQ &amp; photocard shops</div>
+        </div>
+        <a href="https://maps.google.com/?q=Hongik+University+Station+Seoul" target="_blank" class="btn-google-map">📍 Google Map</a>
+      </div>
+      <div class="hub-spots-grid">
+        <div class="hub-spot-item" onclick="openBookingModal('SOONSIKI Hair Hongdae Flagship', 'https://creatrip.com/en/spot/11093?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (8,365) · From ₩33,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">💇</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="SOONSIKI Hair Hongdae Flagship">SOONSIKI Hair Hongdae Flagship</span>
+              <span class="hub-spot-perk">★4.9 (8,365) · From ₩33,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('ECOJARDIN Hongdae', 'https://creatrip.com/en/spot/15615?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (4,372) · From ₩137,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">🎨</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="ECOJARDIN Hongdae">ECOJARDIN Hongdae</span>
+              <span class="hub-spot-perk">★4.9 (4,372) · From ₩137,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Don Juneun Namja Hongdae', 'https://creatrip.com/en/spot/13902?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.8 (1,012) · From ₩30,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">🥩</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Don Juneun Namja Hongdae">Don Juneun Namja Hongdae</span>
+              <span class="hub-spot-perk">★4.8 (1,012) · From ₩30,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Real K-POP Dance Class Hongdae', 'https://creatrip.com/en/spot/12956?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (173) · From ₩55,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">💃</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Real K-POP Dance Class Hongdae">Real K-POP Dance Class Hongdae</span>
+              <span class="hub-spot-perk">★4.9 (173) · From ₩55,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Mercure Ambassador Seoul Hongdae', 'https://creatrip.com/en/stays/65ded4d74e759f00a6ac44d7?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.8 (575) · From $135 / night')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">🏨</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Mercure Ambassador Seoul Hongdae">Mercure Ambassador Seoul Hongdae</span>
+              <span class="hub-spot-perk">★4.8 (575) · From $135 / night</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Check Dates →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hub 4: Seongsu & Dongdaemun Hub -->
     <div class="metro-hub-card">
       <div class="hub-top">
         <div class="hub-title-wrap">
           <div class="hub-station-badge line-2">🚇 Line 2 (Seongsu & Ttukseom)</div>
-          <div class="hub-name" data-en="Seongsu-dong Brooklyn Hub" data-zh="圣水洞 工业风红砖首尔布鲁克林区">Seongsu-dong Brooklyn Hub</div>
-          <div class="hub-subtitle" data-en="Trendsetting Popups, 1MILLION Dance & Red-brick Cafes" data-zh="爆款快闪店、1MILLION舞蹈教室与设计买手店">Trendsetting Popups, 1MILLION Dance & Red-brick Cafes</div>
+          <div class="hub-name" data-en="Seongsu &amp; Dongdaemun Hub">Seongsu &amp; Dongdaemun Hub</div>
+          <div class="hub-subtitle" data-en="Perfume workshops, hair studios, 24-hour jjimjilbang &amp; Myeongdong clinics">Perfume workshops, hair studios, 24-hour jjimjilbang &amp; Myeongdong clinics</div>
         </div>
         <a href="https://maps.google.com/?q=Seongsu+Station+Seoul" target="_blank" class="btn-google-map">📍 Google Map</a>
       </div>
       <div class="hub-spots-grid">
-        <div class="hub-spot-item" onclick="openBookingModal('Seongsu Red-Brick Bakery & Popup Walk', 'SEONGSU10', '10% Discount Coupon & Fast Pass', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">☕</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Seongsu Red-Brick Bakery Walk" data-zh="圣水洞 红砖工业风面包坊与快闪漫步">Seongsu Red-Brick Bakery Walk</span>
-              <span class="hub-spot-perk">10% OFF Coupon • Skip-The-Line • Seongsu Stn Exit 3</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Get Pass →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('1MILLION Dance Studio Rookie K-Pop Class', 'DANCE10', '10% Discount + 1MILLION Eco Bottle', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">💃</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="1MILLION Dance Studio Rookie Class" data-zh="1MILLION 舞蹈工作室 零基础K-Pop舞蹈体验课">1MILLION Dance Studio Rookie Class</span>
-              <span class="hub-spot-perk">10% OFF • Idol Choreographers • Video Included</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book Pass →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('HYBE & SM Idol Route + Creator Studio', 'KPOPVIP', 'Free Limited Photo Card Included', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">🎤</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="SM Kwangya & Idol Spot Pilgrimage" data-zh="SM旷野旗舰店与K-Pop爱豆圣地巡礼路线">SM Kwangya & Idol Spot Pilgrimage</span>
-              <span class="hub-spot-perk">Free Photocard • Idol Visited Spots • English Map</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Get Pass →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Seongsu Trendsetter Hair Salon (Cut & Balayage)', 'HAIRVIP15', '15% Discount + Hair Essence Gift', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">
+        <div class="hub-spot-item" onclick="openBookingModal('YOU Hair Salon Seongsu', 'https://creatrip.com/en/spot/14730?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5 (1,380) · From ₩35,000')">
           <div class="hub-spot-left">
             <span class="hub-spot-icon">💇</span>
             <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Seongsu Layered Cut & Balayage Salon" data-zh="圣水洞 潮流韩系层次剪发与渐变染发">Seongsu Layered Cut & Balayage Salon</span>
-              <span class="hub-spot-perk">15% OFF VIP • Idol Stylists • Drink Bar</span>
+              <span class="hub-spot-title" data-en="YOU Hair Salon Seongsu">YOU Hair Salon Seongsu</span>
+              <span class="hub-spot-perk">★5 (1,380) · From ₩35,000</span>
             </div>
           </div>
-          <span class="hub-spot-action">Book Pass →</span>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('WHIPPED HOUSE Seongsu', 'https://creatrip.com/en/spot/14309?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (839) · From ₩25,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">🧼</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="WHIPPED HOUSE Seongsu">WHIPPED HOUSE Seongsu</span>
+              <span class="hub-spot-perk">★4.9 (839) · From ₩25,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('.NOTE Seongsu Perfume Class', 'https://creatrip.com/en/spot/14808?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5 (3,377) · From ₩49,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">🧪</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en=".NOTE Seongsu Perfume Class">.NOTE Seongsu Perfume Class</span>
+              <span class="hub-spot-perk">★5 (3,377) · From ₩49,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Sparex Dongdaemun Jjimjilbang', 'https://creatrip.com/en/spot/13261?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.2 (1,060) · From ₩7,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">♨️</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Sparex Dongdaemun Jjimjilbang">Sparex Dongdaemun Jjimjilbang</span>
+              <span class="hub-spot-perk">★4.2 (1,060) · From ₩7,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Abijou Clinic Global Myeongdong', 'https://creatrip.com/en/spot/14592?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (4,477) · From ₩10,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon">🏥</span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Abijou Clinic Global Myeongdong">Abijou Clinic Global Myeongdong</span>
+              <span class="hub-spot-perk">★4.9 (4,477) · From ₩10,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
         </div>
       </div>
     </div>
@@ -1342,1010 +1354,1010 @@
   </div>
 
   <div class="cards-container" id="cardsList">
-    <!-- Card: Cheongdam Glass Skin & Aqua Facial -->
+    <!-- Abijou Clinic Global Myeongdong · Creatrip spot 14592 -->
     <div class="spot-card" data-category="kbeauty">
       <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" alt="Cheongdam Glass Skin & Aqua Facial">
-        <span class="tag-badge">💄 Gangnam Exclusive</span>
-        <span class="discount-badge">15% OFF VIP</span>
+        <img src="images/creatrip/14592.jpg" alt="Abijou Clinic Global Myeongdong: 20 Years of Trust, Foreigner-Friendly" loading="lazy">
+        <span class="tag-badge">🏥 Skin Clinic</span>
+        <span class="discount-badge">Beauty Cashback</span>
       </div>
       <div class="spot-body">
         <div class="spot-meta">
-          <span class="area">Gangnam, Seoul</span>
+          <span class="area">Myeongdong, Jung-gu</span>
           <span>•</span>
-          <span class="rating">★ 4.9 (420+ Reviews)</span>
+          <span class="rating">★ 4.9 (4,477 reviews)</span>
         </div>
-        <h3 class="spot-title">Cheongdam Glass Skin & Aqua Facial</h3>
-        <p class="spot-desc">Premier dermatological glow treatment popular among K-Pop trainees. 100% English consultation with tax refund support.</p>
+        <h3 class="spot-title">Abijou Clinic Global Myeongdong</h3>
+        <p class="spot-desc">20 years of clinic experience and 3.5M+ visitors. The Myeongdong global centre runs a 10-language desk with same-day booking and the same pricing as Korean patients.</p>
         <div class="spot-features">
-          <span class="feat-tag">Tax Refund 7%</span><span class="feat-tag">English Doctor</span><span class="feat-tag">No Downtime</span>
+          <span class="feat-tag">10 Languages</span><span class="feat-tag">Same-Day Booking</span><span class="feat-tag">Same Price as Locals</span>
         </div>
         <div class="spot-action">
           <div class="price-wrap">
-            <span class="price-label">Official Rate</span>
-            <span class="price-value">₩180,000 (~$135)</span>
+            <span class="price-label">From</span>
+            <span class="price-value">₩10,000 (~$7)</span>
           </div>
-          <button class="btn-book" onclick="openBookingModal('Cheongdam Glass Skin & Aqua Facial', 'SEOULSKIN15', '15% Exclusive Discount & Pore Pack', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Instant Booking →</button>
+          <button class="btn-book" onclick="openBookingModal('Abijou Clinic Global Myeongdong', 'https://creatrip.com/en/spot/14592?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Myeongdong, Jung-gu · ₩10,000 (~$7) · ★4.9 (4,477 reviews)')">Book Pass →</button>
         </div>
       </div>
     </div>
 
-    <!-- Card: Hongdae 1:1 K-Personal Color & Glow Makeup -->
+    <!-- Medicube Clinic Gangnam · Creatrip spot 13573 -->
     <div class="spot-card" data-category="kbeauty">
       <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80" alt="Hongdae 1:1 K-Personal Color & Glow Makeup">
-        <span class="tag-badge">🎨 English Consultation</span>
-        <span class="discount-badge">10% OFF</span>
+        <img src="images/creatrip/13573.jpg" alt="Medicube Clinic Gangnam | Premium Skincare" loading="lazy">
+        <span class="tag-badge">✨ Skin Clinic</span>
+        <span class="discount-badge">Beauty Cashback</span>
       </div>
       <div class="spot-body">
         <div class="spot-meta">
-          <span class="area">Hongdae & Yeonnam</span>
+          <span class="area">Sinnonhyeon, Gangnam</span>
           <span>•</span>
-          <span class="rating">★ 4.98 (680+ Reviews)</span>
+          <span class="rating">★ 5.0 (929 reviews)</span>
         </div>
-        <h3 class="spot-title">Hongdae 1:1 K-Personal Color & Glow Makeup</h3>
-        <p class="spot-desc">Find your signature Korean tone with 120-drape color analysis, pouch check & custom K-beauty cosmetic recommendation report.</p>
+        <h3 class="spot-title">Medicube Clinic Gangnam</h3>
+        <p class="spot-desc">VISIA precision analysis of eight skin factors, then treatment by the head doctor in private rooms — three minutes from Sinnonhyeon Station.</p>
         <div class="spot-features">
-          <span class="feat-tag">English Swatch Book</span><span class="feat-tag">Cosmetic Pouch Check</span><span class="feat-tag">1:1 Private</span>
+          <span class="feat-tag">VISIA Analysis</span><span class="feat-tag">Head Doctor</span><span class="feat-tag">Private Rooms</span>
         </div>
         <div class="spot-action">
           <div class="price-wrap">
-            <span class="price-label">Session Pass</span>
-            <span class="price-value">₩135,000 (~$98)</span>
+            <span class="price-label">From</span>
+            <span class="price-value">₩20,000 (~$15)</span>
           </div>
-          <button class="btn-book" onclick="openBookingModal('Hongdae 1:1 K-Personal Color & Glow Makeup', 'SEOULCOLOR10', '10% Discount & Free Swatch Card', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Instant Booking →</button>
+          <button class="btn-book" onclick="openBookingModal('Medicube Clinic Gangnam', 'https://creatrip.com/en/spot/13573?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Sinnonhyeon, Gangnam · ₩20,000 (~$15) · ★5 (929 reviews)')">Book Pass →</button>
         </div>
       </div>
     </div>
 
-    <!-- Card: Gangnam 15-Step Herbal Scalp & Head Spa -->
+    <!-- Cheongdam Éclat De Clinic · Creatrip spot 13214 -->
     <div class="spot-card" data-category="kbeauty">
       <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80" alt="Gangnam 15-Step Herbal Scalp & Head Spa">
-        <span class="tag-badge">💆 TikTok Viral 50M+</span>
-        <span class="discount-badge">20% OFF VIP</span>
-      </div>
-      <div class="spot-body">
-        <div class="spot-meta">
-          <span class="area">Apgujeong, Gangnam</span>
-          <span>•</span>
-          <span class="rating">★ 4.92 (910+ Reviews)</span>
-        </div>
-        <h3 class="spot-title">Gangnam 15-Step Herbal Scalp & Head Spa</h3>
-        <p class="spot-desc">Deep scalp detox with microscopic analysis, bubbling herbal waterfall therapy, shoulder massage & luxury blowout styling.</p>
-        <div class="spot-features">
-          <span class="feat-tag">Microscope Analysis</span><span class="feat-tag">Herbal Waterfall</span><span class="feat-tag">Private Suite</span>
-        </div>
-        <div class="spot-action">
-          <div class="price-wrap">
-            <span class="price-label">VIP Care Rate</span>
-            <span class="price-value">₩110,000 (~$82)</span>
-          </div>
-          <button class="btn-book" onclick="openBookingModal('Gangnam 15-Step Herbal Scalp & Head Spa', 'HEADSPA20', '20% OFF Waterfall Treatment & Ampoule', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Instant Booking →</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card: Garosugil Shurink Universe & Rejuran Skin Booster -->
-    <div class="spot-card" data-category="kbeauty">
-      <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80" alt="Garosugil Shurink Universe & Rejuran Skin Booster">
-        <span class="tag-badge">✨ High-End Lifting</span>
-        <span class="discount-badge">15% OFF VIP</span>
-      </div>
-      <div class="spot-body">
-        <div class="spot-meta">
-          <span class="area">Sinsa & Garosugil</span>
-          <span>•</span>
-          <span class="rating">★ 4.91 (380+ Reviews)</span>
-        </div>
-        <h3 class="spot-title">Garosugil Shurink Universe & Rejuran Skin Booster</h3>
-        <p class="spot-desc">Top-tier ultrasound lifting and salmon DNA rejuvenation clinic. Minimal discomfort, immediate collagen boost with zero bruising.</p>
-        <div class="spot-features">
-          <span class="feat-tag">Tax Refund 8%</span><span class="feat-tag">Private Recovery</span><span class="feat-tag">FDA Approved</span>
-        </div>
-        <div class="spot-action">
-          <div class="price-wrap">
-            <span class="price-label">Package Rate</span>
-            <span class="price-value">₩210,000 (~$155)</span>
-          </div>
-          <button class="btn-book" onclick="openBookingModal('Garosugil Shurink Universe & Rejuran Skin Booster', 'LIFTING15', '15% OFF + Cryo Calming Care', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Instant Booking →</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card: Seongsu Trendsetter Hair Salon (Cut & Balayage) -->
-    <div class="spot-card" data-category="kbeauty">
-      <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="Seongsu Trendsetter Hair Salon (Cut & Balayage)">
-        <span class="tag-badge">💇 Idol Hairstylist</span>
-        <span class="discount-badge">15% OFF</span>
-      </div>
-      <div class="spot-body">
-        <div class="spot-meta">
-          <span class="area">Seongsu-dong</span>
-          <span>•</span>
-          <span class="rating">★ 4.88 (520+ Reviews)</span>
-        </div>
-        <h3 class="spot-title">Seongsu Trendsetter Hair Salon (Cut & Balayage)</h3>
-        <p class="spot-desc">Featured in Harper's Bazaar. English-speaking top stylists specialized in Korean layered cuts, airy bangs and gentle pastel perms.</p>
-        <div class="spot-features">
-          <span class="feat-tag">Idol Stylist</span><span class="feat-tag">Organic Perm Solution</span><span class="feat-tag">Drink Bar</span>
-        </div>
-        <div class="spot-action">
-          <div class="price-wrap">
-            <span class="price-label">Hair Pass</span>
-            <span class="price-value">₩140,000 (~$102)</span>
-          </div>
-          <button class="btn-book" onclick="openBookingModal('Seongsu Trendsetter Hair Salon (Cut & Balayage)', 'HAIRVIP15', '15% Discount + Hair Essence Gift', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Instant Booking →</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card: Cheongdam K-Pop Idol Stage Makeup & Styling -->
-    <div class="spot-card" data-category="kbeauty">
-      <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=800&q=80" alt="Cheongdam K-Pop Idol Stage Makeup & Styling">
-        <span class="tag-badge">💄 K-Celeb Glam</span>
-        <span class="discount-badge">10% OFF</span>
+        <img src="images/creatrip/13214.jpg" alt="Cheongdam Eclat De | 1:1 Premium Dermatology Clinic" loading="lazy">
+        <span class="tag-badge">💎 Premium Clinic</span>
+        <span class="discount-badge">Beauty Cashback</span>
       </div>
       <div class="spot-body">
         <div class="spot-meta">
           <span class="area">Cheongdam, Gangnam</span>
           <span>•</span>
-          <span class="rating">★ 4.95 (410+ Reviews)</span>
+          <span class="rating">★ 4.9 (262 reviews)</span>
         </div>
-        <h3 class="spot-title">Cheongdam K-Pop Idol Stage Makeup & Styling</h3>
-        <p class="spot-desc">Get your full stage glam done by makeup artists who actively style active girl-group members. Includes custom false lashes.</p>
+        <h3 class="spot-title">Cheongdam Éclat De Clinic</h3>
+        <p class="spot-desc">Chief-doctor 1:1 dermatology on Dosan-daero, from Korea’s first UltraClear programme to lifting, filler and anti-ageing designs built around one skin concern at a time.</p>
         <div class="spot-features">
-          <span class="feat-tag">Stage Makeup</span><span class="feat-tag">Custom Lashes</span><span class="feat-tag">Photo Backdrop</span>
+          <span class="feat-tag">1:1 Chief Doctor</span><span class="feat-tag">UltraClear</span><span class="feat-tag">Free Reservation</span>
         </div>
         <div class="spot-action">
           <div class="price-wrap">
-            <span class="price-label">Full Glam</span>
-            <span class="price-value">₩160,000 (~$118)</span>
+            <span class="price-label">Reservation</span>
+            <span class="price-value">Free — no deposit</span>
           </div>
-          <button class="btn-book" onclick="openBookingModal('Cheongdam K-Pop Idol Stage Makeup & Styling', 'GLAMVIP10', '10% OFF + Makeup Setting Mist', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Instant Booking →</button>
+          <button class="btn-book" onclick="openBookingModal('Cheongdam Éclat De Clinic', 'https://creatrip.com/en/spot/13214?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Cheongdam, Gangnam · Free — no deposit · ★4.9 (262 reviews)')">Book Pass →</button>
         </div>
       </div>
     </div>
 
-    <!-- Card: Myeongdong Premium Foot Spa & Aroma Massage -->
+    <!-- JUNO Hair Myeongdong Street · Creatrip spot 13466 -->
     <div class="spot-card" data-category="kbeauty">
       <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80" alt="Myeongdong Premium Foot Spa & Aroma Massage">
-        <span class="tag-badge">🦶 Walking Relief</span>
-        <span class="discount-badge">20% OFF</span>
+        <img src="images/creatrip/13466.jpg" alt="JUNO Hair Myeongdong Street Branch | Popular Foreigner-friendly Salon in Myeongdong" loading="lazy">
+        <span class="tag-badge">💇 Hair Salon</span>
+        <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
         <div class="spot-meta">
-          <span class="area">Myeongdong, Seoul</span>
+          <span class="area">Myeongdong, Jung-gu</span>
           <span>•</span>
-          <span class="rating">★ 4.86 (1.4k+ Reviews)</span>
+          <span class="rating">★ 5.0 (14,556 reviews)</span>
         </div>
-        <h3 class="spot-title">Myeongdong Premium Foot Spa & Aroma Massage</h3>
-        <p class="spot-desc">The ultimate recovery after walking 20,000 steps in Seoul. 70-minute herbal foot soak, calf acupressure, and heated stone therapy.</p>
+        <h3 class="spot-title">JUNO Hair Myeongdong Street</h3>
+        <p class="spot-desc">Cuts and colour designed around face shape, skin tone and lifestyle, by multilingual staff (EN·CN·JP), with private single and twin rooms for head spa.</p>
         <div class="spot-features">
-          <span class="feat-tag">Walk-In Welcome</span><span class="feat-tag">Private Rooms</span><span class="feat-tag">Hot Stone Included</span>
+          <span class="feat-tag">EN·CN·JP Staff</span><span class="feat-tag">Head Spa</span><span class="feat-tag">Private Rooms</span>
         </div>
         <div class="spot-action">
           <div class="price-wrap">
-            <span class="price-label">70 Min Care</span>
-            <span class="price-value">₩65,000 (~$48)</span>
+            <span class="price-label">From</span>
+            <span class="price-value">₩135,000 (~$101)</span>
           </div>
-          <button class="btn-book" onclick="openBookingModal('Myeongdong Premium Foot Spa & Aroma Massage', 'FOOTSPA20', '20% OFF + Aroma Lavender Oil Upgrade', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Instant Booking →</button>
+          <button class="btn-book" onclick="openBookingModal('JUNO Hair Myeongdong Street', 'https://creatrip.com/en/spot/13466?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Myeongdong, Jung-gu · ₩135,000 (~$101) · ★5 (14,556 reviews)')">Book Pass →</button>
         </div>
       </div>
     </div>
 
-    <!-- Card: Hongdae Idol Keratin Lash Lift & Brow Lamination -->
+    <!-- SOONSIKI Hair Hongdae Flagship · Creatrip spot 11093 -->
     <div class="spot-card" data-category="kbeauty">
       <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=800&q=80" alt="Hongdae Idol Keratin Lash Lift & Brow Lamination">
-        <span class="tag-badge">👁️ Vegan Tint</span>
-        <span class="discount-badge">15% OFF</span>
+        <img src="images/creatrip/11093.jpg" alt="SOONSIKI Hair Hongdae Flagship | Seoul&#x27;s Top-Rated Salon for International Guests" loading="lazy">
+        <span class="tag-badge">💇 Hair Salon</span>
+        <span class="discount-badge">Creatrip Only</span>
       </div>
       <div class="spot-body">
         <div class="spot-meta">
-          <span class="area">Hongdae, Seoul</span>
+          <span class="area">Hongdae, Mapo</span>
           <span>•</span>
-          <span class="rating">★ 4.94 (360+ Reviews)</span>
+          <span class="rating">★ 4.9 (8,365 reviews)</span>
         </div>
-        <h3 class="spot-title">Hongdae Idol Keratin Lash Lift & Brow Lamination</h3>
-        <p class="spot-desc">Get natural airy doll lashes that last 6 to 8 weeks. Uses 100% gentle plant-based keratin solutions with customized curl rod sizing.</p>
+        <h3 class="spot-title">SOONSIKI Hair Hongdae Flagship</h3>
+        <p class="spot-desc">Creatrip’s most-booked hair salon, styling thousands of international guests a month with trend-led K-beauty cuts and transparent pricing.</p>
         <div class="spot-features">
-          <span class="feat-tag">Lasts 8 Weeks</span><span class="feat-tag">Zero Irritation</span><span class="feat-tag">English Consent</span>
+          <span class="feat-tag">Most Booked Salon</span><span class="feat-tag">Transparent Price</span><span class="feat-tag">Creatrip Only</span>
         </div>
         <div class="spot-action">
           <div class="price-wrap">
-            <span class="price-label">Combo Pass</span>
-            <span class="price-value">₩55,000 (~$41)</span>
+            <span class="price-label">From</span>
+            <span class="price-value">₩33,000 (~$25)</span>
           </div>
-          <button class="btn-book" onclick="openBookingModal('Hongdae Idol Keratin Lash Lift & Brow Lamination', 'LASHVIP15', '15% OFF + Lash Coating Serum', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Instant Booking →</button>
+          <button class="btn-book" onclick="openBookingModal('SOONSIKI Hair Hongdae Flagship', 'https://creatrip.com/en/spot/11093?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Hongdae, Mapo · ₩33,000 (~$25) · ★4.9 (8,365 reviews)')">Book Pass →</button>
         </div>
       </div>
     </div>
 
-    <!-- Card: Gangnam 1-Day Laser Teeth Whitening Express -->
+    <!-- YOU Hair Salon Seongsu · Creatrip spot 14730 -->
     <div class="spot-card" data-category="kbeauty">
       <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80" alt="Gangnam 1-Day Laser Teeth Whitening Express">
-        <span class="tag-badge">🦷 1-Day Glow</span>
-        <span class="discount-badge">15% OFF VIP</span>
+        <img src="images/creatrip/14730.jpg" alt="YOU Hair Salon | Seongsu Branch" loading="lazy">
+        <span class="tag-badge">💇 Hair Salon</span>
+        <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
         <div class="spot-meta">
-          <span class="area">Gangnam Station</span>
+          <span class="area">Seongsu, Seongdong</span>
           <span>•</span>
-          <span class="rating">★ 4.89 (290+ Reviews)</span>
+          <span class="rating">★ 5.0 (1,380 reviews)</span>
         </div>
-        <h3 class="spot-title">Gangnam 1-Day Laser Teeth Whitening Express</h3>
-        <p class="spot-desc">Shade up your smile by 3~5 tones in just 60 minutes. Specialized international patient lounge with English dental hygienists.</p>
+        <h3 class="spot-title">YOU Hair Salon Seongsu</h3>
+        <p class="spot-desc">Custom styling in a designed Seongsu studio, with a signature head spa that resets the scalp after a long flight.</p>
         <div class="spot-features">
-          <span class="feat-tag">Zero Sensitivity</span><span class="feat-tag">1-Hour Express</span><span class="feat-tag">English Doctor</span>
+          <span class="feat-tag">Signature Head Spa</span><span class="feat-tag">Custom Styling</span><span class="feat-tag">Seongsu Studio</span>
         </div>
         <div class="spot-action">
           <div class="price-wrap">
-            <span class="price-label">Official Rate</span>
-            <span class="price-value">₩150,000 (~$110)</span>
-          </div>
-          <button class="btn-book" onclick="openBookingModal('Gangnam 1-Day Laser Teeth Whitening Express', 'DENTALVIP15', '15% OFF + Anti-Stain Coating', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Instant Booking →</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card: HYBE & SM Idol Route + Creator Studio -->
-    <div class="spot-card" data-category="kpop">
-      <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=800&q=80" alt="HYBE & SM Idol Route + Creator Studio">
-        <span class="tag-badge">🎤 K-Pop Pilgrimage</span>
-        <span class="discount-badge">Free Photo Card</span>
-      </div>
-      <div class="spot-body">
-        <div class="spot-meta">
-          <span class="area">Yongsan & Seongsu</span>
-          <span>•</span>
-          <span class="rating">★ 4.9 (1.2k+ Saves)</span>
-        </div>
-        <h3 class="spot-title">HYBE & SM Idol Route + Creator Studio</h3>
-        <p class="spot-desc">Explore BTS & aespa favorite cafes, Kwangya flagship, and get high-res K-pop idol concept profile photos taken by professional staff.</p>
-        <div class="spot-features">
-          <span class="feat-tag">Idol Visited</span><span class="feat-tag">English Guide</span><span class="feat-tag">Near Subway</span>
-        </div>
-        <div class="spot-action">
-          <div class="price-wrap">
-            <span class="price-label">Package Pass</span>
-            <span class="price-value">₩45,000 (~$34)</span>
-          </div>
-          <button class="btn-book" onclick="openBookingModal('HYBE & SM Idol Route + Creator Studio', 'KPOPVIP', 'Free Limited Photo Card Included', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Get Pass →</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card: K-Pop Stage Idol Profile Shoot & Makeover -->
-    <div class="spot-card" data-category="kpop">
-      <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80" alt="K-Pop Stage Idol Profile Shoot & Makeover">
-        <span class="tag-badge">📸 Idol Makeover</span>
-        <span class="discount-badge">Free Styling</span>
-      </div>
-      <div class="spot-body">
-        <div class="spot-meta">
-          <span class="area">Hongdae, Seoul</span>
-          <span>•</span>
-          <span class="rating">★ 4.95 (530+ Reviews)</span>
-        </div>
-        <h3 class="spot-title">K-Pop Stage Idol Profile Shoot & Makeover</h3>
-        <p class="spot-desc">Styled by hair & makeup artists who worked with actual idol groups. Includes professional stage lighting shoot & 2 retouched prints.</p>
-        <div class="spot-features">
-          <span class="feat-tag">Idol Stylist</span><span class="feat-tag">High-Res Edits</span><span class="feat-tag">Outfit Rental</span>
-        </div>
-        <div class="spot-action">
-          <div class="price-wrap">
-            <span class="price-label">Package Rate</span>
-            <span class="price-value">₩95,000 (~$70)</span>
-          </div>
-          <button class="btn-book" onclick="openBookingModal('K-Pop Stage Idol Profile Shoot & Makeover', 'IDOLSHOOT15', '15% OFF + Free High-Res Raw Files', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Instant Booking →</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card: Gyeongbokgung Palace Silk Hanbok (YES Hanbok Rental) -->
-    <div class="spot-card" data-category="kpop">
-      <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80" alt="Gyeongbokgung Palace Silk Hanbok (YES Hanbok Rental)">
-        <span class="tag-badge">🏮 #1 Hanbok Rental</span>
-        <span class="discount-badge">Free Palace Entry</span>
-      </div>
-      <div class="spot-body">
-        <div class="spot-meta">
-          <span class="area">Jongno, Gyeongbokgung</span>
-          <span>•</span>
-          <span class="rating">★ 5.0 (3.7k+ Reviews)</span>
-        </div>
-        <h3 class="spot-title">Gyeongbokgung Palace Silk Hanbok (YES Hanbok Rental)</h3>
-        <p class="spot-desc">Creatrip's #1 rated Hanbok shop! 1,000+ clean premium silk designs right next to Gyeongbokgung Stn (Exit 4). Free hair styling, bag, locker & palace entry.</p>
-        <div class="spot-features">
-          <span class="feat-tag">Free Hair Styling</span><span class="feat-tag">1,000+ Silk Designs</span><span class="feat-tag">Subway 1 Min</span>
-        </div>
-        <div class="spot-action">
-          <div class="price-wrap">
-            <span class="price-label">From / 2 Hours</span>
-            <span class="price-value">₩25,000 (~$18.70)</span>
-          </div>
-          <button class="btn-book" onclick="openBookingModal('Gyeongbokgung Palace Silk Hanbok (YES Hanbok Rental)', 'YESHANBOK', 'Free Hair Styling, Bag & Locker Included', 'https://creatrip.com/en/spot/11006?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Get Pass →</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card: 1MILLION Dance Studio Rookie K-Pop Class -->
-    <div class="spot-card" data-category="kpop">
-      <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80" alt="1MILLION Dance Studio Rookie K-Pop Class">
-        <span class="tag-badge">💃 1MILLION Studio</span>
-        <span class="discount-badge">10% OFF</span>
-      </div>
-      <div class="spot-body">
-        <div class="spot-meta">
-          <span class="area">Seongsu-dong</span>
-          <span>•</span>
-          <span class="rating">★ 4.97 (870+ Reviews)</span>
-        </div>
-        <h3 class="spot-title">1MILLION Dance Studio Rookie K-Pop Class</h3>
-        <p class="spot-desc">Learn viral choreographies from choreographers of TWICE, Stray Kids, and ITZY in a fun, beginner-friendly English class.</p>
-        <div class="spot-features">
-          <span class="feat-tag">Beginner Friendly</span><span class="feat-tag">Class Video Provided</span><span class="feat-tag">Locker Included</span>
-        </div>
-        <div class="spot-action">
-          <div class="price-wrap">
-            <span class="price-label">1-Session Pass</span>
-            <span class="price-value">₩40,000 (~$30)</span>
-          </div>
-          <button class="btn-book" onclick="openBookingModal('1MILLION Dance Studio Rookie K-Pop Class', 'DANCE10', '10% Discount + 1MILLION Eco Bottle', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Get Pass →</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card: SBS The Show / Inkigayo Live Music Show Tour -->
-    <div class="spot-card" data-category="kpop">
-      <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80" alt="SBS The Show / Inkigayo Live Music Show Tour">
-        <span class="tag-badge">📺 Live Music Show</span>
-        <span class="discount-badge">VIP Seat</span>
-      </div>
-      <div class="spot-body">
-        <div class="spot-meta">
-          <span class="area">Mapo, Digital Media City</span>
-          <span>•</span>
-          <span class="rating">★ 4.91 (480+ Reviews)</span>
-        </div>
-        <h3 class="spot-title">SBS The Show / Inkigayo Live Music Show Tour</h3>
-        <p class="spot-desc">Witness live comeback stages of your favorite K-pop idols right in front of your eyes with guaranteed foreigner entry passes.</p>
-        <div class="spot-features">
-          <span class="feat-tag">Guaranteed Entry</span><span class="feat-tag">Live Idol Viewing</span><span class="feat-tag">English Staff</span>
-        </div>
-        <div class="spot-action">
-          <div class="price-wrap">
-            <span class="price-label">VIP Pass</span>
-            <span class="price-value">₩85,000 (~$63)</span>
-          </div>
-          <button class="btn-book" onclick="openBookingModal('SBS The Show / Inkigayo Live Music Show Tour', 'LIVETOUR10', 'VIP Standing Zone Access Pass', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Get Pass →</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card: K-Pop Vocal Recording Session & Audio Master -->
-    <div class="spot-card" data-category="kpop">
-      <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80" alt="K-Pop Vocal Recording Session & Audio Master">
-        <span class="tag-badge">🎙️ K-Pop Studio</span>
-        <span class="discount-badge">15% OFF</span>
-      </div>
-      <div class="spot-body">
-        <div class="spot-meta">
-          <span class="area">Hongdae, Seoul</span>
-          <span>•</span>
-          <span class="rating">★ 4.93 (310+ Reviews)</span>
-        </div>
-        <h3 class="spot-title">K-Pop Vocal Recording Session & Audio Master</h3>
-        <p class="spot-desc">Sing your favorite K-pop track in a commercial acoustic booth with tuning, audio mastering, and your customized digital album cover.</p>
-        <div class="spot-features">
-          <span class="feat-tag">Pitch Correction</span><span class="feat-tag">Sound Engineer</span><span class="feat-tag">MP3 Delivery</span>
-        </div>
-        <div class="spot-action">
-          <div class="price-wrap">
-            <span class="price-label">Studio Session</span>
-            <span class="price-value">₩75,000 (~$56)</span>
-          </div>
-          <button class="btn-book" onclick="openBookingModal('K-Pop Vocal Recording Session & Audio Master', 'VOCALVIP', '15% OFF + Raw Vocals Stem Files', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Instant Booking →</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card: Nami Island & Petite France K-Drama Day Tour -->
-    <div class="spot-card" data-category="kpop">
-      <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Nami Island & Petite France K-Drama Day Tour">
-        <span class="tag-badge">🌲 K-Drama Iconic</span>
-        <span class="discount-badge">10% OFF Shuttle</span>
-      </div>
-      <div class="spot-body">
-        <div class="spot-meta">
-          <span class="area">Gapyeong (Roundtrip)</span>
-          <span>•</span>
-          <span class="rating">★ 4.85 (3.8k+ Reviews)</span>
-        </div>
-        <h3 class="spot-title">Nami Island & Petite France K-Drama Day Tour</h3>
-        <p class="spot-desc">Comfortable roundtrip AC bus from Hongdae/Myeongdong to iconic filming locations of Winter Sonata and Queen of Tears.</p>
-        <div class="spot-features">
-          <span class="feat-tag">Direct Shuttle</span><span class="feat-tag">Entry Tickets Inc</span><span class="feat-tag">English Guide</span>
-        </div>
-        <div class="spot-action">
-          <div class="price-wrap">
-            <span class="price-label">All-In Day Tour</span>
-            <span class="price-value">₩58,000 (~$43)</span>
-          </div>
-          <button class="btn-book" onclick="openBookingModal('Nami Island & Petite France K-Drama Day Tour', 'NAMIVIP10', '10% OFF + Railbike Discount Ticket', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Get Pass →</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card: K-Pop Vintage Vinyl & Rare Idol Photocard Hunt -->
-    <div class="spot-card" data-category="kpop">
-      <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80" alt="K-Pop Vintage Vinyl & Rare Idol Photocard Hunt">
-        <span class="tag-badge">💿 Rare Photocards</span>
-        <span class="discount-badge">Free Photocard</span>
-      </div>
-      <div class="spot-body">
-        <div class="spot-meta">
-          <span class="area">Myeongdong Underground</span>
-          <span>•</span>
-          <span class="rating">★ 4.88 (640+ Reviews)</span>
-        </div>
-        <h3 class="spot-title">K-Pop Vintage Vinyl & Rare Idol Photocard Hunt</h3>
-        <p class="spot-desc">Guided walk through hidden underground shops in Myeongdong and Euljiro to find sold-out tour lightsticks and vintage idol vinyls.</p>
-        <div class="spot-features">
-          <span class="feat-tag">Official Lightsticks</span><span class="feat-tag">Rare Vintage Vinyl</span><span class="feat-tag">English Map</span>
-        </div>
-        <div class="spot-action">
-          <div class="price-wrap">
-            <span class="price-label">Walking Guide</span>
-            <span class="price-value">₩28,000 (~$21)</span>
-          </div>
-          <button class="btn-book" onclick="openBookingModal('K-Pop Vintage Vinyl & Rare Idol Photocard Hunt', 'VINYLVIP', 'Free Rare Vintage Postcard Pack', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Get Pass →</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card: Traditional Mother-of-Pearl (Najeon) Craft Class -->
-    <div class="spot-card" data-category="kpop">
-      <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1584905066893-7d5c142ba4e1?auto=format&fit=crop&w=800&q=80" alt="Traditional Mother-of-Pearl (Najeon) Craft Class">
-        <span class="tag-badge">✨ Mother-of-Pearl</span>
-        <span class="discount-badge">10% OFF</span>
-      </div>
-      <div class="spot-body">
-        <div class="spot-meta">
-          <span class="area">Bukchon Hanok</span>
-          <span>•</span>
-          <span class="rating">★ 4.96 (420+ Reviews)</span>
-        </div>
-        <h3 class="spot-title">Traditional Mother-of-Pearl (Najeon) Craft Class</h3>
-        <p class="spot-desc">Create your own shimmering Korean lacquerware mirror or jewelry tray using genuine sea abalone shells in an antique Hanok room.</p>
-        <div class="spot-features">
-          <span class="feat-tag">Handmade Souvenir</span><span class="feat-tag">Hanok Workshop</span><span class="feat-tag">Gift Packaging</span>
-        </div>
-        <div class="spot-action">
-          <div class="price-wrap">
-            <span class="price-label">Craft Session</span>
-            <span class="price-value">₩38,000 (~$28)</span>
-          </div>
-          <button class="btn-book" onclick="openBookingModal('Traditional Mother-of-Pearl (Najeon) Craft Class', 'CRAFTVIP10', '10% OFF + Traditional Gift Box', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Instant Booking →</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card: Seongsu Red-Brick Bakery & Popup Walk -->
-    <div class="spot-card" data-category="cafe">
-      <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80" alt="Seongsu Red-Brick Bakery & Popup Walk">
-        <span class="tag-badge">☕ Seongsu Brooklyn</span>
-        <span class="discount-badge">Skip-The-Line</span>
-      </div>
-      <div class="spot-body">
-        <div class="spot-meta">
-          <span class="area">Seongsu-dong</span>
-          <span>•</span>
-          <span class="rating">★ 4.8 (850+ Reviews)</span>
-        </div>
-        <h3 class="spot-title">Seongsu Red-Brick Bakery & Popup Walk</h3>
-        <p class="spot-desc">Skip the 2-hour queue at viral bakery hotspots and get exclusive 10% coupon for artisanal pastry and drip coffee sets.</p>
-        <div class="spot-features">
-          <span class="feat-tag">English Menu</span><span class="feat-tag">Photo Spot</span><span class="feat-tag">Fast Pass</span>
-        </div>
-        <div class="spot-action">
-          <div class="price-wrap">
-            <span class="price-label">Coupon Pass</span>
-            <span class="price-value">Free with Pass</span>
-          </div>
-          <button class="btn-book" onclick="openBookingModal('Seongsu Red-Brick Bakery & Popup Walk', 'SEONGSU10', '10% Discount Coupon & Fast Pass', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Download Coupon →</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card: Cafe Highwaist Vintage Bakery & Cake (Ikseon-dong) -->
-    <div class="spot-card" data-category="cafe">
-      <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=800&q=80" alt="Cafe Highwaist Vintage Bakery & Cake (Ikseon-dong)">
-        <span class="tag-badge">🧁 Viral Hanok Bakery</span>
-        <span class="discount-badge">Instant Booking</span>
-      </div>
-      <div class="spot-body">
-        <div class="spot-meta">
-          <span class="area">Ikseon-dong, Seoul</span>
-          <span>•</span>
-          <span class="rating">★ 4.88 (2.4k+ Reviews)</span>
-        </div>
-        <h3 class="spot-title">Cafe Highwaist Vintage Bakery & Cake (Ikseon-dong)</h3>
-        <p class="spot-desc">Famous vintage European cake & artisanal pastry cafe inside a historic Hanok. Advance reservation for signature Teddy Bear cakes & tea sets.</p>
-        <div class="spot-features">
-          <span class="feat-tag">Viral Teddy Cake</span><span class="feat-tag">English Service</span><span class="feat-tag">Hanok Courtyard</span>
-        </div>
-        <div class="spot-action">
-          <div class="price-wrap">
-            <span class="price-label">Cake & Tea</span>
-            <span class="price-value">₩28,000 (~$21)</span>
-          </div>
-          <button class="btn-book" onclick="openBookingModal('Cafe Highwaist Vintage Bakery & Cake (Ikseon-dong)', 'HIGHWAIST10', '10% Discount & Fast Pickup Pass', 'https://creatrip.com/en/spot/list?category=353&search=Cafe+Highwaist&utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Instant Booking →</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card: Mapo Jinmi Sikdang Michelin Soy Sauce Crab (Ganjang Gejang) -->
-    <div class="spot-card" data-category="cafe">
-      <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Mapo Jinmi Sikdang Michelin Soy Sauce Crab">
-        <span class="tag-badge">🦀 Michelin Selected</span>
-        <span class="discount-badge">Creatrip Top #1</span>
-      </div>
-      <div class="spot-body">
-        <div class="spot-meta">
-          <span class="area">Mapo & Gongdeok</span>
-          <span>•</span>
-          <span class="rating">★ 4.95 (1.1k+ Reviews)</span>
-        </div>
-        <h3 class="spot-title">Mapo Jinmi Sikdang Michelin Soy Sauce Crab</h3>
-        <p class="spot-desc">Creatrip's #1 booked dining spot! World-famous savory raw blue crab marinated in heritage soy sauce. Guaranteed table reservation without queue.</p>
-        <div class="spot-features">
-          <span class="feat-tag">Michelin Guide</span><span class="feat-tag">Guaranteed Table</span><span class="feat-tag">Subway 3 Min</span>
-        </div>
-        <div class="spot-action">
-          <div class="price-wrap">
-            <span class="price-label">Table Booking</span>
-            <span class="price-value">From $7.48</span>
-          </div>
-          <button class="btn-book" onclick="openBookingModal('Mapo Jinmi Sikdang Michelin Soy Sauce Crab', 'JINMICRAB', 'Guaranteed Table Pass & English Menu', 'https://creatrip.com/en/spot/13287?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Table Reserve →</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card: Myeongdong Kyoja Michelin Dumpling & Kalguksu -->
-    <div class="spot-card" data-category="cafe">
-      <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Myeongdong Kyoja Michelin Dumpling & Kalguksu">
-        <span class="tag-badge">🥟 Bib Gourmet</span>
-        <span class="discount-badge">Priority Table</span>
-      </div>
-      <div class="spot-body">
-        <div class="spot-meta">
-          <span class="area">Myeongdong, Seoul</span>
-          <span>•</span>
-          <span class="rating">★ 4.87 (4.2k+ Reviews)</span>
-        </div>
-        <h3 class="spot-title">Myeongdong Kyoja Michelin Dumpling & Kalguksu</h3>
-        <p class="spot-desc">Seoul's legendary garlic knife-cut noodle soup and juicy steamed pork dumplings recognized by Michelin Bib Gourmand.</p>
-        <div class="spot-features">
-          <span class="feat-tag">Bib Gourmand</span><span class="feat-tag">Unlimited Soup Refill</span><span class="feat-tag">Near Station</span>
-        </div>
-        <div class="spot-action">
-          <div class="price-wrap">
-            <span class="price-label">Menu Item</span>
-            <span class="price-value">₩12,000 (~$9)</span>
-          </div>
-          <button class="btn-book" onclick="openBookingModal('Myeongdong Kyoja Michelin Dumpling & Kalguksu', 'KYOJAVIP', 'VIP Fast Line Entry Guidance', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Get Guide →</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card: Gwangjang Market Night Foodie Tasting Tour -->
-    <div class="spot-card" data-category="cafe">
-      <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80" alt="Gwangjang Market Night Foodie Tasting Tour">
-        <span class="tag-badge">🍲 Street Food Feast</span>
-        <span class="discount-badge">Tasting Pass</span>
-      </div>
-      <div class="spot-body">
-        <div class="spot-meta">
-          <span class="area">Jongno 5-ga</span>
-          <span>•</span>
-          <span class="rating">★ 4.92 (2.6k+ Reviews)</span>
-        </div>
-        <h3 class="spot-title">Gwangjang Market Night Foodie Tasting Tour</h3>
-        <p class="spot-desc">Bite into crispy mung bean bindaetteok, fresh beef yukhoe with live octopus, and hot twisted sugar donuts with an English-speaking foodie host.</p>
-        <div class="spot-features">
-          <span class="feat-tag">6 Food Tastings</span><span class="feat-tag">English Host</span><span class="feat-tag">Craft Makgeolli</span>
-        </div>
-        <div class="spot-action">
-          <div class="price-wrap">
-            <span class="price-label">Tasting Pass</span>
+            <span class="price-label">From</span>
             <span class="price-value">₩35,000 (~$26)</span>
           </div>
-          <button class="btn-book" onclick="openBookingModal('Gwangjang Market Night Foodie Tasting Tour', 'MARKETFOOD', 'Free Traditional Rice Wine Sample', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Get Pass →</button>
+          <button class="btn-book" onclick="openBookingModal('YOU Hair Salon Seongsu', 'https://creatrip.com/en/spot/14730?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Seongsu, Seongdong · ₩35,000 (~$26) · ★5 (1,380 reviews)')">Book Pass →</button>
         </div>
       </div>
     </div>
 
-    <!-- Card: Hannam Minimalist Roastery & Espresso Terrace -->
-    <div class="spot-card" data-category="cafe">
+    <!-- ECOJARDIN Hongdae · Creatrip spot 15615 -->
+    <div class="spot-card" data-category="kbeauty">
       <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80" alt="Hannam Minimalist Roastery & Espresso Terrace">
-        <span class="tag-badge">☕ Namsan View</span>
-        <span class="discount-badge">10% OFF Drip</span>
+        <img src="images/creatrip/15615.jpg" alt="ECOJARDIN Hongdae | Personal Color, Makeup &amp; Head Spa" loading="lazy">
+        <span class="tag-badge">🎨 Personal Color</span>
+        <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
         <div class="spot-meta">
-          <span class="area">Hannam-dong</span>
+          <span class="area">Hongdae, Mapo</span>
           <span>•</span>
-          <span class="rating">★ 4.89 (710+ Reviews)</span>
+          <span class="rating">★ 4.9 (4,372 reviews)</span>
         </div>
-        <h3 class="spot-title">Hannam Minimalist Roastery & Espresso Terrace</h3>
-        <p class="spot-desc">Sip single-origin Geisha pour-overs overlooking lush Itaewon hillside. A quiet sanctuary beloved by architect and designer expats.</p>
+        <h3 class="spot-title">ECOJARDIN Hongdae</h3>
+        <p class="spot-desc">Hair, K-glam makeup, personal colour analysis and a 15-step scalp spa in one Hongdae studio, with Creatrip-only package pricing.</p>
         <div class="spot-features">
-          <span class="feat-tag">Specialty Coffee</span><span class="feat-tag">Terrace View</span><span class="feat-tag">English Barista</span>
+          <span class="feat-tag">Personal Colour</span><span class="feat-tag">K-Glam Makeup</span><span class="feat-tag">15-Step Scalp Spa</span>
         </div>
         <div class="spot-action">
           <div class="price-wrap">
-            <span class="price-label">Cafe Coupon</span>
-            <span class="price-value">Free with Pass</span>
+            <span class="price-label">From</span>
+            <span class="price-value">₩137,000 (~$103)</span>
           </div>
-          <button class="btn-book" onclick="openBookingModal('Hannam Minimalist Roastery & Espresso Terrace', 'HANNAM10', '10% OFF Hand Drip Sets', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Download Coupon →</button>
+          <button class="btn-book" onclick="openBookingModal('ECOJARDIN Hongdae', 'https://creatrip.com/en/spot/15615?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Hongdae, Mapo · ₩137,000 (~$103) · ★4.9 (4,372 reviews)')">Book Pass →</button>
         </div>
       </div>
     </div>
 
-    <!-- Card: Euljiro Hipjiro 336-Hour Wet-Aged K-BBQ -->
-    <div class="spot-card" data-category="cafe">
+    <!-- Pro Beauty Myeongdong · Creatrip spot 13493 -->
+    <div class="spot-card" data-category="kbeauty">
       <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Euljiro Hipjiro 336-Hour Wet-Aged K-BBQ">
-        <span class="tag-badge">🥓 Aged Pork Belly</span>
-        <span class="discount-badge">Free Highball</span>
+        <img src="images/creatrip/13493.jpg" alt="Pro Beauty | Myeongdong Nail Art" loading="lazy">
+        <span class="tag-badge">💅 Nail & Lash</span>
+        <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
         <div class="spot-meta">
-          <span class="area">Euljiro (Hipjiro)</span>
+          <span class="area">Myeongdong, Jung-gu</span>
           <span>•</span>
-          <span class="rating">★ 4.94 (1.1k+ Reviews)</span>
+          <span class="rating">★ 4.9 (3,275 reviews)</span>
         </div>
-        <h3 class="spot-title">Euljiro Hipjiro 336-Hour Wet-Aged K-BBQ</h3>
-        <p class="spot-desc">Charcoal grilled thick-cut Korean pork belly with wild garlic leaves, fermented kimchi, and craft hallabong highballs in retro alleys.</p>
+        <h3 class="spot-title">Pro Beauty Myeongdong</h3>
+        <p class="spot-desc">Manicure, pedicure, lash extensions and waxing minutes from Myeongdong Station, with several artists taking guests at the same time.</p>
         <div class="spot-features">
-          <span class="feat-tag">Staff Grilling</span><span class="feat-tag">English Ordering</span><span class="feat-tag">Vegetarian Sides</span>
+          <span class="feat-tag">Nail · Lash · Wax</span><span class="feat-tag">Groups Welcome</span><span class="feat-tag">3 min from Stn</span>
         </div>
         <div class="spot-action">
           <div class="price-wrap">
-            <span class="price-label">Set Rate</span>
-            <span class="price-value">₩38,000 (~$28)</span>
+            <span class="price-label">From</span>
+            <span class="price-value">₩15,000 (~$11)</span>
           </div>
-          <button class="btn-book" onclick="openBookingModal('Euljiro Hipjiro 336-Hour Wet-Aged K-BBQ', 'HIPJIROBBQ', 'Complimentary Korean Citrus Highball', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Table Reserve →</button>
+          <button class="btn-book" onclick="openBookingModal('Pro Beauty Myeongdong', 'https://creatrip.com/en/spot/13493?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Myeongdong, Jung-gu · ₩15,000 (~$11) · ★4.9 (3,275 reviews)')">Book Pass →</button>
         </div>
       </div>
     </div>
 
-    <!-- Card: Ikseon-dong Hanok Souffle Pancake Alley -->
-    <div class="spot-card" data-category="cafe">
+    <!-- Fleur Jardin Myeongdong · Creatrip spot 14955 -->
+    <div class="spot-card" data-category="kbeauty">
       <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Ikseon-dong Hanok Souffle Pancake Alley">
-        <span class="tag-badge">🥞 Souffle Heaven</span>
-        <span class="discount-badge">Fast Pass</span>
+        <img src="images/creatrip/14955.jpg" alt="Fleur Jardin Myeongdong Branch | Skincare, Nail Art, Foot Spa" loading="lazy">
+        <span class="tag-badge">💆 Skincare & Foot Spa</span>
+        <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
         <div class="spot-meta">
-          <span class="area">Ikseon-dong Hanok</span>
+          <span class="area">Myeongdong, Jung-gu</span>
           <span>•</span>
-          <span class="rating">★ 4.88 (950+ Reviews)</span>
+          <span class="rating">★ 5.0 (640 reviews)</span>
         </div>
-        <h3 class="spot-title">Ikseon-dong Hanok Souffle Pancake Alley</h3>
-        <p class="spot-desc">Cloud-soft fluffy Japanese-Korean fusion souffle pancakes with molten strawberry cream inside a restored 1920s wooden courtyard.</p>
+        <h3 class="spot-title">Fleur Jardin Myeongdong</h3>
+        <p class="spot-desc">Skincare, nail art and a proper foot spa in the middle of Myeongdong — a quiet reset between shopping stops.</p>
         <div class="spot-features">
-          <span class="feat-tag">Instagram Viral</span><span class="feat-tag">Hanok Ambiance</span><span class="feat-tag">Near Anguk</span>
+          <span class="feat-tag">Foot Spa</span><span class="feat-tag">Nail Art</span><span class="feat-tag">Skincare Care</span>
         </div>
         <div class="spot-action">
           <div class="price-wrap">
-            <span class="price-label">Dessert Pass</span>
-            <span class="price-value">Free with Pass</span>
+            <span class="price-label">From</span>
+            <span class="price-value">₩45,000 (~$34)</span>
           </div>
-          <button class="btn-book" onclick="openBookingModal('Ikseon-dong Hanok Souffle Pancake Alley', 'SOUFFLE10', '10% OFF Souffle Combo', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Download Coupon →</button>
+          <button class="btn-book" onclick="openBookingModal('Fleur Jardin Myeongdong', 'https://creatrip.com/en/spot/14955?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Myeongdong, Jung-gu · ₩45,000 (~$34) · ★5 (640 reviews)')">Book Pass →</button>
         </div>
       </div>
     </div>
 
-    <!-- Card: Han River Moonlight Chimaek & Mat Rental -->
-    <div class="spot-card" data-category="cafe">
+    <!-- YES Hanbok Rental Gyeongbokgung · Creatrip spot 11006 -->
+    <div class="spot-card" data-category="kpop">
       <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=800&q=80" alt="Han River Moonlight Chimaek & Mat Rental">
-        <span class="tag-badge">🍗 Sunset Chimaek</span>
-        <span class="discount-badge">Picnic Set Inc</span>
+        <img src="images/creatrip/11006.jpg" alt="Gyeongbokgung Hanbok Experience at YES Hanbok Rental" loading="lazy">
+        <span class="tag-badge">🏮 Hanbok Rental</span>
+        <span class="discount-badge">Creatrip Only</span>
       </div>
       <div class="spot-body">
         <div class="spot-meta">
-          <span class="area">Yeouido Han River</span>
+          <span class="area">Gyeongbokgung, Jongno</span>
           <span>•</span>
-          <span class="rating">★ 4.96 (1.9k+ Reviews)</span>
+          <span class="rating">★ 5.0 (3,763 reviews)</span>
         </div>
-        <h3 class="spot-title">Han River Moonlight Chimaek & Mat Rental</h3>
-        <p class="spot-desc">Enjoy crispy golden Korean fried chicken, cold craft draft beer, picnic mat & LED lamp delivered directly to your riverside spot.</p>
+        <h3 class="spot-title">YES Hanbok Rental Gyeongbokgung</h3>
+        <p class="spot-desc">Over 1,000 hanbok sets a minute from Gyeongbokgung Station, with hairpins, bags, lockers and hairstyling included.</p>
         <div class="spot-features">
-          <span class="feat-tag">Direct Delivery</span><span class="feat-tag">Waterproof Mat Inc</span><span class="feat-tag">English Chat Support</span>
+          <span class="feat-tag">1,000+ Hanbok</span><span class="feat-tag">Free Hair Styling</span><span class="feat-tag">Creatrip Only</span>
         </div>
         <div class="spot-action">
           <div class="price-wrap">
-            <span class="price-label">Full 2P Set</span>
-            <span class="price-value">₩32,000 (~$24)</span>
+            <span class="price-label">From</span>
+            <span class="price-value">₩25,000 (~$19)</span>
           </div>
-          <button class="btn-book" onclick="openBookingModal('Han River Moonlight Chimaek & Mat Rental', 'CHIMAEKVIP', 'Free Cheese Ball Upgrade (5pcs)', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Instant Booking →</button>
+          <button class="btn-book" onclick="openBookingModal('YES Hanbok Rental Gyeongbokgung', 'https://creatrip.com/en/spot/11006?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Gyeongbokgung, Jongno · ₩25,000 (~$19) · ★5 (3,763 reviews)')">Get Pass →</button>
         </div>
       </div>
     </div>
 
-    <!-- Card: Bukchon Traditional Hanok Private Villa -->
-    <div class="spot-card" data-category="stay">
+    <!-- Ari Hanbok Gyeongbokgung · Creatrip spot 13241 -->
+    <div class="spot-card" data-category="kpop">
       <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80" alt="Bukchon Traditional Hanok Private Villa">
-        <span class="tag-badge">🏮 Premium Heritage</span>
-        <span class="discount-badge">Special Rate</span>
+        <img src="images/creatrip/13241.jpg" alt="Ari Hanbok | Gyeongbokgung Hanbok Rental" loading="lazy">
+        <span class="tag-badge">🏮 Hanbok Rental</span>
+        <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
         <div class="spot-meta">
-          <span class="area">Bukchon Hanok Village</span>
+          <span class="area">Gyeongbokgung, Jongno</span>
           <span>•</span>
-          <span class="rating">★ 4.95 (Superhost)</span>
+          <span class="rating">★ 5.0 (515 reviews)</span>
         </div>
-        <h3 class="spot-title">Bukchon Traditional Hanok Private Villa</h3>
-        <p class="spot-desc">100-year restored private Hanok with open courtyard bath, tea ceremony, and walking distance to Gyeongbokgung palace.</p>
+        <h3 class="spot-title">Ari Hanbok Gyeongbokgung</h3>
+        <p class="spot-desc">100+ luxurious designs with personal colour consulting, five minutes on foot from Gyeongbokgung Station.</p>
         <div class="spot-features">
-          <span class="feat-tag">Private Courtyard</span><span class="feat-tag">Tea Ceremony</span><span class="feat-tag">Subway 5 Min</span>
+          <span class="feat-tag">100+ Designs</span><span class="feat-tag">Colour Consulting</span><span class="feat-tag">5 min Walk</span>
         </div>
         <div class="spot-action">
           <div class="price-wrap">
-            <span class="price-label">From / Night</span>
+            <span class="price-label">From</span>
+            <span class="price-value">₩40,000 (~$30)</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Ari Hanbok Gyeongbokgung', 'https://creatrip.com/en/spot/13241?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Gyeongbokgung, Jongno · ₩40,000 (~$30) · ★5 (515 reviews)')">Get Pass →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SBS Inkigayo Live + Seoul Tour · Creatrip spot 14605 -->
+    <div class="spot-card" data-category="kpop">
+      <div class="spot-image-box">
+        <img src="images/creatrip/14605.jpg" alt="SBS Inkigayo Admission Ticket + Seoul Half-Day Tour" loading="lazy">
+        <span class="tag-badge">🎤 Live Music Show</span>
+        <span class="discount-badge">Official Creatrip</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area">SBS, Gangseo</span>
+          <span>•</span>
+          <span class="rating">★ 4.9 (59 reviews)</span>
+        </div>
+        <h3 class="spot-title">SBS Inkigayo Live + Seoul Tour</h3>
+        <p class="spot-desc">Sunday admission to SBS Inkigayo, one of Korea’s three big music broadcasts, bundled with a half-day tour of Seoul’s landmarks.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Live Broadcast</span><span class="feat-tag">Sunday Show</span><span class="feat-tag">Half-Day Tour</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
             <span class="price-value">₩260,000 (~$195)</span>
           </div>
-          <button class="btn-book" onclick="openBookingModal('Bukchon Traditional Hanok Private Villa', 'HANOKVIP', 'Complimentary Tea Ceremony Experience', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Check Dates →</button>
+          <button class="btn-book" onclick="openBookingModal('SBS Inkigayo Live + Seoul Tour', 'https://creatrip.com/en/spot/14605?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'SBS, Gangseo · ₩260,000 (~$195) · ★4.9 (59 reviews)')">Get Pass →</button>
         </div>
       </div>
     </div>
 
-    <!-- Card: Seochon Designer Garden Hanok & Open Bath -->
-    <div class="spot-card" data-category="stay">
+    <!-- Real K-POP Dance Class Hongdae · Creatrip spot 12956 -->
+    <div class="spot-card" data-category="kpop">
       <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Seochon Designer Garden Hanok & Open Bath">
-        <span class="tag-badge">🌿 Quiet Alleys</span>
-        <span class="discount-badge">10% OFF 2N+</span>
+        <img src="images/creatrip/12956.jpg" alt="KPOP Dance Class in Seoul - Hongdae Real K-POP DANCE" loading="lazy">
+        <span class="tag-badge">💃 Dance Class</span>
+        <span class="discount-badge">Official Creatrip</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area">Hongdae, Mapo</span>
+          <span>•</span>
+          <span class="rating">★ 4.9 (173 reviews)</span>
+        </div>
+        <h3 class="spot-title">Real K-POP Dance Class Hongdae</h3>
+        <p class="spot-desc">Classes taught by working K-pop back-up dancers, open to every level, covering choreography from IU, TWICE and EXO.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Pro Back-up Dancers</span><span class="feat-tag">Beginner OK</span><span class="feat-tag">Hongdae Studio</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">₩55,000 (~$41)</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Real K-POP Dance Class Hongdae', 'https://creatrip.com/en/spot/12956?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Hongdae, Mapo · ₩55,000 (~$41) · ★4.9 (173 reviews)')">Get Pass →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sparex Dongdaemun Jjimjilbang · Creatrip spot 13261 -->
+    <div class="spot-card" data-category="kpop">
+      <div class="spot-image-box">
+        <img src="images/creatrip/13261.jpg" alt="Sparex Dongdaemun | Korean Jjimjilbang(Sauna) in Dongdaemun" loading="lazy">
+        <span class="tag-badge">♨️ Jjimjilbang</span>
+        <span class="discount-badge">Official Creatrip</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area">Dongdaemun, Jung-gu</span>
+          <span>•</span>
+          <span class="rating">★ 4.2 (1,060 reviews)</span>
+        </div>
+        <h3 class="spot-title">Sparex Dongdaemun Jjimjilbang</h3>
+        <p class="spot-desc">A 24-hour Korean sauna where jjimjilbang culture meets modern design — finish with sikhye, the sweet rice punch.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Open 24 Hours</span><span class="feat-tag">Sikhye Included</span><span class="feat-tag">Dongdaemun</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">₩7,000 (~$5)</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Sparex Dongdaemun Jjimjilbang', 'https://creatrip.com/en/spot/13261?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Dongdaemun, Jung-gu · ₩7,000 (~$5) · ★4.2 (1,060 reviews)')">Get Pass →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHIPPED HOUSE Seongsu · Creatrip spot 14309 -->
+    <div class="spot-card" data-category="kpop">
+      <div class="spot-image-box">
+        <img src="images/creatrip/14309.jpg" alt="Make Your Own Skincare in Seongsu | WHIPPED HOUSE" loading="lazy">
+        <span class="tag-badge">🧼 Skincare Workshop</span>
+        <span class="discount-badge">Official Creatrip</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area">Seongsu, Seongdong</span>
+          <span>•</span>
+          <span class="rating">★ 4.9 (839 reviews)</span>
+        </div>
+        <h3 class="spot-title">WHIPPED HOUSE Seongsu</h3>
+        <p class="spot-desc">Make your own face cleanser from fresh soothing ingredients in a 40-minute bakery-inspired vegan skincare workshop (ages 14+).</p>
+        <div class="spot-features">
+          <span class="feat-tag">40-min Class</span><span class="feat-tag">Vegan Recipe</span><span class="feat-tag">Ages 14+</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">₩25,000 (~$19)</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('WHIPPED HOUSE Seongsu', 'https://creatrip.com/en/spot/14309?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Seongsu, Seongdong · ₩25,000 (~$19) · ★4.9 (839 reviews)')">Get Pass →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ONA Women-only Body Scrub · Creatrip spot 15239 -->
+    <div class="spot-card" data-category="kpop">
+      <div class="spot-image-box">
+        <img src="images/creatrip/15239.jpg" alt="Women-only Private Bath &amp; Body Scrub | ONA 2nd Branch" loading="lazy">
+        <span class="tag-badge">🛁 Korean Scrub</span>
+        <span class="discount-badge">Official Creatrip</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area">Myeongdong, Jung-gu</span>
+          <span>•</span>
+          <span class="rating">★ 4.8 (751 reviews)</span>
+        </div>
+        <h3 class="spot-title">ONA Women-only Body Scrub</h3>
+        <p class="spot-desc">A fully private one-person Korean scrub salon for women, three minutes from Myeongdong Station, using Swiss JUST care products and organic jojoba oil.</p>
+        <div class="spot-features">
+          <span class="feat-tag">1-Person Private</span><span class="feat-tag">Women Only</span><span class="feat-tag">3 min from Stn</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">₩50,000 (~$37)</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('ONA Women-only Body Scrub', 'https://creatrip.com/en/spot/15239?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Myeongdong, Jung-gu · ₩50,000 (~$37) · ★4.8 (751 reviews)')">Get Pass →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- POCA SPOT Hongdae · Creatrip spot 14469 -->
+    <div class="spot-card" data-category="kpop">
+      <div class="spot-image-box">
+        <img src="images/creatrip/14469.jpg" alt="K-Pop Photocard Shop POCA SPOT Hongdae Branch | Mystery Packs &amp; Up to 10,000 KRW Off" loading="lazy">
+        <span class="tag-badge">🃏 Photocard Shop</span>
+        <span class="discount-badge">Official Creatrip</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area">Hongdae, Mapo</span>
+          <span>•</span>
+          <span class="rating">★ 4.6 (9 reviews)</span>
+        </div>
+        <h3 class="spot-title">POCA SPOT Hongdae</h3>
+        <p class="spot-desc">Idol photocard shop with same-day pick-up for online orders, English-friendly kiosks and DIY accessory personalising.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Same-day Pickup</span><span class="feat-tag">Mystery Packs</span><span class="feat-tag">English Kiosk</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">₩49,900 (~$37)</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('POCA SPOT Hongdae', 'https://creatrip.com/en/spot/14469?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Hongdae, Mapo · ₩49,900 (~$37) · ★4.6 (9 reviews)')">Get Pass →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- .NOTE Seongsu Perfume Class · Creatrip spot 14808 -->
+    <div class="spot-card" data-category="kpop">
+      <div class="spot-image-box">
+        <img src="images/creatrip/14808.jpg" alt=".NOTE Seongsu | Perfume Making Class" loading="lazy">
+        <span class="tag-badge">🧪 Perfume Class</span>
+        <span class="discount-badge">Official Creatrip</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area">Seongsu, Seongdong</span>
+          <span>•</span>
+          <span class="rating">★ 5.0 (3,377 reviews)</span>
+        </div>
+        <h3 class="spot-title">.NOTE Seongsu Perfume Class</h3>
+        <p class="spot-desc">Blend your own signature scent with a 14-language video tutorial — no perfumer needed, and the bottle goes home with you.</p>
+        <div class="spot-features">
+          <span class="feat-tag">14 Languages</span><span class="feat-tag">DIY Blending</span><span class="feat-tag">Bottle to Take</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">₩49,000 (~$37)</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('.NOTE Seongsu Perfume Class', 'https://creatrip.com/en/spot/14808?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Seongsu, Seongdong · ₩49,000 (~$37) · ★5 (3,377 reviews)')">Get Pass →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jinmi Sikdang Mapo · Creatrip spot 13287 -->
+    <div class="spot-card" data-category="cafe">
+      <div class="spot-image-box">
+        <img src="images/creatrip/13287.jpg" alt="Jinmi Sikdang | Reservation Service" loading="lazy">
+        <span class="tag-badge">🦀 Ganjang Gejang</span>
+        <span class="discount-badge">Official Creatrip</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area">Mapo, Mapo-gu</span>
+          <span>•</span>
+          <span class="rating">★ 4.5 (1,107 reviews)</span>
+        </div>
+        <h3 class="spot-title">Jinmi Sikdang Mapo</h3>
+        <p class="spot-desc">Creatrip table reservation for Mapo’s soy-marinated crab institution, with failed bookings refunded as points plus bonus compensation.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Table Reservation</span><span class="feat-tag">Point Refund</span><span class="feat-tag">Mapo Institution</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">₩10,000 (~$7)</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Jinmi Sikdang Mapo', 'https://creatrip.com/en/spot/13287?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Mapo, Mapo-gu · ₩10,000 (~$7) · ★4.5 (1,107 reviews)')">Reserve →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tosokchon Samgyetang · Creatrip spot 13598 -->
+    <div class="spot-card" data-category="cafe">
+      <div class="spot-image-box">
+        <img src="images/creatrip/13598.jpg" alt="Tosokchon Samgyetang Reservation Service" loading="lazy">
+        <span class="tag-badge">🍲 Samgyetang</span>
+        <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
         <div class="spot-meta">
           <span class="area">Seochon, Jongno</span>
           <span>•</span>
-          <span class="rating">★ 4.92 (Superhost)</span>
+          <span class="rating">★ 4.2 (10,306 reviews)</span>
         </div>
-        <h3 class="spot-title">Seochon Designer Garden Hanok & Open Bath</h3>
-        <p class="spot-desc">Minimalist Hanok renovation with open-air Hinoki soaking tub, artisanal drip coffee corner & private bamboo garden view.</p>
+        <h3 class="spot-title">Tosokchon Samgyetang</h3>
+        <p class="spot-desc">Seochon’s best-known ginseng chicken soup house, loved by locals and visitors near Gyeongbokgung — reserve and skip the wait.</p>
         <div class="spot-features">
-          <span class="feat-tag">Hinoki Bath</span><span class="feat-tag">Drip Coffee Bar</span><span class="feat-tag">Near Gyeongbokgung</span>
+          <span class="feat-tag">Skip the Queue</span><span class="feat-tag">Ginseng Chicken</span><span class="feat-tag">Near the Palace</span>
         </div>
         <div class="spot-action">
           <div class="price-wrap">
-            <span class="price-label">From / Night</span>
-            <span class="price-value">₩220,000 (~$165)</span>
+            <span class="price-label">From</span>
+            <span class="price-value">₩25,000 (~$19)</span>
           </div>
-          <button class="btn-book" onclick="openBookingModal('Seochon Designer Garden Hanok & Open Bath', 'SEOCHON10', '10% OFF Consecutive Stays', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Check Dates →</button>
+          <button class="btn-book" onclick="openBookingModal('Tosokchon Samgyetang', 'https://creatrip.com/en/spot/13598?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Seochon, Jongno · ₩25,000 (~$19) · ★4.2 (10,306 reviews)')">Reserve →</button>
         </div>
       </div>
     </div>
 
-    <!-- Card: Hongdae Creator Loft with Sunset Terrace -->
-    <div class="spot-card" data-category="stay">
+    <!-- Kyochon Pilbang Yongsan · Creatrip spot 13812 -->
+    <div class="spot-card" data-category="cafe">
       <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" alt="Hongdae Creator Loft with Sunset Terrace">
-        <span class="tag-badge">🏙️ Skyline Rooftop</span>
-        <span class="discount-badge">15% OFF</span>
+        <img src="images/creatrip/13812.jpg" alt="Kyochon Pilbang Reservation Service" loading="lazy">
+        <span class="tag-badge">🍗 Korean Chicken</span>
+        <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
         <div class="spot-meta">
-          <span class="area">Hongdae Station</span>
+          <span class="area">Yongsan, Yongsan-gu</span>
           <span>•</span>
-          <span class="rating">★ 4.91 (620+ Reviews)</span>
+          <span class="rating">★ 4.6 (93 reviews)</span>
         </div>
-        <h3 class="spot-title">Hongdae Creator Loft with Sunset Terrace</h3>
-        <p class="spot-desc">Modern duplex loft with projector home theater, vinyl record player, and panoramic rooftop sunset views over Hongik Univ.</p>
+        <h3 class="spot-title">Kyochon Pilbang Yongsan</h3>
+        <p class="spot-desc">Kyochon’s study-room themed concept store, with menu items sold only here and a “chimakase” fried chicken course.</p>
         <div class="spot-features">
-          <span class="feat-tag">Home Cinema</span><span class="feat-tag">Direct Subway Entry</span><span class="feat-tag">Self Check-In</span>
+          <span class="feat-tag">Chimakase Course</span><span class="feat-tag">Themed Interior</span><span class="feat-tag">Yongsan</span>
         </div>
         <div class="spot-action">
           <div class="price-wrap">
-            <span class="price-label">From / Night</span>
-            <span class="price-value">₩150,000 (~$112)</span>
+            <span class="price-label">From</span>
+            <span class="price-value">₩10,000 (~$7)</span>
           </div>
-          <button class="btn-book" onclick="openBookingModal('Hongdae Creator Loft with Sunset Terrace', 'HONGDAELOFT', '15% OFF + Late Checkout (1 PM)', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Check Dates →</button>
+          <button class="btn-book" onclick="openBookingModal('Kyochon Pilbang Yongsan', 'https://creatrip.com/en/spot/13812?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Yongsan, Yongsan-gu · ₩10,000 (~$7) · ★4.6 (93 reviews)')">Reserve →</button>
         </div>
       </div>
     </div>
 
-    <!-- Card: Myeongdong Boutique Hotel & Sunset Bar -->
-    <div class="spot-card" data-category="stay">
+    <!-- Cafe Highwaist Ikseon-dong · Creatrip spot 13318 -->
+    <div class="spot-card" data-category="cafe">
       <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Myeongdong Boutique Hotel & Sunset Bar">
-        <span class="tag-badge">🛍️ Shopping Epicenter</span>
-        <span class="discount-badge">Best Value</span>
+        <img src="images/creatrip/13318.jpg" alt="Cafe Highwaist Cake Reservation Service (Pickup) | Ikseon Branch" loading="lazy">
+        <span class="tag-badge">🎂 Lettering Cake</span>
+        <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
         <div class="spot-meta">
-          <span class="area">Myeongdong, Seoul</span>
+          <span class="area">Ikseon-dong, Jongno</span>
           <span>•</span>
-          <span class="rating">★ 4.88 (1.2k+ Reviews)</span>
+          <span class="rating">★ 4.3 (243 reviews)</span>
         </div>
-        <h3 class="spot-title">Myeongdong Boutique Hotel & Sunset Bar</h3>
-        <p class="spot-desc">Step right outside into Myeongdong street market. Soundproof double-glazed windows, Simmons queen bed, and top-floor cocktail bar.</p>
+        <h3 class="spot-title">Cafe Highwaist Ikseon-dong</h3>
+        <p class="spot-desc">Pick-up reservation for custom lettering cakes at the Ikseon-dong cafe run by the creator behind London Bagel Museum and Artist Bakery.</p>
         <div class="spot-features">
-          <span class="feat-tag">Night Market 1 Min</span><span class="feat-tag">Free Luggage Storage</span><span class="feat-tag">24H Front Desk</span>
+          <span class="feat-tag">Custom Lettering</span><span class="feat-tag">Pick-up Pass</span><span class="feat-tag">Idol Favourite</span>
         </div>
         <div class="spot-action">
           <div class="price-wrap">
-            <span class="price-label">From / Night</span>
-            <span class="price-value">₩165,000 (~$124)</span>
+            <span class="price-label">From</span>
+            <span class="price-value">₩66,700 (~$50)</span>
           </div>
-          <button class="btn-book" onclick="openBookingModal('Myeongdong Boutique Hotel & Sunset Bar', 'MYEONGHOTEL', 'Free Welcome Cocktail at Rooftop Bar', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Check Dates →</button>
+          <button class="btn-book" onclick="openBookingModal('Cafe Highwaist Ikseon-dong', 'https://creatrip.com/en/spot/13318?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Ikseon-dong, Jongno · ₩66,700 (~$50) · ★4.3 (243 reviews)')">Reserve →</button>
         </div>
       </div>
     </div>
 
-    <!-- Card: Seongsu Industrial Loft & Vinyl Lounge -->
-    <div class="spot-card" data-category="stay">
+    <!-- Korea House Kohojae Tea · Creatrip spot 15462 -->
+    <div class="spot-card" data-category="cafe">
       <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=800&q=80" alt="Seongsu Industrial Loft & Vinyl Lounge">
-        <span class="tag-badge">🧱 Red Brick Studio</span>
-        <span class="discount-badge">10% OFF</span>
+        <img src="images/creatrip/15462.jpg" alt="Korea House Kohojae Reservation | Royal Korean Tea &amp; Sweets in a Serene Hanok" loading="lazy">
+        <span class="tag-badge">🍵 Royal Tea & Sweets</span>
+        <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
         <div class="spot-meta">
-          <span class="area">Seongsu Cafe Street</span>
+          <span class="area">Chungmuro, Jung-gu</span>
           <span>•</span>
-          <span class="rating">★ 4.93 (340+ Reviews)</span>
+          <span class="rating">★ 4.9 (67 reviews)</span>
         </div>
-        <h3 class="spot-title">Seongsu Industrial Loft & Vinyl Lounge</h3>
-        <p class="spot-desc">Converted heritage red-brick factory building turned boutique studio. High ceilings, marshall speaker, and espresso bar downstairs.</p>
+        <h3 class="spot-title">Korea House Kohojae Tea</h3>
+        <p class="spot-desc">Royal court tea and confection sets served on individual soban tables inside a hanok at Korea House, inspired by Joseon-era royal sweets.</p>
         <div class="spot-features">
-          <span class="feat-tag">Boutique Interior</span><span class="feat-tag">Cafe Street Walk</span><span class="feat-tag">Superhost</span>
+          <span class="feat-tag">Hanok Teahouse</span><span class="feat-tag">Royal Confections</span><span class="feat-tag">Individual Soban</span>
         </div>
         <div class="spot-action">
           <div class="price-wrap">
-            <span class="price-label">From / Night</span>
-            <span class="price-value">₩180,000 (~$135)</span>
+            <span class="price-label">From</span>
+            <span class="price-value">₩30,000 (~$22)</span>
           </div>
-          <button class="btn-book" onclick="openBookingModal('Seongsu Industrial Loft & Vinyl Lounge', 'SEONGSTAY', '10% OFF + Morning Drip Coffee Pass', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Check Dates →</button>
+          <button class="btn-book" onclick="openBookingModal('Korea House Kohojae Tea', 'https://creatrip.com/en/spot/15462?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Chungmuro, Jung-gu · ₩30,000 (~$22) · ★4.9 (67 reviews)')">Reserve →</button>
         </div>
       </div>
     </div>
 
-    <!-- Card: Gangnam Panoramic High-Rise Residence -->
-    <div class="spot-card" data-category="stay">
+    <!-- Golden Farm Myeongdong · Creatrip spot 13194 -->
+    <div class="spot-card" data-category="cafe">
       <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80" alt="Gangnam Panoramic High-Rise Residence">
-        <span class="tag-badge">✨ Gangnam Skyview</span>
-        <span class="discount-badge">Special Rate</span>
+        <img src="images/creatrip/13194.jpg" alt="Golden Farm (Hwanggeum Mokjang) | Myeongdong Cathedral Branch" loading="lazy">
+        <span class="tag-badge">🥩 K-BBQ</span>
+        <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
         <div class="spot-meta">
-          <span class="area">Gangnam Station</span>
+          <span class="area">Myeongdong, Jung-gu</span>
           <span>•</span>
-          <span class="rating">★ 4.94 (410+ Reviews)</span>
+          <span class="rating">★ 4.4 (286 reviews)</span>
         </div>
-        <h3 class="spot-title">Gangnam Panoramic High-Rise Residence</h3>
-        <p class="spot-desc">Floor-to-ceiling glass windows with stunning 32nd-floor night views of Gangnam Boulevard. Full kitchen, washer/dryer, and high-speed fiber WiFi.</p>
+        <h3 class="spot-title">Golden Farm Myeongdong</h3>
+        <p class="spot-desc">18 cuts of beef and pork grilled at the table with private rooms and English/Chinese service — featured on “Welcome, First Time in Korea?”.</p>
         <div class="spot-features">
-          <span class="feat-tag">High Floor View</span><span class="feat-tag">Washer/Dryer</span><span class="feat-tag">Subway 2 Min</span>
+          <span class="feat-tag">18 Cuts</span><span class="feat-tag">Private Rooms</span><span class="feat-tag">EN·CN Service</span>
         </div>
         <div class="spot-action">
           <div class="price-wrap">
-            <span class="price-label">From / Night</span>
-            <span class="price-value">₩240,000 (~$178)</span>
+            <span class="price-label">From</span>
+            <span class="price-value">₩18,000 (~$13)</span>
           </div>
-          <button class="btn-book" onclick="openBookingModal('Gangnam Panoramic High-Rise Residence', 'GANGNAMSKY', 'Free High-Speed WiFi & Nespresso Pods', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Check Dates →</button>
+          <button class="btn-book" onclick="openBookingModal('Golden Farm Myeongdong', 'https://creatrip.com/en/spot/13194?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Myeongdong, Jung-gu · ₩18,000 (~$13) · ★4.4 (286 reviews)')">Reserve →</button>
         </div>
       </div>
     </div>
 
-    <!-- Card: Itaewon Terrace Boutique Stay with Tower View -->
-    <div class="spot-card" data-category="stay">
+    <!-- On6.5 Anguk Dining Bar · Creatrip spot 13359 -->
+    <div class="spot-card" data-category="cafe">
       <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Itaewon Terrace Boutique Stay with Tower View">
-        <span class="tag-badge">🗼 Namsan Tower View</span>
-        <span class="discount-badge">10% OFF</span>
+        <img src="images/creatrip/13359.jpg" alt="On6.5 | Korean Dining Bar in Anguk" loading="lazy">
+        <span class="tag-badge">🍶 Kimchi Dining</span>
+        <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
         <div class="spot-meta">
-          <span class="area">Itaewon & Hannam</span>
+          <span class="area">Anguk, Jongno</span>
           <span>•</span>
-          <span class="rating">★ 4.89 (510+ Reviews)</span>
+          <span class="rating">★ 4.6 (119 reviews)</span>
         </div>
-        <h3 class="spot-title">Itaewon Terrace Boutique Stay with Tower View</h3>
-        <p class="spot-desc">Private wooden terrace facing N Seoul Tower directly. Located in a quiet residential hill just 5 minutes from vibrant global dining.</p>
+        <h3 class="spot-title">On6.5 Anguk Dining Bar</h3>
+        <p class="spot-desc">Kimchi-led Korean dining bar beside Anguk Station, paired with makgeolli, in a room BTS RM and Jimin and G-Dragon have visited.</p>
         <div class="spot-features">
-          <span class="feat-tag">Tower View Terrace</span><span class="feat-tag">Queen Simmons Bed</span><span class="feat-tag">English Host</span>
+          <span class="feat-tag">Kimchi Course</span><span class="feat-tag">Makgeolli Pairing</span><span class="feat-tag">Celeb Spot</span>
         </div>
         <div class="spot-action">
           <div class="price-wrap">
-            <span class="price-label">From / Night</span>
-            <span class="price-value">₩175,000 (~$130)</span>
+            <span class="price-label">From</span>
+            <span class="price-value">₩33,000 (~$25)</span>
           </div>
-          <button class="btn-book" onclick="openBookingModal('Itaewon Terrace Boutique Stay with Tower View', 'ITAEWONVIEW', '10% OFF + Wine Bottle & Glasses', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Check Dates →</button>
+          <button class="btn-book" onclick="openBookingModal('On6.5 Anguk Dining Bar', 'https://creatrip.com/en/spot/13359?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Anguk, Jongno · ₩33,000 (~$25) · ★4.6 (119 reviews)')">Reserve →</button>
         </div>
       </div>
     </div>
 
-    <!-- Card: Insadong 80-Year Antique Hanok & Tea Garden -->
-    <div class="spot-card" data-category="stay">
+    <!-- Haecheonobu Jongno · Creatrip spot 14166 -->
+    <div class="spot-card" data-category="cafe">
       <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&w=800&q=80" alt="Insadong 80-Year Antique Hanok & Tea Garden">
-        <span class="tag-badge">🍵 Antique Tea Stay</span>
-        <span class="discount-badge">Free Tea Set</span>
+        <img src="images/creatrip/14166.jpg" alt="Famous Seafood Restaurant in Jongno | Haecheonobu" loading="lazy">
+        <span class="tag-badge">🦞 Lobster Table</span>
+        <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
         <div class="spot-meta">
-          <span class="area">Insadong Heritage</span>
+          <span class="area">Jongno, Jongno-gu</span>
           <span>•</span>
-          <span class="rating">★ 4.91 (390+ Reviews)</span>
+          <span class="rating">★ 4.4 (299 reviews)</span>
         </div>
-        <h3 class="spot-title">Insadong 80-Year Antique Hanok & Tea Garden</h3>
-        <p class="spot-desc">Experience traditional Korean floor heating (Ondol) or premium raised beds surrounded by historic pottery, calligraphies and tranquil moss courtyard.</p>
+        <h3 class="spot-title">Haecheonobu Jongno</h3>
+        <p class="spot-desc">A Jongno seafood house known for lobster stew, noodle soup and sashimi, with abalone and shrimp to start.</p>
         <div class="spot-features">
-          <span class="feat-tag">Ondol Heating</span><span class="feat-tag">Organic Tea Tasting</span><span class="feat-tag">Near Palace</span>
+          <span class="feat-tag">Lobster Specials</span><span class="feat-tag">TV Featured</span><span class="feat-tag">Jongno</span>
         </div>
         <div class="spot-action">
           <div class="price-wrap">
-            <span class="price-label">From / Night</span>
-            <span class="price-value">₩195,000 (~$145)</span>
+            <span class="price-label">From</span>
+            <span class="price-value">₩50,000 (~$37)</span>
           </div>
-          <button class="btn-book" onclick="openBookingModal('Insadong 80-Year Antique Hanok & Tea Garden', 'INSADONGTEA', 'Complimentary Traditional Tea Tasting Set', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Check Dates →</button>
+          <button class="btn-book" onclick="openBookingModal('Haecheonobu Jongno', 'https://creatrip.com/en/spot/14166?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Jongno, Jongno-gu · ₩50,000 (~$37) · ★4.4 (299 reviews)')">Reserve →</button>
         </div>
       </div>
     </div>
 
-    <!-- Card: Yeouido Han River Luxury Front Suite -->
-    <div class="spot-card" data-category="stay">
+    <!-- Don Juneun Namja Hongdae · Creatrip spot 13902 -->
+    <div class="spot-card" data-category="cafe">
       <div class="spot-image-box">
-        <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=800&q=80" alt="Yeouido Han River Luxury Front Suite">
-        <span class="tag-badge">🌊 Han River Front</span>
-        <span class="discount-badge">VIP Pass</span>
+        <img src="images/creatrip/13902.jpg" alt="Don Juneun Namja | Popular Korean BBQ restaurant in Hongdae" loading="lazy">
+        <span class="tag-badge">🥩 Charcoal K-BBQ</span>
+        <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
         <div class="spot-meta">
-          <span class="area">Yeouido Island</span>
+          <span class="area">Hongdae, Mapo</span>
           <span>•</span>
-          <span class="rating">★ 4.96 (1.5k+ Reviews)</span>
+          <span class="rating">★ 4.8 (1,012 reviews)</span>
         </div>
-        <h3 class="spot-title">Yeouido Han River Luxury Front Suite</h3>
-        <p class="spot-desc">Unobstructed sunset views over the Han River and bridges. Direct indoor connection to The Hyundai Seoul mega department store.</p>
+        <h3 class="spot-title">Don Juneun Namja Hongdae</h3>
+        <p class="spot-desc">Jeju pork and beef over charcoal at a social-media favourite in Hongdae, with a foreigner-only voucher that skips the line.</p>
         <div class="spot-features">
-          <span class="feat-tag">Han River View</span><span class="feat-tag">The Hyundai Mall Direct</span><span class="feat-tag">Infinity Pool</span>
+          <span class="feat-tag">Jeju Meat</span><span class="feat-tag">Charcoal Grill</span><span class="feat-tag">Skip the Line</span>
         </div>
         <div class="spot-action">
           <div class="price-wrap">
-            <span class="price-label">From / Night</span>
-            <span class="price-value">₩260,000 (~$195)</span>
+            <span class="price-label">From</span>
+            <span class="price-value">₩30,000 (~$22)</span>
           </div>
-          <button class="btn-book" onclick="openBookingModal('Yeouido Han River Luxury Front Suite', 'YEOUIDORIVER', 'VIP Late Checkout + Welcome Sparkling Wine', 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')">Check Dates →</button>
+          <button class="btn-book" onclick="openBookingModal('Don Juneun Namja Hongdae', 'https://creatrip.com/en/spot/13902?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Hongdae, Mapo · ₩30,000 (~$22) · ★4.8 (1,012 reviews)')">Reserve →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bukchon Yeonwoo Hanok Stay · Creatrip stay 65f35256d68cf4126470e9e8 -->
+    <div class="spot-card" data-category="stay">
+      <div class="spot-image-box">
+        <img src="images/creatrip/65f35256d68cf4126470e9e8.jpg" alt="Bukchon Yeonwoo Hanok Stay" loading="lazy">
+        <span class="tag-badge">🏡 Hanok Stay</span>
+        <span class="discount-badge">Creatrip Official Stay</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area">Bukchon, Jongno</span>
+          <span>•</span>
+          <span class="rating">★ 4.8 (26 reviews)</span>
+        </div>
+        <h3 class="spot-title">Bukchon Yeonwoo Hanok Stay</h3>
+        <p class="spot-desc">A quiet hanok guesthouse on Bukchon-ro with a terrace, breakfast and couple rooms, five minutes from Anguk Station.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Hanok</span><span class="feat-tag">Breakfast</span><span class="feat-tag">Terrace</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From · 1 night</span>
+            <span class="price-value">$113 / night</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Bukchon Yeonwoo Hanok Stay', 'https://creatrip.com/en/stays/65f35256d68cf4126470e9e8?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Bukchon, Jongno · From $113 per night · ★4.8 (26)')">Check Dates →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bukchon Sohyeondang Hanok Stay · Creatrip stay 65f345e0d68cf4126457f4bc -->
+    <div class="spot-card" data-category="stay">
+      <div class="spot-image-box">
+        <img src="images/creatrip/65f345e0d68cf4126457f4bc.jpg" alt="Bukchon Sohyeondang Hanok Stay" loading="lazy">
+        <span class="tag-badge">🏡 Hanok Stay</span>
+        <span class="discount-badge">Creatrip Official Stay</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area">Bukchon, Jongno</span>
+          <span>•</span>
+          <span class="rating">★ 4.6 (85 reviews)</span>
+        </div>
+        <h3 class="spot-title">Bukchon Sohyeondang Hanok Stay</h3>
+        <p class="spot-desc">A restored hanok stay behind Yulgok-ro, with a shared kitchen and breakfast, steps from Bukchon Hanok Village and the National Folk Museum.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Hanok</span><span class="feat-tag">Breakfast</span><span class="feat-tag">Shared Kitchen</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From · 1 night</span>
+            <span class="price-value">$121 / night</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Bukchon Sohyeondang Hanok Stay', 'https://creatrip.com/en/stays/65f345e0d68cf4126457f4bc?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Bukchon, Jongno · From $121 per night · ★4.6 (85)')">Check Dates →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seochon Nuhadang Hanok Stay · Creatrip stay 65f347d2d68cf412645afa8b -->
+    <div class="spot-card" data-category="stay">
+      <div class="spot-image-box">
+        <img src="images/creatrip/65f347d2d68cf412645afa8b.jpg" alt="Seochon Nuhadang Hanok Stay" loading="lazy">
+        <span class="tag-badge">🏡 Hanok Stay</span>
+        <span class="discount-badge">Creatrip Official Stay</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area">Seochon, Jongno</span>
+          <span>•</span>
+          <span class="rating">★ 4.2 (14 reviews)</span>
+        </div>
+        <h3 class="spot-title">Seochon Nuhadang Hanok Stay</h3>
+        <p class="spot-desc">A hanok guesthouse with a balcony and in-house cafe on Pilun-daero, a short walk from Gyeongbokgung Palace.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Hanok</span><span class="feat-tag">In-house Cafe</span><span class="feat-tag">Balcony</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From · 1 night</span>
+            <span class="price-value">$102 / night</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Seochon Nuhadang Hanok Stay', 'https://creatrip.com/en/stays/65f347d2d68cf412645afa8b?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Seochon, Jongno · From $102 per night · ★4.2 (14)')">Check Dates →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jongno Hanok Gung Guesthouse · Creatrip stay 65f34bfdd68cf4126461174e -->
+    <div class="spot-card" data-category="stay">
+      <div class="spot-image-box">
+        <img src="images/creatrip/65f34bfdd68cf4126461174e.jpg" alt="Jongno Hanok Gung Guesthouse" loading="lazy">
+        <span class="tag-badge">🏮 Budget Hanok</span>
+        <span class="discount-badge">Creatrip Official Stay</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area">Insadong, Jongno</span>
+          <span>•</span>
+          <span class="rating">★ 4.4 (31 reviews)</span>
+        </div>
+        <h3 class="spot-title">Jongno Hanok Gung Guesthouse</h3>
+        <p class="spot-desc">A simple hanok guesthouse beside Jongmyo and Tapgol Park — the cheapest way to sleep in a hanok near Insadong.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Hanok</span><span class="feat-tag">Insadong Walk</span><span class="feat-tag">Best Value</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From · 1 night</span>
+            <span class="price-value">$26 / night</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Jongno Hanok Gung Guesthouse', 'https://creatrip.com/en/stays/65f34bfdd68cf4126461174e?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Insadong, Jongno · From $26 per night · ★4.4 (31)')">Check Dates →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mercure Ambassador Seoul Hongdae · Creatrip stay 65ded4d74e759f00a6ac44d7 -->
+    <div class="spot-card" data-category="stay">
+      <div class="spot-image-box">
+        <img src="images/creatrip/65ded4d74e759f00a6ac44d7.jpg" alt="Mercure Ambassador Seoul Hongdae" loading="lazy">
+        <span class="tag-badge">🏨 4-Star Hotel</span>
+        <span class="discount-badge">Creatrip Official Stay</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area">Hongdae, Mapo</span>
+          <span>•</span>
+          <span class="rating">★ 4.8 (575 reviews)</span>
+        </div>
+        <h3 class="spot-title">Mercure Ambassador Seoul Hongdae</h3>
+        <p class="spot-desc">A 4-star hotel on Yanghwa-ro with breakfast, a fitness centre and a terrace, five minutes from Hongik University Station.</p>
+        <div class="spot-features">
+          <span class="feat-tag">4-Star</span><span class="feat-tag">Breakfast</span><span class="feat-tag">Fitness Centre</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From · 1 night</span>
+            <span class="price-value">$135 / night</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Mercure Ambassador Seoul Hongdae', 'https://creatrip.com/en/stays/65ded4d74e759f00a6ac44d7?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Hongdae, Mapo · From $135 per night · ★4.8 (575)')">Check Dates →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Westin Chosun Seoul · Creatrip stay 65ded57a4e759f00a6acca0e -->
+    <div class="spot-card" data-category="stay">
+      <div class="spot-image-box">
+        <img src="images/creatrip/65ded57a4e759f00a6acca0e.jpg" alt="The Westin Chosun Seoul" loading="lazy">
+        <span class="tag-badge">🏨 5-Star Hotel</span>
+        <span class="discount-badge">Creatrip Official Stay</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area">Myeongdong, Jung-gu</span>
+          <span>•</span>
+          <span class="rating">★ 4.5 (5,816 reviews)</span>
+        </div>
+        <h3 class="spot-title">The Westin Chosun Seoul</h3>
+        <p class="spot-desc">Seoul’s landmark 5-star hotel on Sogong-ro, with an indoor pool, sauna and a lobby that opens onto Myeongdong and Shinsegae.</p>
+        <div class="spot-features">
+          <span class="feat-tag">5-Star</span><span class="feat-tag">Indoor Pool</span><span class="feat-tag">Myeongdong</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From · 1 night</span>
+            <span class="price-value">$347 / night</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('The Westin Chosun Seoul', 'https://creatrip.com/en/stays/65ded57a4e759f00a6acca0e?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Myeongdong, Jung-gu · From $347 per night · ★4.5 (5,816)')">Check Dates →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mondrian Seoul Itaewon · Creatrip stay 65f1d994d747dc82a64fd30d -->
+    <div class="spot-card" data-category="stay">
+      <div class="spot-image-box">
+        <img src="images/creatrip/65f1d994d747dc82a64fd30d.jpg" alt="Mondrian Seoul Itaewon" loading="lazy">
+        <span class="tag-badge">🏨 5-Star Hotel</span>
+        <span class="discount-badge">Creatrip Official Stay</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area">Itaewon, Yongsan</span>
+          <span>•</span>
+          <span class="rating">★ 4.4 (1,168 reviews)</span>
+        </div>
+        <h3 class="spot-title">Mondrian Seoul Itaewon</h3>
+        <p class="spot-desc">A design-led 5-star hotel on Jangmun-ro with a rooftop, pool and restaurant, beside the Itaewon antique street and mosque.</p>
+        <div class="spot-features">
+          <span class="feat-tag">5-Star</span><span class="feat-tag">Rooftop</span><span class="feat-tag">Design Hotel</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From · 1 night</span>
+            <span class="price-value">$249 / night</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Mondrian Seoul Itaewon', 'https://creatrip.com/en/stays/65f1d994d747dc82a64fd30d?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Itaewon, Yongsan · From $249 per night · ★4.4 (1,168)')">Check Dates →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conrad Seoul · Creatrip stay 65f1d9abd747dc82a65017ec -->
+    <div class="spot-card" data-category="stay">
+      <div class="spot-image-box">
+        <img src="images/creatrip/65f1d9abd747dc82a65017ec.jpg" alt="Conrad Seoul" loading="lazy">
+        <span class="tag-badge">🏨 5-Star Hotel</span>
+        <span class="discount-badge">Creatrip Official Stay</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area">Yeouido, Yeongdeungpo</span>
+          <span>•</span>
+          <span class="rating">★ 4.4 (6,309 reviews)</span>
+        </div>
+        <h3 class="spot-title">Conrad Seoul</h3>
+        <p class="spot-desc">A 5-star tower on Gukjegeumyung-ro with Han River views, an indoor pool and direct access to Yeouido Park and the Hangang night market.</p>
+        <div class="spot-features">
+          <span class="feat-tag">5-Star</span><span class="feat-tag">Han River</span><span class="feat-tag">Indoor Pool</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From · 1 night</span>
+            <span class="price-value">$375 / night</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Conrad Seoul', 'https://creatrip.com/en/stays/65f1d9abd747dc82a65017ec?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Yeouido, Yeongdeungpo · From $375 per night · ★4.4 (6,309)')">Check Dates →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grand Mercure Imperial Palace Seoul Gangnam · Creatrip stay 664ae65d4928b1fe5fb838c6 -->
+    <div class="spot-card" data-category="stay">
+      <div class="spot-image-box">
+        <img src="images/creatrip/664ae65d4928b1fe5fb838c6.jpg" alt="Grand Mercure Imperial Palace Seoul Gangnam" loading="lazy">
+        <span class="tag-badge">🏨 5-Star Hotel</span>
+        <span class="discount-badge">Creatrip Official Stay</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area">Gangnam, Gangnam-gu</span>
+          <span>•</span>
+          <span class="rating">★ 4.2 (2,947 reviews)</span>
+        </div>
+        <h3 class="spot-title">Grand Mercure Imperial Palace Seoul Gangnam</h3>
+        <p class="spot-desc">A 5-star hotel on Eonju-ro between Hakdong and Nonhyeon, with a club lounge, indoor pool and sauna.</p>
+        <div class="spot-features">
+          <span class="feat-tag">5-Star</span><span class="feat-tag">Club Lounge</span><span class="feat-tag">Indoor Pool</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From · 1 night</span>
+            <span class="price-value">$209 / night</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Grand Mercure Imperial Palace Seoul Gangnam', 'https://creatrip.com/en/stays/664ae65d4928b1fe5fb838c6?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', 'Gangnam, Gangnam-gu · From $209 per night · ★4.2 (2,947)')">Check Dates →</button>
         </div>
       </div>
     </div>
@@ -2361,7 +2373,7 @@
   <!-- Modern Footer -->
   <footer class="site-footer">
     <div class="footer-logo">SEOUL IN POCKET ✨</div>
-    <p class="footer-desc">Curated Seoul travel cheat codes & VIP reservation passes for global Gen-Z travelers.</p>
+    <p class="footer-desc">Hand-picked Seoul spots with official Creatrip booking links for global travelers.</p>
     <div class="footer-social-box">
       <a href="https://www.instagram.com/seoulinpocket/" target="_blank" class="footer-social-link">📸 Instagram @seoulinpocket</a>
       <a href="https://www.tiktok.com/@seoulinpocket" target="_blank" class="footer-social-link">🎵 TikTok @seoulinpocket</a>
@@ -2378,7 +2390,7 @@
       <a href="https://www.tiktok.com/@seoulinpocket" target="_blank" class="social-btn">🎵 TikTok</a>
       <a href="http://xhslink.com/o/4tE6Fn1NFnE" target="_blank" class="social-btn">📕 小红书</a>
     </div>
-    <button class="btn-vip" onclick="openVipModal()">Get VIP Pass ✨</button>
+    <button class="btn-vip" onclick="openVipModal()">Seoul Picks ✨</button>
   </div>
 </div>
 
@@ -2387,16 +2399,16 @@
   <div class="modal-sheet" onclick="event.stopPropagation()">
     <div class="modal-handle"></div>
     <div class="modal-header">
-      <div class="modal-title" id="modalTitle">Exclusive Booking</div>
+      <div class="modal-title" id="modalTitle">Official Creatrip Booking</div>
       <button class="modal-close" id="bookingCloseBtn" type="button" onclick="closeModal('bookingModal')">✕</button>
     </div>
-    <div class="modal-desc" id="modalBenefit">Enjoy exclusive 15% discount code for verified foreign travelers.</div>
+    <div class="modal-desc" id="modalBenefit">Live price, reviews and availability are shown on the official Creatrip page.</div>
     <div class="promo-box">
       <div class="promo-code-wrap">
-        <div class="promo-label">Your VIP Promo Code</div>
-        <div class="promo-code" id="modalCode">SEOUL15</div>
+        <div class="promo-label">Official Creatrip Link</div>
+        <div class="promo-code" id="modalCode">creatrip.com</div>
       </div>
-      <button class="btn-copy" id="bookingCopyBtn" type="button" onclick="copyPromoCode()">Copy Code</button>
+      <button class="btn-copy" id="bookingCopyBtn" type="button" onclick="copyPromoCode()">Copy Link</button>
     </div>
     <a class="btn-redirect" id="modalRedirectBtn" href="#" target="_blank" rel="noopener noreferrer" style="display: block; text-decoration: none; text-align: center; box-sizing: border-box;" onclick="handleAffiliateClick(event)">Continue to Official Booking Page ↗</a>
   </div>
@@ -2407,12 +2419,12 @@
   <div class="modal-sheet" onclick="event.stopPropagation()">
     <div class="modal-handle"></div>
     <div class="modal-header">
-      <div class="modal-title">🎁 Claim Your 2026 VIP Pass</div>
+      <div class="modal-title">🎁 Seoul Picks</div>
       <button class="modal-close" type="button" onclick="closeModal('vipModal')">✕</button>
     </div>
-    <div class="modal-desc">Get instant access to our secret coupon booklet: 15% OFF Skin Clinics, Skip-The-Line Bakery passes & Free Hanbok accessories!</div>
-    <input type="email" class="modal-input" id="vipEmail" placeholder="Enter your email or WhatsApp number">
-    <button class="btn-redirect" type="button" style="background: var(--primary);" onclick="submitVipPass()">Claim Free VIP Passes Instantly 🚀</button>
+    <div class="modal-desc">Get our new Seoul openings, seasonal picks and Creatrip partner deals in your inbox.</div>
+    <input type="email" class="modal-input" id="vipEmail" placeholder="Enter your email">
+    <button class="btn-redirect" type="button" style="background: var(--primary);" onclick="submitVipPass()">Join the Seoul Picks List 🚀</button>
   </div>
 </div>
 
@@ -2470,79 +2482,75 @@
 
   // Booking Modal Deep Links Mapping (100% Verified Direct Detail Pages)
   const spotDeepLinks = {
-    // 💄 K-Beauty & Clinics (Direct Spot Booking Pages)
-    'Gangnam 15-Step Herbal Scalp & Head Spa': 'https://creatrip.com/en/spot/14972?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Cheongdam Glass Skin & Aqua Facial': 'https://creatrip.com/en/spot/15044?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Garosugil Shurink Universe & Rejuran Skin Booster': 'https://creatrip.com/en/spot/15044?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Hongdae 1:1 K-Personal Color & Glow Makeup': 'https://creatrip.com/en/spot/14164?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Gangnam 1-Day Laser Teeth Whitening Express': 'https://creatrip.com/en/spot/14222?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Seongsu Trendsetter Hair Salon (Cut & Balayage)': 'https://creatrip.com/en/spot/15389?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Cheongdam K-Pop Idol Stage Makeup & Styling': 'https://creatrip.com/en/spot/14578?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Myeongdong Premium Foot Spa & Aroma Massage': 'https://creatrip.com/en/spot/11550?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Hongdae Idol Keratin Lash Lift & Brow Lamination': 'https://creatrip.com/en/spot/15389?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    // 💄 K-Beauty & Clinics
+    "Abijou Clinic Global Myeongdong": 'https://creatrip.com/en/spot/14592?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Medicube Clinic Gangnam": 'https://creatrip.com/en/spot/13573?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Cheongdam Éclat De Clinic": 'https://creatrip.com/en/spot/13214?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "JUNO Hair Myeongdong Street": 'https://creatrip.com/en/spot/13466?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "SOONSIKI Hair Hongdae Flagship": 'https://creatrip.com/en/spot/11093?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "YOU Hair Salon Seongsu": 'https://creatrip.com/en/spot/14730?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "ECOJARDIN Hongdae": 'https://creatrip.com/en/spot/15615?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Pro Beauty Myeongdong": 'https://creatrip.com/en/spot/13493?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Fleur Jardin Myeongdong": 'https://creatrip.com/en/spot/14955?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
 
-    // 🎤 K-Pop & Culture (Direct Spot Booking Pages)
-    'Gyeongbokgung Palace Silk Hanbok (YES Hanbok Rental)': 'https://creatrip.com/en/spot/11006?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Royal Gyeongbokgung Night Walk & Silk Hanbok': 'https://creatrip.com/en/spot/11006?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'K-Pop Stage Idol Profile Shoot & Makeover': 'https://creatrip.com/en/spot/15318?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    '1MILLION Dance Studio Rookie K-Pop Class': 'https://creatrip.com/en/spot/12956?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'SBS The Show / Inkigayo Live Music Show Tour': 'https://creatrip.com/en/spot/14605?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'K-Pop Vocal Recording Session & Audio Master': 'https://creatrip.com/en/spot/15911?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'HYBE & SM Idol Route + Creator Studio': 'https://creatrip.com/en/spot/11985?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Nami Island & Petite France K-Drama Day Tour': 'https://creatrip.com/en/spot/15033?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'K-Pop Vintage Vinyl & Rare Idol Photocard Hunt': 'https://creatrip.com/en/spot/14469?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Traditional Mother-of-Pearl (Najeon) Craft Class': 'https://creatrip.com/en/spot/11550?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    // 🎤 K-Pop & Culture
+    "YES Hanbok Rental Gyeongbokgung": 'https://creatrip.com/en/spot/11006?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Ari Hanbok Gyeongbokgung": 'https://creatrip.com/en/spot/13241?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "SBS Inkigayo Live + Seoul Tour": 'https://creatrip.com/en/spot/14605?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Real K-POP Dance Class Hongdae": 'https://creatrip.com/en/spot/12956?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Sparex Dongdaemun Jjimjilbang": 'https://creatrip.com/en/spot/13261?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "WHIPPED HOUSE Seongsu": 'https://creatrip.com/en/spot/14309?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "ONA Women-only Body Scrub": 'https://creatrip.com/en/spot/15239?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "POCA SPOT Hongdae": 'https://creatrip.com/en/spot/14469?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    ".NOTE Seongsu Perfume Class": 'https://creatrip.com/en/spot/14808?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
 
-    // ☕ Food & Cafes (Direct Spot Booking Pages)
-    'Gwangjang Market Night Foodie Tasting Tour': 'https://creatrip.com/en/spot/15033?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Han River Moonlight Chimaek & Mat Rental': 'https://creatrip.com/en/spot/11559?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Cafe Highwaist Vintage Bakery & Cake (Ikseon-dong)': 'https://creatrip.com/en/spot/13318?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Mapo Jinmi Sikdang Michelin Soy Sauce Crab': 'https://creatrip.com/en/spot/13287?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Mapo Traditional Soy Sauce Crab (Ganjang Gejang)': 'https://creatrip.com/en/spot/13287?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Seongsu Red-Brick Bakery & Popup Walk': 'https://creatrip.com/en/spot/15462?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Myeongdong Kyoja Michelin Dumpling & Kalguksu': 'https://creatrip.com/en/spot/12885?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Hannam Minimalist Roastery & Espresso Terrace': 'https://creatrip.com/en/spot/13812?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Euljiro Hipjiro 336-Hour Wet-Aged K-BBQ': 'https://creatrip.com/en/spot/14184?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Ikseon-dong Hanok Souffle Pancake Alley': 'https://creatrip.com/en/spot/13359?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    // ☕ Food & Dining
+    "Jinmi Sikdang Mapo": 'https://creatrip.com/en/spot/13287?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Tosokchon Samgyetang": 'https://creatrip.com/en/spot/13598?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Kyochon Pilbang Yongsan": 'https://creatrip.com/en/spot/13812?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Cafe Highwaist Ikseon-dong": 'https://creatrip.com/en/spot/13318?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Korea House Kohojae Tea": 'https://creatrip.com/en/spot/15462?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Golden Farm Myeongdong": 'https://creatrip.com/en/spot/13194?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "On6.5 Anguk Dining Bar": 'https://creatrip.com/en/spot/13359?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Haecheonobu Jongno": 'https://creatrip.com/en/spot/14166?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Don Juneun Namja Hongdae": 'https://creatrip.com/en/spot/13902?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
 
-    // 🏮 Stays & Accommodations (Direct Single Stay Detail Pages)
-    'Bukchon Traditional Hanok Private Villa': 'https://creatrip.com/en/stays/65f35256d68cf4126470e9e8?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Seochon Designer Garden Hanok & Open Bath': 'https://creatrip.com/en/stays/65f347d2d68cf412645afa8b?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Hongdae Creator Loft with Sunset Terrace': 'https://creatrip.com/en/stays/65ded4d74e759f00a6ac44d7?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Myeongdong Boutique Hotel & Sunset Bar': 'https://creatrip.com/en/stays/65ded57a4e759f00a6acca0e?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Seongsu Industrial Loft & Vinyl Lounge': 'https://creatrip.com/en/stays/65f34fa9d68cf4126469ebec?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Gangnam Panoramic High-Rise Residence': 'https://creatrip.com/en/stays/664ae65d4928b1fe5fb838c6?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Itaewon Terrace Boutique Stay with Tower View': 'https://creatrip.com/en/stays/65f1d994d747dc82a64fd30d?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Insadong 80-Year Antique Hanok & Tea Garden': 'https://creatrip.com/en/stays/65f350ebd68cf412646cad8b?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    'Yeouido Han River Luxury Front Suite': 'https://creatrip.com/en/stays/65f1d9abd747dc82a65017ec?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl'
+    // 🏮 Stays & Accommodations
+    "Bukchon Yeonwoo Hanok Stay": 'https://creatrip.com/en/stays/65f35256d68cf4126470e9e8?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Bukchon Sohyeondang Hanok Stay": 'https://creatrip.com/en/stays/65f345e0d68cf4126457f4bc?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Seochon Nuhadang Hanok Stay": 'https://creatrip.com/en/stays/65f347d2d68cf412645afa8b?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Jongno Hanok Gung Guesthouse": 'https://creatrip.com/en/stays/65f34bfdd68cf4126461174e?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Mercure Ambassador Seoul Hongdae": 'https://creatrip.com/en/stays/65ded4d74e759f00a6ac44d7?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "The Westin Chosun Seoul": 'https://creatrip.com/en/stays/65ded57a4e759f00a6acca0e?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Mondrian Seoul Itaewon": 'https://creatrip.com/en/stays/65f1d994d747dc82a64fd30d?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Conrad Seoul": 'https://creatrip.com/en/stays/65f1d9abd747dc82a65017ec?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+    "Grand Mercure Imperial Palace Seoul Gangnam": 'https://creatrip.com/en/stays/664ae65d4928b1fe5fb838c6?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl'
   };
 
-  // Booking Modal
-  function openBookingModal(title, code, benefit, redirectUrl) {
+  // Every link out of this site carries the Creatrip partner code.
+  const AFFILIATE_QUERY = 'utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl';
+  function ensureAffiliate(url) {
+    if (!url) return url;
+    if (url.includes('utm_source=AFF-dt27gjl') && url.includes('aff_id=AFF-dt27gjl')) return url;
+    return url + (url.includes('?') ? '&' : '?') + AFFILIATE_QUERY;
+  }
+
+  // Booking Modal — the card hands over the verified Creatrip product page itself.
+  function openBookingModal(title, url, benefit) {
     document.getElementById('modalTitle').innerText = title;
-    document.getElementById('modalCode').innerText = code;
     document.getElementById('modalBenefit').innerText = benefit;
 
-    let target = spotDeepLinks[title.trim()];
-    if (!target) {
-      for (const [k, v] of Object.entries(spotDeepLinks)) {
-        if (title.includes(k) || k.includes(title)) {
-          target = v;
-          break;
-        }
-      }
+    let target = ensureAffiliate(url);
+    if (!target || !/^https:\/\/creatrip\.com\//.test(target)) {
+      target = ensureAffiliate(spotDeepLinks[title.trim()]);
     }
     if (!target) {
-      if (redirectUrl && !redirectUrl.endsWith('/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl')) {
-        target = redirectUrl;
-      } else {
-        const cleanTitle = title.replace(/[()&]/g, ' ').trim().split(/\s+/).slice(0, 3).join(' ');
-        const query = encodeURIComponent(cleanTitle);
-        target = `https://creatrip.com/en/search?search=${query}&tab=ALL&utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl`;
-      }
+      const cleanTitle = title.replace(/[()&]/g, ' ').trim().split(/\s+/).slice(0, 3).join(' ');
+      target = `https://creatrip.com/en/search?search=${encodeURIComponent(cleanTitle)}&tab=ALL&${AFFILIATE_QUERY}`;
     }
 
     currentTargetUrl = target;
+    document.getElementById('modalCode').innerText = target.replace(/^https:\/\//, '').split('?')[0];
     const btn = document.getElementById('modalRedirectBtn');
     if (btn) {
       btn.href = target;
@@ -2572,21 +2580,20 @@
   }
 
   function copyPromoCode() {
-    const codeEl = document.getElementById('modalCode');
-    const code = codeEl ? codeEl.innerText.trim() : 'SEOUL15';
+    const code = currentTargetUrl;
     if (!code) return;
 
     const copyBtn = document.getElementById('bookingCopyBtn');
     if (copyBtn) {
       copyBtn.innerText = 'Copied! ✓';
       setTimeout(() => {
-        copyBtn.innerText = 'Copy Code';
+        copyBtn.innerText = 'Copy Link';
       }, 2000);
     }
 
     if (navigator.clipboard && window.isSecureContext) {
       navigator.clipboard.writeText(code).then(() => {
-        showToast(`Copied ${code} to clipboard! ✨`);
+        showToast('Creatrip link copied — book on the official page ✨');
       }).catch(() => {
         fallbackCopyText(code);
       });
@@ -2607,9 +2614,9 @@
     input.setSelectionRange(0, 99999);
     try {
       document.execCommand('copy');
-      showToast(`Copied ${text} to clipboard! ✨`);
+      showToast('Creatrip link copied — book on the official page ✨');
     } catch (err) {
-      showToast(`Promo Code: ${text}`);
+      showToast('Copy the Creatrip link from the button ↗');
     }
     document.body.removeChild(input);
   }
@@ -2636,10 +2643,10 @@
   function submitVipPass() {
     const email = document.getElementById('vipEmail').value.trim();
     if (!email) {
-      showToast('Please enter your email or WhatsApp number!');
+      showToast('Please enter your email!');
       return;
     }
-    showToast('🎉 VIP Passes sent to your email/phone! Welcome to Seoul!');
+    showToast('Thanks! Follow @seoulinpocket for weekly Seoul picks ✨');
     closeModal('vipModal');
     document.getElementById('vipEmail').value = '';
   }
@@ -2724,11 +2731,11 @@
     if (isChinese) {
       btn.innerText = '🇨🇳 中文 | 🇺🇸 EN';
       heroTitle.innerHTML = '像<em>首尔本地人</em>一样探索首尔';
-      heroDesc.innerText = '精选K-Pop打卡地、弘大圣水美学咖啡馆、江南高端医美水光针与精品韩屋住宿。';
+      heroDesc.innerText = '精选K-Pop打卡地、弘大圣水美学咖啡馆、皮肤科诊所与精品韩屋住宿，每一张卡片都链接到 Creatrip 真实可预订的产品。';
       secTitle.innerText = '本周热门推荐';
       document.getElementById('mapHeaderBadge').innerText = '🚇 4大首尔核心旅游商圈导航';
       document.getElementById('mapHeaderTitle').innerText = '首尔地铁互动美食美妆游玩地图';
-      document.getElementById('mapHeaderDesc').innerText = '在韩国谷歌地图无法正常步行导航！使用我们的首尔地铁商圈指南，探索顶级皮肤科、咖啡馆与K-Pop圣地，一键领取专属85折优惠！';
+      document.getElementById('mapHeaderDesc').innerText = '在韩国谷歌地图无法正常步行导航！使用我们的首尔地铁商圈指南，探索顶级皮肤科、咖啡馆与K-Pop圣地，直接查看实时价格与评价！';
       const mapTag = document.getElementById('cuteMapTag');
       const mapHeading = document.getElementById('cuteMapHeading');
       const mapDesc = document.getElementById('cuteMapDesc');
@@ -2742,11 +2749,11 @@
     } else {
       btn.innerText = '🇺🇸 EN | 🇨🇳 中文';
       heroTitle.innerHTML = 'Explore Seoul Like a <em>True Local</em>';
-      heroDesc.innerText = 'Hand-picked K-Pop spots, aesthetic cafes, medical-grade skin clinics & boutique stays with exclusive foreign tourist perks.';
+      heroDesc.innerText = 'Hand-picked K-Pop spots, aesthetic cafes, skin clinics & boutique stays — every card links to a real, bookable Creatrip product.';
       secTitle.innerText = 'Must-Visit This Week';
       document.getElementById('mapHeaderBadge').innerText = '🚇 4 Essential Seoul Tourist Hubs';
       document.getElementById('mapHeaderTitle').innerText = 'Interactive Seoul Metro Food & Beauty Map';
-      document.getElementById('mapHeaderDesc').innerText = "Google Maps walking navigation doesn't work well in Korea. Use our subway station hub guide to navigate top clinics, cafes & K-pop spots with instant VIP discount passes!";
+      document.getElementById('mapHeaderDesc').innerText = "Google Maps walking navigation doesn't work well in Korea. Use our subway station hub guide to navigate top clinics, cafes & K-pop spots, with live prices and reviews on Creatrip.";
       const mapTag = document.getElementById('cuteMapTag');
       const mapHeading = document.getElementById('cuteMapHeading');
       const mapDesc = document.getElementById('cuteMapDesc');
