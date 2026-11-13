@@ -149,6 +149,9 @@
       gap: 8px;
       overflow-x: auto;
       scrollbar-width: none;
+      position: relative;
+      z-index: 10;
+      -webkit-overflow-scrolling: touch;
     }
     .chips-wrapper::-webkit-scrollbar { display: none; }
     .chip {
@@ -633,6 +636,70 @@
       opacity: 1;
     }
 
+
+    /* Compact Map Banner */
+    .map-banner-compact {
+      margin: 0 20px 16px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #191F28 0%, #2D3748 100%);
+      color: #FFF;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(25, 31, 40, 0.12);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
+      position: relative;
+      z-index: 10;
+    }
+    .map-banner-compact:active {
+      transform: scale(0.98);
+    }
+    .map-banner-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .map-banner-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .map-banner-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+    .map-banner-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .map-banner-sub {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.75);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .map-banner-tag {
+      background: rgba(255, 43, 91, 0.2);
+      color: #FF8FA3;
+      border: 1px solid rgba(255, 43, 91, 0.4);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 4px 8px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      margin-left: 8px;
+    }
+
     /* View Switcher */
     .view-switcher-wrap {
       padding: 0 20px 14px;
@@ -912,19 +979,20 @@
     <div class="chip" onclick="filterCategory('stay', this)">🏮 Hanok & Stays</div>
   </div>
 
-  <!-- View Mode Switcher -->
-  <div class="view-switcher-wrap">
-    <div class="view-switch-btn active" id="btnListView" onclick="switchView('list')">
-      <span>📋 List View (리스트)</span>
+  <!-- Compact Seoul Metro Map Banner -->
+  <div class="map-banner-compact" id="mapCompactBanner" onclick="toggleMetroMap()">
+    <div class="map-banner-left">
+      <span class="map-banner-icon">🚇</span>
+      <div class="map-banner-text">
+        <div class="map-banner-title" id="compactMapTitle">🗺️ Seoul Metro Tourist Map</div>
+        <div class="map-banner-sub" id="compactMapSub">Gangnam • Hongdae • Seongsu • Jongno</div>
+      </div>
     </div>
-    <div class="view-switch-btn" id="btnMapView" onclick="switchView('map')">
-      <span>🗺️ Seoul Metro Map (지하철 핫플 지도)</span>
-      <span class="hot-badge">HOT</span>
-    </div>
+    <span class="map-banner-tag" id="mapToggleTag">View 4 Hubs ▾</span>
   </div>
 
   <!-- Interactive Seoul Metro & Tourist Map View -->
-  <div class="map-container" id="mapView">
+  <div class="map-container" id="mapView" style="display: none;">
     <div class="map-header-card">
       <div class="map-header-badge" id="mapHeaderBadge">🚇 4 Essential Seoul Tourist Hubs</div>
       <div class="map-header-title" id="mapHeaderTitle">Interactive Seoul Metro Food & Beauty Map</div>
@@ -2223,7 +2291,7 @@
       </div>
       <button class="btn-copy" onclick="copyPromoCode()">Copy Code</button>
     </div>
-    <button class="btn-redirect" id="modalRedirectBtn" onclick="redirectAffiliate()">Continue to Official Booking Page ↗</button>
+    <a class="btn-redirect" id="modalRedirectBtn" href="#" target="_blank" rel="noopener noreferrer" style="display: block; text-decoration: none; text-align: center; box-sizing: border-box;" onclick="handleAffiliateClick(event)">Continue to Official Booking Page ↗</a>
   </div>
 </div>
 
@@ -2276,76 +2344,44 @@
     showToast(cat === 'all' ? 'Showing all trending spots ✨' : `Filtered: ${element ? element.innerText : cat}`);
   }
 
+
+  // Compact Metro Map Toggle
+  let isMapOpen = false;
+  function toggleMetroMap() {
+    isMapOpen = !isMapOpen;
+    const mapView = document.getElementById('mapView');
+    const tag = document.getElementById('mapToggleTag');
+    if (isMapOpen) {
+      mapView.style.display = 'block';
+      tag.innerText = 'Close Map ▴';
+      mapView.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } else {
+      mapView.style.display = 'none';
+      tag.innerText = 'View 4 Hubs ▾';
+    }
+  }
+
   // Booking Modal
   function openBookingModal(title, code, benefit, redirectUrl) {
     document.getElementById('modalTitle').innerText = title;
     document.getElementById('modalCode').innerText = code;
     document.getElementById('modalBenefit').innerText = benefit;
-    currentTargetUrl = redirectUrl || 'https://www.klook.com';
+    const finalUrl = redirectUrl || 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl';
+    currentTargetUrl = finalUrl;
+    const btn = document.getElementById('modalRedirectBtn');
+    if (btn) {
+      btn.href = finalUrl;
+    }
     document.getElementById('bookingModal').classList.add('show');
   }
 
-  function copyPromoCode() {
-    const code = document.getElementById('modalCode').innerText;
-    navigator.clipboard.writeText(code).then(() => {
-      showToast(`Copied promo code "${code}"! ✨`);
-    }).catch(() => {
-      showToast(`Code: ${code}`);
-    });
-  }
-
-  function redirectAffiliate() {
-    showToast('Redirecting to partner reservation platform...');
+  function handleAffiliateClick(e) {
+    showToast('Redirecting to partner reservation platform... 🚀');
     setTimeout(() => {
-      window.open(currentTargetUrl, '_blank');
       closeModal('bookingModal');
-    }, 400);
+    }, 600);
   }
 
-  // VIP Pass Modal
-  function openVipModal() {
-    document.getElementById('vipModal').classList.add('show');
-  }
-
-  function submitVipPass() {
-    const email = document.getElementById('vipEmail').value.trim();
-    if (!email) {
-      showToast('Please enter your email or WhatsApp number!');
-      return;
-    }
-    closeModal('vipModal');
-    showToast('🎉 VIP Pass sent! Check your inbox shortly.');
-    document.getElementById('vipEmail').value = '';
-  }
-
-  // Partner Modal
-  function openPartnerModal() {
-    document.getElementById('partnerModal').classList.add('show');
-  }
-
-  function submitPartnerInquiry() {
-    const shop = document.getElementById('partnerShop').value.trim();
-    const contact = document.getElementById('partnerContact').value.trim();
-    if (!shop || !contact) {
-      showToast('Please provide your business name & contact info.');
-      return;
-    }
-    closeModal('partnerModal');
-    showToast('📨 Partnership inquiry submitted! We will contact you soon.');
-    document.getElementById('partnerShop').value = '';
-    document.getElementById('partnerContact').value = '';
-  }
-
-  // Generic Modal Control
-  function closeModal(id) {
-    document.getElementById(id).classList.remove('show');
-  }
-
-  function closeModalOnBackdrop(event, backdrop) {
-    if (event.target === backdrop) {
-      backdrop.classList.remove('show');
-    }
-  }
 
   // Toast Notification
   function showToast(msg) {
