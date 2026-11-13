@@ -69,17 +69,22 @@
       display: flex;
       align-items: center;
       gap: 6px;
+      cursor: pointer;
     }
     .logo span { color: var(--text-main); }
     .header-actions { display: flex; gap: 10px; }
     .lang-badge {
       font-size: 0.75rem;
       font-weight: 700;
-      padding: 5px 10px;
+      padding: 6px 12px;
       background: var(--primary-soft);
       color: var(--primary);
       border-radius: var(--radius-chip);
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s;
     }
+    .lang-badge:active { transform: scale(0.95); }
 
     /* Hero */
     .hero {
@@ -129,6 +134,7 @@
       text-align: center;
       box-shadow: var(--shadow-sm);
       border: 1px solid var(--border);
+      cursor: pointer;
     }
     .stat-pill .icon { font-size: 1.2rem; margin-bottom: 4px; }
     .stat-pill .label { font-size: 0.7rem; font-weight: 700; color: var(--text-main); }
@@ -156,8 +162,10 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      transition: all 0.2s;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
     }
+    .chip:active { transform: scale(0.96); }
     .chip.active {
       background: var(--text-main);
       color: #FFF;
@@ -181,6 +189,7 @@
       font-weight: 600;
       color: var(--primary);
       text-decoration: none;
+      cursor: pointer;
     }
 
     /* Cards List */
@@ -196,10 +205,12 @@
       overflow: hidden;
       box-shadow: var(--shadow-sm);
       border: 1px solid var(--border);
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
     }
-    .spot-card:active { transform: scale(0.99); }
+    .spot-card.hidden {
+      display: none;
+    }
     .spot-image-box {
       width: 100%;
       height: 180px;
@@ -278,7 +289,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      pt: 12px;
       border-top: 1px solid var(--border);
       padding-top: 12px;
     }
@@ -300,10 +310,10 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      transition: opacity 0.2s;
+      transition: all 0.2s;
       text-decoration: none;
     }
-    .btn-book:active { opacity: 0.85; }
+    .btn-book:active { transform: scale(0.95); opacity: 0.9; }
 
     /* Affiliate & Partnership Notice */
     .partner-banner {
@@ -336,7 +346,9 @@
       font-size: 0.75rem;
       font-weight: 700;
       text-decoration: none;
+      cursor: pointer;
     }
+    .partner-banner .btn-contact:active { transform: scale(0.96); }
 
     /* Fixed Bottom Bar */
     .bottom-bar {
@@ -366,6 +378,7 @@
       display: flex;
       align-items: center;
       gap: 4px;
+      cursor: pointer;
     }
     .btn-vip {
       background: var(--text-main);
@@ -375,47 +388,207 @@
       font-size: 0.8rem;
       font-weight: 700;
       text-decoration: none;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-vip:active { transform: scale(0.96); }
+
+    /* Interactive Modal & Backdrop */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .modal-backdrop.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-sheet {
+      width: 100%;
+      max-width: 440px;
+      background: var(--surface);
+      border-radius: 24px 24px 0 0;
+      padding: 24px 20px 32px;
+      box-shadow: var(--shadow-md);
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-backdrop.show .modal-sheet {
+      transform: translateY(0);
+    }
+    .modal-handle {
+      width: 40px;
+      height: 4px;
+      background: #DDE2E7;
+      border-radius: 2px;
+      margin: 0 auto 18px;
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .modal-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    .modal-close {
+      background: #F2F4F6;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--text-sub);
+      cursor: pointer;
+    }
+    .modal-desc {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      line-height: 1.45;
+      margin-bottom: 16px;
+    }
+    .promo-box {
+      background: var(--primary-soft);
+      border: 1.5px dashed var(--primary);
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .promo-code-wrap .promo-label {
+      font-size: 0.68rem;
+      color: var(--primary);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .promo-code-wrap .promo-code {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+    }
+    .btn-copy {
+      background: var(--primary);
+      color: #FFF;
+      border: none;
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-redirect {
+      width: 100%;
+      background: var(--text-main);
+      color: #FFF;
+      border: none;
+      border-radius: var(--radius-btn);
+      padding: 14px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .modal-input {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-btn);
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+      outline: none;
+      background: var(--bg);
+    }
+    .modal-input:focus {
+      border-color: var(--primary);
+      background: #FFF;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-30px);
+      background: rgba(25, 31, 40, 0.92);
+      backdrop-filter: blur(8px);
+      color: #FFF;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 100px;
+      z-index: 300;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    }
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
     }
   </style>
 </head>
 <body>
 
 <div class="mobile-frame">
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">Copied promo code to clipboard! ✨</div>
+
   <!-- Top Navigation -->
   <header>
-    <div class="logo">
+    <div class="logo" onclick="filterCategory('all')">
       <span>SEOUL</span> IN POCKET ✨
     </div>
     <div class="header-actions">
-      <span class="lang-badge">🇺🇸 EN | 🇨🇳 中文</span>
+      <span class="lang-badge" id="langBtn" onclick="toggleLang()">🇺🇸 EN | 🇨🇳 中文</span>
     </div>
   </header>
 
   <!-- Hero Section -->
   <div class="hero">
     <div class="hero-badge">🔥 2026 Trending Seoul Insider Guide</div>
-    <h1>Explore Seoul Like a <em>True Local</em></h1>
-    <p>Hand-picked K-Pop spots, aesthetic cafes, medical-grade skin clinics & boutique stays with exclusive foreign tourist perks.</p>
+    <h1 id="heroTitle">Explore Seoul Like a <em>True Local</em></h1>
+    <p id="heroDesc">Hand-picked K-Pop spots, aesthetic cafes, medical-grade skin clinics & boutique stays with exclusive foreign tourist perks.</p>
   </div>
 
   <!-- Quick Proof / Stats -->
   <div class="quick-stats">
-    <div class="stat-pill">
+    <div class="stat-pill" onclick="showToast('📍 150+ verified local spots in Seoul!')">
       <div class="icon">📍</div>
       <div class="label">150+</div>
       <div class="sub">Curated</div>
     </div>
-    <div class="stat-pill">
+    <div class="stat-pill" onclick="openVipModal()">
       <div class="icon">🎟️</div>
       <div class="label">15% OFF</div>
       <div class="sub">Discounts</div>
     </div>
-    <div class="stat-pill">
+    <div class="stat-pill" onclick="showToast('💬 100% English & Chinese menu support guaranteed!')">
       <div class="icon">💬</div>
       <div class="label">EN Menu</div>
       <div class="sub">Verified</div>
     </div>
-    <div class="stat-pill">
+    <div class="stat-pill" onclick="showToast('✨ Curated from trending TikTok & Xiaohongshu reels!')">
       <div class="icon">✨</div>
       <div class="label">TikTok</div>
       <div class="sub">Viral Hits</div>
@@ -423,23 +596,23 @@
   </div>
 
   <!-- Category Filter Chips -->
-  <div class="chips-wrapper">
-    <div class="chip active">✨ All Trending</div>
-    <div class="chip">🎤 K-Pop Hotspots</div>
-    <div class="chip">💄 K-Beauty Clinics</div>
-    <div class="chip">☕ Seongsu & Cafes</div>
-    <div class="chip">🏮 Hanok & Stays</div>
+  <div class="chips-wrapper" id="chipGroup">
+    <div class="chip active" onclick="filterCategory('all', this)">✨ All Trending</div>
+    <div class="chip" onclick="filterCategory('kbeauty', this)">💄 K-Beauty Clinics</div>
+    <div class="chip" onclick="filterCategory('kpop', this)">🎤 K-Pop Hotspots</div>
+    <div class="chip" onclick="filterCategory('cafe', this)">☕ Seongsu & Cafes</div>
+    <div class="chip" onclick="filterCategory('stay', this)">🏮 Hanok & Stays</div>
   </div>
 
   <!-- Cards List -->
   <div class="section-header">
-    <h2>Must-Visit This Week</h2>
-    <a href="#partner">For Business ↗</a>
+    <h2 id="sectionTitle">Must-Visit This Week</h2>
+    <a href="#partner" onclick="openPartnerModal()">For Business ↗</a>
   </div>
 
-  <div class="cards-container">
-    <!-- Card 1: K-Beauty Skin Clinic (High Commission Target) -->
-    <div class="spot-card">
+  <div class="cards-container" id="cardsList">
+    <!-- Card 1: K-Beauty Skin Clinic -->
+    <div class="spot-card" data-category="kbeauty">
       <div class="spot-image-box">
         <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" alt="K-Beauty Gangnam Clinic">
         <span class="tag-badge">💄 Gangnam Exclusive</span>
@@ -463,13 +636,13 @@
             <span class="price-label">Official Rate</span>
             <span class="price-value">₩180,000 (~$135)</span>
           </div>
-          <a href="#" class="btn-book">Instant Booking →</a>
+          <button class="btn-book" onclick="openBookingModal('Cheongdam Glass Skin & Aqua Facial', 'SEOULSKIN15', '15% Exclusive Discount', 'https://www.creatrip.com')">Instant Booking →</button>
         </div>
       </div>
     </div>
 
     <!-- Card 2: K-Pop Idol Hotspot / Tour -->
-    <div class="spot-card">
+    <div class="spot-card" data-category="kpop">
       <div class="spot-image-box">
         <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=800&q=80" alt="K-Pop Spot">
         <span class="tag-badge">🎤 K-Pop Pilgrimage</span>
@@ -493,13 +666,13 @@
             <span class="price-label">Package Pass</span>
             <span class="price-value">₩45,000 (~$34)</span>
           </div>
-          <a href="#" class="btn-book">Get Pass →</a>
+          <button class="btn-book" onclick="openBookingModal('HYBE & SM Idol Route Pass', 'KPOPVIP', 'Free Limited Photo Card Included', 'https://www.klook.com')">Get Pass →</button>
         </div>
       </div>
     </div>
 
     <!-- Card 3: Seongsu Aesthetic Cafe Route -->
-    <div class="spot-card">
+    <div class="spot-card" data-category="cafe">
       <div class="spot-image-box">
         <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80" alt="Seongsu Cafe">
         <span class="tag-badge">☕ Seongsu Brooklyn</span>
@@ -523,13 +696,13 @@
             <span class="price-label">Coupon Pass</span>
             <span class="price-value">Free with Pass</span>
           </div>
-          <a href="#" class="btn-book">Download Coupon →</a>
+          <button class="btn-book" onclick="openBookingModal('Seongsu Bakery Fast-Pass Coupon', 'SEONGSU10', '10% Discount Coupon', 'https://www.catchtable.net')">Download Coupon →</button>
         </div>
       </div>
     </div>
 
     <!-- Card 4: Hanok Stay & Palace Tour -->
-    <div class="spot-card">
+    <div class="spot-card" data-category="stay">
       <div class="spot-image-box">
         <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80" alt="Bukchon Hanok">
         <span class="tag-badge">🏮 Premium Heritage</span>
@@ -553,7 +726,7 @@
             <span class="price-label">From / Night</span>
             <span class="price-value">₩260,000 (~$195)</span>
           </div>
-          <a href="#" class="btn-book">Check Dates →</a>
+          <button class="btn-book" onclick="openBookingModal('Bukchon Traditional Hanok Villa', 'HANOKVIP', 'Complimentary Tea Ceremony Experience', 'https://www.agoda.com')">Check Dates →</button>
         </div>
       </div>
     </div>
@@ -563,19 +736,194 @@
   <div class="partner-banner" id="partner">
     <h3>🤝 Partner with Seoul in Pocket</h3>
     <p>Are you a Seoul restaurant, aesthetic clinic, or boutique stay looking for global Gen-Z tourists from TikTok, IG & Xiaohongshu?</p>
-    <a href="#" onclick="alert('B2B Listing inquiry form will open shortly! Contact us at Instagram @seoulinpocket'); return false;" class="btn-contact">Submit Listing / B2B Inquiry →</a>
+    <button class="btn-contact" onclick="openPartnerModal()">Submit Listing / B2B Inquiry →</button>
   </div>
 
   <!-- Floating Mobile Bar -->
   <div class="bottom-bar">
     <div class="social-links">
-      <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">Follow on:</span>
-      <a href="#" class="social-btn">📱 TikTok</a>
-      <a href="#" class="social-btn">📕 小红书</a>
+      <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">Follow:</span>
+      <span class="social-btn" onclick="showToast('TikTok @seoulinpocket launching soon!')">📱 TikTok</span>
+      <span class="social-btn" onclick="showToast('小红书 @首尔口袋指南 launching soon!')">📕 小红书</span>
     </div>
-    <a href="#" class="btn-vip">Get VIP Pass ✨</a>
+    <button class="btn-vip" onclick="openVipModal()">Get VIP Pass ✨</button>
   </div>
 </div>
+
+<!-- Booking Modal Sheet -->
+<div class="modal-backdrop" id="bookingModal" onclick="closeModalOnBackdrop(event, this)">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle">Exclusive Booking</div>
+      <button class="modal-close" onclick="closeModal('bookingModal')">✕</button>
+    </div>
+    <div class="modal-desc" id="modalBenefit">Enjoy exclusive 15% discount code for verified foreign travelers.</div>
+    <div class="promo-box">
+      <div class="promo-code-wrap">
+        <div class="promo-label">Your VIP Promo Code</div>
+        <div class="promo-code" id="modalCode">SEOUL15</div>
+      </div>
+      <button class="btn-copy" onclick="copyPromoCode()">Copy Code</button>
+    </div>
+    <button class="btn-redirect" id="modalRedirectBtn" onclick="redirectAffiliate()">Continue to Official Booking Page ↗</button>
+  </div>
+</div>
+
+<!-- VIP Pass Modal Sheet -->
+<div class="modal-backdrop" id="vipModal" onclick="closeModalOnBackdrop(event, this)">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title">🎁 Claim Your 2026 VIP Pass</div>
+      <button class="modal-close" onclick="closeModal('vipModal')">✕</button>
+    </div>
+    <div class="modal-desc">Get instant access to our secret coupon booklet: 15% OFF Skin Clinics, Skip-The-Line Bakery passes & Free Hanbok accessories!</div>
+    <input type="email" class="modal-input" id="vipEmail" placeholder="Enter your email or WhatsApp number">
+    <button class="btn-redirect" style="background: var(--primary);" onclick="submitVipPass()">Claim Free VIP Passes Instantly 🚀</button>
+  </div>
+</div>
+
+<!-- Partner Modal Sheet -->
+<div class="modal-backdrop" id="partnerModal" onclick="closeModalOnBackdrop(event, this)">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title">🤝 Partner with Seoul in Pocket</div>
+      <button class="modal-close" onclick="closeModal('partnerModal')">✕</button>
+    </div>
+    <div class="modal-desc">Connect with 10,000+ monthly inbound tourists from USA, Japan, Singapore & Greater China.</div>
+    <input type="text" class="modal-input" id="partnerShop" placeholder="Shop / Business Name (e.g. 성수 베이커리)">
+    <input type="text" class="modal-input" id="partnerContact" placeholder="KakaoTalk ID / WhatsApp / Email">
+    <button class="btn-redirect" onclick="submitPartnerInquiry()">Submit Partnership Inquiry 📨</button>
+  </div>
+</div>
+
+<script>
+  let currentTargetUrl = 'https://www.creatrip.com';
+
+  // Category Filtering
+  function filterCategory(cat, element) {
+    if (element) {
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      element.classList.add('active');
+    }
+    const cards = document.querySelectorAll('.spot-card');
+    cards.forEach(card => {
+      if (cat === 'all' || card.getAttribute('data-category') === cat) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+    showToast(cat === 'all' ? 'Showing all trending spots ✨' : `Filtered: ${element ? element.innerText : cat}`);
+  }
+
+  // Booking Modal
+  function openBookingModal(title, code, benefit, redirectUrl) {
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalCode').innerText = code;
+    document.getElementById('modalBenefit').innerText = benefit;
+    currentTargetUrl = redirectUrl || 'https://www.klook.com';
+    document.getElementById('bookingModal').classList.add('show');
+  }
+
+  function copyPromoCode() {
+    const code = document.getElementById('modalCode').innerText;
+    navigator.clipboard.writeText(code).then(() => {
+      showToast(`Copied promo code "${code}"! ✨`);
+    }).catch(() => {
+      showToast(`Code: ${code}`);
+    });
+  }
+
+  function redirectAffiliate() {
+    showToast('Redirecting to partner reservation platform...');
+    setTimeout(() => {
+      window.open(currentTargetUrl, '_blank');
+      closeModal('bookingModal');
+    }, 400);
+  }
+
+  // VIP Pass Modal
+  function openVipModal() {
+    document.getElementById('vipModal').classList.add('show');
+  }
+
+  function submitVipPass() {
+    const email = document.getElementById('vipEmail').value.trim();
+    if (!email) {
+      showToast('Please enter your email or WhatsApp number!');
+      return;
+    }
+    closeModal('vipModal');
+    showToast('🎉 VIP Pass sent! Check your inbox shortly.');
+    document.getElementById('vipEmail').value = '';
+  }
+
+  // Partner Modal
+  function openPartnerModal() {
+    document.getElementById('partnerModal').classList.add('show');
+  }
+
+  function submitPartnerInquiry() {
+    const shop = document.getElementById('partnerShop').value.trim();
+    const contact = document.getElementById('partnerContact').value.trim();
+    if (!shop || !contact) {
+      showToast('Please provide your business name & contact info.');
+      return;
+    }
+    closeModal('partnerModal');
+    showToast('📨 Partnership inquiry submitted! We will contact you soon.');
+    document.getElementById('partnerShop').value = '';
+    document.getElementById('partnerContact').value = '';
+  }
+
+  // Generic Modal Control
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('show');
+  }
+
+  function closeModalOnBackdrop(event, backdrop) {
+    if (event.target === backdrop) {
+      backdrop.classList.remove('show');
+    }
+  }
+
+  // Toast Notification
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.innerText = msg;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2400);
+  }
+
+  // Language Toggle
+  let isChinese = false;
+  function toggleLang() {
+    isChinese = !isChinese;
+    const btn = document.getElementById('langBtn');
+    const heroTitle = document.getElementById('heroTitle');
+    const heroDesc = document.getElementById('heroDesc');
+    const secTitle = document.getElementById('sectionTitle');
+
+    if (isChinese) {
+      btn.innerText = '🇨🇳 中文 | 🇺🇸 EN';
+      heroTitle.innerHTML = '像<em>首尔本地人</em>一样探索首尔';
+      heroDesc.innerText = '精选K-Pop打卡地、弘大圣水美学咖啡馆、江南高端医美水光针与精品韩屋住宿。';
+      secTitle.innerText = '本周热门推荐';
+      showToast('已切换至中文模式 🇨🇳');
+    } else {
+      btn.innerText = '🇺🇸 EN | 🇨🇳 中文';
+      heroTitle.innerHTML = 'Explore Seoul Like a <em>True Local</em>';
+      heroDesc.innerText = 'Hand-picked K-Pop spots, aesthetic cafes, medical-grade skin clinics & boutique stays with exclusive foreign tourist perks.';
+      secTitle.innerText = 'Must-Visit This Week';
+      showToast('Switched to English 🇺🇸');
+    }
+  }
+</script>
 
 </body>
 </html>
