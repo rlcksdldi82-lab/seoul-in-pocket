@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>SEOUL IN POCKET ✨ K-Trend & Travel Guide</title>
   <meta name="description" content="Curated K-Pop spots, aesthetic cafes, skin clinics & boutique stays in Seoul. Hand-picked for global travelers.">
   <meta property="og:title" content="SEOUL IN POCKET ✨ K-Trend & Travel Guide">
@@ -536,15 +539,21 @@
     .modal-close {
       background: #F2F4F6;
       border: none;
-      width: 30px;
-      height: 30px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: var(--text-sub);
       cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .modal-close:active {
+      background: #E5E8EB;
+      transform: scale(0.92);
     }
     .modal-desc {
       font-size: 0.85rem;
@@ -579,10 +588,16 @@
       color: #FFF;
       border: none;
       border-radius: 10px;
-      padding: 8px 14px;
-      font-size: 0.75rem;
+      padding: 9px 16px;
+      font-size: 0.78rem;
       font-weight: 700;
       cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-copy:active {
+      opacity: 0.85;
+      transform: scale(0.95);
     }
     .btn-redirect {
       width: 100%;
@@ -2369,11 +2384,11 @@
 
 <!-- Booking Modal Sheet -->
 <div class="modal-backdrop" id="bookingModal" onclick="closeModalOnBackdrop(event, this)">
-  <div class="modal-sheet">
+  <div class="modal-sheet" onclick="event.stopPropagation()">
     <div class="modal-handle"></div>
     <div class="modal-header">
       <div class="modal-title" id="modalTitle">Exclusive Booking</div>
-      <button class="modal-close" onclick="closeModal('bookingModal')">✕</button>
+      <button class="modal-close" id="bookingCloseBtn" type="button" onclick="closeModal('bookingModal')">✕</button>
     </div>
     <div class="modal-desc" id="modalBenefit">Enjoy exclusive 15% discount code for verified foreign travelers.</div>
     <div class="promo-box">
@@ -2381,7 +2396,7 @@
         <div class="promo-label">Your VIP Promo Code</div>
         <div class="promo-code" id="modalCode">SEOUL15</div>
       </div>
-      <button class="btn-copy" onclick="copyPromoCode()">Copy Code</button>
+      <button class="btn-copy" id="bookingCopyBtn" type="button" onclick="copyPromoCode()">Copy Code</button>
     </div>
     <a class="btn-redirect" id="modalRedirectBtn" href="#" target="_blank" rel="noopener noreferrer" style="display: block; text-decoration: none; text-align: center; box-sizing: border-box;" onclick="handleAffiliateClick(event)">Continue to Official Booking Page ↗</a>
   </div>
@@ -2389,30 +2404,30 @@
 
 <!-- VIP Pass Modal Sheet -->
 <div class="modal-backdrop" id="vipModal" onclick="closeModalOnBackdrop(event, this)">
-  <div class="modal-sheet">
+  <div class="modal-sheet" onclick="event.stopPropagation()">
     <div class="modal-handle"></div>
     <div class="modal-header">
       <div class="modal-title">🎁 Claim Your 2026 VIP Pass</div>
-      <button class="modal-close" onclick="closeModal('vipModal')">✕</button>
+      <button class="modal-close" type="button" onclick="closeModal('vipModal')">✕</button>
     </div>
     <div class="modal-desc">Get instant access to our secret coupon booklet: 15% OFF Skin Clinics, Skip-The-Line Bakery passes & Free Hanbok accessories!</div>
     <input type="email" class="modal-input" id="vipEmail" placeholder="Enter your email or WhatsApp number">
-    <button class="btn-redirect" style="background: var(--primary);" onclick="submitVipPass()">Claim Free VIP Passes Instantly 🚀</button>
+    <button class="btn-redirect" type="button" style="background: var(--primary);" onclick="submitVipPass()">Claim Free VIP Passes Instantly 🚀</button>
   </div>
 </div>
 
 <!-- Partner Modal Sheet -->
 <div class="modal-backdrop" id="partnerModal" onclick="closeModalOnBackdrop(event, this)">
-  <div class="modal-sheet">
+  <div class="modal-sheet" onclick="event.stopPropagation()">
     <div class="modal-handle"></div>
     <div class="modal-header">
       <div class="modal-title">🤝 Partner with Seoul in Pocket</div>
-      <button class="modal-close" onclick="closeModal('partnerModal')">✕</button>
+      <button class="modal-close" type="button" onclick="closeModal('partnerModal')">✕</button>
     </div>
     <div class="modal-desc">Connect with 10,000+ monthly inbound tourists from USA, Japan, Singapore & Greater China.</div>
     <input type="text" class="modal-input" id="partnerShop" placeholder="Shop / Business Name (e.g. 성수 베이커리)">
     <input type="text" class="modal-input" id="partnerContact" placeholder="KakaoTalk ID / WhatsApp / Email">
-    <button class="btn-redirect" onclick="submitPartnerInquiry()">Submit Partnership Inquiry 📨</button>
+    <button class="btn-redirect" type="button" onclick="submitPartnerInquiry()">Submit Partnership Inquiry 📨</button>
   </div>
 </div>
 
@@ -2493,6 +2508,14 @@
     const code = codeEl ? codeEl.innerText.trim() : 'SEOUL15';
     if (!code) return;
 
+    const copyBtn = document.getElementById('bookingCopyBtn');
+    if (copyBtn) {
+      copyBtn.innerText = 'Copied! ✓';
+      setTimeout(() => {
+        copyBtn.innerText = 'Copy Code';
+      }, 2000);
+    }
+
     if (navigator.clipboard && window.isSecureContext) {
       navigator.clipboard.writeText(code).then(() => {
         showToast(`Copied ${code} to clipboard! ✨`);
@@ -2505,23 +2528,42 @@
   }
 
   function fallbackCopyText(text) {
-    const textArea = document.createElement('textarea');
-    textArea.value = text;
-    textArea.style.position = 'fixed';
-    textArea.style.left = '-9999px';
-    textArea.style.top = '0';
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
+    const input = document.createElement('input');
+    input.setAttribute('readonly', '');
+    input.style.position = 'fixed';
+    input.style.left = '-9999px';
+    input.style.top = '0';
+    input.value = text;
+    document.body.appendChild(input);
+    input.select();
+    input.setSelectionRange(0, 99999);
     try {
       document.execCommand('copy');
       showToast(`Copied ${text} to clipboard! ✨`);
     } catch (err) {
-      console.error('Fallback copy failed', err);
       showToast(`Promo Code: ${text}`);
     }
-    document.body.removeChild(textArea);
+    document.body.removeChild(input);
   }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const closeBtn = document.getElementById('bookingCloseBtn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => closeModal('bookingModal'));
+      closeBtn.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        closeModal('bookingModal');
+      });
+    }
+    const copyBtn = document.getElementById('bookingCopyBtn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', copyPromoCode);
+      copyBtn.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        copyPromoCode();
+      });
+    }
+  });
 
   function submitVipPass() {
     const email = document.getElementById('vipEmail').value.trim();
