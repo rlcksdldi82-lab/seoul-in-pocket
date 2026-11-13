@@ -490,14 +490,16 @@
       backdrop-filter: blur(4px);
       z-index: 200;
       opacity: 0;
+      visibility: hidden;
       pointer-events: none;
-      transition: opacity 0.25s ease;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
       display: flex;
       align-items: flex-end;
       justify-content: center;
     }
     .modal-backdrop.show {
       opacity: 1;
+      visibility: visible;
       pointer-events: auto;
     }
     .modal-sheet {
