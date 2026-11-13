@@ -2420,35 +2420,7 @@
   }
 
 
-  // View Switcher (Cards List vs Map View)
-  let currentView = 'list';
-  function switchView(mode) {
-    currentView = mode;
-    const btnList = document.getElementById('btnListView');
-    const btnMap = document.getElementById('btnMapView');
-    const cardsList = document.getElementById('cardsList');
-    const mapView = document.getElementById('mapView');
-    const secHeader = document.querySelector('.section-header');
-    const chipGroup = document.getElementById('chipGroup');
 
-    if (mode === 'map') {
-      btnList.classList.remove('active');
-      btnMap.classList.add('active');
-      cardsList.style.display = 'none';
-      secHeader.style.display = 'none';
-      chipGroup.style.display = 'none';
-      mapView.classList.add('show');
-      showToast('🗺️ Switched to Seoul Metro Map View!');
-    } else {
-      btnMap.classList.remove('active');
-      btnList.classList.add('active');
-      cardsList.style.display = 'grid';
-      secHeader.style.display = 'flex';
-      chipGroup.style.display = 'flex';
-      mapView.classList.remove('show');
-      showToast('📋 Switched to List View!');
-    }
-  }
 
   // Language Toggle
   let isChinese = false;
