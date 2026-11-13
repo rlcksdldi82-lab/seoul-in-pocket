@@ -637,6 +637,77 @@
     }
 
 
+    /* Cute Map Download Card */
+    .cute-map-card {
+      margin: 0 20px 16px;
+      padding: 16px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #FFF5F7 0%, #FFF0F4 50%, #F5F3FF 100%);
+      border: 1.5px solid #FFD6E0;
+      box-shadow: 0 4px 16px rgba(255, 107, 139, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .cute-map-header {
+      margin-bottom: 12px;
+    }
+    .cute-map-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #FF2B5B;
+      background: rgba(255, 43, 91, 0.1);
+      padding: 3px 8px;
+      border-radius: 20px;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+    .cute-map-heading {
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: #191F28;
+      letter-spacing: -0.3px;
+      line-height: 1.3;
+    }
+    .cute-map-desc {
+      font-size: 0.74rem;
+      color: #6B7684;
+      margin-top: 3px;
+      line-height: 1.35;
+    }
+    .cute-map-download-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .btn-map-dl {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 11px 8px;
+      border-radius: 12px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      text-align: center;
+      white-space: nowrap;
+    }
+    .btn-map-dl.dl-en {
+      background: #191F28;
+      color: #FFFFFF;
+    }
+    .btn-map-dl.dl-zh {
+      background: #E53E3E;
+      color: #FFFFFF;
+    }
+    .btn-map-dl:active {
+      transform: scale(0.97);
+      opacity: 0.9;
+    }
+
     /* Compact Map Banner */
     .map-banner-compact {
       margin: 0 20px 16px;
@@ -967,6 +1038,25 @@
       <div class="icon">✨</div>
       <div class="label">TikTok</div>
       <div class="sub">Viral Hits</div>
+    </div>
+  </div>
+
+  <!-- Cute Pocket Map Download Card -->
+  <div class="cute-map-card">
+    <div class="cute-map-header">
+      <div class="cute-map-tag" id="cuteMapTag">🌸 FREE 4K GIFT</div>
+      <div class="cute-map-heading" id="cuteMapHeading">Cute Illustrated Seoul Pocket Map</div>
+      <div class="cute-map-desc" id="cuteMapDesc">All viral subway spots, cafes & clinics in one adorable hand-drawn map!</div>
+    </div>
+    <div class="cute-map-download-row">
+      <a href="images/seoul_kawaii_map_en.png" download="Cute_Seoul_Pocket_Map_EN.png" class="btn-map-dl dl-en" onclick="handleMapDownload('en')">
+        <span>🇺🇸</span>
+        <span id="dlBtnEnText">English Map (4K)</span>
+      </a>
+      <a href="images/seoul_kawaii_map_zh.png" download="Cute_Seoul_Pocket_Map_ZH.png" class="btn-map-dl dl-zh" onclick="handleMapDownload('zh')">
+        <span>🇨🇳</span>
+        <span id="dlBtnZhText">中文高清地图 (4K)</span>
+      </a>
     </div>
   </div>
 
@@ -2422,6 +2512,14 @@
 
 
 
+  function handleMapDownload(lang) {
+    if (lang === 'en') {
+      showToast('🌸 English 4K Map downloading...');
+    } else {
+      showToast('🌸 中文版高清地图正在下载...');
+    }
+  }
+
   // Language Toggle
   let isChinese = false;
   function toggleLang() {
@@ -2439,6 +2537,12 @@
       document.getElementById('mapHeaderBadge').innerText = '🚇 4大首尔核心旅游商圈导航';
       document.getElementById('mapHeaderTitle').innerText = '首尔地铁互动美食美妆游玩地图';
       document.getElementById('mapHeaderDesc').innerText = '在韩国谷歌地图无法正常步行导航！使用我们的首尔地铁商圈指南，探索顶级皮肤科、咖啡馆与K-Pop圣地，一键领取专属85折优惠！';
+      const mapTag = document.getElementById('cuteMapTag');
+      const mapHeading = document.getElementById('cuteMapHeading');
+      const mapDesc = document.getElementById('cuteMapDesc');
+      if (mapTag) mapTag.innerText = '🌸 免费4K原图赠品';
+      if (mapHeading) mapHeading.innerText = '超可爱首尔手绘地铁口袋地图';
+      if (mapDesc) mapDesc.innerText = '精选全首尔热门地铁打卡地、弘大圣水美食与江南医美！一键免费保存高清大图。';
       document.querySelectorAll('[data-zh]').forEach(el => {
         el.innerText = el.getAttribute('data-zh');
       });
@@ -2451,6 +2555,12 @@
       document.getElementById('mapHeaderBadge').innerText = '🚇 4 Essential Seoul Tourist Hubs';
       document.getElementById('mapHeaderTitle').innerText = 'Interactive Seoul Metro Food & Beauty Map';
       document.getElementById('mapHeaderDesc').innerText = "Google Maps walking navigation doesn't work well in Korea. Use our subway station hub guide to navigate top clinics, cafes & K-pop spots with instant VIP discount passes!";
+      const mapTag = document.getElementById('cuteMapTag');
+      const mapHeading = document.getElementById('cuteMapHeading');
+      const mapDesc = document.getElementById('cuteMapDesc');
+      if (mapTag) mapTag.innerText = '🌸 FREE 4K GIFT';
+      if (mapHeading) mapHeading.innerText = 'Cute Illustrated Seoul Pocket Map';
+      if (mapDesc) mapDesc.innerText = 'All viral subway spots, cafes & clinics in one adorable hand-drawn map!';
       document.querySelectorAll('[data-en]').forEach(el => {
         el.innerText = el.getAttribute('data-en');
       });
