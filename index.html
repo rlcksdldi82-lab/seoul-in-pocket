@@ -1007,6 +1007,53 @@
       margin-left: 8px;
     }
 
+    /* ── Klook coupon section ── */
+    .coupon-section {
+      margin: 0 16px 18px;
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 16px 16px 14px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .coupon-head { margin-bottom: 12px; }
+    .coupon-head-title { font-size: 0.95rem; font-weight: 800; color: var(--text-main); }
+    .coupon-head-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; line-height: 1.45; }
+    .coupon-list { display: flex; flex-direction: column; gap: 10px; }
+    .coupon-card {
+      background: linear-gradient(135deg, #FFF6F9 0%, #F7F5FF 100%);
+      border: 1px dashed #FFC9D6;
+      border-radius: 14px;
+      padding: 11px 12px;
+    }
+    .coupon-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 8px; }
+    .coupon-disc {
+      font-size: 0.72rem; font-weight: 800; color: #FFF;
+      background: var(--primary); padding: 2px 8px; border-radius: 6px; letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+    .coupon-region { font-size: 0.68rem; font-weight: 700; color: var(--accent); white-space: nowrap; }
+    .coupon-title { font-size: 0.82rem; font-weight: 800; color: var(--text-main); line-height: 1.35; }
+    .coupon-cond { font-size: 0.7rem; color: var(--text-sub); line-height: 1.45; margin-top: 3px; }
+    .coupon-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+    .coupon-valid { font-size: 0.66rem; color: var(--text-muted); font-weight: 700; }
+    .coupon-code-row { display: flex; align-items: center; gap: 6px; }
+    .coupon-code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.72rem; font-weight: 800; color: var(--text-main);
+      background: #FFF; border: 1px solid #FFD9E2; border-radius: 6px; padding: 3px 7px;
+    }
+    .btn-coupon-copy {
+      font-family: inherit; font-size: 0.7rem; font-weight: 800; color: #FFF;
+      background: var(--accent); border: 0; border-radius: 7px; padding: 5px 10px; cursor: pointer;
+    }
+    .btn-coupon-copy:active { opacity: 0.75; }
+    .coupon-note { font-size: 0.66rem; color: var(--text-muted); line-height: 1.5; margin-top: 11px; padding-top: 10px; border-top: 1px solid var(--border); }
+
+    /* ── ticket card extras ── */
+    .price-was { display: block; font-size: 0.65rem; color: var(--text-muted); text-decoration: line-through; font-weight: 600; }
+    .spot-note { font-size: 0.68rem; color: var(--text-muted); line-height: 1.45; margin-top: -6px; margin-bottom: 12px; }
+
   </style>
 </head>
 <body>
@@ -1033,25 +1080,25 @@
   <div class="hero">
     <div class="hero-badge">🔥 2026 Trending Seoul Insider Guide</div>
     <h1 id="heroTitle">Explore Seoul Like a <em>True Local</em></h1>
-    <p id="heroDesc">Hand-picked K-Pop spots, aesthetic cafes, skin clinics & boutique stays — every card links to a real, bookable Creatrip product.</p>
+    <p id="heroDesc">Hand-picked K-Pop spots, aesthetic cafes, skin clinics, boutique stays and Klook tickets & tours — every card links to a real, bookable Creatrip or Klook product.</p>
   </div>
 
   <!-- Quick Proof / Stats -->
   <div class="quick-stats">
-    <div class="stat-pill" onclick="showToast('📍 36 official Creatrip products, hand-picked across 4 Seoul hubs.')">
+    <div class="stat-pill" onclick="showToast('📍 60 real products: 36 Creatrip spots + 24 Klook tickets & tours.')">
       <div class="icon">📍</div>
-      <div class="label">36</div>
-      <div class="sub">Creatrip Spots</div>
+      <div class="label">60</div>
+      <div class="sub">Curated Spots</div>
     </div>
-    <div class="stat-pill" onclick="showToast('⭐ Our 36 picks average ★4.69 across 141,639 reviews on Creatrip.')">
+    <div class="stat-pill" onclick="showToast('⭐ The 36 Creatrip picks average ★4.69 across 141,639 reviews.')">
       <div class="icon">⭐</div>
       <div class="label">★4.7</div>
       <div class="sub">Avg. Rating</div>
     </div>
-    <div class="stat-pill" onclick="showToast('💬 Every booking link opens the English or 中文 page on Creatrip.')">
+    <div class="stat-pill" onclick="showToast('💬 Every booking link opens the English or 中文 page on Creatrip or Klook.')">
       <div class="icon">💬</div>
       <div class="label">EN·中文</div>
-      <div class="sub">Creatrip Pages</div>
+      <div class="sub">Creatrip + Klook</div>
     </div>
     <div class="stat-pill" onclick="showToast('✨ Curated from trending TikTok & Xiaohongshu reels!')">
       <div class="icon">✨</div>
@@ -1081,11 +1128,12 @@
 
   <!-- Category Filter Chips -->
   <div class="chips-wrapper" id="chipGroup">
-    <div class="chip active" onclick="filterCategory('all', this)">✨ All Trending</div>
-    <div class="chip" onclick="filterCategory('kbeauty', this)">💄 K-Beauty Clinics</div>
-    <div class="chip" onclick="filterCategory('kpop', this)">🎤 K-Pop Hotspots</div>
-    <div class="chip" onclick="filterCategory('cafe', this)">☕ Food & Cafes</div>
-    <div class="chip" onclick="filterCategory('stay', this)">🏮 Hanok & Stays</div>
+    <div class="chip active" onclick="filterCategory('all', this)" data-en="✨ All Trending" data-zh="✨ 全部热门">✨ All Trending</div>
+    <div class="chip" onclick="filterCategory('kbeauty', this)" data-en="💄 K-Beauty Clinics" data-zh="💄 韩国医美诊所">💄 K-Beauty Clinics</div>
+    <div class="chip" onclick="filterCategory('kpop', this)" data-en="🎤 K-Pop Hotspots" data-zh="🎤 K-Pop 打卡地">🎤 K-Pop Hotspots</div>
+    <div class="chip" onclick="filterCategory('cafe', this)" data-en="☕ Food & Cafes" data-zh="☕ 美食 & 咖啡">☕ Food & Cafes</div>
+    <div class="chip" onclick="filterCategory('stay', this)" data-en="🏮 Hanok & Stays" data-zh="🏮 韩屋 & 住宿">🏮 Hanok & Stays</div>
+    <div class="chip" onclick="filterCategory('ticket', this)" data-en="🎟️ Tickets & Tours" data-zh="🎟️ 门票 & 一日游">🎟️ Tickets & Tours</div>
   </div>
 
   <!-- Compact Seoul Metro Map Banner -->
@@ -1345,6 +1393,77 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Klook official coupon codes (region-locked, verified 2026-11-16) -->
+  <div class="coupon-section" id="klookCoupons">
+    <div class="coupon-head">
+      <div class="coupon-head-title" data-en="🎟️ Klook Official Coupons" data-zh="🎟️ Klook 官方優惠碼">🎟️ Klook Official Coupons</div>
+      <div class="coupon-head-sub" data-en="Enter the code on the Klook checkout page. Each code only works for the region shown." data-zh="在 Klook 結帳頁輸入優惠碼，各優惠碼僅限標示地區的帳號使用。">Enter the code on the Klook checkout page. Each code only works for the region shown.</div>
+    </div>
+    <div class="coupon-list">
+      <div class="coupon-card">
+        <div class="coupon-top">
+          <span class="coupon-disc">10% OFF</span>
+          <span class="coupon-region">🇭🇰 🇲🇴 HK · MO</span>
+        </div>
+        <div class="coupon-title" data-en="Selected Korea winter products — 10% off" data-zh="指定韓國冬季商品 9 折">Selected Korea winter products — 10% off</div>
+        <div class="coupon-cond" data-en="Spend HK$999+ on selected Korea winter products · max HK$100 off · once per user · excludes WiFi &amp; SIM cards" data-zh="指定韓國冬季商品滿 HK$999 享 9 折，最高折抵 HK$100，每人限用一次（不含 WiFi、SIM 卡）">Spend HK$999+ on selected Korea winter products · max HK$100 off · once per user · excludes WiFi &amp; SIM cards</div>
+        <div class="coupon-foot">
+          <span class="coupon-valid">⏳ ~15 Dec 2026 (GMT+8)</span>
+          <span class="coupon-code-row">
+            <code class="coupon-code">HKKRWINTER10OFF</code>
+            <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('HKKRWINTER10OFF', this)">Copy</button>
+          </span>
+        </div>
+      </div>
+      <div class="coupon-card">
+        <div class="coupon-top">
+          <span class="coupon-disc">10% OFF</span>
+          <span class="coupon-region">🇭🇰 🇲🇴 HK · MO</span>
+        </div>
+        <div class="coupon-title" data-en="Korea products — 10% off" data-zh="韓國商品 9 折">Korea products — 10% off</div>
+        <div class="coupon-cond" data-en="Spend HK$399+ on Korea products · max HK$50 off · once per user · excludes WiFi, SIM, transport passes &amp; train tickets" data-zh="韓國商品滿 HK$399 享 9 折，最高折抵 HK$50，每人限用一次（不含 WiFi、SIM 卡、交通票券、火車票）">Spend HK$399+ on Korea products · max HK$50 off · once per user · excludes WiFi, SIM, transport passes &amp; train tickets</div>
+        <div class="coupon-foot">
+          <span class="coupon-valid">⏳ ~15 Dec 2026 (GMT+8)</span>
+          <span class="coupon-code-row">
+            <code class="coupon-code">HKKRAP10OFF</code>
+            <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('HKKRAP10OFF', this)">Copy</button>
+          </span>
+        </div>
+      </div>
+      <div class="coupon-card">
+        <div class="coupon-top">
+          <span class="coupon-disc">10% OFF</span>
+          <span class="coupon-region">🇻🇳 VN</span>
+        </div>
+        <div class="coupon-title" data-en="South Korea activities &amp; rail — 10% off" data-zh="韓國景點·活動·鐵路 9 折">South Korea activities &amp; rail — 10% off</div>
+        <div class="coupon-cond" data-en="No minimum spend · max VND 300,000 off · needs a VN phone number · almost all attractions, tours, rail &amp; bus tickets" data-zh="無最低消費，最高折抵 30 萬越南盾，需越南手機號，適用韓國景點、活動、行程、火車與巴士票">No minimum spend · max VND 300,000 off · needs a VN phone number · almost all attractions, tours, rail &amp; bus tickets</div>
+        <div class="coupon-foot">
+          <span class="coupon-valid">⏳ ~20 Dec 2026 (GMT+8)</span>
+          <span class="coupon-code-row">
+            <code class="coupon-code">VUIHQAFF2026</code>
+            <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('VUIHQAFF2026', this)">Copy</button>
+          </span>
+        </div>
+      </div>
+      <div class="coupon-card">
+        <div class="coupon-top">
+          <span class="coupon-disc">B1G1</span>
+          <span class="coupon-region">🇹🇭 TH</span>
+        </div>
+        <div class="coupon-title" data-en="AREX Incheon Airport Express — buy 1 get 1" data-zh="AREX 仁川機場快線 買一送一">AREX Incheon Airport Express — buy 1 get 1</div>
+        <div class="coupon-cond" data-en="Incheon Airport → Seoul Station only · trains 05:00–10:00 &amp; 18:00–22:00 KST · once per user · not combinable" data-zh="限仁川機場 → 首爾站方向，05:00–10:00 與 18:00–22:00（韓國時間）班次，每人限用一次，不可與其他優惠併用">Incheon Airport → Seoul Station only · trains 05:00–10:00 &amp; 18:00–22:00 KST · once per user · not combinable</div>
+        <div class="coupon-foot">
+          <span class="coupon-valid">⏳ ~30 Nov 2026 (while stock lasts)</span>
+          <span class="coupon-code-row">
+            <code class="coupon-code">JUSTBOOKAREX</code>
+            <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('JUSTBOOKAREX', this)">Copy</button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="coupon-note" data-en="All four are locked to one region&#x27;s Klook account: HK/MO · VN · TH. The 10% codes exclude WiFi/SIM cards; the HK$399 code also excludes transport passes and train tickets. JUSTBOOKAREX works only on Incheon Airport → Seoul Station trains departing 05:00–10:00 or 18:00–22:00 KST. Prices and coupons were checked on the Klook pages on 16 Nov 2026 and can change by date, option and promo." data-zh="四組優惠碼皆限指定地區帳號：香港/澳門 · 越南 · 泰國。10% 折優惠不含 WiFi/SIM 卡；HK$399 優惠另不含交通票券與火車票。JUSTBOOKAREX 僅適用仁川機場 → 首爾站、05:00–10:00 或 18:00–22:00（韓國時間）出發班次。票價與優惠碼於 2026 年 11 月 16 日在 Klook 頁面確認，實際金額依日期、選項與活動而異。">All four are locked to one region's Klook account: HK/MO · VN · TH. The 10% codes exclude WiFi/SIM cards; the HK$399 code also excludes transport passes and train tickets. JUSTBOOKAREX works only on Incheon Airport → Seoul Station trains departing 05:00–10:00 or 18:00–22:00 KST. Prices and coupons were checked on the Klook pages on 16 Nov 2026 and can change by date, option and promo.</div>
   </div>
 
   <!-- Cards List -->
@@ -2361,6 +2480,686 @@
         </div>
       </div>
     </div>
+    <!-- Klook 1163 · AREX Incheon Airport Express Voucher -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/1163.jpg" alt="AREX Incheon Airport Express Voucher" loading="lazy">
+        <span class="tag-badge">🚄 Airport Train</span>
+        <span class="discount-badge">Klook Deal · −12%</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Incheon Airport → Seoul Station" data-zh="仁川機場 → 首爾站">Incheon Airport → Seoul Station</span>
+          <span>•</span>
+          <span class="rating">★ 4.8 (81.9K reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="AREX Incheon Airport Express Voucher" data-zh="仁川機場快線 AREX 直達列車票">AREX Incheon Airport Express Voucher</h3>
+        <p class="spot-desc" data-en="Non-stop between Incheon Airport and Seoul Station in 43 minutes, departing every 20–40 minutes. Activate the ticket in the Klook app and skip the counter queue." data-zh="仁川機場與首爾站之間直達 43 分鐘，每 20–40 分鐘一班。在 Klook App 直接啟用車票，免去現場排隊換票。">Non-stop between Incheon Airport and Seoul Station in 43 minutes, departing every 20–40 minutes. Activate the ticket in the Klook app and skip the counter queue.</p>
+        <div class="spot-features">
+          <span class="feat-tag">43 Minutes</span><span class="feat-tag">Every 20–40 Min</span><span class="feat-tag">App Activation</span>
+        </div>
+        <p class="spot-note">🇹🇭 JUSTBOOKAREX B1G1 · Incheon Airport → Seoul Station only, 05:00–10:00 &amp; 18:00–22:00, until 30 Nov (while stock lasts)</p>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$8.60</span><span class="price-was">$9.75</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('AREX Incheon Airport Express Voucher', 'https://www.klook.com/en-US/activity/1163-airport-to-seoul-city-center-arex-train-incheon/?aid=143260', 'Incheon Airport → Seoul Station · US$8.60 (was $9.75) · ★4.8 (81.9K reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 121308 · Incheon Airport Limousine Bus Ticket -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/121308.jpg" alt="Incheon Airport Limousine Bus Ticket" loading="lazy">
+        <span class="tag-badge">🚌 Airport Bus</span>
+        <span class="discount-badge">Klook Official</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Incheon Airport → downtown Seoul" data-zh="仁川機場 → 首爾市區">Incheon Airport → downtown Seoul</span>
+          <span>•</span>
+          <span class="rating">★ 4.7 (3.5K reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="Incheon Airport Limousine Bus Ticket" data-zh="仁川機場利木津巴士票">Incheon Airport Limousine Bus Ticket</h3>
+        <p class="spot-desc" data-en="Airport limousine bus from Incheon Airport into downtown Seoul on several routes, with a 30-day validity and one-way or round-trip tickets." data-zh="仁川機場直達首爾市區的利木津巴士，多條路線可選，票券有效期限 30 天，可選單程或來回。">Airport limousine bus from Incheon Airport into downtown Seoul on several routes, with a 30-day validity and one-way or round-trip tickets.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Multiple Routes</span><span class="feat-tag">30-Day Validity</span><span class="feat-tag">One-way or Return</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$12.39</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Incheon Airport Limousine Bus Ticket', 'https://www.klook.com/en-US/activity/121308-incheon-airport-limousine-bus-ticket/?aid=143260', 'Incheon Airport → downtown Seoul · US$12.39 · ★4.7 (3.5K reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 86208 · WOWPASS: Prepaid Card for Cashless Payment in Korea -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/86208.jpg" alt="WOWPASS: Prepaid Card for Cashless Payment in Korea" loading="lazy">
+        <span class="tag-badge">💳 Prepaid Card</span>
+        <span class="discount-badge">Klook Official</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Seoul (machine pick-up)" data-zh="首爾（機台領取）">Seoul (machine pick-up)</span>
+          <span>•</span>
+          <span class="rating">★ 4.6 (4.6K reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="WOWPASS: Prepaid Card for Cashless Payment in Korea" data-zh="WOWPASS 韓國預付卡">WOWPASS: Prepaid Card for Cashless Payment in Korea</h3>
+        <p class="spot-desc" data-en="A prepaid card that pays anywhere in Korea with no fees and works as a T-money transit card too. Top up at a WOWPASS machine in 16 currencies, up to ₩2M a day." data-zh="韓國全境免手續費支付的預付卡，同時可當 T-money 交通卡。可在 WOWPASS 機台以 16 種貨幣加值，每日上限 200 萬韓元。">A prepaid card that pays anywhere in Korea with no fees and works as a T-money transit card too. Top up at a WOWPASS machine in 16 currencies, up to ₩2M a day.</p>
+        <div class="spot-features">
+          <span class="feat-tag">No Fees</span><span class="feat-tag">T-money Transit</span><span class="feat-tag">Non-KR Passports</span>
+        </div>
+        <p class="spot-note">Not available to Korean passport holders.</p>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$4.50</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('WOWPASS: Prepaid Card for Cashless Payment in Korea', 'https://www.klook.com/en-US/activity/86208-wowpass-card-seoul/?aid=143260', 'Seoul (machine pick-up) · US$4.50 · ★4.6 (4.6K reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 109354 · 5G eSIM South Korea | SKT -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/109354.jpg" alt="5G eSIM South Korea | SKT" loading="lazy">
+        <span class="tag-badge">📶 eSIM</span>
+        <span class="discount-badge">Klook Official</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Korea nationwide" data-zh="韓國全境">Korea nationwide</span>
+          <span>•</span>
+          <span class="rating">★ 4.6 (33K+ reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="5G eSIM South Korea | SKT" data-zh="韓國 5G eSIM（SKT）">5G eSIM South Korea | SKT</h3>
+        <p class="spot-desc" data-en="SKT 5G data delivered as a QR-code eSIM: install it before you fly and land connected, with TikTok and AI apps supported and 24/7 help. US$1.25 is the smallest plan — longer or bigger plans cost more." data-zh="SKT 5G 數據 eSIM，掃描 QR 即可安裝，出發前設定、落地即上網，支援 TikTok 與 AI 工具。US$1.25 為最小方案，天數與流量越多價格越高。">SKT 5G data delivered as a QR-code eSIM: install it before you fly and land connected, with TikTok and AI apps supported and 24/7 help. US$1.25 is the smallest plan — longer or bigger plans cost more.</p>
+        <div class="spot-features">
+          <span class="feat-tag">QR Delivery</span><span class="feat-tag">TikTok &amp; AI Apps</span><span class="feat-tag">24/7 Support</span>
+        </div>
+        <p class="spot-note">Cheapest plan, per SIM. Price rises with days and data.</p>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$1.25</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('5G eSIM South Korea | SKT', 'https://www.klook.com/en-US/activity/109354-south-korea-esim-high-speed-internet-qr-code-voucher/?aid=143260', 'Korea nationwide · US$1.25 · ★4.6 (33K+ reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 74595 · Klook Pass Seoul -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/74595.jpg" alt="Klook Pass Seoul" loading="lazy">
+        <span class="tag-badge">🎫 City Pass</span>
+        <span class="discount-badge">Klook Deal · −48%</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Seoul" data-zh="首爾">Seoul</span>
+          <span>•</span>
+          <span class="rating">★ 4.6 (1.4K reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="Klook Pass Seoul" data-zh="Klook 首爾通票">Klook Pass Seoul</h3>
+        <p class="spot-desc" data-en="Choose 2 to 6 Seoul attractions on one pass — Lotte World, Seoul Sky, N Seoul Tower, Han River cruises and more — and pay one discounted price instead of each ticket." data-zh="一張通票任選 2–6 個首爾景點（樂天世界、Seoul Sky、N 首爾塔、漢江遊船等），以優惠價一次結帳。">Choose 2 to 6 Seoul attractions on one pass — Lotte World, Seoul Sky, N Seoul Tower, Han River cruises and more — and pay one discounted price instead of each ticket.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Choose 2–6</span><span class="feat-tag">Instant Confirmation</span><span class="feat-tag">50K+ Booked</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$37.35</span><span class="price-was">$71.85</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Klook Pass Seoul', 'https://www.klook.com/en-US/activity/74595-seoul-pass/?aid=143260', 'Seoul · US$37.35 (was $71.85) · ★4.6 (1.4K reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 251 · Lotte World Ticket in Seoul -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/251.jpg" alt="Lotte World Ticket in Seoul" loading="lazy">
+        <span class="tag-badge">🎡 Theme Park</span>
+        <span class="discount-badge">Klook Official</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Jamsil, Songpa" data-zh="蠶室·松坡">Jamsil, Songpa</span>
+          <span>•</span>
+          <span class="rating">★ 4.6 (33.7K reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="Lotte World Ticket in Seoul" data-zh="首爾樂天世界門票">Lotte World Ticket in Seoul</h3>
+        <p class="spot-desc" data-en="A day ticket to the world&#x27;s largest indoor theme park plus the outdoor Magic Island rides at Jamsil, with an optional Magic Pass fast-track upgrade." data-zh="全球最大室內主題樂園「樂天世界探險世界」加上戶外魔幻島的門票，位於蠶室站旁，可加購 Magic Pass 快速通關。">A day ticket to the world&#x27;s largest indoor theme park plus the outdoor Magic Island rides at Jamsil, with an optional Magic Pass fast-track upgrade.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Indoor + Outdoor</span><span class="feat-tag">Jamsil</span><span class="feat-tag">Magic Pass Option</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$23.95</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Lotte World Ticket in Seoul', 'https://www.klook.com/en-US/activity/251-lotte-world-seoul/?aid=143260', 'Jamsil, Songpa · US$23.95 · ★4.6 (33.7K reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 11244 · Everland Tour with Shuttle: Fast Panda World Entry -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/11244.jpg" alt="Everland Tour with Shuttle: Fast Panda World Entry" loading="lazy">
+        <span class="tag-badge">🐼 Everland Shuttle</span>
+        <span class="discount-badge">Klook Official</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Yongin, Gyeonggi (from Seoul)" data-zh="龍仁·京畿（首爾出發）">Yongin, Gyeonggi (from Seoul)</span>
+          <span>•</span>
+          <span class="rating">★ 4.8 (2.0K reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="Everland Tour with Shuttle: Fast Panda World Entry" data-zh="愛寶樂園接駁巴士一日遊（含熊貓世界快速入場）">Everland Tour with Shuttle: Fast Panda World Entry</h3>
+        <p class="spot-desc" data-en="Klook&#x27;s own coach from Seoul to Everland with your admission ticket handed over on board, so you skip the metro and the ticket queue — English and Mandarin staff plus fast entry to Panda World." data-zh="Klook 專屬巴士由首爾直達愛寶樂園，車上直接領取門票，免去地鐵轉乘與售票口排隊，隨車中英文工作人員，並享熊貓世界快速入場。">Klook&#x27;s own coach from Seoul to Everland with your admission ticket handed over on board, so you skip the metro and the ticket queue — English and Mandarin staff plus fast entry to Panda World.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Round-trip Coach</span><span class="feat-tag">Ticket On Board</span><span class="feat-tag">Fast Panda Entry</span>
+        </div>
+        <p class="spot-note">Park admission + shuttle. Price varies by date and option.</p>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$56.85</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Everland Tour with Shuttle: Fast Panda World Entry', 'https://www.klook.com/en-US/activity/11244-klook-tailored-bus-to-everland-gyeonggi-do-seoul/?aid=143260', 'Yongin, Gyeonggi (from Seoul) · US$56.85 · ★4.8 (2.0K reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 17678 · Seoul Sky Lotte World Tower Ticket -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/17678.jpg" alt="Seoul Sky Lotte World Tower Ticket" loading="lazy">
+        <span class="tag-badge">🏙️ Observatory</span>
+        <span class="discount-badge">Klook Deal · −21%</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Jamsil, Songpa" data-zh="蠶室·松坡">Jamsil, Songpa</span>
+          <span>•</span>
+          <span class="rating">★ 4.8 (7.8K reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="Seoul Sky Lotte World Tower Ticket" data-zh="樂天世界塔 Seoul Sky 觀景台">Seoul Sky Lotte World Tower Ticket</h3>
+        <p class="spot-desc" data-en="The observatory on floors 117–123 of Lotte World Tower, the world&#x27;s 6th tallest building, with the Sky Deck, the Sky Shuttle lift and a glass-floor cafe above Jamsil." data-zh="樂天世界塔 117–123 層觀景台，世界第六高樓，設有 Sky Deck、高速電梯與玻璃地板咖啡廳，俯瞰蠶室。">The observatory on floors 117–123 of Lotte World Tower, the world&#x27;s 6th tallest building, with the Sky Deck, the Sky Shuttle lift and a glass-floor cafe above Jamsil.</p>
+        <div class="spot-features">
+          <span class="feat-tag">117–123F</span><span class="feat-tag">Sky Deck</span><span class="feat-tag">6th Tallest</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$18.40</span><span class="price-was">$23.19</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Seoul Sky Lotte World Tower Ticket', 'https://www.klook.com/en-US/activity/17678-lotte-world-sky-admission/?aid=143260', 'Jamsil, Songpa · US$18.40 (was $23.19) · ★4.8 (7.8K reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 412 · N Seoul Tower Observatory Ticket -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/412.jpg" alt="N Seoul Tower Observatory Ticket" loading="lazy">
+        <span class="tag-badge">🗼 Observatory</span>
+        <span class="discount-badge">Klook Deal · −24%</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Namsan, Jung-gu" data-zh="南山·中區">Namsan, Jung-gu</span>
+          <span>•</span>
+          <span class="rating">★ 4.6 (34.7K reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="N Seoul Tower Observatory Ticket" data-zh="N 首爾塔觀景台門票">N Seoul Tower Observatory Ticket</h3>
+        <p class="spot-desc" data-en="Observatory ticket for N Seoul Tower on Namsan, with the cable-car combo available for the ride up — the deck looks over the whole city." data-zh="南山 N 首爾塔觀景台門票，可加購纜車套票上山，俯瞰首爾市景。">Observatory ticket for N Seoul Tower on Namsan, with the cable-car combo available for the ride up — the deck looks over the whole city.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Namsan</span><span class="feat-tag">Cable Car Combo</span><span class="feat-tag">Night View</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$16.59</span><span class="price-was">$21.69</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('N Seoul Tower Observatory Ticket', 'https://www.klook.com/en-US/activity/412-n-seoul-tower-seoul/?aid=143260', 'Namsan, Jung-gu · US$16.59 (was $21.69) · ★4.6 (34.7K reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 150869 · SEOULDAL: A New Way to Enjoy the Sky of Seoul -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/150869.jpg" alt="SEOULDAL: A New Way to Enjoy the Sky of Seoul" loading="lazy">
+        <span class="tag-badge">🎈 Balloon Ride</span>
+        <span class="discount-badge">Klook Official</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Yeouido, Yeongdeungpo" data-zh="汝矣島·永登浦">Yeouido, Yeongdeungpo</span>
+          <span>•</span>
+          <span class="rating">★ 4.8 (340 reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="SEOULDAL: A New Way to Enjoy the Sky of Seoul" data-zh="SEOULDAL：首爾天空新體驗">SEOULDAL: A New Way to Enjoy the Sky of Seoul</h3>
+        <p class="spot-desc" data-en="A tethered helium balloon over Yeouido Hangang Park: 15 minutes in the air, up to 100–130m, with the Han River and Namsan in view. Day flights or night lights." data-zh="汝矣島漢江公園的繫留式氦氣球，升空 15 分鐘、最高 100–130 公尺，可眺望漢江與南山，白天與夜間皆可搭乘。">A tethered helium balloon over Yeouido Hangang Park: 15 minutes in the air, up to 100–130m, with the Han River and Namsan in view. Day flights or night lights.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Tethered Balloon</span><span class="feat-tag">15 Min Flight</span><span class="feat-tag">Han River View</span>
+        </div>
+        <p class="spot-note">Boarding consent form and safety briefing required before boarding.</p>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$19.65</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('SEOULDAL: A New Way to Enjoy the Sky of Seoul', 'https://www.klook.com/en-US/activity/150869-seouldal-a-new-way-to-enjoy-the-sky-of-seoul/?aid=143260', 'Yeouido, Yeongdeungpo · US$19.65 · ★4.8 (340 reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 2528 · Nami Island All-in-One: Alpaca, Rail Bike, Garden Morning Calm &amp; more -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/2528.jpg" alt="Nami Island All-in-One: Alpaca, Rail Bike, Garden Morning Calm &amp; more" loading="lazy">
+        <span class="tag-badge">🗺️ Day Tour</span>
+        <span class="discount-badge">Klook Official</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="From Seoul" data-zh="首爾出發">From Seoul</span>
+          <span>•</span>
+          <span class="rating">★ 4.8 (35.3K reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="Nami Island All-in-One: Alpaca, Rail Bike, Garden Morning Calm &amp; more" data-zh="南怡島全包行程：草泥馬樂園、鐵道自行車、晨靜樹木園">Nami Island All-in-One: Alpaca, Rail Bike, Garden Morning Calm &amp; more</h3>
+        <p class="spot-desc" data-en="A 9 to 13 hour day trip from Seoul that packs Nami Island, Alpaca World, the Gangchon Rail Bike and the Garden of Morning Calm into one booking." data-zh="首爾出發 9–13 小時一日遊，一次包含南怡島、草泥馬樂園、江村鐵道自行車與晨靜樹木園。">A 9 to 13 hour day trip from Seoul that packs Nami Island, Alpaca World, the Gangchon Rail Bike and the Garden of Morning Calm into one booking.</p>
+        <div class="spot-features">
+          <span class="feat-tag">4 Stops in One</span><span class="feat-tag">9–13 Hours</span><span class="feat-tag">From Seoul</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$37.50</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Nami Island All-in-One: Alpaca, Rail Bike, Garden Morning Calm & more', 'https://www.klook.com/en-US/activity/2528-nami-island-garden-morning-calm-seoul/?aid=143260', 'From Seoul · US$37.50 · ★4.8 (35.3K reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 216 · DMZ Tour; NK Defector Meet up &amp; Suspension Bridge (optional) -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/216.jpg" alt="DMZ Tour; NK Defector Meet up &amp; Suspension Bridge (optional)" loading="lazy">
+        <span class="tag-badge">🗺️ DMZ Tour</span>
+        <span class="discount-badge">Klook Official</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="From Seoul (hotel pick-up option)" data-zh="首爾出發（可選飯店接送）">From Seoul (hotel pick-up option)</span>
+          <span>•</span>
+          <span class="rating">★ 4.9 (49.0K reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="DMZ Tour; NK Defector Meet up &amp; Suspension Bridge (optional)" data-zh="DMZ 非軍事區一日遊：與脫北者會面＆吊橋（選購）">DMZ Tour; NK Defector Meet up &amp; Suspension Bridge (optional)</h3>
+        <p class="spot-desc" data-en="A 5-hour DMZ tour from Seoul with a North Korean defector meet-up and the suspension bridge, plus an optional hotel pick-up." data-zh="首爾出發 5 小時 DMZ 非軍事區之旅，含脫北者座談與吊橋行程，可加購飯店接送。">A 5-hour DMZ tour from Seoul with a North Korean defector meet-up and the suspension bridge, plus an optional hotel pick-up.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Defector Talk</span><span class="feat-tag">5 Hours</span><span class="feat-tag">Hotel Pick-up</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$50.00</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('DMZ Tour; NK Defector Meet up & Suspension Bridge (optional)', 'https://www.klook.com/en-US/activity/216-dmz-tour-gyeonggi-do/?aid=143260', 'From Seoul (hotel pick-up option) · US$50.00 · ★4.9 (49.0K reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 29780 · Gyeongbokgung Palace, Hanok Village, and GwangJang Tour in Seoul -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/29780.jpg" alt="Gyeongbokgung Palace, Hanok Village, and GwangJang Tour in Seoul" loading="lazy">
+        <span class="tag-badge">🗺️ Palace Tour</span>
+        <span class="discount-badge">Klook Official</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Jongno" data-zh="鐘路">Jongno</span>
+          <span>•</span>
+          <span class="rating">★ 4.9 (2.2K reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="Gyeongbokgung Palace, Hanok Village, and GwangJang Tour in Seoul" data-zh="景福宮·北村韓屋村·廣藏市場導覽">Gyeongbokgung Palace, Hanok Village, and GwangJang Tour in Seoul</h3>
+        <p class="spot-desc" data-en="A 4.5 to 5 hour guided walk from Gyeongbokgung Palace through Bukchon Hanok Village to Gwangjang Market — three sights in half a day." data-zh="4.5–5 小時導覽：景福宮 → 北村韓屋村 → 廣藏市場，半天走完三大首爾景點。">A 4.5 to 5 hour guided walk from Gyeongbokgung Palace through Bukchon Hanok Village to Gwangjang Market — three sights in half a day.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Palace + Hanok</span><span class="feat-tag">Gwangjang Market</span><span class="feat-tag">Half Day</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$26.40</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Gyeongbokgung Palace, Hanok Village, and GwangJang Tour in Seoul', 'https://www.klook.com/en-US/activity/29780-northern-seoul-tour/?aid=143260', 'Jongno · US$26.40 · ★4.9 (2.2K reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 90383 · Suwon Hwaseong Fortress/Haengung Palace/Starfield Library Tour -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/90383.jpg" alt="Suwon Hwaseong Fortress/Haengung Palace/Starfield Library Tour" loading="lazy">
+        <span class="tag-badge">🗺️ Day Tour</span>
+        <span class="discount-badge">Klook Official</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="From Seoul" data-zh="首爾出發">From Seoul</span>
+          <span>•</span>
+          <span class="rating">★ 4.9 (965 reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="Suwon Hwaseong Fortress/Haengung Palace/Starfield Library Tour" data-zh="水原華城·行宮·星空圖書館之旅">Suwon Hwaseong Fortress/Haengung Palace/Starfield Library Tour</h3>
+        <p class="spot-desc" data-en="A 10-hour day trip from Seoul to the UNESCO-listed Suwon Hwaseong Fortress, Haenggung Palace and the Starfield Library." data-zh="首爾出發 10 小時一日遊，走訪世界文化遺產水原華城、行宮與星空圖書館。">A 10-hour day trip from Seoul to the UNESCO-listed Suwon Hwaseong Fortress, Haenggung Palace and the Starfield Library.</p>
+        <div class="spot-features">
+          <span class="feat-tag">UNESCO Site</span><span class="feat-tag">10 Hours</span><span class="feat-tag">From Seoul</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$52.79</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Suwon Hwaseong Fortress/Haengung Palace/Starfield Library Tour', 'https://www.klook.com/en-US/activity/90383-unesco-tour-from-seoul/?aid=143260', 'From Seoul · US$52.79 · ★4.9 (965 reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 6874 · Seoul Yeouido Eland Hangang River Cruise -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/6874.jpg" alt="Seoul Yeouido Eland Hangang River Cruise" loading="lazy">
+        <span class="tag-badge">🚢 River Cruise</span>
+        <span class="discount-badge">Klook Official</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Yeouido" data-zh="汝矣島">Yeouido</span>
+          <span>•</span>
+          <span class="rating">★ 4.4 (3.9K reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="Seoul Yeouido Eland Hangang River Cruise" data-zh="汝矣島 依蘭 漢江遊船">Seoul Yeouido Eland Hangang River Cruise</h3>
+        <p class="spot-desc" data-en="A 40 to 70 minute Han River cruise from the Yeouido dock aboard E-Land&#x27;s boat, with daytime and night sailings." data-zh="汝矣島碼頭出發的依蘭漢江遊船，航程 40–70 分鐘，有白天與夜間航班。">A 40 to 70 minute Han River cruise from the Yeouido dock aboard E-Land&#x27;s boat, with daytime and night sailings.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Yeouido Dock</span><span class="feat-tag">40–70 Min</span><span class="feat-tag">Day &amp; Night</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$14.89</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Seoul Yeouido Eland Hangang River Cruise', 'https://www.klook.com/en-US/activity/6874-eland-han-river-cruise-seoul/?aid=143260', 'Yeouido · US$14.89 · ★4.4 (3.9K reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 243 · THE PAINTERS Live Art K-pop Dance Show in Seoul -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/243.jpg" alt="THE PAINTERS Live Art K-pop Dance Show in Seoul" loading="lazy">
+        <span class="tag-badge">🎭 Live Show</span>
+        <span class="discount-badge">Klook Deal · −30%</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Gwanghwamun, Jongno" data-zh="光化門·鐘路">Gwanghwamun, Jongno</span>
+          <span>•</span>
+          <span class="rating">★ 4.8 (2.3K reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="THE PAINTERS Live Art K-pop Dance Show in Seoul" data-zh="THE PAINTERS 塗鴉秀">THE PAINTERS Live Art K-pop Dance Show in Seoul</h3>
+        <p class="spot-desc" data-en="Korea&#x27;s first live drawing show at the Gwanghwamun theatre — four artists paint, dance and flip canvases into finished pictures in a show that needs no language." data-zh="韓國首場現場繪畫秀，光化門劇場演出，四位畫家邊跳邊畫、翻轉畫布完成作品，沒有語言門檻。">Korea&#x27;s first live drawing show at the Gwanghwamun theatre — four artists paint, dance and flip canvases into finished pictures in a show that needs no language.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Live Drawing</span><span class="feat-tag">No Language Needed</span><span class="feat-tag">Gwanghwamun</span>
+        </div>
+        <p class="spot-note">Seat grades differ in price — US$26.19 is the lowest.</p>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$26.19</span><span class="price-was">$37.40</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('THE PAINTERS Live Art K-pop Dance Show in Seoul', 'https://www.klook.com/en-US/activity/243-the-painters-show-seoul/?aid=143260', 'Gwanghwamun, Jongno · US$26.19 (was $37.40) · ★4.8 (2.3K reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 240 · Nanta Show Ticket in Seoul -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/240.jpg" alt="Nanta Show Ticket in Seoul" loading="lazy">
+        <span class="tag-badge">🎭 Non-verbal Show</span>
+        <span class="discount-badge">Klook Deal · −33%</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Myeongdong / Jeongdong" data-zh="明洞·貞洞">Myeongdong / Jeongdong</span>
+          <span>•</span>
+          <span class="rating">★ 4.8 (13.9K reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="Nanta Show Ticket in Seoul" data-zh="首爾亂打秀門票">Nanta Show Ticket in Seoul</h3>
+        <p class="spot-desc" data-en="Korea&#x27;s best-known non-verbal show: four chefs drum on kitchen knives, pots and chopping boards in a kitchen-percussion comedy at the Myeongdong or Jeongdong theatre." data-zh="韓國最具代表性的無語言表演，四位廚師以菜刀、鍋具與砧板敲出廚房打擊樂，明洞／貞洞劇場演出。">Korea&#x27;s best-known non-verbal show: four chefs drum on kitchen knives, pots and chopping boards in a kitchen-percussion comedy at the Myeongdong or Jeongdong theatre.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Non-verbal</span><span class="feat-tag">200K+ Booked</span><span class="feat-tag">Family Friendly</span>
+        </div>
+        <p class="spot-note">Seat grades differ in price — US$25.19 is the lowest.</p>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$25.19</span><span class="price-was">$37.40</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Nanta Show Ticket in Seoul', 'https://www.klook.com/en-US/activity/240-nanta-show-seoul/?aid=143260', 'Myeongdong / Jeongdong · US$25.19 (was $37.40) · ★4.8 (13.9K reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 78871 · Show Musical Wild Wild Ticket in Seoul -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/78871.jpg" alt="Show Musical Wild Wild Ticket in Seoul" loading="lazy">
+        <span class="tag-badge">🎭 Dance Musical</span>
+        <span class="discount-badge">Klook Deal · −40%</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Mareunnae-ro, Jung-gu" data-zh="中區 馬蓮路">Mareunnae-ro, Jung-gu</span>
+          <span>•</span>
+          <span class="rating">★ 4.8 (2.4K reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="Show Musical Wild Wild Ticket in Seoul" data-zh="首爾《WILD WILD》猛男音樂劇">Show Musical Wild Wild Ticket in Seoul</h3>
+        <p class="spot-desc" data-en="A powerful dance musical staged on Mareunnae-ro in Jung-gu — women only, 19 and over." data-zh="中區馬蓮路演出的猛男舞蹈音樂劇，限 19 歲以上女性入場。">A powerful dance musical staged on Mareunnae-ro in Jung-gu — women only, 19 and over.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Women Only 19+</span><span class="feat-tag">Dance Musical</span><span class="feat-tag">Jung-gu</span>
+        </div>
+        <p class="spot-note">Women only, 19+. Bring ID.</p>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$24.95</span><span class="price-was">$41.59</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Show Musical Wild Wild Ticket in Seoul', 'https://www.klook.com/en-US/activity/78871-show-wildwilddream-seoul/?aid=143260', 'Mareunnae-ro, Jung-gu · US$24.95 (was $41.59) · ★4.8 (2.4K reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 133623 · SHOW MUSICAL TOUCH FIVE Ticket in Seoul -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/133623.jpg" alt="SHOW MUSICAL TOUCH FIVE Ticket in Seoul" loading="lazy">
+        <span class="tag-badge">🎭 Dance Musical</span>
+        <span class="discount-badge">Klook Deal · −12%</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Seoul" data-zh="首爾">Seoul</span>
+          <span>•</span>
+          <span class="rating">★ 4.8 (627 reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="SHOW MUSICAL TOUCH FIVE Ticket in Seoul" data-zh="首爾《TOUCH FIVE》音樂劇">SHOW MUSICAL TOUCH FIVE Ticket in Seoul</h3>
+        <p class="spot-desc" data-en="A themed dance-and-art musical at the TOUCH FIVE theatre with large-scale stage production and effects." data-zh="TOUCH FIVE 劇場的主題舞蹈音樂劇，結合大型舞台製作與特效。">A themed dance-and-art musical at the TOUCH FIVE theatre with large-scale stage production and effects.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Dance Musical</span><span class="feat-tag">Stage Effects</span><span class="feat-tag">20K+ Booked</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$52.69</span><span class="price-was">$59.85</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('SHOW MUSICAL TOUCH FIVE Ticket in Seoul', 'https://www.klook.com/en-US/activity/133623-show-musical-touch-five-ticket-in-seoul/?aid=143260', 'Seoul · US$52.69 (was $59.85) · ★4.8 (627 reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 202905 · Best Kpop Dance Class in Myeongdong, Seoul (Photos &amp; Video) -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/202905.jpg" alt="Best Kpop Dance Class in Myeongdong, Seoul (Photos &amp; Video)" loading="lazy">
+        <span class="tag-badge">💃 Dance Class</span>
+        <span class="discount-badge">Klook Official</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Myeongdong" data-zh="明洞">Myeongdong</span>
+          <span>•</span>
+          <span class="rating">★ 5.0 (59 reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="Best Kpop Dance Class in Myeongdong, Seoul (Photos &amp; Video)" data-zh="明洞 K-POP 舞蹈課（含照片·影片）">Best Kpop Dance Class in Myeongdong, Seoul (Photos &amp; Video)</h3>
+        <p class="spot-desc" data-en="A 90-minute K-pop dance class in Myeongdong taught by a working choreographer, with photos and video of your final run-through included." data-zh="明洞 90 分鐘 K-POP 舞蹈課，由現役編舞老師授課，含成果拍攝的照片與影片。">A 90-minute K-pop dance class in Myeongdong taught by a working choreographer, with photos and video of your final run-through included.</p>
+        <div class="spot-features">
+          <span class="feat-tag">90 Minutes</span><span class="feat-tag">Photos &amp; Video</span><span class="feat-tag">Myeongdong</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$49.39</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Best Kpop Dance Class in Myeongdong, Seoul (Photos & Video)', 'https://www.klook.com/en-US/activity/202905-best-kpop-dance-class-in-myeongdong-seoul-photos-video/?aid=143260', 'Myeongdong · US$49.39 · ★5.0 (59 reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 7955 · Hanbok Rental with Korean Hairstyling at Hanboknam Gyeongbokgung -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/7955.jpg" alt="Hanbok Rental with Korean Hairstyling at Hanboknam Gyeongbokgung" loading="lazy">
+        <span class="tag-badge">👘 Hanbok</span>
+        <span class="discount-badge">Klook Official</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Gyeongbokgung, Jongno" data-zh="景福宮·鐘路">Gyeongbokgung, Jongno</span>
+          <span>•</span>
+          <span class="rating">★ 4.5 (13.1K reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="Hanbok Rental with Korean Hairstyling at Hanboknam Gyeongbokgung" data-zh="韓服男 景福宮店 韓服租借 &amp; 韓式髮型">Hanbok Rental with Korean Hairstyling at Hanboknam Gyeongbokgung</h3>
+        <p class="spot-desc" data-en="Hanbok rental at Hanboknam&#x27;s Gyeongbokgung store with Korean hairstyling included, a short walk from the palace gate." data-zh="韓服男景福宮店韓服租借，含韓式髮型設計，步行即可到景福宮。">Hanbok rental at Hanboknam&#x27;s Gyeongbokgung store with Korean hairstyling included, a short walk from the palace gate.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Hairstyling Included</span><span class="feat-tag">Near Palace</span><span class="feat-tag">200K+ Booked</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$6.39</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Hanbok Rental with Korean Hairstyling at Hanboknam Gyeongbokgung', 'https://www.klook.com/en-US/activity/7955-hanbok-rental-voucher-at-kyeonbokgung-store-in-hanboknam-seoul/?aid=143260', 'Gyeongbokgung, Jongno · US$6.39 · ★4.5 (13.1K reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 209180 · Seoul: Chopstick Making Workshop -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/209180.jpg" alt="Seoul: Chopstick Making Workshop" loading="lazy">
+        <span class="tag-badge">🧵 Craft Class</span>
+        <span class="discount-badge">Klook Official</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Seoul" data-zh="首爾">Seoul</span>
+          <span>•</span>
+          <span class="rating">★ 4.9 (220 reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="Seoul: Chopstick Making Workshop" data-zh="首爾 手作木筷體驗">Seoul: Chopstick Making Workshop</h3>
+        <p class="spot-desc" data-en="Shape and finish your own pair of wooden chopsticks by hand at a Seoul workshop — a small keepsake you make yourself." data-zh="在首爾工作室親手削製一雙木筷，完成後可帶回家作紀念。">Shape and finish your own pair of wooden chopsticks by hand at a Seoul workshop — a small keepsake you make yourself.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Handmade</span><span class="feat-tag">Take-home Keepsake</span><span class="feat-tag">Small Group</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$15.70</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Seoul: Chopstick Making Workshop', 'https://www.klook.com/en-US/activity/209180-seoul-handmade-wooden-chopsticks-making-experience/?aid=143260', 'Seoul · US$15.70 · ★4.9 (220 reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 198763 · Seoul: Traditional Mother-of-Pearl Craft Workshop in Myeongdong -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/198763.jpg" alt="Seoul: Traditional Mother-of-Pearl Craft Workshop in Myeongdong" loading="lazy">
+        <span class="tag-badge">🧵 Craft Class</span>
+        <span class="discount-badge">Klook Official</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Myeongdong" data-zh="明洞">Myeongdong</span>
+          <span>•</span>
+          <span class="rating">★ 5.0 (90 reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="Seoul: Traditional Mother-of-Pearl Craft Workshop in Myeongdong" data-zh="明洞 螺鈿工藝體驗">Seoul: Traditional Mother-of-Pearl Craft Workshop in Myeongdong</h3>
+        <p class="spot-desc" data-en="Make a mother-of-pearl (najeon) accessory in Myeongdong with an English or Japanese speaking teacher, in 1 to 1.5 hours." data-zh="明洞螺鈿工藝體驗，以英語或日語授課，1–1.5 小時完成一件螺鈿飾品。">Make a mother-of-pearl (najeon) accessory in Myeongdong with an English or Japanese speaking teacher, in 1 to 1.5 hours.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Najeon Craft</span><span class="feat-tag">English·Japanese</span><span class="feat-tag">1–1.5 Hours</span>
+        </div>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">US$40.35</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Seoul: Traditional Mother-of-Pearl Craft Workshop in Myeongdong', 'https://www.klook.com/en-US/activity/198763-record-your-own-seoul-mother-of-pearl-hanbok-acc-photo-shoot/?aid=143260', 'Myeongdong · US$40.35 · ★5.0 (90 reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klook 149745 · Sauna, Body Scrub &amp; Massage Experience in Seoul -->
+    <div class="spot-card" data-category="ticket">
+      <div class="spot-image-box">
+        <img src="images/klook/149745.jpg" alt="Sauna, Body Scrub &amp; Massage Experience in Seoul" loading="lazy">
+        <span class="tag-badge">♨️ Sauna & Scrub</span>
+        <span class="discount-badge">Klook Official</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-meta">
+          <span class="area" data-en="Seoul (Miso Sauna)" data-zh="首爾（美素三溫暖）">Seoul (Miso Sauna)</span>
+          <span>•</span>
+          <span class="rating">★ 4.8 (86 reviews)</span>
+        </div>
+        <h3 class="spot-title" data-en="Sauna, Body Scrub &amp; Massage Experience in Seoul" data-zh="首爾 三溫暖·搓澡·按摩體驗">Sauna, Body Scrub &amp; Massage Experience in Seoul</h3>
+        <p class="spot-desc" data-en="Miso Sauna&#x27;s salt-and-ocher sauna with a body scrub by technicians of 20+ years, plus skincare, cupping and massage courses to choose from." data-zh="美素三溫暖的鹽房與黃土房，由 20 年以上經驗的搓澡師傅服務，另有護膚、拔罐與按摩課程可選。">Miso Sauna&#x27;s salt-and-ocher sauna with a body scrub by technicians of 20+ years, plus skincare, cupping and massage courses to choose from.</p>
+        <div class="spot-features">
+          <span class="feat-tag">Salt &amp; Ocher</span><span class="feat-tag">20+ Year Scrub</span><span class="feat-tag">Course Options</span>
+        </div>
+        <p class="spot-note">Listed in KRW on Klook; USD price is not shown.</p>
+        <div class="spot-action">
+          <div class="price-wrap">
+            <span class="price-label">From</span>
+            <span class="price-value">₩70,000</span>
+          </div>
+          <button class="btn-book" onclick="openBookingModal('Sauna, Body Scrub & Massage Experience in Seoul', 'https://www.klook.com/en-US/activity/149745-sauna-body-scrub-massage-experience-in-seoul/?aid=143260', 'Seoul (Miso Sauna) · ₩70,000 · ★4.8 (86 reviews)')">Get Ticket →</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- B2B Merchant Partnership Card -->
@@ -2373,13 +3172,13 @@
   <!-- Modern Footer -->
   <footer class="site-footer">
     <div class="footer-logo">SEOUL IN POCKET ✨</div>
-    <p class="footer-desc">Hand-picked Seoul spots with official Creatrip booking links for global travelers.</p>
+    <p class="footer-desc">Hand-picked Seoul spots and tickets with official Creatrip & Klook booking links for global travelers.</p>
     <div class="footer-social-box">
       <a href="https://www.instagram.com/seoulinpocket/" target="_blank" class="footer-social-link">📸 Instagram @seoulinpocket</a>
       <a href="https://www.tiktok.com/@seoulinpocket" target="_blank" class="footer-social-link">🎵 TikTok @seoulinpocket</a>
       <a href="http://xhslink.com/o/4tE6Fn1NFnE" target="_blank" class="footer-social-link">📕 小红书 @首尔口袋指南</a>
     </div>
-    <p class="footer-copy">© 2026 Seoul in Pocket. Official Partner of Creatrip.</p>
+    <p class="footer-copy">© 2026 Seoul in Pocket. Affiliate partner of Creatrip & Klook.</p>
   </footer>
 
   <!-- Floating Mobile Bar -->
@@ -2399,13 +3198,13 @@
   <div class="modal-sheet" onclick="event.stopPropagation()">
     <div class="modal-handle"></div>
     <div class="modal-header">
-      <div class="modal-title" id="modalTitle">Official Creatrip Booking</div>
+      <div class="modal-title" id="modalTitle">Official Booking</div>
       <button class="modal-close" id="bookingCloseBtn" type="button" onclick="closeModal('bookingModal')">✕</button>
     </div>
     <div class="modal-desc" id="modalBenefit">Live price, reviews and availability are shown on the official Creatrip page.</div>
     <div class="promo-box">
       <div class="promo-code-wrap">
-        <div class="promo-label">Official Creatrip Link</div>
+        <div class="promo-label" id="modalPartnerLabel">Official Creatrip Product Page</div>
         <div class="promo-code" id="modalCode">creatrip.com</div>
       </div>
       <button class="btn-copy" id="bookingCopyBtn" type="button" onclick="copyPromoCode()">Copy Link</button>
@@ -2524,29 +3323,86 @@
     "The Westin Chosun Seoul": 'https://creatrip.com/en/stays/65ded57a4e759f00a6acca0e?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
     "Mondrian Seoul Itaewon": 'https://creatrip.com/en/stays/65f1d994d747dc82a64fd30d?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
     "Conrad Seoul": 'https://creatrip.com/en/stays/65f1d9abd747dc82a65017ec?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
-    "Grand Mercure Imperial Palace Seoul Gangnam": 'https://creatrip.com/en/stays/664ae65d4928b1fe5fb838c6?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl'
+    "Grand Mercure Imperial Palace Seoul Gangnam": 'https://creatrip.com/en/stays/664ae65d4928b1fe5fb838c6?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
+
+    // 🎟️ Klook Tickets & Tours (24 verified products, aid=143260)
+    "AREX Incheon Airport Express Voucher": 'https://www.klook.com/en-US/activity/1163-airport-to-seoul-city-center-arex-train-incheon/?aid=143260',
+    "Incheon Airport Limousine Bus Ticket": 'https://www.klook.com/en-US/activity/121308-incheon-airport-limousine-bus-ticket/?aid=143260',
+    "WOWPASS: Prepaid Card for Cashless Payment in Korea": 'https://www.klook.com/en-US/activity/86208-wowpass-card-seoul/?aid=143260',
+    "5G eSIM South Korea | SKT": 'https://www.klook.com/en-US/activity/109354-south-korea-esim-high-speed-internet-qr-code-voucher/?aid=143260',
+    "Klook Pass Seoul": 'https://www.klook.com/en-US/activity/74595-seoul-pass/?aid=143260',
+    "Lotte World Ticket in Seoul": 'https://www.klook.com/en-US/activity/251-lotte-world-seoul/?aid=143260',
+    "Everland Tour with Shuttle: Fast Panda World Entry": 'https://www.klook.com/en-US/activity/11244-klook-tailored-bus-to-everland-gyeonggi-do-seoul/?aid=143260',
+    "Seoul Sky Lotte World Tower Ticket": 'https://www.klook.com/en-US/activity/17678-lotte-world-sky-admission/?aid=143260',
+    "N Seoul Tower Observatory Ticket": 'https://www.klook.com/en-US/activity/412-n-seoul-tower-seoul/?aid=143260',
+    "SEOULDAL: A New Way to Enjoy the Sky of Seoul": 'https://www.klook.com/en-US/activity/150869-seouldal-a-new-way-to-enjoy-the-sky-of-seoul/?aid=143260',
+    "Nami Island All-in-One: Alpaca, Rail Bike, Garden Morning Calm & more": 'https://www.klook.com/en-US/activity/2528-nami-island-garden-morning-calm-seoul/?aid=143260',
+    "DMZ Tour; NK Defector Meet up & Suspension Bridge (optional)": 'https://www.klook.com/en-US/activity/216-dmz-tour-gyeonggi-do/?aid=143260',
+    "Gyeongbokgung Palace, Hanok Village, and GwangJang Tour in Seoul": 'https://www.klook.com/en-US/activity/29780-northern-seoul-tour/?aid=143260',
+    "Suwon Hwaseong Fortress/Haengung Palace/Starfield Library Tour": 'https://www.klook.com/en-US/activity/90383-unesco-tour-from-seoul/?aid=143260',
+    "Seoul Yeouido Eland Hangang River Cruise": 'https://www.klook.com/en-US/activity/6874-eland-han-river-cruise-seoul/?aid=143260',
+    "THE PAINTERS Live Art K-pop Dance Show in Seoul": 'https://www.klook.com/en-US/activity/243-the-painters-show-seoul/?aid=143260',
+    "Nanta Show Ticket in Seoul": 'https://www.klook.com/en-US/activity/240-nanta-show-seoul/?aid=143260',
+    "Show Musical Wild Wild Ticket in Seoul": 'https://www.klook.com/en-US/activity/78871-show-wildwilddream-seoul/?aid=143260',
+    "SHOW MUSICAL TOUCH FIVE Ticket in Seoul": 'https://www.klook.com/en-US/activity/133623-show-musical-touch-five-ticket-in-seoul/?aid=143260',
+    "Best Kpop Dance Class in Myeongdong, Seoul (Photos & Video)": 'https://www.klook.com/en-US/activity/202905-best-kpop-dance-class-in-myeongdong-seoul-photos-video/?aid=143260',
+    "Hanbok Rental with Korean Hairstyling at Hanboknam Gyeongbokgung": 'https://www.klook.com/en-US/activity/7955-hanbok-rental-voucher-at-kyeonbokgung-store-in-hanboknam-seoul/?aid=143260',
+    "Seoul: Chopstick Making Workshop": 'https://www.klook.com/en-US/activity/209180-seoul-handmade-wooden-chopsticks-making-experience/?aid=143260',
+    "Seoul: Traditional Mother-of-Pearl Craft Workshop in Myeongdong": 'https://www.klook.com/en-US/activity/198763-record-your-own-seoul-mother-of-pearl-hanbok-acc-photo-shoot/?aid=143260',
+    "Sauna, Body Scrub & Massage Experience in Seoul": 'https://www.klook.com/en-US/activity/149745-sauna-body-scrub-massage-experience-in-seoul/?aid=143260'
   };
 
-  // Every link out of this site carries the Creatrip partner code.
+  // Every link out of this site carries the partner code of the shop it opens.
   const AFFILIATE_QUERY = 'utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl';
+  const KLOOK_AID = '143260';
+
+  function isCreatripUrl(url) {
+    return typeof url === 'string' && /^https:\/\/(www\.)?creatrip\.com\//.test(url);
+  }
+  function isKlookUrl(url) {
+    return typeof url === 'string' && /^https:\/\/(www\.)?klook\.com\//.test(url);
+  }
+
   function ensureAffiliate(url) {
     if (!url) return url;
     if (url.includes('utm_source=AFF-dt27gjl') && url.includes('aff_id=AFF-dt27gjl')) return url;
     return url + (url.includes('?') ? '&' : '?') + AFFILIATE_QUERY;
   }
 
-  // Booking Modal — the card hands over the verified Creatrip product page itself.
+  function ensureKlookAffiliate(url) {
+    if (!url) return url;
+    if (/[?&]aid=/.test(url)) return url;
+    return url + (url.includes('?') ? '&' : '?') + 'aid=' + KLOOK_AID;
+  }
+
+  // Booking Modal — the card hands over the verified product page itself (Creatrip or Klook).
   function openBookingModal(title, url, benefit) {
     document.getElementById('modalTitle').innerText = title;
     document.getElementById('modalBenefit').innerText = benefit;
 
-    let target = ensureAffiliate(url);
-    if (!target || !/^https:\/\/creatrip\.com\//.test(target)) {
-      target = ensureAffiliate(spotDeepLinks[title.trim()]);
-    }
-    if (!target) {
+    const mapped = spotDeepLinks[title.trim()];
+    const candidate = url || mapped || '';
+    let target = candidate;
+    let partner = 'creatrip';
+
+    if (isKlookUrl(candidate)) {
+      target = ensureKlookAffiliate(candidate);
+      partner = 'klook';
+    } else if (isCreatripUrl(candidate)) {
+      target = ensureAffiliate(candidate);
+    } else if (isKlookUrl(mapped)) {
+      target = ensureKlookAffiliate(mapped);
+      partner = 'klook';
+    } else if (isCreatripUrl(mapped)) {
+      target = ensureAffiliate(mapped);
+    } else {
       const cleanTitle = title.replace(/[()&]/g, ' ').trim().split(/\s+/).slice(0, 3).join(' ');
       target = `https://creatrip.com/en/search?search=${encodeURIComponent(cleanTitle)}&tab=ALL&${AFFILIATE_QUERY}`;
+    }
+
+    const label = document.getElementById('modalPartnerLabel');
+    if (label) {
+      label.innerText = partner === 'klook' ? 'Official Klook Product Page' : 'Official Creatrip Product Page';
     }
 
     currentTargetUrl = target;
@@ -2593,7 +3449,7 @@
 
     if (navigator.clipboard && window.isSecureContext) {
       navigator.clipboard.writeText(code).then(() => {
-        showToast('Creatrip link copied — book on the official page ✨');
+        showToast(isKlookUrl(code) ? 'Klook link copied — book on the official page ✨' : 'Creatrip link copied — book on the official page ✨');
       }).catch(() => {
         fallbackCopyText(code);
       });
@@ -2602,7 +3458,29 @@
     }
   }
 
-  function fallbackCopyText(text) {
+  // Coupon code copy (Klook coupon section).
+  function copyCouponCode(code, btn) {
+    const done = () => {
+      if (btn) {
+        const old = btn.innerText;
+        btn.innerText = 'Copied ✓';
+        setTimeout(() => { btn.innerText = old; }, 1800);
+      }
+      showToast('Coupon ' + code + ' copied — paste it at Klook checkout');
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(code).then(done).catch(() => {
+        if (copyPlainText(code)) { done(); } else { showToast('Copy the code: ' + code); }
+      });
+    } else if (copyPlainText(code)) {
+      done();
+    } else {
+      showToast('Copy the code: ' + code);
+    }
+  }
+
+  // Copies without a toast so the caller can announce the result itself.
+  function copyPlainText(text) {
     const input = document.createElement('input');
     input.setAttribute('readonly', '');
     input.style.position = 'fixed';
@@ -2612,13 +3490,23 @@
     document.body.appendChild(input);
     input.select();
     input.setSelectionRange(0, 99999);
+    let ok = false;
     try {
-      document.execCommand('copy');
-      showToast('Creatrip link copied — book on the official page ✨');
+      ok = document.execCommand('copy');
     } catch (err) {
-      showToast('Copy the Creatrip link from the button ↗');
+      ok = false;
     }
     document.body.removeChild(input);
+    return ok;
+  }
+
+  function fallbackCopyText(text) {
+    const isKlook = isKlookUrl(text);
+    if (copyPlainText(text)) {
+      showToast(isKlook ? 'Klook link copied — book on the official page ✨' : 'Creatrip link copied — book on the official page ✨');
+    } else {
+      showToast(isKlook ? 'Copy the Klook link from the button ↗' : 'Copy the Creatrip link from the button ↗');
+    }
   }
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -2731,7 +3619,7 @@
     if (isChinese) {
       btn.innerText = '🇨🇳 中文 | 🇺🇸 EN';
       heroTitle.innerHTML = '像<em>首尔本地人</em>一样探索首尔';
-      heroDesc.innerText = '精选K-Pop打卡地、弘大圣水美学咖啡馆、皮肤科诊所与精品韩屋住宿，每一张卡片都链接到 Creatrip 真实可预订的产品。';
+      heroDesc.innerText = '精选K-Pop打卡地、弘大圣水美学咖啡馆、皮肤科诊所、精品韩屋住宿，以及 Klook 门票与一日游 —— 每一张卡片都链接到 Creatrip / Klook 真实可预订的产品。';
       secTitle.innerText = '本周热门推荐';
       document.getElementById('mapHeaderBadge').innerText = '🚇 4大首尔核心旅游商圈导航';
       document.getElementById('mapHeaderTitle').innerText = '首尔地铁互动美食美妆游玩地图';
@@ -2749,7 +3637,7 @@
     } else {
       btn.innerText = '🇺🇸 EN | 🇨🇳 中文';
       heroTitle.innerHTML = 'Explore Seoul Like a <em>True Local</em>';
-      heroDesc.innerText = 'Hand-picked K-Pop spots, aesthetic cafes, skin clinics & boutique stays — every card links to a real, bookable Creatrip product.';
+      heroDesc.innerText = 'Hand-picked K-Pop spots, aesthetic cafes, skin clinics, boutique stays and Klook tickets & tours — every card links to a real, bookable Creatrip or Klook product.';
       secTitle.innerText = 'Must-Visit This Week';
       document.getElementById('mapHeaderBadge').innerText = '🚇 4 Essential Seoul Tourist Hubs';
       document.getElementById('mapHeaderTitle').innerText = 'Interactive Seoul Metro Food & Beauty Map';
