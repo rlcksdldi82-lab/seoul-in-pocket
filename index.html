@@ -1007,19 +1007,94 @@
       margin-left: 8px;
     }
 
-    /* ── Klook coupon section ── */
+    /* ── Klook coupon section (collapsible, collapsed by default) ── */
     .coupon-section {
       margin: 0 16px 18px;
       background: var(--surface);
       border-radius: var(--radius-card);
-      padding: 16px 16px 14px;
+      padding: 8px 16px;
       border: 1px solid var(--border);
       box-shadow: var(--shadow-sm);
     }
-    .coupon-head { margin-bottom: 12px; }
-    .coupon-head-title { font-size: 0.95rem; font-weight: 800; color: var(--text-main); }
-    .coupon-head-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; line-height: 1.45; }
+    /* The whole header bar is the toggle button. */
+    .coupon-head {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      width: 100%;
+      min-height: 44px;
+      padding: 0;
+      border: 0;
+      background: none;
+      font-family: inherit;
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .coupon-head:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 10px; }
+    .coupon-head-title {
+      flex: 0 0 auto;
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      color: var(--text-main);
+      white-space: nowrap;
+    }
+    .coupon-head-badge {
+      flex: 0 1 auto;
+      min-width: 0;
+      padding: 2px 7px;
+      border-radius: 100px;
+      background: rgba(255, 78, 120, 0.09);
+      border: 1px solid rgba(255, 78, 120, 0.16);
+      font-size: 0.56rem;
+      font-weight: 800;
+      color: var(--primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .coupon-badge-full { display: none; }
+    .coupon-badge-short { display: inline; }
+    @media (min-width: 460px) {
+      .coupon-badge-full { display: inline; }
+      .coupon-badge-short { display: none; }
+    }
+    @media (max-width: 339px) {
+      .coupon-head-badge { display: none; }
+    }
+    .coupon-head-toggle {
+      margin-left: auto;
+      flex: 0 0 auto;
+      padding: 6px 9px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.64rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .coupon-head:active .coupon-head-toggle { opacity: 0.7; }
+    /* Collapsible body: height is animated from script so long text stays intact. */
+    .coupon-body {
+      max-height: 0;
+      overflow: hidden;
+      visibility: hidden;
+      opacity: 0;
+      transition: max-height 0.35s ease, opacity 0.25s ease, visibility 0s linear 0.35s;
+    }
+    .coupon-section.is-open .coupon-body {
+      visibility: visible;
+      opacity: 1;
+      transition: max-height 0.35s ease, opacity 0.3s ease 0.05s, visibility 0s linear 0s;
+    }
+    .coupon-body-inner { padding: 10px 0 6px; }
+    .coupon-head-sub { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.45; }
     .coupon-list { display: flex; flex-direction: column; gap: 10px; }
+    @media (prefers-reduced-motion: reduce) {
+      .coupon-body, .coupon-section.is-open .coupon-body { transition: none; }
+    }
     .coupon-card {
       background: linear-gradient(135deg, #FFF6F9 0%, #F7F5FF 100%);
       border: 1px dashed #FFC9D6;
@@ -1397,73 +1472,82 @@
 
   <!-- Klook official coupon codes (region-locked, verified 2026-11-16) -->
   <div class="coupon-section" id="klookCoupons">
-    <div class="coupon-head">
-      <div class="coupon-head-title" data-en="🎟️ Klook Official Coupons" data-zh="🎟️ Klook 官方優惠碼">🎟️ Klook Official Coupons</div>
-      <div class="coupon-head-sub" data-en="Enter the code on the Klook checkout page. Each code only works for the region shown." data-zh="在 Klook 結帳頁輸入優惠碼，各優惠碼僅限標示地區的帳號使用。">Enter the code on the Klook checkout page. Each code only works for the region shown.</div>
+    <button type="button" class="coupon-head" id="klookCouponToggle" aria-expanded="false" aria-controls="klookCouponBody" aria-label="Show Klook coupon codes" onclick="toggleCouponSection()">
+      <span class="coupon-head-title" data-en="🎟️ Klook Official Coupons" data-zh="🎟️ Klook 官方優惠碼">🎟️ Klook Official Coupons</span>
+      <span class="coupon-head-badge">
+        <span class="coupon-badge-full" data-en="4 codes · HK/MO · VN · TH" data-zh="4组优惠码 · 港澳/越南/泰国">4 codes · HK/MO · VN · TH</span>
+        <span class="coupon-badge-short" data-en="4 codes" data-zh="4组优惠码">4 codes</span>
+      </span>
+      <span class="coupon-head-toggle" id="klookCouponToggleLabel" data-en="Show ▼" data-zh="展开 ▼">Show ▼</span>
+    </button>
+    <div class="coupon-body" id="klookCouponBody" aria-hidden="true">
+      <div class="coupon-body-inner">
+        <div class="coupon-head-sub" data-en="Enter the code on the Klook checkout page. Each code only works for the region shown." data-zh="在 Klook 結帳頁輸入優惠碼，各優惠碼僅限標示地區的帳號使用。">Enter the code on the Klook checkout page. Each code only works for the region shown.</div>
+        <div class="coupon-list">
+          <div class="coupon-card">
+            <div class="coupon-top">
+              <span class="coupon-disc">10% OFF</span>
+              <span class="coupon-region">🇭🇰 🇲🇴 HK · MO</span>
+            </div>
+            <div class="coupon-title" data-en="Selected Korea winter products — 10% off" data-zh="指定韓國冬季商品 9 折">Selected Korea winter products — 10% off</div>
+            <div class="coupon-cond" data-en="Spend HK$999+ on selected Korea winter products · max HK$100 off · once per user · excludes WiFi &amp; SIM cards" data-zh="指定韓國冬季商品滿 HK$999 享 9 折，最高折抵 HK$100，每人限用一次（不含 WiFi、SIM 卡）">Spend HK$999+ on selected Korea winter products · max HK$100 off · once per user · excludes WiFi &amp; SIM cards</div>
+            <div class="coupon-foot">
+              <span class="coupon-valid">⏳ ~15 Dec 2026 (GMT+8)</span>
+              <span class="coupon-code-row">
+                <code class="coupon-code">HKKRWINTER10OFF</code>
+                <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('HKKRWINTER10OFF', this)">Copy</button>
+              </span>
+            </div>
+          </div>
+          <div class="coupon-card">
+            <div class="coupon-top">
+              <span class="coupon-disc">10% OFF</span>
+              <span class="coupon-region">🇭🇰 🇲🇴 HK · MO</span>
+            </div>
+            <div class="coupon-title" data-en="Korea products — 10% off" data-zh="韓國商品 9 折">Korea products — 10% off</div>
+            <div class="coupon-cond" data-en="Spend HK$399+ on Korea products · max HK$50 off · once per user · excludes WiFi, SIM, transport passes &amp; train tickets" data-zh="韓國商品滿 HK$399 享 9 折，最高折抵 HK$50，每人限用一次（不含 WiFi、SIM 卡、交通票券、火車票）">Spend HK$399+ on Korea products · max HK$50 off · once per user · excludes WiFi, SIM, transport passes &amp; train tickets</div>
+            <div class="coupon-foot">
+              <span class="coupon-valid">⏳ ~15 Dec 2026 (GMT+8)</span>
+              <span class="coupon-code-row">
+                <code class="coupon-code">HKKRAP10OFF</code>
+                <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('HKKRAP10OFF', this)">Copy</button>
+              </span>
+            </div>
+          </div>
+          <div class="coupon-card">
+            <div class="coupon-top">
+              <span class="coupon-disc">10% OFF</span>
+              <span class="coupon-region">🇻🇳 VN</span>
+            </div>
+            <div class="coupon-title" data-en="South Korea activities &amp; rail — 10% off" data-zh="韓國景點·活動·鐵路 9 折">South Korea activities &amp; rail — 10% off</div>
+            <div class="coupon-cond" data-en="No minimum spend · max VND 300,000 off · needs a VN phone number · almost all attractions, tours, rail &amp; bus tickets" data-zh="無最低消費，最高折抵 30 萬越南盾，需越南手機號，適用韓國景點、活動、行程、火車與巴士票">No minimum spend · max VND 300,000 off · needs a VN phone number · almost all attractions, tours, rail &amp; bus tickets</div>
+            <div class="coupon-foot">
+              <span class="coupon-valid">⏳ ~20 Dec 2026 (GMT+8)</span>
+              <span class="coupon-code-row">
+                <code class="coupon-code">VUIHQAFF2026</code>
+                <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('VUIHQAFF2026', this)">Copy</button>
+              </span>
+            </div>
+          </div>
+          <div class="coupon-card">
+            <div class="coupon-top">
+              <span class="coupon-disc">B1G1</span>
+              <span class="coupon-region">🇹🇭 TH</span>
+            </div>
+            <div class="coupon-title" data-en="AREX Incheon Airport Express — buy 1 get 1" data-zh="AREX 仁川機場快線 買一送一">AREX Incheon Airport Express — buy 1 get 1</div>
+            <div class="coupon-cond" data-en="Incheon Airport → Seoul Station only · trains 05:00–10:00 &amp; 18:00–22:00 KST · once per user · not combinable" data-zh="限仁川機場 → 首爾站方向，05:00–10:00 與 18:00–22:00（韓國時間）班次，每人限用一次，不可與其他優惠併用">Incheon Airport → Seoul Station only · trains 05:00–10:00 &amp; 18:00–22:00 KST · once per user · not combinable</div>
+            <div class="coupon-foot">
+              <span class="coupon-valid">⏳ ~30 Nov 2026 (while stock lasts)</span>
+              <span class="coupon-code-row">
+                <code class="coupon-code">JUSTBOOKAREX</code>
+                <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('JUSTBOOKAREX', this)">Copy</button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="coupon-note" data-en="All four are locked to one region&#x27;s Klook account: HK/MO · VN · TH. The 10% codes exclude WiFi/SIM cards; the HK$399 code also excludes transport passes and train tickets. JUSTBOOKAREX works only on Incheon Airport → Seoul Station trains departing 05:00–10:00 or 18:00–22:00 KST. Prices and coupons were checked on the Klook pages on 16 Nov 2026 and can change by date, option and promo." data-zh="四組優惠碼皆限指定地區帳號：香港/澳門 · 越南 · 泰國。10% 折優惠不含 WiFi/SIM 卡；HK$399 優惠另不含交通票券與火車票。JUSTBOOKAREX 僅適用仁川機場 → 首爾站、05:00–10:00 或 18:00–22:00（韓國時間）出發班次。票價與優惠碼於 2026 年 11 月 16 日在 Klook 頁面確認，實際金額依日期、選項與活動而異。">All four are locked to one region's Klook account: HK/MO · VN · TH. The 10% codes exclude WiFi/SIM cards; the HK$399 code also excludes transport passes and train tickets. JUSTBOOKAREX works only on Incheon Airport → Seoul Station trains departing 05:00–10:00 or 18:00–22:00 KST. Prices and coupons were checked on the Klook pages on 16 Nov 2026 and can change by date, option and promo.</div>
+      </div>
     </div>
-    <div class="coupon-list">
-      <div class="coupon-card">
-        <div class="coupon-top">
-          <span class="coupon-disc">10% OFF</span>
-          <span class="coupon-region">🇭🇰 🇲🇴 HK · MO</span>
-        </div>
-        <div class="coupon-title" data-en="Selected Korea winter products — 10% off" data-zh="指定韓國冬季商品 9 折">Selected Korea winter products — 10% off</div>
-        <div class="coupon-cond" data-en="Spend HK$999+ on selected Korea winter products · max HK$100 off · once per user · excludes WiFi &amp; SIM cards" data-zh="指定韓國冬季商品滿 HK$999 享 9 折，最高折抵 HK$100，每人限用一次（不含 WiFi、SIM 卡）">Spend HK$999+ on selected Korea winter products · max HK$100 off · once per user · excludes WiFi &amp; SIM cards</div>
-        <div class="coupon-foot">
-          <span class="coupon-valid">⏳ ~15 Dec 2026 (GMT+8)</span>
-          <span class="coupon-code-row">
-            <code class="coupon-code">HKKRWINTER10OFF</code>
-            <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('HKKRWINTER10OFF', this)">Copy</button>
-          </span>
-        </div>
-      </div>
-      <div class="coupon-card">
-        <div class="coupon-top">
-          <span class="coupon-disc">10% OFF</span>
-          <span class="coupon-region">🇭🇰 🇲🇴 HK · MO</span>
-        </div>
-        <div class="coupon-title" data-en="Korea products — 10% off" data-zh="韓國商品 9 折">Korea products — 10% off</div>
-        <div class="coupon-cond" data-en="Spend HK$399+ on Korea products · max HK$50 off · once per user · excludes WiFi, SIM, transport passes &amp; train tickets" data-zh="韓國商品滿 HK$399 享 9 折，最高折抵 HK$50，每人限用一次（不含 WiFi、SIM 卡、交通票券、火車票）">Spend HK$399+ on Korea products · max HK$50 off · once per user · excludes WiFi, SIM, transport passes &amp; train tickets</div>
-        <div class="coupon-foot">
-          <span class="coupon-valid">⏳ ~15 Dec 2026 (GMT+8)</span>
-          <span class="coupon-code-row">
-            <code class="coupon-code">HKKRAP10OFF</code>
-            <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('HKKRAP10OFF', this)">Copy</button>
-          </span>
-        </div>
-      </div>
-      <div class="coupon-card">
-        <div class="coupon-top">
-          <span class="coupon-disc">10% OFF</span>
-          <span class="coupon-region">🇻🇳 VN</span>
-        </div>
-        <div class="coupon-title" data-en="South Korea activities &amp; rail — 10% off" data-zh="韓國景點·活動·鐵路 9 折">South Korea activities &amp; rail — 10% off</div>
-        <div class="coupon-cond" data-en="No minimum spend · max VND 300,000 off · needs a VN phone number · almost all attractions, tours, rail &amp; bus tickets" data-zh="無最低消費，最高折抵 30 萬越南盾，需越南手機號，適用韓國景點、活動、行程、火車與巴士票">No minimum spend · max VND 300,000 off · needs a VN phone number · almost all attractions, tours, rail &amp; bus tickets</div>
-        <div class="coupon-foot">
-          <span class="coupon-valid">⏳ ~20 Dec 2026 (GMT+8)</span>
-          <span class="coupon-code-row">
-            <code class="coupon-code">VUIHQAFF2026</code>
-            <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('VUIHQAFF2026', this)">Copy</button>
-          </span>
-        </div>
-      </div>
-      <div class="coupon-card">
-        <div class="coupon-top">
-          <span class="coupon-disc">B1G1</span>
-          <span class="coupon-region">🇹🇭 TH</span>
-        </div>
-        <div class="coupon-title" data-en="AREX Incheon Airport Express — buy 1 get 1" data-zh="AREX 仁川機場快線 買一送一">AREX Incheon Airport Express — buy 1 get 1</div>
-        <div class="coupon-cond" data-en="Incheon Airport → Seoul Station only · trains 05:00–10:00 &amp; 18:00–22:00 KST · once per user · not combinable" data-zh="限仁川機場 → 首爾站方向，05:00–10:00 與 18:00–22:00（韓國時間）班次，每人限用一次，不可與其他優惠併用">Incheon Airport → Seoul Station only · trains 05:00–10:00 &amp; 18:00–22:00 KST · once per user · not combinable</div>
-        <div class="coupon-foot">
-          <span class="coupon-valid">⏳ ~30 Nov 2026 (while stock lasts)</span>
-          <span class="coupon-code-row">
-            <code class="coupon-code">JUSTBOOKAREX</code>
-            <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('JUSTBOOKAREX', this)">Copy</button>
-          </span>
-        </div>
-      </div>
-    </div>
-    <div class="coupon-note" data-en="All four are locked to one region&#x27;s Klook account: HK/MO · VN · TH. The 10% codes exclude WiFi/SIM cards; the HK$399 code also excludes transport passes and train tickets. JUSTBOOKAREX works only on Incheon Airport → Seoul Station trains departing 05:00–10:00 or 18:00–22:00 KST. Prices and coupons were checked on the Klook pages on 16 Nov 2026 and can change by date, option and promo." data-zh="四組優惠碼皆限指定地區帳號：香港/澳門 · 越南 · 泰國。10% 折優惠不含 WiFi/SIM 卡；HK$399 優惠另不含交通票券與火車票。JUSTBOOKAREX 僅適用仁川機場 → 首爾站、05:00–10:00 或 18:00–22:00（韓國時間）出發班次。票價與優惠碼於 2026 年 11 月 16 日在 Klook 頁面確認，實際金額依日期、選項與活動而異。">All four are locked to one region's Klook account: HK/MO · VN · TH. The 10% codes exclude WiFi/SIM cards; the HK$399 code also excludes transport passes and train tickets. JUSTBOOKAREX works only on Incheon Airport → Seoul Station trains departing 05:00–10:00 or 18:00–22:00 KST. Prices and coupons were checked on the Klook pages on 16 Nov 2026 and can change by date, option and promo.</div>
   </div>
 
   <!-- Cards List -->
@@ -3479,6 +3563,75 @@
     }
   }
 
+  // Klook coupon section: collapsed by default; the header bar toggles it.
+  let couponBodyTimer = null;
+
+  function updateCouponToggle(open) {
+    const head = document.getElementById('klookCouponToggle');
+    const label = document.getElementById('klookCouponToggleLabel');
+    const body = document.getElementById('klookCouponBody');
+    const state = !!open;
+
+    if (head) {
+      head.setAttribute('aria-expanded', state ? 'true' : 'false');
+      head.setAttribute('aria-label', isChinese
+        ? (state ? '收起 Klook 優惠碼' : '展開 Klook 優惠碼')
+        : (state ? 'Hide Klook coupon codes' : 'Show Klook coupon codes'));
+    }
+    if (label) {
+      const en = state ? 'Hide ▲' : 'Show ▼';
+      const zh = state ? '收起 ▲' : '展开 ▼';
+      label.setAttribute('data-en', en);
+      label.setAttribute('data-zh', zh);
+      label.innerText = isChinese ? zh : en;
+    }
+    if (body) {
+      body.setAttribute('aria-hidden', state ? 'false' : 'true');
+    }
+  }
+
+  function setCouponOpen(open) {
+    const section = document.getElementById('klookCoupons');
+    const body = document.getElementById('klookCouponBody');
+    if (!section || !body) return;
+
+    const state = !!open;
+    if (couponBodyTimer) {
+      clearTimeout(couponBodyTimer);
+      couponBodyTimer = null;
+    }
+    updateCouponToggle(state);
+
+    if (state) {
+      section.classList.add('is-open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+      couponBodyTimer = setTimeout(() => {
+        if (section.classList.contains('is-open')) body.style.maxHeight = 'none';
+      }, 380);
+      return;
+    }
+
+    // Collapse: pin the current height first so the transition can run,
+    // including when the open state was left at max-height: none.
+    const shown = Math.round(body.getBoundingClientRect().height);
+    section.classList.remove('is-open');
+    if (shown > 0) {
+      body.style.transition = 'none';
+      body.style.maxHeight = shown + 'px';
+      void body.offsetHeight;
+      body.style.transition = '';
+      body.style.maxHeight = '0px';
+    } else {
+      body.style.maxHeight = '0px';
+    }
+  }
+
+  function toggleCouponSection() {
+    const head = document.getElementById('klookCouponToggle');
+    if (!head) return;
+    setCouponOpen(head.getAttribute('aria-expanded') !== 'true');
+  }
+
   // Copies without a toast so the caller can announce the result itself.
   function copyPlainText(text) {
     const input = document.createElement('input');
@@ -3653,7 +3806,11 @@
       });
       showToast('Switched to English 🇺🇸');
     }
+    // Keep the coupon toggle label in step with the language and its open state.
+    updateCouponToggle(document.getElementById('klookCouponToggle').getAttribute('aria-expanded') === 'true');
   }
+
+  updateCouponToggle(false);
 </script>
 
 </body>
