@@ -6,1024 +6,846 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>SEOUL IN POCKET ✨ K-Trend & Travel Guide</title>
-  <meta name="description" content="Curated K-Pop spots, aesthetic cafes, skin clinics & boutique stays in Seoul. Hand-picked for global travelers.">
-  <meta property="og:title" content="SEOUL IN POCKET ✨ K-Trend & Travel Guide">
-  <meta property="og:description" content="Curated K-Pop spots, aesthetic cafes, skin clinics & boutique stays in Seoul. Hand-picked for global travelers.">
+  <title>Seoul in Pocket — a local&rsquo;s guide to Seoul</title>
+  <meta name="description" content="Sixty places in Seoul worth the trip — clinics, salons, hanok stays and Klook tickets, each one linking to the real Creatrip or Klook page.">
+  <meta property="og:title" content="Seoul in Pocket — a local&rsquo;s guide to Seoul">
+  <meta property="og:description" content="Sixty places in Seoul worth the trip — clinics, salons, hanok stays and Klook tickets, each one linking to the real Creatrip or Klook page.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=1200&q=80">
+  <meta name="theme-color" content="#FAFAF8">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
   <style>
+    /* ==========================================================================
+       Seoul in Pocket — editorial stylesheet
+       White paper, deep charcoal ink, one accent (Seoul red).
+       Layout: 1 column on phones, 2 columns from 768px, 3 columns from 1200px.
+       ========================================================================== */
     :root {
-      --primary: #FF4E78;
-      --primary-soft: #FFF0F4;
-      --accent: #6C5CE7;
-      --accent-soft: #F0EEFC;
-      --bg: #F8F9FC;
+      --ink: #111111;
+      --ink-soft: #33312E;
+      --muted: #6B6761;
+      --faint: #9A958D;
+      --line: #E4E1DA;
+      --line-soft: #EFECE6;
+      --bg: #FAFAF8;
       --surface: #FFFFFF;
-      --text-main: #191F28;
-      --text-sub: #4E5968;
-      --text-muted: #8B95A1;
-      --border: #F2F4F6;
-      --radius-card: 20px;
-      --radius-chip: 100px;
-      --radius-btn: 14px;
-      --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
-      --shadow-md: 0 8px 24px rgba(0,0,0,0.06);
+      --accent: #B93B2C;
+      --accent-soft: #F5E8E4;
+      --font-serif: 'Instrument Serif', 'Noto Serif KR', Georgia, 'Times New Roman', serif;
+      --font-sans: 'Plus Jakarta Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+      --maxw: 1320px;
+      --pad: 22px;
+      --radius: 6px;
+      /* legacy aliases kept so older inline styles keep working */
+      --primary: var(--accent);
+      --primary-soft: var(--accent-soft);
+      --accent-2: var(--accent);
+      --bg-card: var(--surface);
+      --border-color: var(--line);
+      --bg-app: var(--bg);
+      --primary-accent: var(--accent);
+      --text-main: var(--ink);
+      --text-sub: var(--muted);
+      --text-muted: var(--faint);
+      --border: var(--line);
+      --radius-card: var(--radius);
+      --radius-chip: 3px;
+      --radius-btn: 3px;
+      --shadow-sm: none;
+      --shadow-md: 0 18px 50px rgba(17, 17, 17, .14);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    @media (min-width: 768px) { :root { --pad: 40px; } }
+    @media (min-width: 1200px) { :root { --pad: 48px; } }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
     body {
-      font-family: 'Plus Jakarta Sans', 'Noto Sans KR', sans-serif;
-      background: #EAEFF5;
-      color: var(--text-main);
-      display: flex;
-      justify-content: center;
-      min-height: 100vh;
-    }
-    .mobile-frame {
-      width: 100%;
-      max-width: 440px;
+      font-family: var(--font-sans);
       background: var(--bg);
-      min-height: 100vh;
-      box-shadow: 0 0 40px rgba(0,0,0,0.1);
-      position: relative;
-      overflow-x: hidden;
-      padding-bottom: 90px;
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-tap-highlight-color: transparent;
     }
-    /* Header */
-    header {
-      padding: 18px 20px;
-      display: flex;
-      justify-content: space-between;
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button { font: inherit; color: inherit; }
+    ::selection { background: var(--accent-soft); color: var(--ink); }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .page { min-height: 100vh; overflow-x: clip; padding-bottom: 66px; }
+    @media (min-width: 768px) { .page { padding-bottom: 0; } }
+
+    .eyebrow {
+      display: inline-flex;
       align-items: center;
-      background: var(--surface);
+      gap: 9px;
+      font-size: .64rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .eyebrow::before { content: ""; width: 20px; height: 1px; background: currentColor; }
+
+    /* ── Header ─────────────────────────────────────────────────────────── */
+    header.site-head {
       position: sticky;
       top: 0;
-      z-index: 50;
-      border-bottom: 1px solid var(--border);
+      z-index: 90;
+      background: rgba(250, 250, 248, .9);
+      -webkit-backdrop-filter: saturate(1.4) blur(14px);
+      backdrop-filter: saturate(1.4) blur(14px);
+      border-bottom: 1px solid var(--line);
+      padding: 0;
     }
-    .logo {
-      font-size: 1.05rem;
-      font-weight: 800;
-      letter-spacing: -0.4px;
-      color: var(--primary);
+    .head-inner {
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding-inline: var(--pad);
+      height: 60px;
       display: flex;
       align-items: center;
-      gap: 5px;
-      cursor: pointer;
-      white-space: nowrap;
-      flex-shrink: 0;
+      justify-content: space-between;
+      gap: 14px;
     }
-    .logo span { color: var(--text-main); }
-    .header-actions { display: flex; gap: 10px; }
-    .lang-badge {
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 6px 12px;
-      background: var(--primary-soft);
-      color: var(--primary);
-      border-radius: var(--radius-chip);
+    @media (min-width: 768px) { .head-inner { height: 76px; } }
+    .logo {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      background: none;
+      border: 0;
+      padding: 0;
+      text-align: left;
       cursor: pointer;
       user-select: none;
-      transition: all 0.2s;
+      font-family: var(--font-serif);
+      font-size: 1.02rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      white-space: nowrap;
     }
-    .lang-badge:active { transform: scale(0.95); }
+    @media (min-width: 768px) { .logo { font-size: 1.24rem; letter-spacing: .16em; } }
+    .logo span { color: var(--accent); }
+    .header-actions { display: flex; align-items: center; gap: 8px; }
+    @media (min-width: 768px) { .header-actions { gap: 14px; } }
+    .head-note {
+      display: none;
+      font-size: .66rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--faint);
+      padding-right: 6px;
+      border-right: 1px solid var(--line);
+    }
+    @media (min-width: 1024px) { .head-note { display: block; padding-right: 16px; } }
+    .bgm-btn {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      background: transparent;
+      color: var(--ink);
+      display: inline-grid;
+      place-items: center;
+      font-size: .92rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background .18s ease, color .18s ease, border-color .18s ease;
+      touch-action: manipulation;
+    }
+    @media (min-width: 768px) { .bgm-btn { width: 36px; height: 36px; } }
+    .bgm-btn:hover { border-color: var(--ink); }
+    .bgm-btn.playing { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .bgm-btn.playing .bgm-icon {
+      display: inline-block;
+      animation: pulseNote 1.1s infinite alternate ease-in-out;
+    }
+    @keyframes pulseNote {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.18); }
+    }
+    .lang-badge {
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      background: transparent;
+      color: var(--ink);
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 8px 10px;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+      transition: border-color .18s ease, background .18s ease;
+      touch-action: manipulation;
+    }
+    @media (min-width: 768px) { .lang-badge { padding: 9px 14px; font-size: .7rem; } }
+    .lang-badge:hover { border-color: var(--ink); }
+    .lang-badge:active { transform: scale(.97); }
 
-    /* Hero */
+    /* ── Hero ───────────────────────────────────────────────────────────── */
     .hero {
-      padding: 24px 20px 18px;
-      background: linear-gradient(180deg, #FFFFFF 0%, var(--bg) 100%);
+      padding-block: 34px 30px;
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding-inline: var(--pad);
     }
+    @media (min-width: 768px) { .hero { padding-block: 62px 40px; } }
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: #FFF0F4;
-      color: var(--primary);
-      font-size: 0.75rem;
+      gap: 10px;
+      font-size: .66rem;
       font-weight: 700;
-      padding: 6px 12px;
-      border-radius: var(--radius-chip);
-      margin-bottom: 12px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
     }
     .hero h1 {
-      font-size: 1.65rem;
-      font-weight: 800;
-      line-height: 1.25;
-      letter-spacing: -0.8px;
-      margin-bottom: 8px;
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(2.6rem, 8.2vw, 4.6rem);
+      line-height: 1.02;
+      letter-spacing: -.01em;
+      margin-bottom: 18px;
+      text-wrap: balance;
     }
-    .hero h1 em {
-      font-style: normal;
-      color: var(--primary);
-    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
     .hero p {
-      font-size: 0.88rem;
-      color: var(--text-sub);
-      line-height: 1.45;
+      font-size: .92rem;
+      line-height: 1.65;
+      color: var(--muted);
+      max-width: 54ch;
+    }
+    @media (min-width: 768px) {
+      .hero p { font-size: 1rem; }
     }
 
-    /* Trust Stats */
+    /* ── Stats strip ────────────────────────────────────────────────────── */
     .quick-stats {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      padding: 0 20px 20px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-top: 1px solid var(--ink);
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding-inline: var(--pad);
+      padding-bottom: 8px;
     }
     .stat-pill {
-      background: var(--surface);
-      border-radius: 14px;
-      padding: 10px 6px;
-      text-align: center;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--border);
+      display: block;
+      text-align: left;
+      background: none;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      padding: 14px 0 12px;
       cursor: pointer;
+      font-family: inherit;
+      color: inherit;
+      transition: color .18s ease;
     }
-    .stat-pill .icon { font-size: 1.2rem; margin-bottom: 4px; }
-    .stat-pill .label { font-size: 0.7rem; font-weight: 700; color: var(--text-main); }
-    .stat-pill .sub { font-size: 0.65rem; color: var(--text-muted); }
+    .stat-pill .stat-num {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      line-height: 1;
+      letter-spacing: -.01em;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .stat-pill .stat-label {
+      display: block;
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .stat-pill:hover .stat-num { color: var(--accent); }
+    .stat-pill:nth-child(even) { border-left: 1px solid var(--line); padding-left: 18px; }
+    @media (min-width: 768px) {
+      .quick-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); padding-bottom: 0; }
+      .stat-pill {
+        border-bottom: 0;
+        border-left: 1px solid var(--line);
+        padding: 18px 0 22px 22px;
+      }
+      .stat-pill:nth-child(even) { padding-left: 22px; }
+      .stat-pill:first-child { border-left: 0; padding-left: 0; }
+      .stat-pill .stat-num { font-size: 2.1rem; }
+    }
 
-    /* Category Chips */
+    /* ── Filter chips ───────────────────────────────────────────────────── */
     .chips-wrapper {
-      padding: 0 20px 16px;
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      scrollbar-width: none;
       position: relative;
       z-index: 10;
+      display: flex;
+      gap: 26px;
+      overflow-x: auto;
+      scrollbar-width: none;
       -webkit-overflow-scrolling: touch;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 18px var(--pad) 0;
+      border-bottom: 1px solid var(--line);
     }
     .chips-wrapper::-webkit-scrollbar { display: none; }
+    @media (min-width: 768px) { .chips-wrapper { padding-top: 26px; gap: 34px; } }
     .chip {
-      padding: 9px 16px;
-      background: var(--surface);
-      border-radius: var(--radius-chip);
-      font-size: 0.82rem;
+      flex: 0 0 auto;
+      position: relative;
+      background: none;
+      border: 0;
+      padding: 0 0 13px;
+      font-family: var(--font-sans);
+      font-size: .74rem;
       font-weight: 600;
-      color: var(--text-sub);
-      border: 1px solid var(--border);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--faint);
       white-space: nowrap;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       user-select: none;
+      transition: color .18s ease;
     }
-    .chip:active { transform: scale(0.96); }
-    .chip.active {
-      background: var(--text-main);
-      color: #FFF;
-      border-color: var(--text-main);
+    @media (min-width: 768px) { .chip { font-size: .76rem; } }
+    .chip:hover { color: var(--ink); }
+    .chip::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      background: transparent;
+      transition: background .18s ease;
     }
+    .chip.active { color: var(--ink); }
+    .chip.active::after { background: var(--accent); }
 
-    /* Section Title */
+    /* ── Feed header ────────────────────────────────────────────────────── */
     .section-header {
-      padding: 0 20px 12px;
       display: flex;
+      align-items: flex-end;
       justify-content: space-between;
-      align-items: baseline;
+      gap: 16px;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 30px var(--pad) 20px;
     }
+    @media (min-width: 768px) { .section-header { padding-top: 46px; padding-bottom: 26px; } }
     .section-header h2 {
-      font-size: 1.1rem;
-      font-weight: 800;
-      letter-spacing: -0.4px;
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.72rem;
+      line-height: 1.1;
+      letter-spacing: -.01em;
+      margin-top: 10px;
     }
+    @media (min-width: 768px) { .section-header h2 { font-size: 2.35rem; } }
     .section-header a {
-      font-size: 0.78rem;
+      font-size: .66rem;
       font-weight: 600;
-      color: var(--primary);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
       text-decoration: none;
-      cursor: pointer;
+      white-space: nowrap;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--line);
+      transition: color .18s ease, border-color .18s ease;
+    }
+    .section-header a:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── Card grid ──────────────────────────────────────────────────────── */
+    .cards-container {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 30px;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 var(--pad) 40px;
+    }
+    @media (min-width: 768px) {
+      .cards-container { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 34px 26px; padding-bottom: 56px; }
+    }
+    @media (min-width: 1200px) {
+      .cards-container { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 30px; }
     }
 
-    /* Cards List */
-    .cards-container {
-      padding: 0 20px;
+    .spot-card {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-    }
-    .spot-card {
       background: var(--surface);
-      border-radius: var(--radius-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--border);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
+      transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
     }
-    .spot-card.hidden {
-      display: none;
+    .spot-card.hidden { display: none; }
+    @media (hover: hover) {
+      .spot-card:hover {
+        border-color: #CFCBC3;
+        box-shadow: 0 14px 34px rgba(17, 17, 17, .08);
+        transform: translateY(-2px);
+      }
     }
     .spot-image-box {
-      width: 100%;
-      height: 180px;
       position: relative;
-      background: #E5E8EB;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #EDEAE4;
     }
     .spot-image-box img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform .7s cubic-bezier(.19, 1, .22, 1);
+    }
+    @media (hover: hover) {
+      .spot-card:hover .spot-image-box img { transform: scale(1.04); }
     }
     .tag-badge {
       position: absolute;
-      top: 14px;
-      left: 14px;
-      background: rgba(25, 31, 40, 0.85);
-      backdrop-filter: blur(8px);
-      color: #FFF;
-      font-size: 0.72rem;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, .95);
+      color: var(--ink);
+      font-size: .58rem;
       font-weight: 700;
-      padding: 5px 10px;
-      border-radius: var(--radius-chip);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 5px 8px;
+      border-radius: 2px;
+      line-height: 1.2;
     }
     .discount-badge {
       position: absolute;
-      top: 14px;
-      right: 14px;
-      background: var(--primary);
-      color: #FFF;
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 5px 10px;
-      border-radius: var(--radius-chip);
-      box-shadow: 0 4px 10px rgba(255, 78, 120, 0.4);
+      bottom: 10px;
+      left: 10px;
+      background: rgba(17, 17, 17, .82);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+      color: #fff;
+      font-size: .58rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 5px 8px;
+      border-radius: 2px;
+      line-height: 1.2;
     }
     .spot-body {
-      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 15px 16px 0;
     }
+    @media (min-width: 768px) { .spot-body { padding: 17px 18px 0; } }
     .spot-meta {
       display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 6px;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 9px;
     }
-    .spot-meta .area { color: var(--accent); font-weight: 700; }
-    .spot-meta .rating { color: #FF9F43; font-weight: 700; }
+    .spot-meta > span:not([class]) { display: none; }
+    .spot-meta .area { color: var(--accent); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .spot-meta .rating { color: var(--faint); white-space: nowrap; font-weight: 600; }
     .spot-title {
-      font-size: 1.05rem;
-      font-weight: 800;
-      margin-bottom: 6px;
-      line-height: 1.3;
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.22rem;
+      line-height: 1.22;
+      letter-spacing: -.005em;
+      margin-bottom: 8px;
+      color: var(--ink);
     }
+    @media (min-width: 768px) { .spot-title { font-size: 1.3rem; } }
     .spot-desc {
-      font-size: 0.82rem;
-      color: var(--text-sub);
-      line-height: 1.4;
-      margin-bottom: 14px;
+      font-size: .8rem;
+      line-height: 1.6;
+      color: var(--muted);
+      margin-bottom: 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
+    @media (min-width: 768px) { .spot-desc { font-size: .82rem; } }
     .spot-features {
       display: flex;
-      gap: 6px;
       flex-wrap: wrap;
-      margin-bottom: 14px;
+      align-items: baseline;
+      gap: 0;
+      margin-bottom: 12px;
+      font-size: .68rem;
+      color: var(--faint);
+      letter-spacing: .02em;
     }
     .feat-tag {
-      font-size: 0.7rem;
-      font-weight: 600;
-      padding: 4px 8px;
-      border-radius: 6px;
-      background: var(--bg);
-      color: var(--text-sub);
+      background: none;
+      padding: 0;
+      border-radius: 0;
+      font-size: inherit;
+      font-weight: 500;
+      color: inherit;
+    }
+    .feat-tag:not(:last-child)::after {
+      content: "·";
+      margin: 0 .45em;
+      color: #C7C2B9;
+    }
+    .spot-note {
+      font-size: .68rem;
+      line-height: 1.5;
+      color: var(--muted);
+      margin: 0 0 12px;
+      padding-left: 9px;
+      border-left: 2px solid var(--accent-soft);
     }
     .spot-action {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid var(--border);
-      padding-top: 12px;
-    }
-    .price-wrap {
-      display: flex;
-      flex-direction: column;
-    }
-    .price-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; }
-    .price-value { font-size: 0.95rem; font-weight: 800; color: var(--text-main); }
-    .btn-book {
-      background: var(--primary);
-      color: #FFF;
-      border: none;
-      border-radius: var(--radius-btn);
-      padding: 10px 18px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s;
-      text-decoration: none;
-    }
-    .btn-book:active { transform: scale(0.95); opacity: 0.9; }
-
-    /* Affiliate & Partnership Notice */
-    .partner-banner {
-      margin: 24px 20px 0;
-      background: linear-gradient(135deg, #191F28 0%, #2B3441 100%);
-      border-radius: var(--radius-card);
-      padding: 18px;
-      color: #FFF;
-    }
-    .partner-banner h3 {
-      font-size: 0.95rem;
-      font-weight: 800;
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .partner-banner p {
-      font-size: 0.78rem;
-      color: #B0B8C1;
-      line-height: 1.4;
-      margin-bottom: 12px;
-    }
-    .partner-banner .btn-contact {
-      display: inline-block;
-      background: #FFF;
-      color: var(--text-main);
-      padding: 8px 14px;
-      border-radius: var(--radius-btn);
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .partner-banner .btn-contact:active { transform: scale(0.96); }
-
-    /* Fixed Bottom Bar */
-    .bottom-bar {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      max-width: 440px;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(16px);
-      border-top: 1px solid var(--border);
-      padding: 12px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 100;
-    }
-    .social-links {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-    .social-btn {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--text-sub);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      cursor: pointer;
-      padding: 4px 8px;
-      border-radius: 6px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      transition: all 0.2s;
-    }
-    .social-btn:hover {
-      color: var(--primary-accent);
-      border-color: var(--primary-accent);
-    }
-    .bgm-btn {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 5px 9px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 0.95rem;
-      color: var(--text-main);
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .bgm-btn:active {
-      transform: scale(0.92);
-    }
-    .bgm-btn.playing {
-      background: rgba(255, 43, 91, 0.1);
-      border-color: var(--primary-accent);
-      box-shadow: 0 0 12px rgba(255, 43, 91, 0.25);
-    }
-    .bgm-btn.playing .bgm-icon {
-      display: inline-block;
-      animation: pulseNote 1s infinite alternate ease-in-out;
-    }
-    @keyframes pulseNote {
-      0% { transform: scale(1) rotate(-5deg); }
-      100% { transform: scale(1.25) rotate(10deg); }
-    }
-    .site-footer {
-      padding: 30px 20px 80px;
-      text-align: center;
-      border-top: 1px solid var(--border-color);
-      margin-top: 40px;
-      background: var(--bg-card);
-      border-radius: 20px 20px 0 0;
-    }
-    .footer-logo {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 6px;
-    }
-    .footer-desc {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-      line-height: 1.4;
-    }
-    .footer-social-box {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
-    .footer-social-link {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--primary-accent);
-      text-decoration: none;
-      padding: 6px 12px;
-      background: var(--bg-app);
-      border-radius: 100px;
-      border: 1px solid var(--border-color);
-      transition: all 0.2s;
-    }
-    .footer-social-link:hover {
-      border-color: var(--primary-accent);
-    }
-    .footer-copy {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-    }
-    .btn-vip {
-      background: var(--text-main);
-      color: #FFF;
-      border-radius: var(--radius-btn);
-      padding: 9px 16px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-    }
-    .btn-vip:active { transform: scale(0.96); }
-
-    /* Interactive Modal & Backdrop */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.55);
-      backdrop-filter: blur(4px);
-      z-index: 200;
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: opacity 0.25s ease, visibility 0.25s ease;
-      display: flex;
       align-items: flex-end;
-      justify-content: center;
-    }
-    .modal-backdrop.show {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
-    .modal-sheet {
-      width: 100%;
-      max-width: 440px;
-      background: var(--surface);
-      border-radius: 24px 24px 0 0;
-      padding: 24px 20px 32px;
-      box-shadow: var(--shadow-md);
-      transform: translateY(100%);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .modal-backdrop.show .modal-sheet {
-      transform: translateY(0);
-    }
-    .modal-handle {
-      width: 40px;
-      height: 4px;
-      background: #DDE2E7;
-      border-radius: 2px;
-      margin: 0 auto 18px;
-    }
-    .modal-header {
-      display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
+      gap: 12px;
+      border-top: 1px solid var(--line-soft);
+      padding: 12px 0 14px;
+      margin-top: auto;
     }
-    .modal-title {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--text-main);
-    }
-    .modal-close {
-      background: #F2F4F6;
-      border: none;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      color: var(--text-sub);
-      cursor: pointer;
-      touch-action: manipulation;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .modal-close:active {
-      background: #E5E8EB;
-      transform: scale(0.92);
-    }
-    .modal-desc {
-      font-size: 0.85rem;
-      color: var(--text-sub);
-      line-height: 1.45;
-      margin-bottom: 16px;
-    }
-    .promo-box {
-      background: var(--primary-soft);
-      border: 1.5px dashed var(--primary);
-      border-radius: 14px;
-      padding: 14px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 18px;
-    }
-    .promo-code-wrap .promo-label {
-      font-size: 0.68rem;
-      color: var(--primary);
-      font-weight: 700;
+    .price-wrap { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .price-label {
+      font-size: .56rem;
+      font-weight: 600;
+      letter-spacing: .14em;
       text-transform: uppercase;
+      color: var(--faint);
     }
-    .promo-code-wrap .promo-code {
-      font-size: 0.86rem;
-      font-weight: 800;
-      color: var(--primary);
-      letter-spacing: 0.2px;
-      word-break: break-all;
-      line-height: 1.35;
-    }
-    .btn-copy {
-      background: var(--primary);
-      color: #FFF;
-      border: none;
-      border-radius: 10px;
-      padding: 9px 16px;
-      font-size: 0.78rem;
+    .price-value {
+      font-size: .92rem;
       font-weight: 700;
-      cursor: pointer;
-      touch-action: manipulation;
-      -webkit-tap-highlight-color: transparent;
+      letter-spacing: -.01em;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
     }
-    .btn-copy:active {
-      opacity: 0.85;
-      transform: scale(0.95);
+    .price-was {
+      display: block;
+      font-size: .64rem;
+      color: var(--faint);
+      text-decoration: line-through;
+      font-weight: 500;
     }
-    .btn-redirect {
-      width: 100%;
-      background: var(--text-main);
-      color: #FFF;
-      border: none;
-      border-radius: var(--radius-btn);
-      padding: 14px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .modal-input {
-      width: 100%;
-      padding: 13px 16px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-btn);
-      font-size: 0.9rem;
-      margin-bottom: 12px;
-      outline: none;
-      background: var(--bg);
-    }
-    .modal-input:focus {
-      border-color: var(--primary);
-      background: #FFF;
-    }
-
-    /* Toast */
-    .toast {
-      position: fixed;
-      top: 24px;
-      left: 50%;
-      transform: translateX(-50%) translateY(-30px);
-      background: rgba(25, 31, 40, 0.92);
-      backdrop-filter: blur(8px);
-      color: #FFF;
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 10px 18px;
-      border-radius: 100px;
-      z-index: 300;
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
-    }
-    .toast.show {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
-    }
-
-
-    /* Cute Map Download Card */
-    .cute-map-card {
-      margin: 0 20px 16px;
-      padding: 16px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, #FFF5F7 0%, #FFF0F4 50%, #F5F3FF 100%);
-      border: 1.5px solid #FFD6E0;
-      box-shadow: 0 4px 16px rgba(255, 107, 139, 0.08);
-      position: relative;
-      overflow: hidden;
-    }
-    .cute-map-header {
-      margin-bottom: 12px;
-    }
-    .cute-map-tag {
-      display: inline-block;
-      font-size: 0.68rem;
-      font-weight: 800;
-      color: #FF2B5B;
-      background: rgba(255, 43, 91, 0.1);
-      padding: 3px 8px;
-      border-radius: 20px;
-      margin-bottom: 6px;
-      letter-spacing: 0.5px;
-    }
-    .cute-map-heading {
-      font-size: 0.98rem;
-      font-weight: 800;
-      color: #191F28;
-      letter-spacing: -0.3px;
-      line-height: 1.3;
-    }
-    .cute-map-desc {
-      font-size: 0.74rem;
-      color: #6B7684;
-      margin-top: 3px;
-      line-height: 1.35;
-    }
-    .cute-map-download-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-    .btn-map-dl {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 11px 8px;
-      border-radius: 12px;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-decoration: none;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      text-align: center;
+    .btn-book {
+      flex: 0 0 auto;
+      background: var(--ink);
+      color: #fff;
+      border: 1px solid var(--ink);
+      border-radius: 3px;
+      padding: 9px 13px;
+      font-family: inherit;
+      font-size: .64rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
       white-space: nowrap;
+      cursor: pointer;
+      text-decoration: none;
+      touch-action: manipulation;
+      transition: background .18s ease, border-color .18s ease, color .18s ease;
     }
-    .btn-map-dl.dl-en {
-      background: #191F28;
-      color: #FFFFFF;
+    .btn-book:hover { background: var(--accent); border-color: var(--accent); }
+    .btn-book:active { transform: scale(.98); }
+
+    /* lead card — a full-width feature on tablets and up */
+    @media (min-width: 768px) {
+      .spot-card--lead { grid-column: span 2; }
+      .spot-card--lead .spot-image-box { aspect-ratio: 16 / 9; }
+      .spot-card--lead .spot-body { padding: 20px 22px 0; }
+      .spot-card--lead .spot-title { font-size: 1.9rem; }
+      .spot-card--lead .spot-desc { -webkit-line-clamp: 2; font-size: .88rem; }
+      .spot-card--lead .btn-book { padding: 11px 16px; font-size: .66rem; }
     }
-    .btn-map-dl.dl-zh {
-      background: #E53E3E;
-      color: #FFFFFF;
-    }
-    .btn-map-dl:active {
-      transform: scale(0.97);
-      opacity: 0.9;
+    @media (min-width: 1200px) {
+      .spot-card--lead .spot-image-box { aspect-ratio: 2 / 1; }
+      .spot-card--lead .spot-title { font-size: 2.2rem; }
     }
 
-    /* Compact Map Banner */
+    /* ── Metro banner + hub guide ───────────────────────────────────────── */
     .map-banner-compact {
-      margin: 0 20px 16px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #191F28 0%, #2D3748 100%);
-      color: #FFF;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
+      gap: 14px;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 18px var(--pad);
+      background: var(--ink);
+      color: #fff;
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(25, 31, 40, 0.12);
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       user-select: none;
-      position: relative;
-      z-index: 10;
+      transition: background .2s ease;
     }
-    .map-banner-compact:active {
-      transform: scale(0.98);
-    }
-    .map-banner-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-    }
-    .map-banner-icon {
-      font-size: 1.3rem;
-      flex-shrink: 0;
-    }
-    .map-banner-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      min-width: 0;
-    }
+    @media (min-width: 768px) { .map-banner-compact { padding: 22px var(--pad); } }
+    .map-banner-compact:hover { background: #000; }
+    .map-banner-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .map-banner-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
     .map-banner-title {
-      font-size: 0.88rem;
-      font-weight: 800;
-      letter-spacing: -0.3px;
+      font-family: var(--font-serif);
+      font-size: 1.12rem;
+      line-height: 1.2;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
+    @media (min-width: 768px) { .map-banner-title { font-size: 1.4rem; } }
     .map-banner-sub {
-      font-size: 0.72rem;
-      color: rgba(255, 255, 255, 0.75);
+      font-size: .62rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .55);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
     .map-banner-tag {
-      background: rgba(255, 43, 91, 0.2);
-      color: #FF8FA3;
-      border: 1px solid rgba(255, 43, 91, 0.4);
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 4px 8px;
-      border-radius: 8px;
-      flex-shrink: 0;
-      margin-left: 8px;
+      flex: 0 0 auto;
+      border: 1px solid rgba(255, 255, 255, .35);
+      color: #fff;
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 7px 10px;
+      border-radius: 2px;
+      white-space: nowrap;
     }
 
-    /* View Switcher */
-    .view-switcher-wrap {
-      padding: 0 20px 14px;
-      display: flex;
-      gap: 10px;
-    }
-    .view-switch-btn {
-      flex: 1;
-      padding: 10px 14px;
-      border-radius: 12px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--text-sub);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      user-select: none;
-    }
-    .view-switch-btn:active {
-      transform: scale(0.97);
-    }
-    .view-switch-btn.active {
-      background: var(--text-main);
-      color: #FFF;
-      border-color: var(--text-main);
-      box-shadow: 0 4px 12px rgba(25, 31, 40, 0.15);
-    }
-    .hot-badge {
-      background: var(--primary-accent);
-      color: #FFF;
-      font-size: 0.65rem;
-      font-weight: 800;
-      padding: 2px 5px;
-      border-radius: 4px;
-    }
-
-    /* Map View Container */
     .map-container {
       display: none;
-      padding: 0 20px 30px;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 26px var(--pad) 6px;
+      scroll-margin-top: 72px;
     }
     .map-container.show {
-      display: block;
-      animation: fadeIn 0.25s ease;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 14px;
+      animation: fadeIn .25s ease;
+    }
+    .map-header-card { grid-column: 1 / -1; }
+    @media (min-width: 1024px) {
+      .map-container.show { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: start; }
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .map-header-card {
-      background: linear-gradient(135deg, #191F28 0%, #2D3748 100%);
-      color: #FFF;
-      border-radius: 18px;
-      padding: 18px;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-    }
+    .map-header-card { margin-bottom: 22px; }
     .map-header-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background: rgba(255, 43, 91, 0.2);
-      color: #FF8FA3;
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 4px 8px;
-      border-radius: 100px;
-      margin-bottom: 8px;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
     }
     .map-header-title {
-      font-size: 1.15rem;
-      font-weight: 800;
-      margin-bottom: 6px;
-      letter-spacing: -0.3px;
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.5rem;
+      line-height: 1.15;
+      margin-bottom: 8px;
     }
-    .map-header-desc {
-      font-size: 0.78rem;
-      color: rgba(255, 255, 255, 0.8);
-      line-height: 1.45;
-    }
+    @media (min-width: 768px) { .map-header-title { font-size: 2rem; } }
+    .map-header-desc { font-size: .84rem; line-height: 1.6; color: var(--muted); max-width: 66ch; }
 
-    /* Metro Hubs */
     .metro-hub-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 18px;
-      padding: 18px;
-      margin-bottom: 18px;
-      transition: all 0.2s;
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin: 0;
     }
-    .metro-hub-card:hover {
-      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-    }
+    @media (min-width: 768px) { .metro-hub-card { padding: 20px; } }
     .hub-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 12px;
+      gap: 14px;
+      margin-bottom: 10px;
     }
-    .hub-title-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
+    .hub-title-wrap { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
     .hub-station-badge {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 3px 8px;
-      border-radius: 6px;
-      color: #FFF;
       align-self: flex-start;
-    }
-    .line-2 { background: #00B140; }
-    .line-3 { background: #FF7300; }
-    .line-5 { background: #8B50A4; }
-    .line-sb { background: #EAA300; }
-
-    .hub-name {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--text-main);
-      letter-spacing: -0.3px;
-    }
-    .hub-subtitle {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-    .btn-google-map {
-      background: var(--bg-app);
-      border: 1px solid var(--border-color);
-      color: var(--text-sub);
-      font-size: 0.72rem;
+      gap: 5px;
+      font-size: .56rem;
       font-weight: 700;
-      padding: 5px 9px;
-      border-radius: 8px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #fff;
+      padding: 4px 7px;
+      border-radius: 2px;
+      line-height: 1.2;
+    }
+    .line-2 { background: #00934A; }
+    .line-3 { background: #DE6600; }
+    .line-5 { background: #7B4B93; }
+    .line-sb { background: #C98A00; }
+    .hub-name {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+    .hub-subtitle { font-size: .74rem; color: var(--muted); line-height: 1.45; }
+    .btn-google-map {
+      flex: 0 0 auto;
+      font-size: .58rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
       text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      transition: all 0.2s;
+      padding-bottom: 2px;
+      border-bottom: 1px solid var(--line);
+      transition: color .18s ease, border-color .18s ease;
     }
-    .btn-google-map:hover {
-      color: var(--primary-accent);
-      border-color: var(--primary-accent);
-    }
-
-    .hub-spots-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-    }
+    .btn-google-map:hover { color: var(--accent); border-color: var(--accent); }
+    .hub-spots-grid { display: flex; flex-direction: column; }
     .hub-spot-item {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      background: var(--bg-app);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 10px 12px;
+      gap: 12px;
+      padding: 11px 0;
+      border-top: 1px solid var(--line-soft);
+      background: none;
       cursor: pointer;
-      transition: all 0.18s;
+      transition: padding-left .18s ease;
     }
-    .hub-spot-item:active {
-      transform: scale(0.98);
-    }
-    .hub-spot-item:hover {
-      border-color: var(--primary-accent);
-      background: rgba(255, 43, 91, 0.03);
-    }
-    .hub-spot-left {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      min-width: 0;
-    }
-    .hub-spot-icon {
-      font-size: 1.15rem;
-      flex-shrink: 0;
-    }
-    .hub-spot-info {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      min-width: 0;
-    }
+    .hub-spot-item:hover { padding-left: 4px; }
+    .hub-spot-item:active { opacity: .75; }
+    .hub-spot-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .hub-spot-icon { display: none; }
+    .hub-spot-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
     .hub-spot-title {
-      font-size: 0.84rem;
-      font-weight: 800;
-      color: var(--text-main);
-      white-space: nowrap;
+      font-size: .84rem;
+      font-weight: 600;
+      color: var(--ink);
       overflow: hidden;
       text-overflow: ellipsis;
+      white-space: nowrap;
     }
-    .hub-spot-perk {
-      font-size: 0.72rem;
-      color: var(--primary-accent);
-      font-weight: 700;
-    }
+    .hub-spot-perk { font-size: .7rem; color: var(--muted); }
     .hub-spot-action {
-      font-size: 0.75rem;
-      font-weight: 800;
-      color: var(--primary-accent);
-      background: rgba(255, 43, 91, 0.08);
-      padding: 4px 9px;
-      border-radius: 6px;
-      flex-shrink: 0;
-      margin-left: 8px;
+      flex: 0 0 auto;
+      font-size: .58rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
     }
+    .hub-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+    @media (min-width: 1024px) { .hub-grid { display: contents; } }
 
-    /* ── Klook coupon section (collapsible, collapsed by default) ── */
-    .coupon-section {
-      margin: 0 16px 18px;
+    /* ── Pocket map download band ───────────────────────────────────────── */
+    .cute-map-card {
+      max-width: var(--maxw);
+      margin: 34px auto 0;
+      padding: 24px var(--pad);
       background: var(--surface);
-      border-radius: var(--radius-card);
-      padding: 8px 16px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-sm);
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      gap: 18px;
     }
-    /* The whole header bar is the toggle button. */
+    @media (min-width: 768px) {
+      .cute-map-card {
+        grid-template-columns: minmax(0, 1fr) 320px;
+        align-items: center;
+        gap: 40px;
+        padding: 30px var(--pad);
+      }
+    }
+    .cute-map-header { min-width: 0; }
+    .cute-map-tag {
+      display: inline-block;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 9px;
+    }
+    .cute-map-heading {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 1.15;
+      letter-spacing: -.01em;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    @media (min-width: 768px) { .cute-map-heading { font-size: 1.85rem; } }
+    .cute-map-desc { font-size: .8rem; line-height: 1.6; color: var(--muted); max-width: 52ch; }
+    .cute-map-download-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .btn-map-dl {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 12px 8px;
+      border-radius: 3px;
+      font-size: .64rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      text-align: center;
+      white-space: nowrap;
+      transition: background .18s ease, color .18s ease;
+    }
+    .btn-map-dl.dl-en { background: var(--ink); color: #fff; }
+    .btn-map-dl.dl-en:hover { background: var(--accent); }
+    .btn-map-dl.dl-zh { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+    .btn-map-dl.dl-zh:hover { background: var(--ink); color: #fff; }
+
+    /* ── Klook coupon section ───────────────────────────────────────────── */
+    .coupon-section {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      border: 1px solid var(--line);
+      border-top: 0;
+      background: var(--surface);
+    }
     .coupon-head {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 10px;
       width: 100%;
-      min-height: 44px;
-      padding: 0;
+      min-height: 54px;
+      padding: 8px var(--pad);
       border: 0;
       background: none;
       font-family: inherit;
@@ -1032,536 +854,600 @@
       cursor: pointer;
       touch-action: manipulation;
     }
-    .coupon-head:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 10px; }
+    .coupon-head:hover { background: #FCFBF9; }
+    .coupon-head:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
     .coupon-head-title {
       flex: 0 0 auto;
-      font-size: 0.84rem;
-      font-weight: 800;
-      letter-spacing: -0.2px;
-      color: var(--text-main);
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--ink);
       white-space: nowrap;
     }
     .coupon-head-badge {
       flex: 0 1 auto;
       min-width: 0;
-      padding: 2px 7px;
-      border-radius: 100px;
-      background: rgba(255, 78, 120, 0.09);
-      border: 1px solid rgba(255, 78, 120, 0.16);
-      font-size: 0.56rem;
-      font-weight: 800;
-      color: var(--primary);
+      padding: 3px 7px;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      font-size: .56rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
     .coupon-badge-full { display: none; }
     .coupon-badge-short { display: inline; }
-    @media (min-width: 460px) {
+    @media (min-width: 560px) {
       .coupon-badge-full { display: inline; }
       .coupon-badge-short { display: none; }
     }
-    @media (max-width: 359px) {
-      .coupon-head-badge { display: none; }
-    }
+    @media (max-width: 359px) { .coupon-head-badge { display: none; } }
     .coupon-head-toggle {
       margin-left: auto;
       flex: 0 0 auto;
-      padding: 6px 9px;
-      border-radius: 8px;
-      background: var(--accent-soft);
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
       color: var(--accent);
-      font-size: 0.64rem;
-      font-weight: 800;
       white-space: nowrap;
+      padding: 6px 0 6px 8px;
+      background: none;
     }
-    .coupon-head:active .coupon-head-toggle { opacity: 0.7; }
-    /* Collapsible body: height is animated from script so long text stays intact. */
     .coupon-body {
       max-height: 0;
       overflow: hidden;
       visibility: hidden;
       opacity: 0;
-      transition: max-height 0.35s ease, opacity 0.25s ease, visibility 0s linear 0.35s;
+      transition: max-height .35s ease, opacity .25s ease, visibility 0s linear .35s;
     }
     .coupon-section.is-open .coupon-body {
       visibility: visible;
       opacity: 1;
-      transition: max-height 0.35s ease, opacity 0.3s ease 0.05s, visibility 0s linear 0s;
+      transition: max-height .35s ease, opacity .3s ease .05s, visibility 0s linear 0s;
     }
-    .coupon-body-inner { padding: 10px 0 6px; }
-    .coupon-head-sub { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.45; }
-    .coupon-list { display: flex; flex-direction: column; gap: 10px; }
+    .coupon-body-inner { padding: 4px var(--pad) 18px; border-top: 1px solid var(--line-soft); }
+    .coupon-head-sub {
+      font-size: .72rem;
+      line-height: 1.55;
+      color: var(--muted);
+      margin: 12px 0 14px;
+      max-width: 70ch;
+    }
+    .coupon-list {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: minmax(0, 1fr);
+    }
+    @media (min-width: 900px) { .coupon-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } }
     @media (prefers-reduced-motion: reduce) {
       .coupon-body, .coupon-section.is-open .coupon-body { transition: none; }
     }
     .coupon-card {
-      background: linear-gradient(135deg, #FFF6F9 0%, #F7F5FF 100%);
-      border: 1px dashed #FFC9D6;
-      border-radius: 14px;
-      padding: 11px 12px;
+      background: #FBFAF8;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 12px 13px;
     }
-    .coupon-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 8px; }
+    .coupon-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
     .coupon-disc {
-      font-size: 0.72rem; font-weight: 800; color: #FFF;
-      background: var(--primary); padding: 2px 8px; border-radius: 6px; letter-spacing: 0.2px;
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--accent);
+      padding: 3px 7px;
+      border-radius: 2px;
       white-space: nowrap;
     }
-    .coupon-region { font-size: 0.68rem; font-weight: 700; color: var(--accent); white-space: nowrap; }
-    .coupon-title { font-size: 0.82rem; font-weight: 800; color: var(--text-main); line-height: 1.35; }
-    .coupon-cond { font-size: 0.7rem; color: var(--text-sub); line-height: 1.45; margin-top: 3px; }
-    .coupon-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
-    .coupon-valid { font-size: 0.66rem; color: var(--text-muted); font-weight: 700; }
+    .coupon-region {
+      font-size: .58rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .coupon-title { font-size: .84rem; font-weight: 700; color: var(--ink); line-height: 1.4; }
+    .coupon-cond { font-size: .7rem; color: var(--muted); line-height: 1.5; margin-top: 4px; }
+    .coupon-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 10px;
+      padding-top: 9px;
+      border-top: 1px solid var(--line-soft);
+      flex-wrap: wrap;
+    }
+    .coupon-valid { font-size: .62rem; color: var(--faint); font-weight: 600; letter-spacing: .04em; }
     .coupon-code-row { display: flex; align-items: center; gap: 6px; }
     .coupon-code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 0.72rem; font-weight: 800; color: var(--text-main);
-      background: #FFF; border: 1px solid #FFD9E2; border-radius: 6px; padding: 3px 7px;
+      font-family: var(--font-mono);
+      font-size: .68rem;
+      font-weight: 600;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      padding: 4px 6px;
+      letter-spacing: .02em;
     }
     .btn-coupon-copy {
-      font-family: inherit; font-size: 0.7rem; font-weight: 800; color: #FFF;
-      background: var(--accent); border: 0; border-radius: 7px; padding: 5px 10px; cursor: pointer;
+      font-family: inherit;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--ink);
+      border: 0;
+      border-radius: 2px;
+      padding: 6px 9px;
+      cursor: pointer;
+      transition: background .18s ease;
     }
-    .btn-coupon-copy:active { opacity: 0.75; }
-    .coupon-note { font-size: 0.66rem; color: var(--text-muted); line-height: 1.5; margin-top: 11px; padding-top: 10px; border-top: 1px solid var(--border); }
+    .btn-coupon-copy:hover { background: var(--accent); }
+    .btn-coupon-copy:active { opacity: .8; }
+    .coupon-note {
+      font-size: .66rem;
+      line-height: 1.6;
+      color: var(--faint);
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
 
-    /* ── ticket card extras ── */
-    .price-was { display: block; font-size: 0.65rem; color: var(--text-muted); text-decoration: line-through; font-weight: 600; }
-    .spot-note { font-size: 0.68rem; color: var(--text-muted); line-height: 1.45; margin-top: -6px; margin-bottom: 12px; }
+    /* ── Partner band ───────────────────────────────────────────────────── */
+    .partner-banner {
+      margin-top: 48px;
+      background: var(--ink);
+      color: #fff;
+      padding: 40px var(--pad);
+    }
+    .partner-inner {
+      max-width: var(--maxw);
+      margin-inline: auto;
+      display: grid;
+      gap: 20px;
+    }
+    @media (min-width: 900px) {
+      .partner-banner { padding: 60px var(--pad); margin-top: 64px; }
+      .partner-inner { grid-template-columns: minmax(0, 1.5fr) minmax(0, .8fr); align-items: end; gap: 48px; }
+    }
+    .partner-banner h3 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.6rem;
+      line-height: 1.12;
+      letter-spacing: -.01em;
+      margin: 12px 0 10px;
+      color: #fff;
+    }
+    @media (min-width: 768px) { .partner-banner h3 { font-size: 2.2rem; } }
+    .partner-banner p {
+      font-size: .86rem;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, .66);
+      max-width: 60ch;
+    }
+    .partner-banner .eyebrow { color: #E08A7E; }
+    .btn-contact {
+      justify-self: start;
+      display: inline-block;
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, .4);
+      border-radius: 3px;
+      padding: 13px 20px;
+      font-family: inherit;
+      font-size: .66rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background .2s ease, color .2s ease, border-color .2s ease;
+    }
+    .btn-contact:hover { background: #fff; color: var(--ink); border-color: #fff; }
 
+    /* ── Footer ─────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--ink);
+      color: #fff;
+      padding: 0 var(--pad) 42px;
+      border-top: 1px solid rgba(255, 255, 255, .12);
+    }
+    .footer-inner {
+      max-width: var(--maxw);
+      margin-inline: auto;
+      display: grid;
+      gap: 20px;
+    }
+    @media (min-width: 900px) {
+      .footer-inner {
+        grid-template-columns: minmax(0, 1.3fr) minmax(0, .9fr);
+        gap: 24px 48px;
+        align-items: start;
+      }
+    }
+    .footer-logo {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .footer-desc {
+      font-size: .78rem;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, .55);
+      max-width: 56ch;
+    }
+    .footer-social-box { display: flex; flex-wrap: wrap; gap: 18px; }
+    @media (min-width: 900px) { .footer-social-box { justify-content: flex-end; } }
+    .footer-social-link {
+      font-size: .66rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .8);
+      text-decoration: none;
+      padding-bottom: 3px;
+      border-bottom: 1px solid rgba(255, 255, 255, .25);
+      transition: color .18s ease, border-color .18s ease;
+    }
+    .footer-social-link:hover { color: #fff; border-color: #fff; }
+    button.footer-social-link { background: none; border: 0; border-bottom: 1px solid rgba(255, 255, 255, .25); cursor: pointer; font-family: inherit; }
+    .footer-copy {
+      font-size: .66rem;
+      letter-spacing: .06em;
+      color: rgba(255, 255, 255, .38);
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, .12);
+      grid-column: 1 / -1;
+    }
+
+    /* ── Bottom bar ─────────────────────────────────────────────────────── */
+    .bottom-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, .95);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid var(--line);
+    }
+    .bar-inner {
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding: 10px var(--pad);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .social-links { display: flex; align-items: center; gap: 12px; min-width: 0; overflow: hidden; }
+    .social-links > span {
+      font-size: .58rem !important;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--faint) !important;
+      white-space: nowrap;
+    }
+    .social-btn {
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color .18s ease;
+      background: none;
+      border: 0;
+      padding: 0;
+    }
+    .social-btn:hover { color: var(--accent); }
+    .btn-vip {
+      flex: 0 0 auto;
+      background: var(--ink);
+      color: #fff;
+      border: 1px solid var(--ink);
+      border-radius: 3px;
+      padding: 9px 14px;
+      font-family: inherit;
+      font-size: .64rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background .18s ease, border-color .18s ease;
+    }
+    .btn-vip:hover { background: var(--accent); border-color: var(--accent); }
+    @media (min-width: 768px) { .bottom-bar { display: none; } }
+
+    /* ── Modals ─────────────────────────────────────────────────────────── */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(17, 17, 17, .55);
+      -webkit-backdrop-filter: blur(3px);
+      backdrop-filter: blur(3px);
+      z-index: 200;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .25s ease, visibility .25s ease;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .modal-backdrop.show { opacity: 1; visibility: visible; pointer-events: auto; }
+    .modal-sheet {
+      width: 100%;
+      max-width: 560px;
+      background: var(--surface);
+      border-radius: 12px 12px 0 0;
+      padding: 22px 20px 30px;
+      transform: translateY(100%);
+      transition: transform .32s cubic-bezier(.2, .8, .2, 1);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-backdrop.show .modal-sheet { transform: translateY(0); }
+    .modal-handle {
+      width: 36px;
+      height: 3px;
+      background: #D8D4CC;
+      border-radius: 2px;
+      margin: 0 auto 18px;
+    }
+    .modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    .modal-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+    .modal-close {
+      flex: 0 0 auto;
+      background: transparent;
+      border: 1px solid var(--line);
+      width: 32px;
+      height: 32px;
+      border-radius: 2px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .9rem;
+      color: var(--muted);
+      cursor: pointer;
+      touch-action: manipulation;
+      transition: border-color .18s ease, color .18s ease;
+    }
+    .modal-close:hover { border-color: var(--ink); color: var(--ink); }
+    .modal-desc {
+      font-size: .82rem;
+      line-height: 1.6;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .promo-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: #FBFAF8;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 12px 13px;
+      margin-bottom: 18px;
+    }
+    .promo-code-wrap { min-width: 0; }
+    .promo-code-wrap .promo-label {
+      font-size: .56rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 4px;
+    }
+    .promo-code-wrap .promo-code {
+      font-family: var(--font-mono);
+      font-size: .76rem;
+      color: var(--ink);
+      line-height: 1.4;
+      word-break: break-all;
+    }
+    .btn-copy {
+      flex: 0 0 auto;
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--ink);
+      border-radius: 3px;
+      padding: 8px 12px;
+      font-family: inherit;
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      touch-action: manipulation;
+      transition: background .18s ease, color .18s ease;
+    }
+    .btn-copy:hover { background: var(--ink); color: #fff; }
+    .btn-redirect {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: var(--ink);
+      color: #fff;
+      border: 1px solid var(--ink);
+      border-radius: 3px;
+      padding: 14px;
+      font-family: inherit;
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      transition: background .18s ease, border-color .18s ease;
+    }
+    .btn-redirect:hover { background: var(--accent); border-color: var(--accent); }
+    .modal-input {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      font-family: inherit;
+      font-size: 16px;
+      color: var(--ink);
+      margin-bottom: 10px;
+      outline: none;
+      background: #FBFAF8;
+      transition: border-color .18s ease, background .18s ease;
+    }
+    .modal-input::placeholder { color: var(--faint); }
+    .modal-input:focus { border-color: var(--ink); background: #fff; }
+    @media (min-width: 768px) {
+      .modal-backdrop { align-items: center; padding: 32px; }
+      .modal-sheet {
+        max-width: 500px;
+        border-radius: 8px;
+        padding: 30px;
+        transform: translateY(14px);
+        opacity: 0;
+        transition: transform .26s ease, opacity .26s ease;
+      }
+      .modal-backdrop.show .modal-sheet { transform: none; opacity: 1; }
+      .modal-handle { display: none; }
+      .modal-title { font-size: 1.6rem; }
+    }
+
+    /* ── Toast ──────────────────────────────────────────────────────────── */
+    .toast {
+      position: fixed;
+      top: 72px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-24px);
+      background: var(--ink);
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .02em;
+      padding: 10px 16px;
+      border-radius: 3px;
+      z-index: 300;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .22s ease, transform .22s cubic-bezier(.2, .8, .2, 1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+      max-width: min(92vw, 520px);
+      text-align: center;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+    @media (min-width: 768px) { .toast { top: 92px; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+    }
   </style>
 </head>
 <body>
 
-<div class="mobile-frame">
+  <div class="page">
   <!-- Toast Notification -->
-  <div class="toast" id="toast">Link copied ✨</div>
+  <div class="toast" id="toast">Link copied</div>
 
   <!-- Top Navigation -->
-  <header>
-    <div class="logo" onclick="filterCategory('all')">
-      <span>SEOUL</span> IN POCKET ✨
-    </div>
-    <div class="header-actions">
-      <button class="bgm-btn" id="bgmBtn" onclick="toggleBgm()" title="Play/Pause K-Lofi BGM">
-        <span class="bgm-icon" id="bgmIcon">🎵</span>
+  <header class="site-head">
+    <div class="head-inner">
+      <button class="logo" type="button" onclick="filterCategory('all')" aria-label="Seoul in Pocket — show every place">
+        <span>SEOUL</span> IN POCKET
       </button>
-      <span class="lang-badge" id="langBtn" onclick="toggleLang()">🇺🇸 EN | 🇨🇳 中文</span>
+      <div class="header-actions">
+        <span class="head-note">Issue 01 · Winter 2026</span>
+        <button class="bgm-btn" id="bgmBtn" type="button" onclick="toggleBgm()" title="Play or pause the background music" aria-label="Play or pause the background music">
+          <span class="bgm-icon" id="bgmIcon">♪</span>
+        </button>
+        <button class="lang-badge" id="langBtn" type="button" onclick="toggleLang()" aria-label="Switch language">EN / 中文</button>
+      </div>
     </div>
   </header>
   <audio id="bgmAudio" src="audio/bgm.mp3" loop preload="auto"></audio>
 
-  <!-- Hero Section -->
-  <div class="hero">
-    <div class="hero-badge">🔥 2026 Trending Seoul Insider Guide</div>
-    <h1 id="heroTitle">Explore Seoul Like a <em>True Local</em></h1>
-    <p id="heroDesc">Hand-picked K-Pop spots, aesthetic cafes, skin clinics, boutique stays and Klook tickets & tours — every card links to a real, bookable Creatrip or Klook product.</p>
-  </div>
+  <!-- Hero -->
+  <section class="hero">
+    <span class="hero-badge" data-en="Seoul · Winter 2026" data-zh="首尔 · 2026 冬季">Seoul · Winter 2026</span>
+    <h1 id="heroTitle">Seoul, <em>street by street</em>.</h1>
+    <p id="heroDesc">Sixty picks we keep sending friends to — clinics, salons, hanok stays and the Klook tickets that skip the queue. Every card opens the real Creatrip or Klook page, with live prices and reviews.</p>
+  </section>
 
-  <!-- Quick Proof / Stats -->
+  <!-- The issue in numbers -->
   <div class="quick-stats">
-    <div class="stat-pill" onclick="showToast('📍 60 real products: 36 Creatrip spots + 24 Klook tickets & tours.')">
-      <div class="icon">📍</div>
-      <div class="label">60</div>
-      <div class="sub">Curated Spots</div>
-    </div>
-    <div class="stat-pill" onclick="showToast('⭐ The 36 Creatrip picks average ★4.69 across 141,639 reviews.')">
-      <div class="icon">⭐</div>
-      <div class="label">★4.7</div>
-      <div class="sub">Avg. Rating</div>
-    </div>
-    <div class="stat-pill" onclick="showToast('💬 Every booking link opens the English or 中文 page on Creatrip or Klook.')">
-      <div class="icon">💬</div>
-      <div class="label">EN·中文</div>
-      <div class="sub">Creatrip + Klook</div>
-    </div>
-    <div class="stat-pill" onclick="showToast('✨ Curated from trending TikTok & Xiaohongshu reels!')">
-      <div class="icon">✨</div>
-      <div class="label">TikTok</div>
-      <div class="sub">Viral Hits</div>
-    </div>
-  </div>
-
-  <!-- Cute Pocket Map Download Card -->
-  <div class="cute-map-card">
-    <div class="cute-map-header">
-      <div class="cute-map-tag" id="cuteMapTag">🌸 FREE 4K GIFT</div>
-      <div class="cute-map-heading" id="cuteMapHeading">Cute Illustrated Seoul Pocket Map</div>
-      <div class="cute-map-desc" id="cuteMapDesc">All viral subway spots, cafes & clinics in one adorable hand-drawn map!</div>
-    </div>
-    <div class="cute-map-download-row">
-      <a href="images/seoul_kawaii_map_en.png" download="Cute_Seoul_Pocket_Map_EN.png" class="btn-map-dl dl-en" onclick="handleMapDownload('en')">
-        <span>🇺🇸</span>
-        <span id="dlBtnEnText">English Map (4K)</span>
-      </a>
-      <a href="images/seoul_kawaii_map_zh.png" download="Cute_Seoul_Pocket_Map_ZH.png" class="btn-map-dl dl-zh" onclick="handleMapDownload('zh')">
-        <span>🇨🇳</span>
-        <span id="dlBtnZhText">中文高清地图 (4K)</span>
-      </a>
-    </div>
-  </div>
-
-  <!-- Category Filter Chips -->
-  <div class="chips-wrapper" id="chipGroup">
-    <div class="chip active" onclick="filterCategory('all', this)" data-en="✨ All Trending" data-zh="✨ 全部热门">✨ All Trending</div>
-    <div class="chip" onclick="filterCategory('kbeauty', this)" data-en="💄 K-Beauty Clinics" data-zh="💄 韩国医美诊所">💄 K-Beauty Clinics</div>
-    <div class="chip" onclick="filterCategory('kpop', this)" data-en="🎤 K-Pop Hotspots" data-zh="🎤 K-Pop 打卡地">🎤 K-Pop Hotspots</div>
-    <div class="chip" onclick="filterCategory('cafe', this)" data-en="☕ Food & Cafes" data-zh="☕ 美食 & 咖啡">☕ Food & Cafes</div>
-    <div class="chip" onclick="filterCategory('stay', this)" data-en="🏮 Hanok & Stays" data-zh="🏮 韩屋 & 住宿">🏮 Hanok & Stays</div>
-    <div class="chip" onclick="filterCategory('ticket', this)" data-en="🎟️ Tickets & Tours" data-zh="🎟️ 门票 & 一日游">🎟️ Tickets & Tours</div>
-  </div>
-
-  <!-- Compact Seoul Metro Map Banner -->
-  <div class="map-banner-compact" id="mapCompactBanner" onclick="toggleMetroMap()">
-    <div class="map-banner-left">
-      <span class="map-banner-icon">🚇</span>
-      <div class="map-banner-text">
-        <div class="map-banner-title" id="compactMapTitle">🗺️ Seoul Metro Tourist Map</div>
-        <div class="map-banner-sub" id="compactMapSub">Gangnam • Hongdae • Seongsu • Jongno</div>
-      </div>
-    </div>
-    <span class="map-banner-tag" id="mapToggleTag">View 4 Hubs ▾</span>
-  </div>
-
-  <!-- Interactive Seoul Metro & Tourist Map View -->
-  <div class="map-container" id="mapView" style="display: none;">
-    <div class="map-header-card">
-      <div class="map-header-badge" id="mapHeaderBadge">🚇 4 Essential Seoul Tourist Hubs</div>
-      <div class="map-header-title" id="mapHeaderTitle">Interactive Seoul Metro Food & Beauty Map</div>
-      <div class="map-header-desc" id="mapHeaderDesc">
-        Google Maps walking navigation doesn't work well in Korea. Use our subway station hub guide to navigate top clinics, cafes & K-pop spots, with live prices and reviews on Creatrip.
-      </div>
-    </div>
-
-    <!-- Hub 1: Gangnam & Cheongdam Hub -->
-    <div class="metro-hub-card">
-      <div class="hub-top">
-        <div class="hub-title-wrap">
-          <div class="hub-station-badge line-2">🚇 Line 2 · Shinbundang</div>
-          <div class="hub-name" data-en="Gangnam &amp; Cheongdam Hub">Gangnam &amp; Cheongdam Hub</div>
-          <div class="hub-subtitle" data-en="Skin clinics, celebrity hair salons &amp; Gangnam 5-star stays">Skin clinics, celebrity hair salons &amp; Gangnam 5-star stays</div>
-        </div>
-        <a href="https://maps.google.com/?q=Gangnam+Station+Seoul" target="_blank" class="btn-google-map">📍 Google Map</a>
-      </div>
-      <div class="hub-spots-grid">
-        <div class="hub-spot-item" onclick="openBookingModal('Cheongdam Éclat De Clinic', 'https://creatrip.com/en/spot/13214?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (262) · Free Reservation')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">💎</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Cheongdam Éclat De Clinic">Cheongdam Éclat De Clinic</span>
-              <span class="hub-spot-perk">★4.9 (262) · Free Reservation</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Medicube Clinic Gangnam', 'https://creatrip.com/en/spot/13573?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5.0 (929) · From ₩20,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">✨</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Medicube Clinic Gangnam">Medicube Clinic Gangnam</span>
-              <span class="hub-spot-perk">★5.0 (929) · From ₩20,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Grand Mercure Imperial Palace Seoul Gangnam', 'https://creatrip.com/en/stays/664ae65d4928b1fe5fb838c6?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.2 (2,947) · From $209 / night')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">🏨</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Grand Mercure Imperial Palace Seoul Gangnam">Grand Mercure Imperial Palace Seoul Gangnam</span>
-              <span class="hub-spot-perk">★4.2 (2,947) · From $209 / night</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Check Dates →</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Hub 2: Jongno, Myeongdong & Bukchon Hub -->
-    <div class="metro-hub-card">
-      <div class="hub-top">
-        <div class="hub-title-wrap">
-          <div class="hub-station-badge line-3">🚇 Line 3 (Anguk) & Line 1</div>
-          <div class="hub-name" data-en="Jongno, Myeongdong &amp; Bukchon Hub">Jongno, Myeongdong &amp; Bukchon Hub</div>
-          <div class="hub-subtitle" data-en="Royal palaces, hanbok rentals, hanok teahouses &amp; hanok stays">Royal palaces, hanbok rentals, hanok teahouses &amp; hanok stays</div>
-        </div>
-        <a href="https://maps.google.com/?q=Anguk+Station+Seoul" target="_blank" class="btn-google-map">📍 Google Map</a>
-      </div>
-      <div class="hub-spots-grid">
-        <div class="hub-spot-item" onclick="openBookingModal('YES Hanbok Rental Gyeongbokgung', 'https://creatrip.com/en/spot/11006?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5.0 (3,763) · From ₩25,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">🏮</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="YES Hanbok Rental Gyeongbokgung">YES Hanbok Rental Gyeongbokgung</span>
-              <span class="hub-spot-perk">★5.0 (3,763) · From ₩25,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Ari Hanbok Gyeongbokgung', 'https://creatrip.com/en/spot/13241?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5.0 (515) · From ₩40,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">👘</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Ari Hanbok Gyeongbokgung">Ari Hanbok Gyeongbokgung</span>
-              <span class="hub-spot-perk">★5.0 (515) · From ₩40,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('On6.5 Anguk Dining Bar', 'https://creatrip.com/en/spot/13359?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.6 (119) · From ₩33,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">🍶</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="On6.5 Anguk Dining Bar">On6.5 Anguk Dining Bar</span>
-              <span class="hub-spot-perk">★4.6 (119) · From ₩33,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Korea House Kohojae Tea', 'https://creatrip.com/en/spot/15462?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (67) · From ₩30,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">🍵</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Korea House Kohojae Tea">Korea House Kohojae Tea</span>
-              <span class="hub-spot-perk">★4.9 (67) · From ₩30,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Bukchon Yeonwoo Hanok Stay', 'https://creatrip.com/en/stays/65f35256d68cf4126470e9e8?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.8 (26) · From $113 / night')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">🏡</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Bukchon Yeonwoo Hanok Stay">Bukchon Yeonwoo Hanok Stay</span>
-              <span class="hub-spot-perk">★4.8 (26) · From $113 / night</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Check Dates →</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Hub 3: Hongdae & Yeonnam Youth Hub -->
-    <div class="metro-hub-card">
-      <div class="hub-top">
-        <div class="hub-title-wrap">
-          <div class="hub-station-badge line-2">🚇 Line 2 & AREX (Hongik Univ)</div>
-          <div class="hub-name" data-en="Hongdae &amp; Yeonnam Youth Hub">Hongdae &amp; Yeonnam Youth Hub</div>
-          <div class="hub-subtitle" data-en="Most-booked hair salons, personal colour, charcoal BBQ &amp; photocard shops">Most-booked hair salons, personal colour, charcoal BBQ &amp; photocard shops</div>
-        </div>
-        <a href="https://maps.google.com/?q=Hongik+University+Station+Seoul" target="_blank" class="btn-google-map">📍 Google Map</a>
-      </div>
-      <div class="hub-spots-grid">
-        <div class="hub-spot-item" onclick="openBookingModal('SOONSIKI Hair Hongdae Flagship', 'https://creatrip.com/en/spot/11093?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (8,365) · From ₩33,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">💇</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="SOONSIKI Hair Hongdae Flagship">SOONSIKI Hair Hongdae Flagship</span>
-              <span class="hub-spot-perk">★4.9 (8,365) · From ₩33,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('ECOJARDIN Hongdae', 'https://creatrip.com/en/spot/15615?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (4,372) · From ₩137,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">🎨</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="ECOJARDIN Hongdae">ECOJARDIN Hongdae</span>
-              <span class="hub-spot-perk">★4.9 (4,372) · From ₩137,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Don Juneun Namja Hongdae', 'https://creatrip.com/en/spot/13902?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.8 (1,012) · From ₩30,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">🥩</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Don Juneun Namja Hongdae">Don Juneun Namja Hongdae</span>
-              <span class="hub-spot-perk">★4.8 (1,012) · From ₩30,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Real K-POP Dance Class Hongdae', 'https://creatrip.com/en/spot/12956?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (173) · From ₩55,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">💃</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Real K-POP Dance Class Hongdae">Real K-POP Dance Class Hongdae</span>
-              <span class="hub-spot-perk">★4.9 (173) · From ₩55,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Mercure Ambassador Seoul Hongdae', 'https://creatrip.com/en/stays/65ded4d74e759f00a6ac44d7?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.8 (575) · From $135 / night')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">🏨</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Mercure Ambassador Seoul Hongdae">Mercure Ambassador Seoul Hongdae</span>
-              <span class="hub-spot-perk">★4.8 (575) · From $135 / night</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Check Dates →</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Hub 4: Seongsu & Dongdaemun Hub -->
-    <div class="metro-hub-card">
-      <div class="hub-top">
-        <div class="hub-title-wrap">
-          <div class="hub-station-badge line-2">🚇 Line 2 (Seongsu & Ttukseom)</div>
-          <div class="hub-name" data-en="Seongsu &amp; Dongdaemun Hub">Seongsu &amp; Dongdaemun Hub</div>
-          <div class="hub-subtitle" data-en="Perfume workshops, hair studios, 24-hour jjimjilbang &amp; Myeongdong clinics">Perfume workshops, hair studios, 24-hour jjimjilbang &amp; Myeongdong clinics</div>
-        </div>
-        <a href="https://maps.google.com/?q=Seongsu+Station+Seoul" target="_blank" class="btn-google-map">📍 Google Map</a>
-      </div>
-      <div class="hub-spots-grid">
-        <div class="hub-spot-item" onclick="openBookingModal('YOU Hair Salon Seongsu', 'https://creatrip.com/en/spot/14730?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5.0 (1,380) · From ₩35,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">💇</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="YOU Hair Salon Seongsu">YOU Hair Salon Seongsu</span>
-              <span class="hub-spot-perk">★5.0 (1,380) · From ₩35,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('WHIPPED HOUSE Seongsu', 'https://creatrip.com/en/spot/14309?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (839) · From ₩25,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">🧼</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="WHIPPED HOUSE Seongsu">WHIPPED HOUSE Seongsu</span>
-              <span class="hub-spot-perk">★4.9 (839) · From ₩25,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('.NOTE Seongsu Perfume Class', 'https://creatrip.com/en/spot/14808?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5.0 (3,377) · From ₩49,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">🧪</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en=".NOTE Seongsu Perfume Class">.NOTE Seongsu Perfume Class</span>
-              <span class="hub-spot-perk">★5.0 (3,377) · From ₩49,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Sparex Dongdaemun Jjimjilbang', 'https://creatrip.com/en/spot/13261?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.2 (1,060) · From ₩7,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">♨️</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Sparex Dongdaemun Jjimjilbang">Sparex Dongdaemun Jjimjilbang</span>
-              <span class="hub-spot-perk">★4.2 (1,060) · From ₩7,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Abijou Clinic Global Myeongdong', 'https://creatrip.com/en/spot/14592?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (4,477) · From ₩10,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon">🏥</span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Abijou Clinic Global Myeongdong">Abijou Clinic Global Myeongdong</span>
-              <span class="hub-spot-perk">★4.9 (4,477) · From ₩10,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Klook official coupon codes (region-locked, verified 2026-11-16) -->
-  <div class="coupon-section" id="klookCoupons">
-    <button type="button" class="coupon-head" id="klookCouponToggle" aria-expanded="false" aria-controls="klookCouponBody" aria-label="Show Klook coupon codes" onclick="toggleCouponSection()">
-      <span class="coupon-head-title" data-en="🎟️ Klook Official Coupons" data-zh="🎟️ Klook 官方優惠碼">🎟️ Klook Official Coupons</span>
-      <span class="coupon-head-badge">
-        <span class="coupon-badge-full" data-en="4 codes · HK/MO · VN · TH" data-zh="4组优惠码 · 港澳/越南/泰国">4 codes · HK/MO · VN · TH</span>
-        <span class="coupon-badge-short" data-en="4 codes" data-zh="4组优惠码">4 codes</span>
-      </span>
-      <span class="coupon-head-toggle" id="klookCouponToggleLabel" data-en="Show ▼" data-zh="展开 ▼">Show ▼</span>
+    <button class="stat-pill" type="button" onclick="showToast('60 picks: 36 Creatrip places and 24 Klook tickets and tours.')">
+      <span class="stat-num">60</span>
+      <span class="stat-label" data-en="Places &amp; tickets" data-zh="地点与门票">Places &amp; tickets</span>
     </button>
-    <div class="coupon-body" id="klookCouponBody" aria-hidden="true">
-      <div class="coupon-body-inner">
-        <div class="coupon-head-sub" data-en="Enter the code on the Klook checkout page. Each code only works for the region shown." data-zh="在 Klook 結帳頁輸入優惠碼，各優惠碼僅限標示地區的帳號使用。">Enter the code on the Klook checkout page. Each code only works for the region shown.</div>
-        <div class="coupon-list">
-          <div class="coupon-card">
-            <div class="coupon-top">
-              <span class="coupon-disc">10% OFF</span>
-              <span class="coupon-region">🇭🇰 🇲🇴 HK · MO</span>
-            </div>
-            <div class="coupon-title" data-en="Selected Korea winter products — 10% off" data-zh="指定韓國冬季商品 9 折">Selected Korea winter products — 10% off</div>
-            <div class="coupon-cond" data-en="Spend HK$999+ on selected Korea winter products · max HK$100 off · once per user · excludes WiFi &amp; SIM cards" data-zh="指定韓國冬季商品滿 HK$999 享 9 折，最高折抵 HK$100，每人限用一次（不含 WiFi、SIM 卡）">Spend HK$999+ on selected Korea winter products · max HK$100 off · once per user · excludes WiFi &amp; SIM cards</div>
-            <div class="coupon-foot">
-              <span class="coupon-valid">⏳ ~15 Dec 2026 (GMT+8)</span>
-              <span class="coupon-code-row">
-                <code class="coupon-code">HKKRWINTER10OFF</code>
-                <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('HKKRWINTER10OFF', this)">Copy</button>
-              </span>
-            </div>
-          </div>
-          <div class="coupon-card">
-            <div class="coupon-top">
-              <span class="coupon-disc">10% OFF</span>
-              <span class="coupon-region">🇭🇰 🇲🇴 HK · MO</span>
-            </div>
-            <div class="coupon-title" data-en="Korea products — 10% off" data-zh="韓國商品 9 折">Korea products — 10% off</div>
-            <div class="coupon-cond" data-en="Spend HK$399+ on Korea products · max HK$50 off · once per user · excludes WiFi, SIM, transport passes &amp; train tickets" data-zh="韓國商品滿 HK$399 享 9 折，最高折抵 HK$50，每人限用一次（不含 WiFi、SIM 卡、交通票券、火車票）">Spend HK$399+ on Korea products · max HK$50 off · once per user · excludes WiFi, SIM, transport passes &amp; train tickets</div>
-            <div class="coupon-foot">
-              <span class="coupon-valid">⏳ ~15 Dec 2026 (GMT+8)</span>
-              <span class="coupon-code-row">
-                <code class="coupon-code">HKKRAP10OFF</code>
-                <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('HKKRAP10OFF', this)">Copy</button>
-              </span>
-            </div>
-          </div>
-          <div class="coupon-card">
-            <div class="coupon-top">
-              <span class="coupon-disc">10% OFF</span>
-              <span class="coupon-region">🇻🇳 VN</span>
-            </div>
-            <div class="coupon-title" data-en="South Korea activities &amp; rail — 10% off" data-zh="韓國景點·活動·鐵路 9 折">South Korea activities &amp; rail — 10% off</div>
-            <div class="coupon-cond" data-en="No minimum spend · max VND 300,000 off · needs a VN phone number · almost all attractions, tours, rail &amp; bus tickets" data-zh="無最低消費，最高折抵 30 萬越南盾，需越南手機號，適用韓國景點、活動、行程、火車與巴士票">No minimum spend · max VND 300,000 off · needs a VN phone number · almost all attractions, tours, rail &amp; bus tickets</div>
-            <div class="coupon-foot">
-              <span class="coupon-valid">⏳ ~20 Dec 2026 (GMT+8)</span>
-              <span class="coupon-code-row">
-                <code class="coupon-code">VUIHQAFF2026</code>
-                <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('VUIHQAFF2026', this)">Copy</button>
-              </span>
-            </div>
-          </div>
-          <div class="coupon-card">
-            <div class="coupon-top">
-              <span class="coupon-disc">B1G1</span>
-              <span class="coupon-region">🇹🇭 TH</span>
-            </div>
-            <div class="coupon-title" data-en="AREX Incheon Airport Express — buy 1 get 1" data-zh="AREX 仁川機場快線 買一送一">AREX Incheon Airport Express — buy 1 get 1</div>
-            <div class="coupon-cond" data-en="Incheon Airport → Seoul Station only · trains 05:00–10:00 &amp; 18:00–22:00 KST · once per user · not combinable" data-zh="限仁川機場 → 首爾站方向，05:00–10:00 與 18:00–22:00（韓國時間）班次，每人限用一次，不可與其他優惠併用">Incheon Airport → Seoul Station only · trains 05:00–10:00 &amp; 18:00–22:00 KST · once per user · not combinable</div>
-            <div class="coupon-foot">
-              <span class="coupon-valid">⏳ ~30 Nov 2026 (while stock lasts)</span>
-              <span class="coupon-code-row">
-                <code class="coupon-code">JUSTBOOKAREX</code>
-                <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('JUSTBOOKAREX', this)">Copy</button>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="coupon-note" data-en="All four are locked to one region&#x27;s Klook account: HK/MO · VN · TH. The 10% codes exclude WiFi/SIM cards; the HK$399 code also excludes transport passes and train tickets. JUSTBOOKAREX works only on Incheon Airport → Seoul Station trains departing 05:00–10:00 or 18:00–22:00 KST. Prices and coupons were checked on the Klook pages on 16 Nov 2026 and can change by date, option and promo." data-zh="四組優惠碼皆限指定地區帳號：香港/澳門 · 越南 · 泰國。10% 折優惠不含 WiFi/SIM 卡；HK$399 優惠另不含交通票券與火車票。JUSTBOOKAREX 僅適用仁川機場 → 首爾站、05:00–10:00 或 18:00–22:00（韓國時間）出發班次。票價與優惠碼於 2026 年 11 月 16 日在 Klook 頁面確認，實際金額依日期、選項與活動而異。">All four are locked to one region's Klook account: HK/MO · VN · TH. The 10% codes exclude WiFi/SIM cards; the HK$399 code also excludes transport passes and train tickets. JUSTBOOKAREX works only on Incheon Airport → Seoul Station trains departing 05:00–10:00 or 18:00–22:00 KST. Prices and coupons were checked on the Klook pages on 16 Nov 2026 and can change by date, option and promo.</div>
-      </div>
-    </div>
+    <button class="stat-pill" type="button" onclick="showToast('The 36 Creatrip picks average 4.69 stars across 141,639 reviews.')">
+      <span class="stat-num">★ 4.69</span>
+      <span class="stat-label" data-en="Creatrip average rating" data-zh="Creatrip 平均评分">Creatrip average rating</span>
+    </button>
+    <button class="stat-pill" type="button" onclick="showToast('Four metro hubs: Gangnam, Jongno–Myeongdong–Bukchon, Hongdae–Yeonnam and Seongsu–Dongdaemun.')">
+      <span class="stat-num">4</span>
+      <span class="stat-label" data-en="Metro hubs" data-zh="地铁商圈">Metro hubs</span>
+    </button>
+    <button class="stat-pill" type="button" onclick="showToast('Every booking link opens the English or Chinese page on Creatrip or Klook.')">
+      <span class="stat-num">EN · 中文</span>
+      <span class="stat-label" data-en="Two languages" data-zh="双语页面">Two languages</span>
+    </button>
   </div>
 
-  <!-- Cards List -->
+  <!-- Category filter -->
+  <div class="chips-wrapper" id="chipGroup">
+    <button class="chip active" type="button" onclick="filterCategory('all', this)" data-en="All" data-zh="全部">All</button>
+    <button class="chip" type="button" onclick="filterCategory('kbeauty', this)" data-en="K-Beauty" data-zh="医美美妆">K-Beauty</button>
+    <button class="chip" type="button" onclick="filterCategory('kpop', this)" data-en="K-Pop" data-zh="K-Pop 打卡">K-Pop</button>
+    <button class="chip" type="button" onclick="filterCategory('cafe', this)" data-en="Food &amp; Cafés" data-zh="美食咖啡">Food &amp; Cafés</button>
+    <button class="chip" type="button" onclick="filterCategory('stay', this)" data-en="Hanok &amp; Stays" data-zh="韩屋住宿">Hanok &amp; Stays</button>
+    <button class="chip" type="button" onclick="filterCategory('ticket', this)" data-en="Tickets &amp; Tours" data-zh="门票与一日游">Tickets &amp; Tours</button>
+  </div>
+
+  <!-- Section head -->
   <div class="section-header">
-    <h2 id="sectionTitle">Must-Visit This Week</h2>
-    <a href="#partner" onclick="openPartnerModal()">For Business ↗</a>
+    <div>
+      <span class="eyebrow" data-en="The list" data-zh="本期清单">The list</span>
+      <h2 id="sectionTitle">This week in Seoul</h2>
+    </div>
+    <a href="#partner" onclick="openPartnerModal()" data-en="For business ↗" data-zh="商务合作 ↗">For business ↗</a>
   </div>
 
   <div class="cards-container" id="cardsList">
     <!-- Abijou Clinic Global Myeongdong · Creatrip spot 14592 -->
-    <div class="spot-card" data-category="kbeauty">
+    <div class="spot-card spot-card--lead" data-category="kbeauty">
       <div class="spot-image-box">
         <img src="images/creatrip/14592.jpg" alt="Abijou Clinic Global Myeongdong: 20 Years of Trust, Foreigner-Friendly" loading="lazy">
-        <span class="tag-badge">🏥 Skin Clinic</span>
+        <span class="tag-badge"> Skin Clinic</span>
         <span class="discount-badge">Beauty Cashback</span>
       </div>
       <div class="spot-body">
@@ -1589,7 +1475,7 @@
     <div class="spot-card" data-category="kbeauty">
       <div class="spot-image-box">
         <img src="images/creatrip/13573.jpg" alt="Medicube Clinic Gangnam | Premium Skincare" loading="lazy">
-        <span class="tag-badge">✨ Skin Clinic</span>
+        <span class="tag-badge"> Skin Clinic</span>
         <span class="discount-badge">Beauty Cashback</span>
       </div>
       <div class="spot-body">
@@ -1617,7 +1503,7 @@
     <div class="spot-card" data-category="kbeauty">
       <div class="spot-image-box">
         <img src="images/creatrip/13214.jpg" alt="Cheongdam Eclat De | 1:1 Premium Dermatology Clinic" loading="lazy">
-        <span class="tag-badge">💎 Premium Clinic</span>
+        <span class="tag-badge"> Premium Clinic</span>
         <span class="discount-badge">Beauty Cashback</span>
       </div>
       <div class="spot-body">
@@ -1645,7 +1531,7 @@
     <div class="spot-card" data-category="kbeauty">
       <div class="spot-image-box">
         <img src="images/creatrip/13466.jpg" alt="JUNO Hair Myeongdong Street Branch | Popular Foreigner-friendly Salon in Myeongdong" loading="lazy">
-        <span class="tag-badge">💇 Hair Salon</span>
+        <span class="tag-badge"> Hair Salon</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -1673,7 +1559,7 @@
     <div class="spot-card" data-category="kbeauty">
       <div class="spot-image-box">
         <img src="images/creatrip/11093.jpg" alt="SOONSIKI Hair Hongdae Flagship | Seoul&#x27;s Top-Rated Salon for International Guests" loading="lazy">
-        <span class="tag-badge">💇 Hair Salon</span>
+        <span class="tag-badge"> Hair Salon</span>
         <span class="discount-badge">Creatrip Only</span>
       </div>
       <div class="spot-body">
@@ -1701,7 +1587,7 @@
     <div class="spot-card" data-category="kbeauty">
       <div class="spot-image-box">
         <img src="images/creatrip/14730.jpg" alt="YOU Hair Salon | Seongsu Branch" loading="lazy">
-        <span class="tag-badge">💇 Hair Salon</span>
+        <span class="tag-badge"> Hair Salon</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -1729,7 +1615,7 @@
     <div class="spot-card" data-category="kbeauty">
       <div class="spot-image-box">
         <img src="images/creatrip/15615.jpg" alt="ECOJARDIN Hongdae | Personal Color, Makeup &amp; Head Spa" loading="lazy">
-        <span class="tag-badge">🎨 Personal Color</span>
+        <span class="tag-badge"> Personal Color</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -1757,7 +1643,7 @@
     <div class="spot-card" data-category="kbeauty">
       <div class="spot-image-box">
         <img src="images/creatrip/13493.jpg" alt="Pro Beauty | Myeongdong Nail Art" loading="lazy">
-        <span class="tag-badge">💅 Nail & Lash</span>
+        <span class="tag-badge"> Nail & Lash</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -1785,7 +1671,7 @@
     <div class="spot-card" data-category="kbeauty">
       <div class="spot-image-box">
         <img src="images/creatrip/14955.jpg" alt="Fleur Jardin Myeongdong Branch | Skincare, Nail Art, Foot Spa" loading="lazy">
-        <span class="tag-badge">💆 Skincare & Foot Spa</span>
+        <span class="tag-badge"> Skincare & Foot Spa</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -1813,7 +1699,7 @@
     <div class="spot-card" data-category="kpop">
       <div class="spot-image-box">
         <img src="images/creatrip/11006.jpg" alt="Gyeongbokgung Hanbok Experience at YES Hanbok Rental" loading="lazy">
-        <span class="tag-badge">🏮 Hanbok Rental</span>
+        <span class="tag-badge"> Hanbok Rental</span>
         <span class="discount-badge">Creatrip Only</span>
       </div>
       <div class="spot-body">
@@ -1841,7 +1727,7 @@
     <div class="spot-card" data-category="kpop">
       <div class="spot-image-box">
         <img src="images/creatrip/13241.jpg" alt="Ari Hanbok | Gyeongbokgung Hanbok Rental" loading="lazy">
-        <span class="tag-badge">🏮 Hanbok Rental</span>
+        <span class="tag-badge"> Hanbok Rental</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -1869,7 +1755,7 @@
     <div class="spot-card" data-category="kpop">
       <div class="spot-image-box">
         <img src="images/creatrip/14605.jpg" alt="SBS Inkigayo Admission Ticket + Seoul Half-Day Tour" loading="lazy">
-        <span class="tag-badge">🎤 Live Music Show</span>
+        <span class="tag-badge"> Live Music Show</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -1897,7 +1783,7 @@
     <div class="spot-card" data-category="kpop">
       <div class="spot-image-box">
         <img src="images/creatrip/12956.jpg" alt="KPOP Dance Class in Seoul - Hongdae Real K-POP DANCE" loading="lazy">
-        <span class="tag-badge">💃 Dance Class</span>
+        <span class="tag-badge"> Dance Class</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -1925,7 +1811,7 @@
     <div class="spot-card" data-category="kpop">
       <div class="spot-image-box">
         <img src="images/creatrip/13261.jpg" alt="Sparex Dongdaemun | Korean Jjimjilbang(Sauna) in Dongdaemun" loading="lazy">
-        <span class="tag-badge">♨️ Jjimjilbang</span>
+        <span class="tag-badge"> Jjimjilbang</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -1953,7 +1839,7 @@
     <div class="spot-card" data-category="kpop">
       <div class="spot-image-box">
         <img src="images/creatrip/14309.jpg" alt="Make Your Own Skincare in Seongsu | WHIPPED HOUSE" loading="lazy">
-        <span class="tag-badge">🧼 Skincare Workshop</span>
+        <span class="tag-badge"> Skincare Workshop</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -1981,7 +1867,7 @@
     <div class="spot-card" data-category="kpop">
       <div class="spot-image-box">
         <img src="images/creatrip/15239.jpg" alt="Women-only Private Bath &amp; Body Scrub | ONA 2nd Branch" loading="lazy">
-        <span class="tag-badge">🛁 Korean Scrub</span>
+        <span class="tag-badge"> Korean Scrub</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -2009,7 +1895,7 @@
     <div class="spot-card" data-category="kpop">
       <div class="spot-image-box">
         <img src="images/creatrip/14469.jpg" alt="K-Pop Photocard Shop POCA SPOT Hongdae Branch | Mystery Packs &amp; Up to 10,000 KRW Off" loading="lazy">
-        <span class="tag-badge">🃏 Photocard Shop</span>
+        <span class="tag-badge"> Photocard Shop</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -2037,7 +1923,7 @@
     <div class="spot-card" data-category="kpop">
       <div class="spot-image-box">
         <img src="images/creatrip/14808.jpg" alt=".NOTE Seongsu | Perfume Making Class" loading="lazy">
-        <span class="tag-badge">🧪 Perfume Class</span>
+        <span class="tag-badge"> Perfume Class</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -2065,7 +1951,7 @@
     <div class="spot-card" data-category="cafe">
       <div class="spot-image-box">
         <img src="images/creatrip/13287.jpg" alt="Jinmi Sikdang | Reservation Service" loading="lazy">
-        <span class="tag-badge">🦀 Ganjang Gejang</span>
+        <span class="tag-badge"> Ganjang Gejang</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -2093,7 +1979,7 @@
     <div class="spot-card" data-category="cafe">
       <div class="spot-image-box">
         <img src="images/creatrip/13598.jpg" alt="Tosokchon Samgyetang Reservation Service" loading="lazy">
-        <span class="tag-badge">🍲 Samgyetang</span>
+        <span class="tag-badge"> Samgyetang</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -2121,7 +2007,7 @@
     <div class="spot-card" data-category="cafe">
       <div class="spot-image-box">
         <img src="images/creatrip/13812.jpg" alt="Kyochon Pilbang Reservation Service" loading="lazy">
-        <span class="tag-badge">🍗 Korean Chicken</span>
+        <span class="tag-badge"> Korean Chicken</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -2149,7 +2035,7 @@
     <div class="spot-card" data-category="cafe">
       <div class="spot-image-box">
         <img src="images/creatrip/13318.jpg" alt="Cafe Highwaist Cake Reservation Service (Pickup) | Ikseon Branch" loading="lazy">
-        <span class="tag-badge">🎂 Lettering Cake</span>
+        <span class="tag-badge"> Lettering Cake</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -2177,7 +2063,7 @@
     <div class="spot-card" data-category="cafe">
       <div class="spot-image-box">
         <img src="images/creatrip/15462.jpg" alt="Korea House Kohojae Reservation | Royal Korean Tea &amp; Sweets in a Serene Hanok" loading="lazy">
-        <span class="tag-badge">🍵 Royal Tea & Sweets</span>
+        <span class="tag-badge"> Royal Tea & Sweets</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -2205,7 +2091,7 @@
     <div class="spot-card" data-category="cafe">
       <div class="spot-image-box">
         <img src="images/creatrip/13194.jpg" alt="Golden Farm (Hwanggeum Mokjang) | Myeongdong Cathedral Branch" loading="lazy">
-        <span class="tag-badge">🥩 K-BBQ</span>
+        <span class="tag-badge"> K-BBQ</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -2233,7 +2119,7 @@
     <div class="spot-card" data-category="cafe">
       <div class="spot-image-box">
         <img src="images/creatrip/13359.jpg" alt="On6.5 | Korean Dining Bar in Anguk" loading="lazy">
-        <span class="tag-badge">🍶 Kimchi Dining</span>
+        <span class="tag-badge"> Kimchi Dining</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -2261,7 +2147,7 @@
     <div class="spot-card" data-category="cafe">
       <div class="spot-image-box">
         <img src="images/creatrip/14166.jpg" alt="Famous Seafood Restaurant in Jongno | Haecheonobu" loading="lazy">
-        <span class="tag-badge">🦞 Lobster Table</span>
+        <span class="tag-badge"> Lobster Table</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -2289,7 +2175,7 @@
     <div class="spot-card" data-category="cafe">
       <div class="spot-image-box">
         <img src="images/creatrip/13902.jpg" alt="Don Juneun Namja | Popular Korean BBQ restaurant in Hongdae" loading="lazy">
-        <span class="tag-badge">🥩 Charcoal K-BBQ</span>
+        <span class="tag-badge"> Charcoal K-BBQ</span>
         <span class="discount-badge">Official Creatrip</span>
       </div>
       <div class="spot-body">
@@ -2317,7 +2203,7 @@
     <div class="spot-card" data-category="stay">
       <div class="spot-image-box">
         <img src="images/creatrip/65f35256d68cf4126470e9e8.jpg" alt="Bukchon Yeonwoo Hanok Stay" loading="lazy">
-        <span class="tag-badge">🏡 Hanok Stay</span>
+        <span class="tag-badge"> Hanok Stay</span>
         <span class="discount-badge">Creatrip Official Stay</span>
       </div>
       <div class="spot-body">
@@ -2345,7 +2231,7 @@
     <div class="spot-card" data-category="stay">
       <div class="spot-image-box">
         <img src="images/creatrip/65f345e0d68cf4126457f4bc.jpg" alt="Bukchon Sohyeondang Hanok Stay" loading="lazy">
-        <span class="tag-badge">🏡 Hanok Stay</span>
+        <span class="tag-badge"> Hanok Stay</span>
         <span class="discount-badge">Creatrip Official Stay</span>
       </div>
       <div class="spot-body">
@@ -2373,7 +2259,7 @@
     <div class="spot-card" data-category="stay">
       <div class="spot-image-box">
         <img src="images/creatrip/65f347d2d68cf412645afa8b.jpg" alt="Seochon Nuhadang Hanok Stay" loading="lazy">
-        <span class="tag-badge">🏡 Hanok Stay</span>
+        <span class="tag-badge"> Hanok Stay</span>
         <span class="discount-badge">Creatrip Official Stay</span>
       </div>
       <div class="spot-body">
@@ -2401,7 +2287,7 @@
     <div class="spot-card" data-category="stay">
       <div class="spot-image-box">
         <img src="images/creatrip/65f34bfdd68cf4126461174e.jpg" alt="Jongno Hanok Gung Guesthouse" loading="lazy">
-        <span class="tag-badge">🏮 Budget Hanok</span>
+        <span class="tag-badge"> Budget Hanok</span>
         <span class="discount-badge">Creatrip Official Stay</span>
       </div>
       <div class="spot-body">
@@ -2429,7 +2315,7 @@
     <div class="spot-card" data-category="stay">
       <div class="spot-image-box">
         <img src="images/creatrip/65ded4d74e759f00a6ac44d7.jpg" alt="Mercure Ambassador Seoul Hongdae" loading="lazy">
-        <span class="tag-badge">🏨 4-Star Hotel</span>
+        <span class="tag-badge"> 4-Star Hotel</span>
         <span class="discount-badge">Creatrip Official Stay</span>
       </div>
       <div class="spot-body">
@@ -2457,7 +2343,7 @@
     <div class="spot-card" data-category="stay">
       <div class="spot-image-box">
         <img src="images/creatrip/65ded57a4e759f00a6acca0e.jpg" alt="The Westin Chosun Seoul" loading="lazy">
-        <span class="tag-badge">🏨 5-Star Hotel</span>
+        <span class="tag-badge"> 5-Star Hotel</span>
         <span class="discount-badge">Creatrip Official Stay</span>
       </div>
       <div class="spot-body">
@@ -2485,7 +2371,7 @@
     <div class="spot-card" data-category="stay">
       <div class="spot-image-box">
         <img src="images/creatrip/65f1d994d747dc82a64fd30d.jpg" alt="Mondrian Seoul Itaewon" loading="lazy">
-        <span class="tag-badge">🏨 5-Star Hotel</span>
+        <span class="tag-badge"> 5-Star Hotel</span>
         <span class="discount-badge">Creatrip Official Stay</span>
       </div>
       <div class="spot-body">
@@ -2513,7 +2399,7 @@
     <div class="spot-card" data-category="stay">
       <div class="spot-image-box">
         <img src="images/creatrip/65f1d9abd747dc82a65017ec.jpg" alt="Conrad Seoul" loading="lazy">
-        <span class="tag-badge">🏨 5-Star Hotel</span>
+        <span class="tag-badge"> 5-Star Hotel</span>
         <span class="discount-badge">Creatrip Official Stay</span>
       </div>
       <div class="spot-body">
@@ -2541,7 +2427,7 @@
     <div class="spot-card" data-category="stay">
       <div class="spot-image-box">
         <img src="images/creatrip/664ae65d4928b1fe5fb838c6.jpg" alt="Grand Mercure Imperial Palace Seoul Gangnam" loading="lazy">
-        <span class="tag-badge">🏨 5-Star Hotel</span>
+        <span class="tag-badge"> 5-Star Hotel</span>
         <span class="discount-badge">Creatrip Official Stay</span>
       </div>
       <div class="spot-body">
@@ -2568,7 +2454,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/1163.jpg" alt="AREX Incheon Airport Express Voucher" loading="lazy">
-        <span class="tag-badge">🚄 Airport Train</span>
+        <span class="tag-badge"> Airport Train</span>
         <span class="discount-badge">Klook Deal · −12%</span>
       </div>
       <div class="spot-body">
@@ -2582,7 +2468,7 @@
         <div class="spot-features">
           <span class="feat-tag">43 Minutes</span><span class="feat-tag">Every 20–40 Min</span><span class="feat-tag">App Activation</span>
         </div>
-        <p class="spot-note">🇹🇭 JUSTBOOKAREX B1G1 · Incheon Airport → Seoul Station only, 05:00–10:00 &amp; 18:00–22:00, until 30 Nov (while stock lasts)</p>
+        <p class="spot-note"> JUSTBOOKAREX B1G1 · Incheon Airport → Seoul Station only, 05:00–10:00 &amp; 18:00–22:00, until 30 Nov (while stock lasts)</p>
         <div class="spot-action">
           <div class="price-wrap">
             <span class="price-label">From</span>
@@ -2597,7 +2483,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/121308.jpg" alt="Incheon Airport Limousine Bus Ticket" loading="lazy">
-        <span class="tag-badge">🚌 Airport Bus</span>
+        <span class="tag-badge"> Airport Bus</span>
         <span class="discount-badge">Klook Official</span>
       </div>
       <div class="spot-body">
@@ -2625,7 +2511,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/86208.jpg" alt="WOWPASS: Prepaid Card for Cashless Payment in Korea" loading="lazy">
-        <span class="tag-badge">💳 Prepaid Card</span>
+        <span class="tag-badge"> Prepaid Card</span>
         <span class="discount-badge">Klook Official</span>
       </div>
       <div class="spot-body">
@@ -2654,7 +2540,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/109354.jpg" alt="5G eSIM South Korea | SKT" loading="lazy">
-        <span class="tag-badge">📶 eSIM</span>
+        <span class="tag-badge"> eSIM</span>
         <span class="discount-badge">Klook Official</span>
       </div>
       <div class="spot-body">
@@ -2683,7 +2569,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/74595.jpg" alt="Klook Pass Seoul" loading="lazy">
-        <span class="tag-badge">🎫 City Pass</span>
+        <span class="tag-badge"> City Pass</span>
         <span class="discount-badge">Klook Deal · −48%</span>
       </div>
       <div class="spot-body">
@@ -2711,7 +2597,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/251.jpg" alt="Lotte World Ticket in Seoul" loading="lazy">
-        <span class="tag-badge">🎡 Theme Park</span>
+        <span class="tag-badge"> Theme Park</span>
         <span class="discount-badge">Klook Official</span>
       </div>
       <div class="spot-body">
@@ -2739,7 +2625,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/11244.jpg" alt="Everland Tour with Shuttle: Fast Panda World Entry" loading="lazy">
-        <span class="tag-badge">🐼 Everland Shuttle</span>
+        <span class="tag-badge"> Everland Shuttle</span>
         <span class="discount-badge">Klook Official</span>
       </div>
       <div class="spot-body">
@@ -2768,7 +2654,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/17678.jpg" alt="Seoul Sky Lotte World Tower Ticket" loading="lazy">
-        <span class="tag-badge">🏙️ Observatory</span>
+        <span class="tag-badge"> Observatory</span>
         <span class="discount-badge">Klook Deal · −21%</span>
       </div>
       <div class="spot-body">
@@ -2796,7 +2682,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/412.jpg" alt="N Seoul Tower Observatory Ticket" loading="lazy">
-        <span class="tag-badge">🗼 Observatory</span>
+        <span class="tag-badge"> Observatory</span>
         <span class="discount-badge">Klook Deal · −24%</span>
       </div>
       <div class="spot-body">
@@ -2824,7 +2710,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/150869.jpg" alt="SEOULDAL: A New Way to Enjoy the Sky of Seoul" loading="lazy">
-        <span class="tag-badge">🎈 Balloon Ride</span>
+        <span class="tag-badge"> Balloon Ride</span>
         <span class="discount-badge">Klook Official</span>
       </div>
       <div class="spot-body">
@@ -2853,7 +2739,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/2528.jpg" alt="Nami Island All-in-One: Alpaca, Rail Bike, Garden Morning Calm &amp; more" loading="lazy">
-        <span class="tag-badge">🗺️ Day Tour</span>
+        <span class="tag-badge"> Day Tour</span>
         <span class="discount-badge">Klook Official</span>
       </div>
       <div class="spot-body">
@@ -2881,7 +2767,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/216.jpg" alt="DMZ Tour; NK Defector Meet up &amp; Suspension Bridge (optional)" loading="lazy">
-        <span class="tag-badge">🗺️ DMZ Tour</span>
+        <span class="tag-badge"> DMZ Tour</span>
         <span class="discount-badge">Klook Official</span>
       </div>
       <div class="spot-body">
@@ -2909,7 +2795,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/29780.jpg" alt="Gyeongbokgung Palace, Hanok Village, and GwangJang Tour in Seoul" loading="lazy">
-        <span class="tag-badge">🗺️ Palace Tour</span>
+        <span class="tag-badge"> Palace Tour</span>
         <span class="discount-badge">Klook Official</span>
       </div>
       <div class="spot-body">
@@ -2937,7 +2823,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/90383.jpg" alt="Suwon Hwaseong Fortress/Haengung Palace/Starfield Library Tour" loading="lazy">
-        <span class="tag-badge">🗺️ Day Tour</span>
+        <span class="tag-badge"> Day Tour</span>
         <span class="discount-badge">Klook Official</span>
       </div>
       <div class="spot-body">
@@ -2965,7 +2851,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/6874.jpg" alt="Seoul Yeouido Eland Hangang River Cruise" loading="lazy">
-        <span class="tag-badge">🚢 River Cruise</span>
+        <span class="tag-badge"> River Cruise</span>
         <span class="discount-badge">Klook Official</span>
       </div>
       <div class="spot-body">
@@ -2993,7 +2879,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/243.jpg" alt="THE PAINTERS Live Art K-pop Dance Show in Seoul" loading="lazy">
-        <span class="tag-badge">🎭 Live Show</span>
+        <span class="tag-badge"> Live Show</span>
         <span class="discount-badge">Klook Deal · −30%</span>
       </div>
       <div class="spot-body">
@@ -3022,7 +2908,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/240.jpg" alt="Nanta Show Ticket in Seoul" loading="lazy">
-        <span class="tag-badge">🎭 Non-verbal Show</span>
+        <span class="tag-badge"> Non-verbal Show</span>
         <span class="discount-badge">Klook Deal · −33%</span>
       </div>
       <div class="spot-body">
@@ -3051,7 +2937,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/78871.jpg" alt="Show Musical Wild Wild Ticket in Seoul" loading="lazy">
-        <span class="tag-badge">🎭 Dance Musical</span>
+        <span class="tag-badge"> Dance Musical</span>
         <span class="discount-badge">Klook Deal · −40%</span>
       </div>
       <div class="spot-body">
@@ -3080,7 +2966,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/133623.jpg" alt="SHOW MUSICAL TOUCH FIVE Ticket in Seoul" loading="lazy">
-        <span class="tag-badge">🎭 Dance Musical</span>
+        <span class="tag-badge"> Dance Musical</span>
         <span class="discount-badge">Klook Deal · −12%</span>
       </div>
       <div class="spot-body">
@@ -3108,7 +2994,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/202905.jpg" alt="Best Kpop Dance Class in Myeongdong, Seoul (Photos &amp; Video)" loading="lazy">
-        <span class="tag-badge">💃 Dance Class</span>
+        <span class="tag-badge"> Dance Class</span>
         <span class="discount-badge">Klook Official</span>
       </div>
       <div class="spot-body">
@@ -3136,7 +3022,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/7955.jpg" alt="Hanbok Rental with Korean Hairstyling at Hanboknam Gyeongbokgung" loading="lazy">
-        <span class="tag-badge">👘 Hanbok</span>
+        <span class="tag-badge"> Hanbok</span>
         <span class="discount-badge">Klook Official</span>
       </div>
       <div class="spot-body">
@@ -3164,7 +3050,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/209180.jpg" alt="Seoul: Chopstick Making Workshop" loading="lazy">
-        <span class="tag-badge">🧵 Craft Class</span>
+        <span class="tag-badge"> Craft Class</span>
         <span class="discount-badge">Klook Official</span>
       </div>
       <div class="spot-body">
@@ -3192,7 +3078,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/198763.jpg" alt="Seoul: Traditional Mother-of-Pearl Craft Workshop in Myeongdong" loading="lazy">
-        <span class="tag-badge">🧵 Craft Class</span>
+        <span class="tag-badge"> Craft Class</span>
         <span class="discount-badge">Klook Official</span>
       </div>
       <div class="spot-body">
@@ -3220,7 +3106,7 @@
     <div class="spot-card" data-category="ticket">
       <div class="spot-image-box">
         <img src="images/klook/149745.jpg" alt="Sauna, Body Scrub &amp; Massage Experience in Seoul" loading="lazy">
-        <span class="tag-badge">♨️ Sauna & Scrub</span>
+        <span class="tag-badge"> Sauna & Scrub</span>
         <span class="discount-badge">Klook Official</span>
       </div>
       <div class="spot-body">
@@ -3246,87 +3132,459 @@
     </div>
   </div>
 
-  <!-- B2B Merchant Partnership Card -->
-  <div class="partner-banner" id="partner">
-    <h3>🤝 Partner with Seoul in Pocket</h3>
-    <p>Are you a Seoul restaurant, aesthetic clinic, or boutique stay looking for global Gen-Z tourists from TikTok, IG & Xiaohongshu?</p>
-    <button class="btn-contact" onclick="openPartnerModal()">Submit Listing / B2B Inquiry →</button>
+
+  <!-- Metro banner -->
+  <div class="map-banner-compact" id="mapCompactBanner" onclick="toggleMetroMap()">
+    <div class="map-banner-left">
+      <div class="map-banner-text">
+        <div class="map-banner-title" id="compactMapTitle" data-en="Seoul Metro Guide" data-zh="首尔地铁指南">Seoul Metro Guide</div>
+        <div class="map-banner-sub" id="compactMapSub" data-en="Gangnam · Jongno · Hongdae · Seongsu" data-zh="江南 · 钟路 · 弘大 · 圣水">Gangnam · Jongno · Hongdae · Seongsu</div>
+      </div>
+    </div>
+    <span class="map-banner-tag" id="mapToggleTag">Open guide ▾</span>
   </div>
 
-  <!-- Modern Footer -->
-  <footer class="site-footer">
-    <div class="footer-logo">SEOUL IN POCKET ✨</div>
-    <p class="footer-desc">Hand-picked Seoul spots and tickets with official Creatrip & Klook booking links for global travelers.</p>
-    <div class="footer-social-box">
-      <a href="https://www.instagram.com/seoulinpocket/" target="_blank" class="footer-social-link">📸 Instagram @seoulinpocket</a>
-      <a href="https://www.tiktok.com/@seoulinpocket" target="_blank" class="footer-social-link">🎵 TikTok @seoulinpocket</a>
-      <a href="http://xhslink.com/o/4tE6Fn1NFnE" target="_blank" class="footer-social-link">📕 小红书 @首尔口袋指南</a>
+  <!-- Interactive Seoul Metro & Tourist Map View -->
+  <div class="map-container" id="mapView">
+    <div class="map-header-card">
+      <div class="map-header-badge" id="mapHeaderBadge" data-en="Metro guides" data-zh="地铁指南">Metro guides</div>
+      <div class="map-header-title" id="mapHeaderTitle" data-en="Four hubs, walkable in a day" data-zh="四大商圈，一天走完">Four hubs, walkable in a day</div>
+      <div class="map-header-desc" id="mapHeaderDesc" data-en="Google Maps walking directions are unreliable in Seoul. Start from a subway exit instead: each hub below groups the clinics, cafés and stages within a few minutes of one station." data-zh="在首尔，Google 地图的步行导航并不可靠。从地铁出口出发更稳妥：下面每个商圈都把同一站附近的诊所、咖啡馆和演出串在一起。">Google Maps walking directions are unreliable in Seoul. Start from a subway exit instead: each hub below groups the clinics, cafés and stages within a few minutes of one station.</div>
     </div>
-    <p class="footer-copy">© 2026 Seoul in Pocket. Affiliate partner of Creatrip & Klook.</p>
+
+    
+
+    <div class="hub-grid">
+<!-- Hub 1: Gangnam & Cheongdam Hub -->
+    <div class="metro-hub-card">
+      <div class="hub-top">
+        <div class="hub-title-wrap">
+          <div class="hub-station-badge line-2"> Line 2 · Shinbundang</div>
+          <div class="hub-name" data-en="Gangnam &amp; Cheongdam Hub">Gangnam &amp; Cheongdam Hub</div>
+          <div class="hub-subtitle" data-en="Skin clinics, celebrity hair salons &amp; Gangnam 5-star stays">Skin clinics, celebrity hair salons &amp; Gangnam 5-star stays</div>
+        </div>
+        <a href="https://maps.google.com/?q=Gangnam+Station+Seoul" target="_blank" class="btn-google-map"> Google Map</a>
+      </div>
+      <div class="hub-spots-grid">
+        <div class="hub-spot-item" onclick="openBookingModal('Cheongdam Éclat De Clinic', 'https://creatrip.com/en/spot/13214?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (262) · Free Reservation')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Cheongdam Éclat De Clinic">Cheongdam Éclat De Clinic</span>
+              <span class="hub-spot-perk">★4.9 (262) · Free Reservation</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Medicube Clinic Gangnam', 'https://creatrip.com/en/spot/13573?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5.0 (929) · From ₩20,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Medicube Clinic Gangnam">Medicube Clinic Gangnam</span>
+              <span class="hub-spot-perk">★5.0 (929) · From ₩20,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Grand Mercure Imperial Palace Seoul Gangnam', 'https://creatrip.com/en/stays/664ae65d4928b1fe5fb838c6?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.2 (2,947) · From $209 / night')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Grand Mercure Imperial Palace Seoul Gangnam">Grand Mercure Imperial Palace Seoul Gangnam</span>
+              <span class="hub-spot-perk">★4.2 (2,947) · From $209 / night</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Check Dates →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hub 2: Jongno, Myeongdong & Bukchon Hub -->
+    <div class="metro-hub-card">
+      <div class="hub-top">
+        <div class="hub-title-wrap">
+          <div class="hub-station-badge line-3"> Line 3 (Anguk) & Line 1</div>
+          <div class="hub-name" data-en="Jongno, Myeongdong &amp; Bukchon Hub">Jongno, Myeongdong &amp; Bukchon Hub</div>
+          <div class="hub-subtitle" data-en="Royal palaces, hanbok rentals, hanok teahouses &amp; hanok stays">Royal palaces, hanbok rentals, hanok teahouses &amp; hanok stays</div>
+        </div>
+        <a href="https://maps.google.com/?q=Anguk+Station+Seoul" target="_blank" class="btn-google-map"> Google Map</a>
+      </div>
+      <div class="hub-spots-grid">
+        <div class="hub-spot-item" onclick="openBookingModal('YES Hanbok Rental Gyeongbokgung', 'https://creatrip.com/en/spot/11006?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5.0 (3,763) · From ₩25,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="YES Hanbok Rental Gyeongbokgung">YES Hanbok Rental Gyeongbokgung</span>
+              <span class="hub-spot-perk">★5.0 (3,763) · From ₩25,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Ari Hanbok Gyeongbokgung', 'https://creatrip.com/en/spot/13241?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5.0 (515) · From ₩40,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Ari Hanbok Gyeongbokgung">Ari Hanbok Gyeongbokgung</span>
+              <span class="hub-spot-perk">★5.0 (515) · From ₩40,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('On6.5 Anguk Dining Bar', 'https://creatrip.com/en/spot/13359?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.6 (119) · From ₩33,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="On6.5 Anguk Dining Bar">On6.5 Anguk Dining Bar</span>
+              <span class="hub-spot-perk">★4.6 (119) · From ₩33,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Korea House Kohojae Tea', 'https://creatrip.com/en/spot/15462?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (67) · From ₩30,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Korea House Kohojae Tea">Korea House Kohojae Tea</span>
+              <span class="hub-spot-perk">★4.9 (67) · From ₩30,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Bukchon Yeonwoo Hanok Stay', 'https://creatrip.com/en/stays/65f35256d68cf4126470e9e8?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.8 (26) · From $113 / night')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Bukchon Yeonwoo Hanok Stay">Bukchon Yeonwoo Hanok Stay</span>
+              <span class="hub-spot-perk">★4.8 (26) · From $113 / night</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Check Dates →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hub 3: Hongdae & Yeonnam Youth Hub -->
+    <div class="metro-hub-card">
+      <div class="hub-top">
+        <div class="hub-title-wrap">
+          <div class="hub-station-badge line-2"> Line 2 & AREX (Hongik Univ)</div>
+          <div class="hub-name" data-en="Hongdae &amp; Yeonnam Youth Hub">Hongdae &amp; Yeonnam Youth Hub</div>
+          <div class="hub-subtitle" data-en="Most-booked hair salons, personal colour, charcoal BBQ &amp; photocard shops">Most-booked hair salons, personal colour, charcoal BBQ &amp; photocard shops</div>
+        </div>
+        <a href="https://maps.google.com/?q=Hongik+University+Station+Seoul" target="_blank" class="btn-google-map"> Google Map</a>
+      </div>
+      <div class="hub-spots-grid">
+        <div class="hub-spot-item" onclick="openBookingModal('SOONSIKI Hair Hongdae Flagship', 'https://creatrip.com/en/spot/11093?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (8,365) · From ₩33,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="SOONSIKI Hair Hongdae Flagship">SOONSIKI Hair Hongdae Flagship</span>
+              <span class="hub-spot-perk">★4.9 (8,365) · From ₩33,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('ECOJARDIN Hongdae', 'https://creatrip.com/en/spot/15615?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (4,372) · From ₩137,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="ECOJARDIN Hongdae">ECOJARDIN Hongdae</span>
+              <span class="hub-spot-perk">★4.9 (4,372) · From ₩137,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Don Juneun Namja Hongdae', 'https://creatrip.com/en/spot/13902?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.8 (1,012) · From ₩30,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Don Juneun Namja Hongdae">Don Juneun Namja Hongdae</span>
+              <span class="hub-spot-perk">★4.8 (1,012) · From ₩30,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Real K-POP Dance Class Hongdae', 'https://creatrip.com/en/spot/12956?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (173) · From ₩55,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Real K-POP Dance Class Hongdae">Real K-POP Dance Class Hongdae</span>
+              <span class="hub-spot-perk">★4.9 (173) · From ₩55,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Mercure Ambassador Seoul Hongdae', 'https://creatrip.com/en/stays/65ded4d74e759f00a6ac44d7?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.8 (575) · From $135 / night')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Mercure Ambassador Seoul Hongdae">Mercure Ambassador Seoul Hongdae</span>
+              <span class="hub-spot-perk">★4.8 (575) · From $135 / night</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Check Dates →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hub 4: Seongsu & Dongdaemun Hub -->
+    <div class="metro-hub-card">
+      <div class="hub-top">
+        <div class="hub-title-wrap">
+          <div class="hub-station-badge line-2"> Line 2 (Seongsu & Ttukseom)</div>
+          <div class="hub-name" data-en="Seongsu &amp; Dongdaemun Hub">Seongsu &amp; Dongdaemun Hub</div>
+          <div class="hub-subtitle" data-en="Perfume workshops, hair studios, 24-hour jjimjilbang &amp; Myeongdong clinics">Perfume workshops, hair studios, 24-hour jjimjilbang &amp; Myeongdong clinics</div>
+        </div>
+        <a href="https://maps.google.com/?q=Seongsu+Station+Seoul" target="_blank" class="btn-google-map"> Google Map</a>
+      </div>
+      <div class="hub-spots-grid">
+        <div class="hub-spot-item" onclick="openBookingModal('YOU Hair Salon Seongsu', 'https://creatrip.com/en/spot/14730?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5.0 (1,380) · From ₩35,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="YOU Hair Salon Seongsu">YOU Hair Salon Seongsu</span>
+              <span class="hub-spot-perk">★5.0 (1,380) · From ₩35,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('WHIPPED HOUSE Seongsu', 'https://creatrip.com/en/spot/14309?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (839) · From ₩25,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="WHIPPED HOUSE Seongsu">WHIPPED HOUSE Seongsu</span>
+              <span class="hub-spot-perk">★4.9 (839) · From ₩25,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('.NOTE Seongsu Perfume Class', 'https://creatrip.com/en/spot/14808?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5.0 (3,377) · From ₩49,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en=".NOTE Seongsu Perfume Class">.NOTE Seongsu Perfume Class</span>
+              <span class="hub-spot-perk">★5.0 (3,377) · From ₩49,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Sparex Dongdaemun Jjimjilbang', 'https://creatrip.com/en/spot/13261?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.2 (1,060) · From ₩7,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Sparex Dongdaemun Jjimjilbang">Sparex Dongdaemun Jjimjilbang</span>
+              <span class="hub-spot-perk">★4.2 (1,060) · From ₩7,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Abijou Clinic Global Myeongdong', 'https://creatrip.com/en/spot/14592?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (4,477) · From ₩10,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Abijou Clinic Global Myeongdong">Abijou Clinic Global Myeongdong</span>
+              <span class="hub-spot-perk">★4.9 (4,477) · From ₩10,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+
+  <!-- Pocket map download -->
+  <section class="cute-map-card">
+    <div class="cute-map-header">
+      <span class="cute-map-tag" id="cuteMapTag" data-en="Free download" data-zh="免费下载">Free download</span>
+      <h3 class="cute-map-heading" id="cuteMapHeading" data-en="The Seoul Pocket Map" data-zh="首尔口袋地图">The Seoul Pocket Map</h3>
+      <p class="cute-map-desc" id="cuteMapDesc" data-en="Every spot in this issue, drawn by hand. Keep it on your phone, or print it before you land." data-zh="本期所有地点的手绘地图。可存进手机，也可出发前打印。">Every spot in this issue, drawn by hand. Keep it on your phone, or print it before you land.</p>
+    </div>
+    <div class="cute-map-download-row">
+      <a href="images/seoul_kawaii_map_en.png" download="Cute_Seoul_Pocket_Map_EN.png" class="btn-map-dl dl-en" onclick="handleMapDownload('en')">
+        <span id="dlBtnEnText" data-en="Download EN · 4K" data-zh="下载英文版 · 4K">Download EN · 4K</span>
+      </a>
+      <a href="images/seoul_kawaii_map_zh.png" download="Cute_Seoul_Pocket_Map_ZH.png" class="btn-map-dl dl-zh" onclick="handleMapDownload('zh')">
+        <span id="dlBtnZhText" data-en="Chinese map · 4K" data-zh="下载中文版 · 4K">Chinese map · 4K</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Klook official coupon codes (region-locked, verified 2026-11-16) -->
+  <div class="coupon-section" id="klookCoupons">
+    <button type="button" class="coupon-head" id="klookCouponToggle" aria-expanded="false" aria-controls="klookCouponBody" aria-label="Show Klook coupon codes" onclick="toggleCouponSection()">
+      <span class="coupon-head-title" data-en="Klook coupons" data-zh="Klook 优惠码">Klook coupons</span>
+      <span class="coupon-head-badge">
+        <span class="coupon-badge-full" data-en="4 codes · HK/MO · VN · TH" data-zh="4组优惠码 · 港澳/越南/泰国">4 codes · HK/MO · VN · TH</span>
+        <span class="coupon-badge-short" data-en="4 codes" data-zh="4组优惠码">4 codes</span>
+      </span>
+      <span class="coupon-head-toggle" id="klookCouponToggleLabel" data-en="Show ▼" data-zh="展开 ▼">Show ▼</span>
+    </button>
+    <div class="coupon-body" id="klookCouponBody" aria-hidden="true">
+      <div class="coupon-body-inner">
+        <div class="coupon-head-sub" data-en="Enter these at the Klook checkout. Each code only works on one region&#x27;s account." data-zh="在 Klook 结账页输入优惠码，每组码仅限标示地区的账号使用。">Enter these at the Klook checkout. Each code only works on one region&#x27;s account.</div>
+        <div class="coupon-list">
+          <div class="coupon-card">
+            <div class="coupon-top">
+              <span class="coupon-disc">10% OFF</span>
+              <span class="coupon-region">HK · MO</span>
+            </div>
+            <div class="coupon-title" data-en="Selected Korea winter products — 10% off" data-zh="指定韓國冬季商品 9 折">Selected Korea winter products — 10% off</div>
+            <div class="coupon-cond" data-en="Spend HK$999+ on selected Korea winter products · max HK$100 off · once per user · excludes WiFi &amp; SIM cards" data-zh="指定韓國冬季商品滿 HK$999 享 9 折，最高折抵 HK$100，每人限用一次（不含 WiFi、SIM 卡）">Spend HK$999+ on selected Korea winter products · max HK$100 off · once per user · excludes WiFi &amp; SIM cards</div>
+            <div class="coupon-foot">
+              <span class="coupon-valid">Until 15 Dec 2026 (GMT+8)</span>
+              <span class="coupon-code-row">
+                <code class="coupon-code">HKKRWINTER10OFF</code>
+                <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('HKKRWINTER10OFF', this)">Copy</button>
+              </span>
+            </div>
+          </div>
+          <div class="coupon-card">
+            <div class="coupon-top">
+              <span class="coupon-disc">10% OFF</span>
+              <span class="coupon-region">HK · MO</span>
+            </div>
+            <div class="coupon-title" data-en="Korea products — 10% off" data-zh="韓國商品 9 折">Korea products — 10% off</div>
+            <div class="coupon-cond" data-en="Spend HK$399+ on Korea products · max HK$50 off · once per user · excludes WiFi, SIM, transport passes &amp; train tickets" data-zh="韓國商品滿 HK$399 享 9 折，最高折抵 HK$50，每人限用一次（不含 WiFi、SIM 卡、交通票券、火車票）">Spend HK$399+ on Korea products · max HK$50 off · once per user · excludes WiFi, SIM, transport passes &amp; train tickets</div>
+            <div class="coupon-foot">
+              <span class="coupon-valid">Until 15 Dec 2026 (GMT+8)</span>
+              <span class="coupon-code-row">
+                <code class="coupon-code">HKKRAP10OFF</code>
+                <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('HKKRAP10OFF', this)">Copy</button>
+              </span>
+            </div>
+          </div>
+          <div class="coupon-card">
+            <div class="coupon-top">
+              <span class="coupon-disc">10% OFF</span>
+              <span class="coupon-region">VN</span>
+            </div>
+            <div class="coupon-title" data-en="South Korea activities &amp; rail — 10% off" data-zh="韓國景點·活動·鐵路 9 折">South Korea activities &amp; rail — 10% off</div>
+            <div class="coupon-cond" data-en="No minimum spend · max VND 300,000 off · needs a VN phone number · almost all attractions, tours, rail &amp; bus tickets" data-zh="無最低消費，最高折抵 30 萬越南盾，需越南手機號，適用韓國景點、活動、行程、火車與巴士票">No minimum spend · max VND 300,000 off · needs a VN phone number · almost all attractions, tours, rail &amp; bus tickets</div>
+            <div class="coupon-foot">
+              <span class="coupon-valid">Until 20 Dec 2026 (GMT+8)</span>
+              <span class="coupon-code-row">
+                <code class="coupon-code">VUIHQAFF2026</code>
+                <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('VUIHQAFF2026', this)">Copy</button>
+              </span>
+            </div>
+          </div>
+          <div class="coupon-card">
+            <div class="coupon-top">
+              <span class="coupon-disc">B1G1</span>
+              <span class="coupon-region">TH</span>
+            </div>
+            <div class="coupon-title" data-en="AREX Incheon Airport Express — buy 1 get 1" data-zh="AREX 仁川機場快線 買一送一">AREX Incheon Airport Express — buy 1 get 1</div>
+            <div class="coupon-cond" data-en="Incheon Airport → Seoul Station only · trains 05:00–10:00 &amp; 18:00–22:00 KST · once per user · not combinable" data-zh="限仁川機場 → 首爾站方向，05:00–10:00 與 18:00–22:00（韓國時間）班次，每人限用一次，不可與其他優惠併用">Incheon Airport → Seoul Station only · trains 05:00–10:00 &amp; 18:00–22:00 KST · once per user · not combinable</div>
+            <div class="coupon-foot">
+              <span class="coupon-valid">Until 30 Nov 2026 (while stock lasts)</span>
+              <span class="coupon-code-row">
+                <code class="coupon-code">JUSTBOOKAREX</code>
+                <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('JUSTBOOKAREX', this)">Copy</button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="coupon-note" data-en="All four are locked to one region&#x27;s Klook account: HK/MO · VN · TH. The 10% codes exclude WiFi/SIM cards; the HK$399 code also excludes transport passes and train tickets. JUSTBOOKAREX works only on Incheon Airport → Seoul Station trains departing 05:00–10:00 or 18:00–22:00 KST. Prices and coupons were checked on the Klook pages on 16 Nov 2026 and can change by date, option and promo." data-zh="四組優惠碼皆限指定地區帳號：香港/澳門 · 越南 · 泰國。10% 折優惠不含 WiFi/SIM 卡；HK$399 優惠另不含交通票券與火車票。JUSTBOOKAREX 僅適用仁川機場 → 首爾站、05:00–10:00 或 18:00–22:00（韓國時間）出發班次。票價與優惠碼於 2026 年 11 月 16 日在 Klook 頁面確認，實際金額依日期、選項與活動而異。">All four are locked to one region's Klook account: HK/MO · VN · TH. The 10% codes exclude WiFi/SIM cards; the HK$399 code also excludes transport passes and train tickets. JUSTBOOKAREX works only on Incheon Airport → Seoul Station trains departing 05:00–10:00 or 18:00–22:00 KST. Prices and coupons were checked on the Klook pages on 16 Nov 2026 and can change by date, option and promo.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- B2B -->
+  <section class="partner-banner" id="partner">
+    <div class="partner-inner">
+      <div>
+        <span class="eyebrow" data-en="For business" data-zh="商务合作">For business</span>
+        <h3 data-en="Partner with Seoul in Pocket" data-zh="与首尔口袋指南合作">Partner with Seoul in Pocket</h3>
+        <p data-en="Our readers plan on TikTok and Xiaohongshu and book on Creatrip or Klook. If you run a restaurant, a clinic or a guesthouse in Seoul, tell us where you are." data-zh="我们的读者在小红书和 TikTok 上做攻略，在 Creatrip 或 Klook 上预订。如果你在首尔经营餐厅、诊所或民宿，告诉我们你在哪里。">Our readers plan on TikTok and Xiaohongshu and book on Creatrip or Klook. If you run a restaurant, a clinic or a guesthouse in Seoul, tell us where you are.</p>
+      </div>
+      <button class="btn-contact" type="button" onclick="openPartnerModal()" data-en="Submit a listing →" data-zh="提交入驻申请 →">Submit a listing →</button>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">SEOUL IN POCKET</div>
+        <p class="footer-desc" data-en="A working guide to Seoul from people who live here. Booking links go to Creatrip and Klook; we earn a small commission when you book through them, and the price you pay stays the same." data-zh="来自居住在首尔的人们的实用指南。预订链接指向 Creatrip 与 Klook，通过链接下单时我们会获得少量佣金，你支付的价格不变。">A working guide to Seoul from people who live here. Booking links go to Creatrip and Klook; we earn a small commission when you book through them, and the price you pay stays the same.</p>
+      </div>
+      <div class="footer-social-box">
+        <a href="https://www.instagram.com/seoulinpocket/" target="_blank" rel="noopener" class="footer-social-link">Instagram ↗</a>
+        <a href="https://www.tiktok.com/@seoulinpocket" target="_blank" rel="noopener" class="footer-social-link">TikTok ↗</a>
+        <a href="http://xhslink.com/o/4tE6Fn1NFnE" target="_blank" rel="noopener" class="footer-social-link">小红书 ↗</a>
+        <button type="button" class="footer-social-link" onclick="openVipModal()" data-en="Seoul Picks ↗" data-zh="首尔精选 ↗">Seoul Picks ↗</button>
+      </div>
+      <p class="footer-copy">© 2026 Seoul in Pocket · Affiliate partner of Creatrip &amp; Klook</p>
+    </div>
   </footer>
 
-  <!-- Floating Mobile Bar -->
+  <!-- Bottom bar -->
   <div class="bottom-bar">
-    <div class="social-links">
-      <span style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted);">Follow:</span>
-      <a href="https://www.instagram.com/seoulinpocket/" target="_blank" class="social-btn">📸 IG</a>
-      <a href="https://www.tiktok.com/@seoulinpocket" target="_blank" class="social-btn">🎵 TikTok</a>
-      <a href="http://xhslink.com/o/4tE6Fn1NFnE" target="_blank" class="social-btn">📕 小红书</a>
+    <div class="bar-inner">
+      <div class="social-links">
+        <span>Follow</span>
+        <a href="https://www.instagram.com/seoulinpocket/" target="_blank" rel="noopener" class="social-btn">IG</a>
+        <a href="https://www.tiktok.com/@seoulinpocket" target="_blank" rel="noopener" class="social-btn">TikTok</a>
+        <a href="http://xhslink.com/o/4tE6Fn1NFnE" target="_blank" rel="noopener" class="social-btn">小红书</a>
+      </div>
+      <button class="btn-vip" type="button" onclick="openVipModal()" data-en="Seoul Picks" data-zh="首尔精选">Seoul Picks</button>
     </div>
-    <button class="btn-vip" onclick="openVipModal()">Seoul Picks ✨</button>
   </div>
 </div>
 
-<!-- Booking Modal Sheet -->
+<!-- Booking modal -->
 <div class="modal-backdrop" id="bookingModal" onclick="closeModalOnBackdrop(event, this)">
   <div class="modal-sheet" onclick="event.stopPropagation()">
     <div class="modal-handle"></div>
     <div class="modal-header">
-      <div class="modal-title" id="modalTitle">Official Booking</div>
-      <button class="modal-close" id="bookingCloseBtn" type="button" onclick="closeModal('bookingModal')">✕</button>
+      <div class="modal-title" id="modalTitle">Official booking</div>
+      <button class="modal-close" id="bookingCloseBtn" type="button" onclick="closeModal('bookingModal')" aria-label="Close">✕</button>
     </div>
     <div class="modal-desc" id="modalBenefit">Live price, reviews and availability are shown on the official Creatrip or Klook page.</div>
     <div class="promo-box">
       <div class="promo-code-wrap">
-        <div class="promo-label" id="modalPartnerLabel">Official Creatrip Product Page</div>
+        <div class="promo-label" id="modalPartnerLabel">Official Creatrip product page</div>
         <div class="promo-code" id="modalCode">creatrip.com</div>
       </div>
-      <button class="btn-copy" id="bookingCopyBtn" type="button" onclick="copyPromoCode()">Copy Link</button>
+      <button class="btn-copy" id="bookingCopyBtn" type="button" onclick="copyPromoCode()">Copy link</button>
     </div>
-    <a class="btn-redirect" id="modalRedirectBtn" href="#" target="_blank" rel="noopener noreferrer" style="display: block; text-decoration: none; text-align: center; box-sizing: border-box;" onclick="handleAffiliateClick(event)">Continue to Official Booking Page ↗</a>
+    <a class="btn-redirect" id="modalRedirectBtn" href="#" target="_blank" rel="noopener noreferrer" onclick="handleAffiliateClick(event)">Continue to the booking page ↗</a>
   </div>
 </div>
 
-<!-- VIP Pass Modal Sheet -->
+<!-- Seoul Picks modal -->
 <div class="modal-backdrop" id="vipModal" onclick="closeModalOnBackdrop(event, this)">
   <div class="modal-sheet" onclick="event.stopPropagation()">
     <div class="modal-handle"></div>
     <div class="modal-header">
-      <div class="modal-title">🎁 Seoul Picks</div>
-      <button class="modal-close" type="button" onclick="closeModal('vipModal')">✕</button>
+      <div class="modal-title">Seoul Picks</div>
+      <button class="modal-close" type="button" onclick="closeModal('vipModal')" aria-label="Close">✕</button>
     </div>
-    <div class="modal-desc">Get our new Seoul openings, seasonal picks and Creatrip & Klook partner deals in your inbox.</div>
-    <input type="email" class="modal-input" id="vipEmail" placeholder="Enter your email">
-    <button class="btn-redirect" type="button" style="background: var(--primary);" onclick="submitVipPass()">Join the Seoul Picks List 🚀</button>
+    <div class="modal-desc">New openings, seasonal picks and partner deals — one email a month, nothing else.</div>
+    <input type="email" class="modal-input" id="vipEmail" placeholder="Your email" autocomplete="email">
+    <button class="btn-redirect" type="button" onclick="submitVipPass()">Subscribe</button>
   </div>
 </div>
 
-<!-- Partner Modal Sheet -->
+<!-- Partner modal -->
 <div class="modal-backdrop" id="partnerModal" onclick="closeModalOnBackdrop(event, this)">
   <div class="modal-sheet" onclick="event.stopPropagation()">
     <div class="modal-handle"></div>
     <div class="modal-header">
-      <div class="modal-title">🤝 Partner with Seoul in Pocket</div>
-      <button class="modal-close" type="button" onclick="closeModal('partnerModal')">✕</button>
+      <div class="modal-title">Partner with Seoul in Pocket</div>
+      <button class="modal-close" type="button" onclick="closeModal('partnerModal')" aria-label="Close">✕</button>
     </div>
-    <div class="modal-desc">Connect with 10,000+ monthly inbound tourists from USA, Japan, Singapore & Greater China.</div>
-    <input type="text" class="modal-input" id="partnerShop" placeholder="Shop / Business Name (e.g. 성수 베이커리)">
-    <input type="text" class="modal-input" id="partnerContact" placeholder="KakaoTalk ID / WhatsApp / Email">
-    <button class="btn-redirect" type="button" onclick="submitPartnerInquiry()">Submit Partnership Inquiry 📨</button>
+    <div class="modal-desc">Tell us the place and the best way to reach you. We answer within a day.</div>
+    <input type="text" class="modal-input" id="partnerShop" placeholder="Business name (e.g. 성수 베이커리)">
+    <input type="text" class="modal-input" id="partnerContact" placeholder="KakaoTalk / WhatsApp / email">
+    <button class="btn-redirect" type="button" onclick="submitPartnerInquiry()">Send inquiry</button>
   </div>
 </div>
 
 <script>
+
   let currentTargetUrl = 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl';
 
   // Category Filtering
@@ -3343,29 +3601,34 @@
         card.classList.add('hidden');
       }
     });
-    showToast(cat === 'all' ? 'Showing all trending spots ✨' : `Filtered: ${element ? element.innerText : cat}`);
+    showToast(cat === 'all' ? 'Showing all 60 picks' : `Filtered: ${element ? element.innerText : cat}`);
   }
 
 
-  // Compact Metro Map Toggle
+  // Label of the metro banner toggle in the language currently on screen.
+  function mapToggleLabel() {
+    if (isMapOpen) return isChinese ? '收起 ▴' : 'Close ▴';
+    return isChinese ? '展开指南 ▾' : 'Open guide ▾';
+  }
+
+  // Metro map toggle
   let isMapOpen = false;
   function toggleMetroMap() {
     isMapOpen = !isMapOpen;
     const mapView = document.getElementById('mapView');
     const tag = document.getElementById('mapToggleTag');
     if (isMapOpen) {
-      mapView.style.display = 'block';
-      tag.innerText = 'Close Map ▴';
+      mapView.classList.add('show');
       mapView.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     } else {
-      mapView.style.display = 'none';
-      tag.innerText = 'View 4 Hubs ▾';
+      mapView.classList.remove('show');
     }
+    if (tag) tag.innerText = mapToggleLabel();
   }
 
   // Booking Modal Deep Links Mapping (100% Verified Direct Detail Pages)
   const spotDeepLinks = {
-    // 💄 K-Beauty & Clinics
+    //  K-Beauty & Clinics
     "Abijou Clinic Global Myeongdong": 'https://creatrip.com/en/spot/14592?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
     "Medicube Clinic Gangnam": 'https://creatrip.com/en/spot/13573?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
     "Cheongdam Éclat De Clinic": 'https://creatrip.com/en/spot/13214?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
@@ -3376,7 +3639,7 @@
     "Pro Beauty Myeongdong": 'https://creatrip.com/en/spot/13493?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
     "Fleur Jardin Myeongdong": 'https://creatrip.com/en/spot/14955?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
 
-    // 🎤 K-Pop & Culture
+    //  K-Pop & Culture
     "YES Hanbok Rental Gyeongbokgung": 'https://creatrip.com/en/spot/11006?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
     "Ari Hanbok Gyeongbokgung": 'https://creatrip.com/en/spot/13241?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
     "SBS Inkigayo Live + Seoul Tour": 'https://creatrip.com/en/spot/14605?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
@@ -3387,7 +3650,7 @@
     "POCA SPOT Hongdae": 'https://creatrip.com/en/spot/14469?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
     ".NOTE Seongsu Perfume Class": 'https://creatrip.com/en/spot/14808?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
 
-    // ☕ Food & Dining
+    //  Food & Dining
     "Jinmi Sikdang Mapo": 'https://creatrip.com/en/spot/13287?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
     "Tosokchon Samgyetang": 'https://creatrip.com/en/spot/13598?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
     "Kyochon Pilbang Yongsan": 'https://creatrip.com/en/spot/13812?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
@@ -3398,7 +3661,7 @@
     "Haecheonobu Jongno": 'https://creatrip.com/en/spot/14166?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
     "Don Juneun Namja Hongdae": 'https://creatrip.com/en/spot/13902?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
 
-    // 🏮 Stays & Accommodations
+    //  Stays & Accommodations
     "Bukchon Yeonwoo Hanok Stay": 'https://creatrip.com/en/stays/65f35256d68cf4126470e9e8?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
     "Bukchon Sohyeondang Hanok Stay": 'https://creatrip.com/en/stays/65f345e0d68cf4126457f4bc?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
     "Seochon Nuhadang Hanok Stay": 'https://creatrip.com/en/stays/65f347d2d68cf412645afa8b?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
@@ -3409,7 +3672,7 @@
     "Conrad Seoul": 'https://creatrip.com/en/stays/65f1d9abd747dc82a65017ec?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
     "Grand Mercure Imperial Palace Seoul Gangnam": 'https://creatrip.com/en/stays/664ae65d4928b1fe5fb838c6?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl',
 
-    // 🎟️ Klook Tickets & Tours (24 verified products, aid=143260)
+    //  Klook Tickets & Tours (24 verified products, aid=143260)
     "AREX Incheon Airport Express Voucher": 'https://www.klook.com/en-US/activity/1163-airport-to-seoul-city-center-arex-train-incheon/?aid=143260',
     "Incheon Airport Limousine Bus Ticket": 'https://www.klook.com/en-US/activity/121308-incheon-airport-limousine-bus-ticket/?aid=143260',
     "WOWPASS: Prepaid Card for Cashless Payment in Korea": 'https://www.klook.com/en-US/activity/86208-wowpass-card-seoul/?aid=143260',
@@ -3533,7 +3796,7 @@
 
     if (navigator.clipboard && window.isSecureContext) {
       navigator.clipboard.writeText(code).then(() => {
-        showToast(isKlookUrl(code) ? 'Klook link copied — book on the official page ✨' : 'Creatrip link copied — book on the official page ✨');
+        showToast(isKlookUrl(code) ? 'Klook link copied' : 'Creatrip link copied');
       }).catch(() => {
         fallbackCopyText(code);
       });
@@ -3656,7 +3919,7 @@
   function fallbackCopyText(text) {
     const isKlook = isKlookUrl(text);
     if (copyPlainText(text)) {
-      showToast(isKlook ? 'Klook link copied — book on the official page ✨' : 'Creatrip link copied — book on the official page ✨');
+      showToast(isKlook ? 'Klook link copied' : 'Creatrip link copied');
     } else {
       showToast(isKlook ? 'Copy the Klook link from the button ↗' : 'Copy the Creatrip link from the button ↗');
     }
@@ -3684,10 +3947,10 @@
   function submitVipPass() {
     const email = document.getElementById('vipEmail').value.trim();
     if (!email) {
-      showToast('Please enter your email!');
+      showToast('Please enter your email.');
       return;
     }
-    showToast('Thanks! Follow @seoulinpocket for weekly Seoul picks ✨');
+    showToast('Thanks — you are on the list.');
     closeModal('vipModal');
     document.getElementById('vipEmail').value = '';
   }
@@ -3696,17 +3959,17 @@
     const shop = document.getElementById('partnerShop').value.trim();
     const contact = document.getElementById('partnerContact').value.trim();
     if (!shop || !contact) {
-      showToast('Please fill in your shop name & contact info!');
+      showToast('Please fill in the shop name and contact.');
       return;
     }
-    showToast('📨 Inquiry received! Our B2B team will contact you within 24h.');
+    showToast('Inquiry received. We will reply within a day.');
     closeModal('partnerModal');
     document.getElementById('partnerShop').value = '';
     document.getElementById('partnerContact').value = '';
   }
 
   function handleAffiliateClick(e) {
-    showToast('Redirecting to partner reservation platform... 🚀');
+    showToast('Opening the booking page');
     setTimeout(() => {
       closeModal('bookingModal');
     }, 600);
@@ -3734,8 +3997,8 @@
       audio.play().then(() => {
         isBgmPlaying = true;
         btn.classList.add('playing');
-        icon.innerText = '🎶';
-        showToast('🎵 Playing Seoul Chill BGM ✨');
+        icon.innerText = '♫';
+        showToast('Playing K-lofi BGM');
       }).catch(err => {
         console.log('Audio play error:', err);
         showToast('Tap again to play audio');
@@ -3744,8 +4007,8 @@
       audio.pause();
       isBgmPlaying = false;
       btn.classList.remove('playing');
-      icon.innerText = '🎵';
-      showToast('🔇 BGM Paused');
+      icon.innerText = '♪';
+      showToast('BGM paused');
     }
   }
 
@@ -3754,9 +4017,9 @@
 
   function handleMapDownload(lang) {
     if (lang === 'en') {
-      showToast('🌸 English 4K Map downloading...');
+      showToast('English map — downloading');
     } else {
-      showToast('🌸 中文版高清地图正在下载...');
+      showToast('中文版地图 — 开始下载');
     }
   }
 
@@ -3770,42 +4033,45 @@
     const secTitle = document.getElementById('sectionTitle');
 
     if (isChinese) {
-      btn.innerText = '🇨🇳 中文 | 🇺🇸 EN';
-      heroTitle.innerHTML = '像<em>首尔本地人</em>一样探索首尔';
-      heroDesc.innerText = '精选K-Pop打卡地、弘大圣水美学咖啡馆、皮肤科诊所、精品韩屋住宿，以及 Klook 门票与一日游 —— 每一张卡片都链接到 Creatrip / Klook 真实可预订的产品。';
-      secTitle.innerText = '本周热门推荐';
-      document.getElementById('mapHeaderBadge').innerText = '🚇 4大首尔核心旅游商圈导航';
-      document.getElementById('mapHeaderTitle').innerText = '首尔地铁互动美食美妆游玩地图';
-      document.getElementById('mapHeaderDesc').innerText = '在韩国谷歌地图无法正常步行导航！使用我们的首尔地铁商圈指南，探索顶级皮肤科、咖啡馆与K-Pop圣地，直接查看实时价格与评价！';
+      btn.innerText = '中文 / EN';
+      heroTitle.innerHTML = '首尔，<em>一条街一条街地走</em>。';
+      heroDesc.innerText = '本期六十个推荐 —— 诊所、沙龙、韩屋住宿，以及免排队的 Klook 门票。每张卡片都直达真实的 Creatrip 或 Klook 页面，价格和评价实时同步。';
+      secTitle.innerText = '本周首尔';
+      document.getElementById('mapHeaderBadge').innerText = '地铁指南';
+      document.getElementById('mapHeaderTitle').innerText = '四大商圈，一天走完';
+      document.getElementById('mapHeaderDesc').innerText = '在首尔，Google 地图的步行导航并不可靠。从地铁出口出发更稳妥：下面每个商圈都把同一站附近的诊所、咖啡馆和演出串在一起。';
       const mapTag = document.getElementById('cuteMapTag');
       const mapHeading = document.getElementById('cuteMapHeading');
       const mapDesc = document.getElementById('cuteMapDesc');
-      if (mapTag) mapTag.innerText = '🌸 免费4K原图赠品';
-      if (mapHeading) mapHeading.innerText = '超可爱首尔手绘地铁口袋地图';
-      if (mapDesc) mapDesc.innerText = '精选全首尔热门地铁打卡地、弘大圣水美食与江南医美！一键免费保存高清大图。';
+      if (mapTag) mapTag.innerText = '免费下载';
+      if (mapHeading) mapHeading.innerText = '首尔口袋地图';
+      if (mapDesc) mapDesc.innerText = '本期所有地点的手绘地图。可存进手机，也可出发前打印。';
       document.querySelectorAll('[data-zh]').forEach(el => {
         el.innerText = el.getAttribute('data-zh');
       });
-      showToast('已切换至中文模式 🇨🇳');
+      showToast('中文模式');
     } else {
-      btn.innerText = '🇺🇸 EN | 🇨🇳 中文';
-      heroTitle.innerHTML = 'Explore Seoul Like a <em>True Local</em>';
-      heroDesc.innerText = 'Hand-picked K-Pop spots, aesthetic cafes, skin clinics, boutique stays and Klook tickets & tours — every card links to a real, bookable Creatrip or Klook product.';
-      secTitle.innerText = 'Must-Visit This Week';
-      document.getElementById('mapHeaderBadge').innerText = '🚇 4 Essential Seoul Tourist Hubs';
-      document.getElementById('mapHeaderTitle').innerText = 'Interactive Seoul Metro Food & Beauty Map';
-      document.getElementById('mapHeaderDesc').innerText = "Google Maps walking navigation doesn't work well in Korea. Use our subway station hub guide to navigate top clinics, cafes & K-pop spots, with live prices and reviews on Creatrip.";
+      btn.innerText = 'EN / 中文';
+      heroTitle.innerHTML = 'Seoul, <em>street by street</em>.';
+      heroDesc.innerText = 'Sixty picks we keep sending friends to — clinics, salons, hanok stays and the Klook tickets that skip the queue. Every card opens the real Creatrip or Klook page, with live prices and reviews.';
+      secTitle.innerText = 'This week in Seoul';
+      document.getElementById('mapHeaderBadge').innerText = 'Metro guides';
+      document.getElementById('mapHeaderTitle').innerText = 'Four hubs, walkable in a day';
+      document.getElementById('mapHeaderDesc').innerText = "Google Maps walking directions are unreliable in Seoul. Start from a subway exit instead: each hub below groups the clinics, cafés and stages within a few minutes of one station.";
       const mapTag = document.getElementById('cuteMapTag');
       const mapHeading = document.getElementById('cuteMapHeading');
       const mapDesc = document.getElementById('cuteMapDesc');
-      if (mapTag) mapTag.innerText = '🌸 FREE 4K GIFT';
-      if (mapHeading) mapHeading.innerText = 'Cute Illustrated Seoul Pocket Map';
-      if (mapDesc) mapDesc.innerText = 'All viral subway spots, cafes & clinics in one adorable hand-drawn map!';
+      if (mapTag) mapTag.innerText = 'Free download';
+      if (mapHeading) mapHeading.innerText = 'The Seoul Pocket Map';
+      if (mapDesc) mapDesc.innerText = 'Every spot in this issue, drawn by hand. Keep it on your phone, or print it before you land.';
       document.querySelectorAll('[data-en]').forEach(el => {
         el.innerText = el.getAttribute('data-en');
       });
-      showToast('Switched to English 🇺🇸');
+      showToast('Switched to English');
     }
+    // Keep the metro banner label in step with the language.
+    const metroTag = document.getElementById('mapToggleTag');
+    if (metroTag) metroTag.innerText = mapToggleLabel();
     // Keep the coupon toggle label in step with the language and its open state.
     updateCouponToggle(document.getElementById('klookCouponToggle').getAttribute('aria-expanded') === 'true');
   }
