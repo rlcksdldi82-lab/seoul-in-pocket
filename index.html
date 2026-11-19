@@ -194,95 +194,102 @@
 
     /* ── Hero ───────────────────────────────────────────────────────────── */
     .hero {
-      padding-block: 34px 30px;
+      padding-block: 18px 14px;
       max-width: var(--maxw);
       margin-inline: auto;
       padding-inline: var(--pad);
     }
-    @media (min-width: 768px) { .hero { padding-block: 62px 40px; } }
+    @media (min-width: 768px) { .hero { padding-block: 42px 28px; } }
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      font-size: .66rem;
+      gap: 8px;
+      font-size: .58rem;
       font-weight: 700;
-      letter-spacing: .2em;
+      letter-spacing: .18em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 20px;
+      margin-bottom: 9px;
     }
     .hero h1 {
       font-family: var(--font-serif);
       font-weight: 400;
-      font-size: clamp(2.6rem, 8.2vw, 4.6rem);
-      line-height: 1.02;
+      font-size: clamp(1.95rem, 7.6vw, 4rem);
+      line-height: 1.04;
       letter-spacing: -.01em;
-      margin-bottom: 18px;
+      margin-bottom: 9px;
       text-wrap: balance;
     }
     .hero h1 em { font-style: italic; color: var(--accent); }
     .hero p {
-      font-size: .92rem;
-      line-height: 1.65;
+      font-size: .84rem;
+      line-height: 1.55;
       color: var(--muted);
-      max-width: 54ch;
+      max-width: 56ch;
     }
     @media (min-width: 768px) {
-      .hero p { font-size: 1rem; }
+      .hero-badge { margin-bottom: 13px; }
+      .hero h1 { margin-bottom: 13px; }
+      .hero p { font-size: .95rem; }
     }
 
     /* ── Stats strip ────────────────────────────────────────────────────── */
     .quick-stats {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--line);
       max-width: var(--maxw);
       margin-inline: auto;
       padding-inline: var(--pad);
-      padding-bottom: 8px;
     }
     .stat-pill {
       display: block;
       text-align: left;
+      min-width: 0;
       background: none;
       border: 0;
-      border-bottom: 1px solid var(--line);
-      padding: 14px 0 12px;
+      border-left: 1px solid var(--line);
+      padding: 8px 0 7px 9px;
       cursor: pointer;
       font-family: inherit;
       color: inherit;
       transition: color .18s ease;
     }
+    .stat-pill:first-child { border-left: 0; padding-left: 0; }
     .stat-pill .stat-num {
       display: block;
       font-family: var(--font-serif);
-      font-size: 1.75rem;
-      line-height: 1;
+      font-size: 1.1rem;
+      line-height: 1.1;
       letter-spacing: -.01em;
       color: var(--ink);
-      margin-bottom: 6px;
+      margin-bottom: 3px;
+      white-space: nowrap;
     }
     .stat-pill .stat-label {
       display: block;
-      font-size: .62rem;
       font-weight: 600;
-      letter-spacing: .14em;
       text-transform: uppercase;
       color: var(--muted);
-      line-height: 1.4;
+      line-height: 1.35;
+      font-size: .48rem;
+      letter-spacing: .06em;
     }
+    .stat-pill .stat-label > span {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .stat-pill .stat-label > .lbl-full { display: none; }
     .stat-pill:hover .stat-num { color: var(--accent); }
-    .stat-pill:nth-child(even) { border-left: 1px solid var(--line); padding-left: 18px; }
     @media (min-width: 768px) {
-      .quick-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); padding-bottom: 0; }
-      .stat-pill {
-        border-bottom: 0;
-        border-left: 1px solid var(--line);
-        padding: 18px 0 22px 22px;
-      }
-      .stat-pill:nth-child(even) { padding-left: 22px; }
-      .stat-pill:first-child { border-left: 0; padding-left: 0; }
-      .stat-pill .stat-num { font-size: 2.1rem; }
+      .stat-pill { padding: 11px 0 12px 18px; }
+      .stat-pill .stat-num { font-size: 1.75rem; margin-bottom: 4px; }
+      .stat-pill .stat-label { font-size: .58rem; letter-spacing: .13em; }
+      .stat-pill .stat-label > .lbl-short { display: none; }
+      .stat-pill .stat-label > .lbl-full { display: block; }
     }
 
     /* ── Filter chips ───────────────────────────────────────────────────── */
@@ -296,17 +303,17 @@
       -webkit-overflow-scrolling: touch;
       max-width: var(--maxw);
       margin: 0 auto;
-      padding: 18px var(--pad) 0;
+      padding: 13px var(--pad) 0;
       border-bottom: 1px solid var(--line);
     }
     .chips-wrapper::-webkit-scrollbar { display: none; }
-    @media (min-width: 768px) { .chips-wrapper { padding-top: 26px; gap: 34px; } }
+    @media (min-width: 768px) { .chips-wrapper { padding-top: 20px; gap: 34px; } }
     .chip {
       flex: 0 0 auto;
       position: relative;
       background: none;
       border: 0;
-      padding: 0 0 13px;
+      padding: 0 0 11px;
       font-family: var(--font-sans);
       font-size: .74rem;
       font-weight: 600;
@@ -341,9 +348,9 @@
       gap: 16px;
       max-width: var(--maxw);
       margin: 0 auto;
-      padding: 30px var(--pad) 20px;
+      padding: 20px var(--pad) 14px;
     }
-    @media (min-width: 768px) { .section-header { padding-top: 46px; padding-bottom: 26px; } }
+    @media (min-width: 768px) { .section-header { padding-top: 32px; padding-bottom: 20px; } }
     .section-header h2 {
       font-family: var(--font-serif);
       font-weight: 400;
@@ -591,56 +598,57 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 18px var(--pad);
-      background: var(--ink);
-      color: #fff;
+      gap: 12px;
+      max-width: none;
+      margin: 0;
+      padding: 9px var(--pad);
+      background: transparent;
+      color: var(--ink);
+      border-bottom: 1px solid var(--line);
       cursor: pointer;
       user-select: none;
       transition: background .2s ease;
     }
-    @media (min-width: 768px) { .map-banner-compact { padding: 22px var(--pad); } }
-    .map-banner-compact:hover { background: #000; }
+    .map-banner-compact:hover { background: #FCFBF9; }
     .map-banner-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
-    .map-banner-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+    .map-banner-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
     .map-banner-title {
       font-family: var(--font-serif);
-      font-size: 1.12rem;
+      font-size: 1rem;
       line-height: 1.2;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    @media (min-width: 768px) { .map-banner-title { font-size: 1.4rem; } }
+    @media (min-width: 768px) { .map-banner-title { font-size: 1.18rem; } }
     .map-banner-sub {
-      font-size: .62rem;
-      letter-spacing: .12em;
+      font-size: .54rem;
+      letter-spacing: .1em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, .55);
+      color: var(--muted);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
     .map-banner-tag {
       flex: 0 0 auto;
-      border: 1px solid rgba(255, 255, 255, .35);
-      color: #fff;
-      font-size: .6rem;
+      border: 1px solid var(--line);
+      color: var(--accent);
+      font-size: .55rem;
       font-weight: 600;
-      letter-spacing: .12em;
+      letter-spacing: .1em;
       text-transform: uppercase;
-      padding: 7px 10px;
+      padding: 5px 8px;
       border-radius: 2px;
       white-space: nowrap;
     }
 
     .map-container {
       display: none;
-      max-width: var(--maxw);
+      max-width: none;
       margin: 0 auto;
-      padding: 26px var(--pad) 6px;
+      padding: 14px var(--pad) 16px;
+      border-bottom: 1px solid var(--line);
       scroll-margin-top: 72px;
     }
     .map-container.show {
@@ -769,57 +777,51 @@
     .hub-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
     @media (min-width: 1024px) { .hub-grid { display: contents; } }
 
-    /* ── Pocket map download band ───────────────────────────────────────── */
-    .cute-map-card {
+    /* ── Top tool rail: free map · coupons · metro ──────────────────────── */
+    .tool-rail {
       max-width: var(--maxw);
-      margin: 34px auto 0;
-      padding: 24px var(--pad);
-      background: var(--surface);
-      border-top: 1px solid var(--ink);
+      margin: 0 auto;
+    }
+    .tool-map {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+      padding: 8px var(--pad) 9px;
+      background: var(--accent-soft);
       border-bottom: 1px solid var(--line);
-      display: grid;
-      gap: 18px;
     }
-    @media (min-width: 768px) {
-      .cute-map-card {
-        grid-template-columns: minmax(0, 1fr) 320px;
-        align-items: center;
-        gap: 40px;
-        padding: 30px var(--pad);
-      }
-    }
-    .cute-map-header { min-width: 0; }
-    .cute-map-tag {
-      display: inline-block;
-      font-size: .6rem;
+    .tool-map-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+    .tool-map-eyebrow {
+      font-size: .5rem;
       font-weight: 700;
       letter-spacing: .18em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 9px;
     }
-    .cute-map-heading {
+    .tool-map-title {
       font-family: var(--font-serif);
       font-weight: 400;
-      font-size: 1.4rem;
+      font-size: 1.02rem;
       line-height: 1.15;
       letter-spacing: -.01em;
       color: var(--ink);
-      margin-bottom: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    @media (min-width: 768px) { .cute-map-heading { font-size: 1.85rem; } }
-    .cute-map-desc { font-size: .8rem; line-height: 1.6; color: var(--muted); max-width: 52ch; }
-    .cute-map-download-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .tool-map-actions { display: flex; align-items: center; gap: 6px; margin-left: auto; }
     .btn-map-dl {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      padding: 12px 8px;
+      gap: 5px;
+      padding: 7px 9px;
       border-radius: 3px;
-      font-size: .64rem;
+      font-size: .55rem;
       font-weight: 600;
-      letter-spacing: .08em;
+      letter-spacing: .05em;
       text-transform: uppercase;
       text-decoration: none;
       text-align: center;
@@ -830,22 +832,27 @@
     .btn-map-dl.dl-en:hover { background: var(--accent); }
     .btn-map-dl.dl-zh { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
     .btn-map-dl.dl-zh:hover { background: var(--ink); color: #fff; }
+    @media (min-width: 768px) {
+      .tool-map { padding: 11px var(--pad); }
+      .tool-map-title { font-size: 1.2rem; }
+      .btn-map-dl { padding: 9px 14px; font-size: .6rem; letter-spacing: .07em; }
+    }
 
     /* ── Klook coupon section ───────────────────────────────────────────── */
     .coupon-section {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      border: 1px solid var(--line);
-      border-top: 0;
-      background: var(--surface);
+      max-width: none;
+      margin: 0;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
     }
     .coupon-head {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
       width: 100%;
-      min-height: 54px;
-      padding: 8px var(--pad);
+      min-height: 42px;
+      padding: 6px var(--pad);
       border: 0;
       background: none;
       font-family: inherit;
@@ -859,7 +866,7 @@
     .coupon-head-title {
       flex: 0 0 auto;
       font-family: var(--font-serif);
-      font-size: 1.05rem;
+      font-size: .98rem;
       color: var(--ink);
       white-space: nowrap;
     }
@@ -1407,20 +1414,377 @@
   <div class="quick-stats">
     <button class="stat-pill" type="button" onclick="showToast('60 picks: 36 Creatrip places and 24 Klook tickets and tours.')">
       <span class="stat-num">60</span>
-      <span class="stat-label" data-en="Places &amp; tickets" data-zh="地点与门票">Places &amp; tickets</span>
+      <span class="stat-label"><span class="lbl-short" data-en="Picks" data-zh="推荐">Picks</span><span class="lbl-full" data-en="Places &amp; tickets" data-zh="地点与门票">Places &amp; tickets</span></span>
     </button>
     <button class="stat-pill" type="button" onclick="showToast('The 36 Creatrip picks average 4.69 stars across 141,639 reviews.')">
       <span class="stat-num">★ 4.69</span>
-      <span class="stat-label" data-en="Creatrip average rating" data-zh="Creatrip 平均评分">Creatrip average rating</span>
+      <span class="stat-label"><span class="lbl-short" data-en="Creatrip avg" data-zh="Creatrip 均分">Creatrip avg</span><span class="lbl-full" data-en="Creatrip average rating" data-zh="Creatrip 平均评分">Creatrip average rating</span></span>
     </button>
     <button class="stat-pill" type="button" onclick="showToast('Four metro hubs: Gangnam, Jongno–Myeongdong–Bukchon, Hongdae–Yeonnam and Seongsu–Dongdaemun.')">
       <span class="stat-num">4</span>
-      <span class="stat-label" data-en="Metro hubs" data-zh="地铁商圈">Metro hubs</span>
+      <span class="stat-label"><span class="lbl-short" data-en="Hubs" data-zh="商圈">Hubs</span><span class="lbl-full" data-en="Metro hubs" data-zh="地铁商圈">Metro hubs</span></span>
     </button>
     <button class="stat-pill" type="button" onclick="showToast('Every booking link opens the English or Chinese page on Creatrip or Klook.')">
       <span class="stat-num">EN · 中文</span>
-      <span class="stat-label" data-en="Two languages" data-zh="双语页面">Two languages</span>
+      <span class="stat-label"><span class="lbl-short" data-en="Bilingual" data-zh="双语">Bilingual</span><span class="lbl-full" data-en="Two languages" data-zh="双语页面">Two languages</span></span>
     </button>
+  </div>
+
+  <!-- Top tool rail: free map · Klook codes · metro guide -->
+  <div class="tool-rail" id="toolRail">
+  <!-- Free 4K pocket map (lead magnet) -->
+  <div class="tool-map">
+    <div class="tool-map-text">
+      <span class="tool-map-eyebrow" id="cuteMapTag" data-en="Free 4K map" data-zh="免费 4K 地图">Free 4K map</span>
+      <span class="tool-map-title" id="cuteMapHeading" data-en="The Seoul Pocket Map" data-zh="首尔口袋地图">The Seoul Pocket Map</span>
+    </div>
+    <div class="tool-map-actions">
+      <a href="images/seoul_kawaii_map_en.png" download="Cute_Seoul_Pocket_Map_EN.png" class="btn-map-dl dl-en" onclick="handleMapDownload('en')" aria-label="Download the English Seoul Pocket Map in 4K">
+        <span id="dlBtnEnText" data-en="EN · 4K &darr;" data-zh="英文 · 4K &darr;">EN · 4K &darr;</span>
+      </a>
+      <a href="images/seoul_kawaii_map_zh.png" download="Cute_Seoul_Pocket_Map_ZH.png" class="btn-map-dl dl-zh" onclick="handleMapDownload('zh')" aria-label="Download the Chinese Seoul Pocket Map in 4K">
+        <span id="dlBtnZhText" data-en="中文 · 4K &darr;" data-zh="中文 · 4K &darr;">中文 · 4K &darr;</span>
+      </a>
+    </div>
+  </div>
+  <!-- Klook official coupon codes (region-locked, verified 2026-11-16) -->
+  <div class="coupon-section" id="klookCoupons">
+    <button type="button" class="coupon-head" id="klookCouponToggle" aria-expanded="false" aria-controls="klookCouponBody" aria-label="Show Klook coupon codes" onclick="toggleCouponSection()">
+      <span class="coupon-head-title" data-en="Klook coupons" data-zh="Klook 优惠码">Klook coupons</span>
+      <span class="coupon-head-badge">
+        <span class="coupon-badge-full" data-en="4 codes · HK/MO · VN · TH" data-zh="4组优惠码 · 港澳/越南/泰国">4 codes · HK/MO · VN · TH</span>
+        <span class="coupon-badge-short" data-en="4 codes" data-zh="4组优惠码">4 codes</span>
+      </span>
+      <span class="coupon-head-toggle" id="klookCouponToggleLabel" data-en="Show ▼" data-zh="展开 ▼">Show ▼</span>
+    </button>
+    <div class="coupon-body" id="klookCouponBody" aria-hidden="true">
+      <div class="coupon-body-inner">
+        <div class="coupon-head-sub" data-en="Enter these at the Klook checkout. Each code only works on one region&#x27;s account." data-zh="在 Klook 结账页输入优惠码，每组码仅限标示地区的账号使用。">Enter these at the Klook checkout. Each code only works on one region&#x27;s account.</div>
+        <div class="coupon-list">
+          <div class="coupon-card">
+            <div class="coupon-top">
+              <span class="coupon-disc">10% OFF</span>
+              <span class="coupon-region">HK · MO</span>
+            </div>
+            <div class="coupon-title" data-en="Selected Korea winter products — 10% off" data-zh="指定韓國冬季商品 9 折">Selected Korea winter products — 10% off</div>
+            <div class="coupon-cond" data-en="Spend HK$999+ on selected Korea winter products · max HK$100 off · once per user · excludes WiFi &amp; SIM cards" data-zh="指定韓國冬季商品滿 HK$999 享 9 折，最高折抵 HK$100，每人限用一次（不含 WiFi、SIM 卡）">Spend HK$999+ on selected Korea winter products · max HK$100 off · once per user · excludes WiFi &amp; SIM cards</div>
+            <div class="coupon-foot">
+              <span class="coupon-valid">Until 15 Dec 2026 (GMT+8)</span>
+              <span class="coupon-code-row">
+                <code class="coupon-code">HKKRWINTER10OFF</code>
+                <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('HKKRWINTER10OFF', this)">Copy</button>
+              </span>
+            </div>
+          </div>
+          <div class="coupon-card">
+            <div class="coupon-top">
+              <span class="coupon-disc">10% OFF</span>
+              <span class="coupon-region">HK · MO</span>
+            </div>
+            <div class="coupon-title" data-en="Korea products — 10% off" data-zh="韓國商品 9 折">Korea products — 10% off</div>
+            <div class="coupon-cond" data-en="Spend HK$399+ on Korea products · max HK$50 off · once per user · excludes WiFi, SIM, transport passes &amp; train tickets" data-zh="韓國商品滿 HK$399 享 9 折，最高折抵 HK$50，每人限用一次（不含 WiFi、SIM 卡、交通票券、火車票）">Spend HK$399+ on Korea products · max HK$50 off · once per user · excludes WiFi, SIM, transport passes &amp; train tickets</div>
+            <div class="coupon-foot">
+              <span class="coupon-valid">Until 15 Dec 2026 (GMT+8)</span>
+              <span class="coupon-code-row">
+                <code class="coupon-code">HKKRAP10OFF</code>
+                <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('HKKRAP10OFF', this)">Copy</button>
+              </span>
+            </div>
+          </div>
+          <div class="coupon-card">
+            <div class="coupon-top">
+              <span class="coupon-disc">10% OFF</span>
+              <span class="coupon-region">VN</span>
+            </div>
+            <div class="coupon-title" data-en="South Korea activities &amp; rail — 10% off" data-zh="韓國景點·活動·鐵路 9 折">South Korea activities &amp; rail — 10% off</div>
+            <div class="coupon-cond" data-en="No minimum spend · max VND 300,000 off · needs a VN phone number · almost all attractions, tours, rail &amp; bus tickets" data-zh="無最低消費，最高折抵 30 萬越南盾，需越南手機號，適用韓國景點、活動、行程、火車與巴士票">No minimum spend · max VND 300,000 off · needs a VN phone number · almost all attractions, tours, rail &amp; bus tickets</div>
+            <div class="coupon-foot">
+              <span class="coupon-valid">Until 20 Dec 2026 (GMT+8)</span>
+              <span class="coupon-code-row">
+                <code class="coupon-code">VUIHQAFF2026</code>
+                <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('VUIHQAFF2026', this)">Copy</button>
+              </span>
+            </div>
+          </div>
+          <div class="coupon-card">
+            <div class="coupon-top">
+              <span class="coupon-disc">B1G1</span>
+              <span class="coupon-region">TH</span>
+            </div>
+            <div class="coupon-title" data-en="AREX Incheon Airport Express — buy 1 get 1" data-zh="AREX 仁川機場快線 買一送一">AREX Incheon Airport Express — buy 1 get 1</div>
+            <div class="coupon-cond" data-en="Incheon Airport → Seoul Station only · trains 05:00–10:00 &amp; 18:00–22:00 KST · once per user · not combinable" data-zh="限仁川機場 → 首爾站方向，05:00–10:00 與 18:00–22:00（韓國時間）班次，每人限用一次，不可與其他優惠併用">Incheon Airport → Seoul Station only · trains 05:00–10:00 &amp; 18:00–22:00 KST · once per user · not combinable</div>
+            <div class="coupon-foot">
+              <span class="coupon-valid">Until 30 Nov 2026 (while stock lasts)</span>
+              <span class="coupon-code-row">
+                <code class="coupon-code">JUSTBOOKAREX</code>
+                <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('JUSTBOOKAREX', this)">Copy</button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="coupon-note" data-en="All four are locked to one region&#x27;s Klook account: HK/MO · VN · TH. The 10% codes exclude WiFi/SIM cards; the HK$399 code also excludes transport passes and train tickets. JUSTBOOKAREX works only on Incheon Airport → Seoul Station trains departing 05:00–10:00 or 18:00–22:00 KST. Prices and coupons were checked on the Klook pages on 16 Nov 2026 and can change by date, option and promo." data-zh="四組優惠碼皆限指定地區帳號：香港/澳門 · 越南 · 泰國。10% 折優惠不含 WiFi/SIM 卡；HK$399 優惠另不含交通票券與火車票。JUSTBOOKAREX 僅適用仁川機場 → 首爾站、05:00–10:00 或 18:00–22:00（韓國時間）出發班次。票價與優惠碼於 2026 年 11 月 16 日在 Klook 頁面確認，實際金額依日期、選項與活動而異。">All four are locked to one region's Klook account: HK/MO · VN · TH. The 10% codes exclude WiFi/SIM cards; the HK$399 code also excludes transport passes and train tickets. JUSTBOOKAREX works only on Incheon Airport → Seoul Station trains departing 05:00–10:00 or 18:00–22:00 KST. Prices and coupons were checked on the Klook pages on 16 Nov 2026 and can change by date, option and promo.</div>
+      </div>
+    </div>
+  </div>
+  <!-- Metro banner -->
+  <div class="map-banner-compact" id="mapCompactBanner" onclick="toggleMetroMap()">
+    <div class="map-banner-left">
+      <div class="map-banner-text">
+        <div class="map-banner-title" id="compactMapTitle" data-en="Seoul Metro Guide" data-zh="首尔地铁指南">Seoul Metro Guide</div>
+        <div class="map-banner-sub" id="compactMapSub" data-en="Gangnam · Jongno · Hongdae · Seongsu" data-zh="江南 · 钟路 · 弘大 · 圣水">Gangnam · Jongno · Hongdae · Seongsu</div>
+      </div>
+    </div>
+    <span class="map-banner-tag" id="mapToggleTag">Open guide ▾</span>
+  </div>
+
+  <!-- Interactive Seoul Metro & Tourist Map View -->
+  <div class="map-container" id="mapView">
+    <div class="map-header-card">
+      <div class="map-header-badge" id="mapHeaderBadge" data-en="Metro guides" data-zh="地铁指南">Metro guides</div>
+      <div class="map-header-title" id="mapHeaderTitle" data-en="Four hubs, walkable in a day" data-zh="四大商圈，一天走完">Four hubs, walkable in a day</div>
+      <div class="map-header-desc" id="mapHeaderDesc" data-en="Google Maps walking directions are unreliable in Seoul. Start from a subway exit instead: each hub below groups the clinics, cafés and stages within a few minutes of one station." data-zh="在首尔，Google 地图的步行导航并不可靠。从地铁出口出发更稳妥：下面每个商圈都把同一站附近的诊所、咖啡馆和演出串在一起。">Google Maps walking directions are unreliable in Seoul. Start from a subway exit instead: each hub below groups the clinics, cafés and stages within a few minutes of one station.</div>
+    </div>
+
+    
+
+    <div class="hub-grid">
+<!-- Hub 1: Gangnam & Cheongdam Hub -->
+    <div class="metro-hub-card">
+      <div class="hub-top">
+        <div class="hub-title-wrap">
+          <div class="hub-station-badge line-2"> Line 2 · Shinbundang</div>
+          <div class="hub-name" data-en="Gangnam &amp; Cheongdam Hub">Gangnam &amp; Cheongdam Hub</div>
+          <div class="hub-subtitle" data-en="Skin clinics, celebrity hair salons &amp; Gangnam 5-star stays">Skin clinics, celebrity hair salons &amp; Gangnam 5-star stays</div>
+        </div>
+        <a href="https://maps.google.com/?q=Gangnam+Station+Seoul" target="_blank" class="btn-google-map"> Google Map</a>
+      </div>
+      <div class="hub-spots-grid">
+        <div class="hub-spot-item" onclick="openBookingModal('Cheongdam Éclat De Clinic', 'https://creatrip.com/en/spot/13214?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (262) · Free Reservation')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Cheongdam Éclat De Clinic">Cheongdam Éclat De Clinic</span>
+              <span class="hub-spot-perk">★4.9 (262) · Free Reservation</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Medicube Clinic Gangnam', 'https://creatrip.com/en/spot/13573?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5.0 (929) · From ₩20,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Medicube Clinic Gangnam">Medicube Clinic Gangnam</span>
+              <span class="hub-spot-perk">★5.0 (929) · From ₩20,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Grand Mercure Imperial Palace Seoul Gangnam', 'https://creatrip.com/en/stays/664ae65d4928b1fe5fb838c6?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.2 (2,947) · From $209 / night')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Grand Mercure Imperial Palace Seoul Gangnam">Grand Mercure Imperial Palace Seoul Gangnam</span>
+              <span class="hub-spot-perk">★4.2 (2,947) · From $209 / night</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Check Dates →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hub 2: Jongno, Myeongdong & Bukchon Hub -->
+    <div class="metro-hub-card">
+      <div class="hub-top">
+        <div class="hub-title-wrap">
+          <div class="hub-station-badge line-3"> Line 3 (Anguk) & Line 1</div>
+          <div class="hub-name" data-en="Jongno, Myeongdong &amp; Bukchon Hub">Jongno, Myeongdong &amp; Bukchon Hub</div>
+          <div class="hub-subtitle" data-en="Royal palaces, hanbok rentals, hanok teahouses &amp; hanok stays">Royal palaces, hanbok rentals, hanok teahouses &amp; hanok stays</div>
+        </div>
+        <a href="https://maps.google.com/?q=Anguk+Station+Seoul" target="_blank" class="btn-google-map"> Google Map</a>
+      </div>
+      <div class="hub-spots-grid">
+        <div class="hub-spot-item" onclick="openBookingModal('YES Hanbok Rental Gyeongbokgung', 'https://creatrip.com/en/spot/11006?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5.0 (3,763) · From ₩25,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="YES Hanbok Rental Gyeongbokgung">YES Hanbok Rental Gyeongbokgung</span>
+              <span class="hub-spot-perk">★5.0 (3,763) · From ₩25,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Ari Hanbok Gyeongbokgung', 'https://creatrip.com/en/spot/13241?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5.0 (515) · From ₩40,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Ari Hanbok Gyeongbokgung">Ari Hanbok Gyeongbokgung</span>
+              <span class="hub-spot-perk">★5.0 (515) · From ₩40,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('On6.5 Anguk Dining Bar', 'https://creatrip.com/en/spot/13359?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.6 (119) · From ₩33,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="On6.5 Anguk Dining Bar">On6.5 Anguk Dining Bar</span>
+              <span class="hub-spot-perk">★4.6 (119) · From ₩33,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Korea House Kohojae Tea', 'https://creatrip.com/en/spot/15462?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (67) · From ₩30,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Korea House Kohojae Tea">Korea House Kohojae Tea</span>
+              <span class="hub-spot-perk">★4.9 (67) · From ₩30,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Bukchon Yeonwoo Hanok Stay', 'https://creatrip.com/en/stays/65f35256d68cf4126470e9e8?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.8 (26) · From $113 / night')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Bukchon Yeonwoo Hanok Stay">Bukchon Yeonwoo Hanok Stay</span>
+              <span class="hub-spot-perk">★4.8 (26) · From $113 / night</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Check Dates →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hub 3: Hongdae & Yeonnam Youth Hub -->
+    <div class="metro-hub-card">
+      <div class="hub-top">
+        <div class="hub-title-wrap">
+          <div class="hub-station-badge line-2"> Line 2 & AREX (Hongik Univ)</div>
+          <div class="hub-name" data-en="Hongdae &amp; Yeonnam Youth Hub">Hongdae &amp; Yeonnam Youth Hub</div>
+          <div class="hub-subtitle" data-en="Most-booked hair salons, personal colour, charcoal BBQ &amp; photocard shops">Most-booked hair salons, personal colour, charcoal BBQ &amp; photocard shops</div>
+        </div>
+        <a href="https://maps.google.com/?q=Hongik+University+Station+Seoul" target="_blank" class="btn-google-map"> Google Map</a>
+      </div>
+      <div class="hub-spots-grid">
+        <div class="hub-spot-item" onclick="openBookingModal('SOONSIKI Hair Hongdae Flagship', 'https://creatrip.com/en/spot/11093?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (8,365) · From ₩33,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="SOONSIKI Hair Hongdae Flagship">SOONSIKI Hair Hongdae Flagship</span>
+              <span class="hub-spot-perk">★4.9 (8,365) · From ₩33,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('ECOJARDIN Hongdae', 'https://creatrip.com/en/spot/15615?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (4,372) · From ₩137,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="ECOJARDIN Hongdae">ECOJARDIN Hongdae</span>
+              <span class="hub-spot-perk">★4.9 (4,372) · From ₩137,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Don Juneun Namja Hongdae', 'https://creatrip.com/en/spot/13902?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.8 (1,012) · From ₩30,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Don Juneun Namja Hongdae">Don Juneun Namja Hongdae</span>
+              <span class="hub-spot-perk">★4.8 (1,012) · From ₩30,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Real K-POP Dance Class Hongdae', 'https://creatrip.com/en/spot/12956?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (173) · From ₩55,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Real K-POP Dance Class Hongdae">Real K-POP Dance Class Hongdae</span>
+              <span class="hub-spot-perk">★4.9 (173) · From ₩55,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Mercure Ambassador Seoul Hongdae', 'https://creatrip.com/en/stays/65ded4d74e759f00a6ac44d7?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.8 (575) · From $135 / night')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Mercure Ambassador Seoul Hongdae">Mercure Ambassador Seoul Hongdae</span>
+              <span class="hub-spot-perk">★4.8 (575) · From $135 / night</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Check Dates →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hub 4: Seongsu & Dongdaemun Hub -->
+    <div class="metro-hub-card">
+      <div class="hub-top">
+        <div class="hub-title-wrap">
+          <div class="hub-station-badge line-2"> Line 2 (Seongsu & Ttukseom)</div>
+          <div class="hub-name" data-en="Seongsu &amp; Dongdaemun Hub">Seongsu &amp; Dongdaemun Hub</div>
+          <div class="hub-subtitle" data-en="Perfume workshops, hair studios, 24-hour jjimjilbang &amp; Myeongdong clinics">Perfume workshops, hair studios, 24-hour jjimjilbang &amp; Myeongdong clinics</div>
+        </div>
+        <a href="https://maps.google.com/?q=Seongsu+Station+Seoul" target="_blank" class="btn-google-map"> Google Map</a>
+      </div>
+      <div class="hub-spots-grid">
+        <div class="hub-spot-item" onclick="openBookingModal('YOU Hair Salon Seongsu', 'https://creatrip.com/en/spot/14730?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5.0 (1,380) · From ₩35,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="YOU Hair Salon Seongsu">YOU Hair Salon Seongsu</span>
+              <span class="hub-spot-perk">★5.0 (1,380) · From ₩35,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('WHIPPED HOUSE Seongsu', 'https://creatrip.com/en/spot/14309?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (839) · From ₩25,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="WHIPPED HOUSE Seongsu">WHIPPED HOUSE Seongsu</span>
+              <span class="hub-spot-perk">★4.9 (839) · From ₩25,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('.NOTE Seongsu Perfume Class', 'https://creatrip.com/en/spot/14808?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5.0 (3,377) · From ₩49,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en=".NOTE Seongsu Perfume Class">.NOTE Seongsu Perfume Class</span>
+              <span class="hub-spot-perk">★5.0 (3,377) · From ₩49,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Sparex Dongdaemun Jjimjilbang', 'https://creatrip.com/en/spot/13261?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.2 (1,060) · From ₩7,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Sparex Dongdaemun Jjimjilbang">Sparex Dongdaemun Jjimjilbang</span>
+              <span class="hub-spot-perk">★4.2 (1,060) · From ₩7,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+        <div class="hub-spot-item" onclick="openBookingModal('Abijou Clinic Global Myeongdong', 'https://creatrip.com/en/spot/14592?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (4,477) · From ₩10,000')">
+          <div class="hub-spot-left">
+            <span class="hub-spot-icon"></span>
+            <div class="hub-spot-info">
+              <span class="hub-spot-title" data-en="Abijou Clinic Global Myeongdong">Abijou Clinic Global Myeongdong</span>
+              <span class="hub-spot-perk">★4.9 (4,477) · From ₩10,000</span>
+            </div>
+          </div>
+          <span class="hub-spot-action">Book →</span>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
   </div>
 
   <!-- Category filter -->
@@ -3132,366 +3496,6 @@
     </div>
   </div>
 
-
-  <!-- Metro banner -->
-  <div class="map-banner-compact" id="mapCompactBanner" onclick="toggleMetroMap()">
-    <div class="map-banner-left">
-      <div class="map-banner-text">
-        <div class="map-banner-title" id="compactMapTitle" data-en="Seoul Metro Guide" data-zh="首尔地铁指南">Seoul Metro Guide</div>
-        <div class="map-banner-sub" id="compactMapSub" data-en="Gangnam · Jongno · Hongdae · Seongsu" data-zh="江南 · 钟路 · 弘大 · 圣水">Gangnam · Jongno · Hongdae · Seongsu</div>
-      </div>
-    </div>
-    <span class="map-banner-tag" id="mapToggleTag">Open guide ▾</span>
-  </div>
-
-  <!-- Interactive Seoul Metro & Tourist Map View -->
-  <div class="map-container" id="mapView">
-    <div class="map-header-card">
-      <div class="map-header-badge" id="mapHeaderBadge" data-en="Metro guides" data-zh="地铁指南">Metro guides</div>
-      <div class="map-header-title" id="mapHeaderTitle" data-en="Four hubs, walkable in a day" data-zh="四大商圈，一天走完">Four hubs, walkable in a day</div>
-      <div class="map-header-desc" id="mapHeaderDesc" data-en="Google Maps walking directions are unreliable in Seoul. Start from a subway exit instead: each hub below groups the clinics, cafés and stages within a few minutes of one station." data-zh="在首尔，Google 地图的步行导航并不可靠。从地铁出口出发更稳妥：下面每个商圈都把同一站附近的诊所、咖啡馆和演出串在一起。">Google Maps walking directions are unreliable in Seoul. Start from a subway exit instead: each hub below groups the clinics, cafés and stages within a few minutes of one station.</div>
-    </div>
-
-    
-
-    <div class="hub-grid">
-<!-- Hub 1: Gangnam & Cheongdam Hub -->
-    <div class="metro-hub-card">
-      <div class="hub-top">
-        <div class="hub-title-wrap">
-          <div class="hub-station-badge line-2"> Line 2 · Shinbundang</div>
-          <div class="hub-name" data-en="Gangnam &amp; Cheongdam Hub">Gangnam &amp; Cheongdam Hub</div>
-          <div class="hub-subtitle" data-en="Skin clinics, celebrity hair salons &amp; Gangnam 5-star stays">Skin clinics, celebrity hair salons &amp; Gangnam 5-star stays</div>
-        </div>
-        <a href="https://maps.google.com/?q=Gangnam+Station+Seoul" target="_blank" class="btn-google-map"> Google Map</a>
-      </div>
-      <div class="hub-spots-grid">
-        <div class="hub-spot-item" onclick="openBookingModal('Cheongdam Éclat De Clinic', 'https://creatrip.com/en/spot/13214?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (262) · Free Reservation')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon"></span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Cheongdam Éclat De Clinic">Cheongdam Éclat De Clinic</span>
-              <span class="hub-spot-perk">★4.9 (262) · Free Reservation</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Medicube Clinic Gangnam', 'https://creatrip.com/en/spot/13573?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5.0 (929) · From ₩20,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon"></span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Medicube Clinic Gangnam">Medicube Clinic Gangnam</span>
-              <span class="hub-spot-perk">★5.0 (929) · From ₩20,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Grand Mercure Imperial Palace Seoul Gangnam', 'https://creatrip.com/en/stays/664ae65d4928b1fe5fb838c6?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.2 (2,947) · From $209 / night')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon"></span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Grand Mercure Imperial Palace Seoul Gangnam">Grand Mercure Imperial Palace Seoul Gangnam</span>
-              <span class="hub-spot-perk">★4.2 (2,947) · From $209 / night</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Check Dates →</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Hub 2: Jongno, Myeongdong & Bukchon Hub -->
-    <div class="metro-hub-card">
-      <div class="hub-top">
-        <div class="hub-title-wrap">
-          <div class="hub-station-badge line-3"> Line 3 (Anguk) & Line 1</div>
-          <div class="hub-name" data-en="Jongno, Myeongdong &amp; Bukchon Hub">Jongno, Myeongdong &amp; Bukchon Hub</div>
-          <div class="hub-subtitle" data-en="Royal palaces, hanbok rentals, hanok teahouses &amp; hanok stays">Royal palaces, hanbok rentals, hanok teahouses &amp; hanok stays</div>
-        </div>
-        <a href="https://maps.google.com/?q=Anguk+Station+Seoul" target="_blank" class="btn-google-map"> Google Map</a>
-      </div>
-      <div class="hub-spots-grid">
-        <div class="hub-spot-item" onclick="openBookingModal('YES Hanbok Rental Gyeongbokgung', 'https://creatrip.com/en/spot/11006?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5.0 (3,763) · From ₩25,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon"></span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="YES Hanbok Rental Gyeongbokgung">YES Hanbok Rental Gyeongbokgung</span>
-              <span class="hub-spot-perk">★5.0 (3,763) · From ₩25,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Ari Hanbok Gyeongbokgung', 'https://creatrip.com/en/spot/13241?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5.0 (515) · From ₩40,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon"></span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Ari Hanbok Gyeongbokgung">Ari Hanbok Gyeongbokgung</span>
-              <span class="hub-spot-perk">★5.0 (515) · From ₩40,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('On6.5 Anguk Dining Bar', 'https://creatrip.com/en/spot/13359?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.6 (119) · From ₩33,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon"></span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="On6.5 Anguk Dining Bar">On6.5 Anguk Dining Bar</span>
-              <span class="hub-spot-perk">★4.6 (119) · From ₩33,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Korea House Kohojae Tea', 'https://creatrip.com/en/spot/15462?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (67) · From ₩30,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon"></span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Korea House Kohojae Tea">Korea House Kohojae Tea</span>
-              <span class="hub-spot-perk">★4.9 (67) · From ₩30,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Bukchon Yeonwoo Hanok Stay', 'https://creatrip.com/en/stays/65f35256d68cf4126470e9e8?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.8 (26) · From $113 / night')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon"></span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Bukchon Yeonwoo Hanok Stay">Bukchon Yeonwoo Hanok Stay</span>
-              <span class="hub-spot-perk">★4.8 (26) · From $113 / night</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Check Dates →</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Hub 3: Hongdae & Yeonnam Youth Hub -->
-    <div class="metro-hub-card">
-      <div class="hub-top">
-        <div class="hub-title-wrap">
-          <div class="hub-station-badge line-2"> Line 2 & AREX (Hongik Univ)</div>
-          <div class="hub-name" data-en="Hongdae &amp; Yeonnam Youth Hub">Hongdae &amp; Yeonnam Youth Hub</div>
-          <div class="hub-subtitle" data-en="Most-booked hair salons, personal colour, charcoal BBQ &amp; photocard shops">Most-booked hair salons, personal colour, charcoal BBQ &amp; photocard shops</div>
-        </div>
-        <a href="https://maps.google.com/?q=Hongik+University+Station+Seoul" target="_blank" class="btn-google-map"> Google Map</a>
-      </div>
-      <div class="hub-spots-grid">
-        <div class="hub-spot-item" onclick="openBookingModal('SOONSIKI Hair Hongdae Flagship', 'https://creatrip.com/en/spot/11093?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (8,365) · From ₩33,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon"></span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="SOONSIKI Hair Hongdae Flagship">SOONSIKI Hair Hongdae Flagship</span>
-              <span class="hub-spot-perk">★4.9 (8,365) · From ₩33,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('ECOJARDIN Hongdae', 'https://creatrip.com/en/spot/15615?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (4,372) · From ₩137,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon"></span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="ECOJARDIN Hongdae">ECOJARDIN Hongdae</span>
-              <span class="hub-spot-perk">★4.9 (4,372) · From ₩137,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Don Juneun Namja Hongdae', 'https://creatrip.com/en/spot/13902?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.8 (1,012) · From ₩30,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon"></span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Don Juneun Namja Hongdae">Don Juneun Namja Hongdae</span>
-              <span class="hub-spot-perk">★4.8 (1,012) · From ₩30,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Real K-POP Dance Class Hongdae', 'https://creatrip.com/en/spot/12956?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (173) · From ₩55,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon"></span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Real K-POP Dance Class Hongdae">Real K-POP Dance Class Hongdae</span>
-              <span class="hub-spot-perk">★4.9 (173) · From ₩55,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Mercure Ambassador Seoul Hongdae', 'https://creatrip.com/en/stays/65ded4d74e759f00a6ac44d7?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.8 (575) · From $135 / night')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon"></span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Mercure Ambassador Seoul Hongdae">Mercure Ambassador Seoul Hongdae</span>
-              <span class="hub-spot-perk">★4.8 (575) · From $135 / night</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Check Dates →</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Hub 4: Seongsu & Dongdaemun Hub -->
-    <div class="metro-hub-card">
-      <div class="hub-top">
-        <div class="hub-title-wrap">
-          <div class="hub-station-badge line-2"> Line 2 (Seongsu & Ttukseom)</div>
-          <div class="hub-name" data-en="Seongsu &amp; Dongdaemun Hub">Seongsu &amp; Dongdaemun Hub</div>
-          <div class="hub-subtitle" data-en="Perfume workshops, hair studios, 24-hour jjimjilbang &amp; Myeongdong clinics">Perfume workshops, hair studios, 24-hour jjimjilbang &amp; Myeongdong clinics</div>
-        </div>
-        <a href="https://maps.google.com/?q=Seongsu+Station+Seoul" target="_blank" class="btn-google-map"> Google Map</a>
-      </div>
-      <div class="hub-spots-grid">
-        <div class="hub-spot-item" onclick="openBookingModal('YOU Hair Salon Seongsu', 'https://creatrip.com/en/spot/14730?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5.0 (1,380) · From ₩35,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon"></span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="YOU Hair Salon Seongsu">YOU Hair Salon Seongsu</span>
-              <span class="hub-spot-perk">★5.0 (1,380) · From ₩35,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('WHIPPED HOUSE Seongsu', 'https://creatrip.com/en/spot/14309?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (839) · From ₩25,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon"></span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="WHIPPED HOUSE Seongsu">WHIPPED HOUSE Seongsu</span>
-              <span class="hub-spot-perk">★4.9 (839) · From ₩25,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('.NOTE Seongsu Perfume Class', 'https://creatrip.com/en/spot/14808?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★5.0 (3,377) · From ₩49,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon"></span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en=".NOTE Seongsu Perfume Class">.NOTE Seongsu Perfume Class</span>
-              <span class="hub-spot-perk">★5.0 (3,377) · From ₩49,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Sparex Dongdaemun Jjimjilbang', 'https://creatrip.com/en/spot/13261?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.2 (1,060) · From ₩7,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon"></span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Sparex Dongdaemun Jjimjilbang">Sparex Dongdaemun Jjimjilbang</span>
-              <span class="hub-spot-perk">★4.2 (1,060) · From ₩7,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-        <div class="hub-spot-item" onclick="openBookingModal('Abijou Clinic Global Myeongdong', 'https://creatrip.com/en/spot/14592?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl', '★4.9 (4,477) · From ₩10,000')">
-          <div class="hub-spot-left">
-            <span class="hub-spot-icon"></span>
-            <div class="hub-spot-info">
-              <span class="hub-spot-title" data-en="Abijou Clinic Global Myeongdong">Abijou Clinic Global Myeongdong</span>
-              <span class="hub-spot-perk">★4.9 (4,477) · From ₩10,000</span>
-            </div>
-          </div>
-          <span class="hub-spot-action">Book →</span>
-        </div>
-      </div>
-    </div>
-    </div>
-  </div>
-
-
-  <!-- Pocket map download -->
-  <section class="cute-map-card">
-    <div class="cute-map-header">
-      <span class="cute-map-tag" id="cuteMapTag" data-en="Free download" data-zh="免费下载">Free download</span>
-      <h3 class="cute-map-heading" id="cuteMapHeading" data-en="The Seoul Pocket Map" data-zh="首尔口袋地图">The Seoul Pocket Map</h3>
-      <p class="cute-map-desc" id="cuteMapDesc" data-en="Every spot in this issue, drawn by hand. Keep it on your phone, or print it before you land." data-zh="本期所有地点的手绘地图。可存进手机，也可出发前打印。">Every spot in this issue, drawn by hand. Keep it on your phone, or print it before you land.</p>
-    </div>
-    <div class="cute-map-download-row">
-      <a href="images/seoul_kawaii_map_en.png" download="Cute_Seoul_Pocket_Map_EN.png" class="btn-map-dl dl-en" onclick="handleMapDownload('en')">
-        <span id="dlBtnEnText" data-en="Download EN · 4K" data-zh="下载英文版 · 4K">Download EN · 4K</span>
-      </a>
-      <a href="images/seoul_kawaii_map_zh.png" download="Cute_Seoul_Pocket_Map_ZH.png" class="btn-map-dl dl-zh" onclick="handleMapDownload('zh')">
-        <span id="dlBtnZhText" data-en="Chinese map · 4K" data-zh="下载中文版 · 4K">Chinese map · 4K</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- Klook official coupon codes (region-locked, verified 2026-11-16) -->
-  <div class="coupon-section" id="klookCoupons">
-    <button type="button" class="coupon-head" id="klookCouponToggle" aria-expanded="false" aria-controls="klookCouponBody" aria-label="Show Klook coupon codes" onclick="toggleCouponSection()">
-      <span class="coupon-head-title" data-en="Klook coupons" data-zh="Klook 优惠码">Klook coupons</span>
-      <span class="coupon-head-badge">
-        <span class="coupon-badge-full" data-en="4 codes · HK/MO · VN · TH" data-zh="4组优惠码 · 港澳/越南/泰国">4 codes · HK/MO · VN · TH</span>
-        <span class="coupon-badge-short" data-en="4 codes" data-zh="4组优惠码">4 codes</span>
-      </span>
-      <span class="coupon-head-toggle" id="klookCouponToggleLabel" data-en="Show ▼" data-zh="展开 ▼">Show ▼</span>
-    </button>
-    <div class="coupon-body" id="klookCouponBody" aria-hidden="true">
-      <div class="coupon-body-inner">
-        <div class="coupon-head-sub" data-en="Enter these at the Klook checkout. Each code only works on one region&#x27;s account." data-zh="在 Klook 结账页输入优惠码，每组码仅限标示地区的账号使用。">Enter these at the Klook checkout. Each code only works on one region&#x27;s account.</div>
-        <div class="coupon-list">
-          <div class="coupon-card">
-            <div class="coupon-top">
-              <span class="coupon-disc">10% OFF</span>
-              <span class="coupon-region">HK · MO</span>
-            </div>
-            <div class="coupon-title" data-en="Selected Korea winter products — 10% off" data-zh="指定韓國冬季商品 9 折">Selected Korea winter products — 10% off</div>
-            <div class="coupon-cond" data-en="Spend HK$999+ on selected Korea winter products · max HK$100 off · once per user · excludes WiFi &amp; SIM cards" data-zh="指定韓國冬季商品滿 HK$999 享 9 折，最高折抵 HK$100，每人限用一次（不含 WiFi、SIM 卡）">Spend HK$999+ on selected Korea winter products · max HK$100 off · once per user · excludes WiFi &amp; SIM cards</div>
-            <div class="coupon-foot">
-              <span class="coupon-valid">Until 15 Dec 2026 (GMT+8)</span>
-              <span class="coupon-code-row">
-                <code class="coupon-code">HKKRWINTER10OFF</code>
-                <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('HKKRWINTER10OFF', this)">Copy</button>
-              </span>
-            </div>
-          </div>
-          <div class="coupon-card">
-            <div class="coupon-top">
-              <span class="coupon-disc">10% OFF</span>
-              <span class="coupon-region">HK · MO</span>
-            </div>
-            <div class="coupon-title" data-en="Korea products — 10% off" data-zh="韓國商品 9 折">Korea products — 10% off</div>
-            <div class="coupon-cond" data-en="Spend HK$399+ on Korea products · max HK$50 off · once per user · excludes WiFi, SIM, transport passes &amp; train tickets" data-zh="韓國商品滿 HK$399 享 9 折，最高折抵 HK$50，每人限用一次（不含 WiFi、SIM 卡、交通票券、火車票）">Spend HK$399+ on Korea products · max HK$50 off · once per user · excludes WiFi, SIM, transport passes &amp; train tickets</div>
-            <div class="coupon-foot">
-              <span class="coupon-valid">Until 15 Dec 2026 (GMT+8)</span>
-              <span class="coupon-code-row">
-                <code class="coupon-code">HKKRAP10OFF</code>
-                <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('HKKRAP10OFF', this)">Copy</button>
-              </span>
-            </div>
-          </div>
-          <div class="coupon-card">
-            <div class="coupon-top">
-              <span class="coupon-disc">10% OFF</span>
-              <span class="coupon-region">VN</span>
-            </div>
-            <div class="coupon-title" data-en="South Korea activities &amp; rail — 10% off" data-zh="韓國景點·活動·鐵路 9 折">South Korea activities &amp; rail — 10% off</div>
-            <div class="coupon-cond" data-en="No minimum spend · max VND 300,000 off · needs a VN phone number · almost all attractions, tours, rail &amp; bus tickets" data-zh="無最低消費，最高折抵 30 萬越南盾，需越南手機號，適用韓國景點、活動、行程、火車與巴士票">No minimum spend · max VND 300,000 off · needs a VN phone number · almost all attractions, tours, rail &amp; bus tickets</div>
-            <div class="coupon-foot">
-              <span class="coupon-valid">Until 20 Dec 2026 (GMT+8)</span>
-              <span class="coupon-code-row">
-                <code class="coupon-code">VUIHQAFF2026</code>
-                <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('VUIHQAFF2026', this)">Copy</button>
-              </span>
-            </div>
-          </div>
-          <div class="coupon-card">
-            <div class="coupon-top">
-              <span class="coupon-disc">B1G1</span>
-              <span class="coupon-region">TH</span>
-            </div>
-            <div class="coupon-title" data-en="AREX Incheon Airport Express — buy 1 get 1" data-zh="AREX 仁川機場快線 買一送一">AREX Incheon Airport Express — buy 1 get 1</div>
-            <div class="coupon-cond" data-en="Incheon Airport → Seoul Station only · trains 05:00–10:00 &amp; 18:00–22:00 KST · once per user · not combinable" data-zh="限仁川機場 → 首爾站方向，05:00–10:00 與 18:00–22:00（韓國時間）班次，每人限用一次，不可與其他優惠併用">Incheon Airport → Seoul Station only · trains 05:00–10:00 &amp; 18:00–22:00 KST · once per user · not combinable</div>
-            <div class="coupon-foot">
-              <span class="coupon-valid">Until 30 Nov 2026 (while stock lasts)</span>
-              <span class="coupon-code-row">
-                <code class="coupon-code">JUSTBOOKAREX</code>
-                <button type="button" class="btn-coupon-copy" onclick="copyCouponCode('JUSTBOOKAREX', this)">Copy</button>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="coupon-note" data-en="All four are locked to one region&#x27;s Klook account: HK/MO · VN · TH. The 10% codes exclude WiFi/SIM cards; the HK$399 code also excludes transport passes and train tickets. JUSTBOOKAREX works only on Incheon Airport → Seoul Station trains departing 05:00–10:00 or 18:00–22:00 KST. Prices and coupons were checked on the Klook pages on 16 Nov 2026 and can change by date, option and promo." data-zh="四組優惠碼皆限指定地區帳號：香港/澳門 · 越南 · 泰國。10% 折優惠不含 WiFi/SIM 卡；HK$399 優惠另不含交通票券與火車票。JUSTBOOKAREX 僅適用仁川機場 → 首爾站、05:00–10:00 或 18:00–22:00（韓國時間）出發班次。票價與優惠碼於 2026 年 11 月 16 日在 Klook 頁面確認，實際金額依日期、選項與活動而異。">All four are locked to one region's Klook account: HK/MO · VN · TH. The 10% codes exclude WiFi/SIM cards; the HK$399 code also excludes transport passes and train tickets. JUSTBOOKAREX works only on Incheon Airport → Seoul Station trains departing 05:00–10:00 or 18:00–22:00 KST. Prices and coupons were checked on the Klook pages on 16 Nov 2026 and can change by date, option and promo.</div>
-      </div>
-    </div>
-  </div>
-
-
   <!-- B2B -->
   <section class="partner-banner" id="partner">
     <div class="partner-inner">
@@ -4042,10 +4046,8 @@
       document.getElementById('mapHeaderDesc').innerText = '在首尔，Google 地图的步行导航并不可靠。从地铁出口出发更稳妥：下面每个商圈都把同一站附近的诊所、咖啡馆和演出串在一起。';
       const mapTag = document.getElementById('cuteMapTag');
       const mapHeading = document.getElementById('cuteMapHeading');
-      const mapDesc = document.getElementById('cuteMapDesc');
-      if (mapTag) mapTag.innerText = '免费下载';
+      if (mapTag) mapTag.innerText = '免费 4K 地图';
       if (mapHeading) mapHeading.innerText = '首尔口袋地图';
-      if (mapDesc) mapDesc.innerText = '本期所有地点的手绘地图。可存进手机，也可出发前打印。';
       document.querySelectorAll('[data-zh]').forEach(el => {
         el.innerText = el.getAttribute('data-zh');
       });
@@ -4060,10 +4062,8 @@
       document.getElementById('mapHeaderDesc').innerText = "Google Maps walking directions are unreliable in Seoul. Start from a subway exit instead: each hub below groups the clinics, cafés and stages within a few minutes of one station.";
       const mapTag = document.getElementById('cuteMapTag');
       const mapHeading = document.getElementById('cuteMapHeading');
-      const mapDesc = document.getElementById('cuteMapDesc');
-      if (mapTag) mapTag.innerText = 'Free download';
+      if (mapTag) mapTag.innerText = 'Free 4K map';
       if (mapHeading) mapHeading.innerText = 'The Seoul Pocket Map';
-      if (mapDesc) mapDesc.innerText = 'Every spot in this issue, drawn by hand. Keep it on your phone, or print it before you land.';
       document.querySelectorAll('[data-en]').forEach(el => {
         el.innerText = el.getAttribute('data-en');
       });
