@@ -1724,8 +1724,8 @@
     <button type="button" class="coupon-head" id="phraseToggle" aria-expanded="false" aria-controls="phraseBody" aria-label="Show Korean phrase cards" onclick="togglePhraseSection()">
       <span class="coupon-head-title" data-en="Korean Phrase Cards" data-zh="韩语生存句卡">Korean Phrase Cards</span>
       <span class="coupon-head-badge">
-        <span class="coupon-badge-full" data-en="12 phrases · Show to staff" data-zh="12 句 · 出示给店员">12 phrases · Show to staff</span>
-        <span class="coupon-badge-short" data-en="12 phrases" data-zh="12 句">12 phrases</span>
+        <span class="coupon-badge-full" data-en="24 phrases · Show to staff" data-zh="24 句 · 出示给店员">24 phrases · Show to staff</span>
+        <span class="coupon-badge-short" data-en="24 phrases" data-zh="24 句">24 phrases</span>
       </span>
       <span class="coupon-head-toggle" id="phraseToggleLabel" data-en="Show ▼" data-zh="展开 ▼">Show ▼</span>
     </button>
@@ -1761,6 +1761,14 @@
                 <span class="phrase-row-text"><span class="phrase-row-ko">저기요, 주문할게요</span><span class="phrase-row-meaning" data-en="Excuse me, we'd like to order." data-zh="你好，我们要点餐。">Excuse me, we'd like to order.</span></span>
                 <span class="phrase-row-go" aria-hidden="true">↗</span>
               </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 메뉴 추천해 주세요 to staff" data-p-ko="메뉴 추천해 주세요" data-p-ro="Menyu chucheonhae juseyo" data-p-en="Please recommend a menu item." data-p-zh="请推荐招牌菜。" data-p-cat-en="Dining" data-p-cat-zh="餐厅">
+                <span class="phrase-row-text"><span class="phrase-row-ko">메뉴 추천해 주세요</span><span class="phrase-row-meaning" data-en="Please recommend a menu item." data-zh="请推荐招牌菜。">Please recommend a menu item.</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 화장실이 어디예요? to staff" data-p-ko="화장실이 어디예요?" data-p-ro="Hwajangsiri eodiyeyo?" data-p-en="Where is the restroom?" data-p-zh="请问洗手间在哪里？" data-p-cat-en="Dining" data-p-cat-zh="餐厅">
+                <span class="phrase-row-text"><span class="phrase-row-ko">화장실이 어디예요?</span><span class="phrase-row-meaning" data-en="Where is the restroom?" data-zh="请问洗手间在哪里？">Where is the restroom?</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
             </div>
           </div>
 
@@ -1779,22 +1787,62 @@
                 <span class="phrase-row-text"><span class="phrase-row-ko">얼음 적게 주세요</span><span class="phrase-row-meaning" data-en="Less ice, please." data-zh="请少放冰。">Less ice, please.</span></span>
                 <span class="phrase-row-go" aria-hidden="true">↗</span>
               </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 덜 달게 해주세요 to staff" data-p-ko="덜 달게 해주세요" data-p-ro="Deol dalge haejuseyo" data-p-en="Less sweet, please." data-p-zh="请做得不太甜。" data-p-cat-en="Café" data-p-cat-zh="咖啡厅">
+                <span class="phrase-row-text"><span class="phrase-row-ko">덜 달게 해주세요</span><span class="phrase-row-meaning" data-en="Less sweet, please." data-zh="请做得不太甜。">Less sweet, please.</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 디카페인으로 되나요? to staff" data-p-ko="디카페인으로 되나요?" data-p-ro="Dikapeineuro doenayo?" data-p-en="Can I get it decaf?" data-p-zh="可以做无咖啡因的吗？" data-p-cat-en="Café" data-p-cat-zh="咖啡厅">
+                <span class="phrase-row-text"><span class="phrase-row-ko">디카페인으로 되나요?</span><span class="phrase-row-meaning" data-en="Can I get it decaf?" data-zh="可以做无咖啡因的吗？">Can I get it decaf?</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 와이파이 비밀번호가 뭐예요? to staff" data-p-ko="와이파이 비밀번호가 뭐예요?" data-p-ro="Waipai bimilbeonhoga mwoyeyo?" data-p-en="What's the Wi-Fi password?" data-p-zh="请问 Wi-Fi 密码是多少？" data-p-cat-en="Café" data-p-cat-zh="咖啡厅">
+                <span class="phrase-row-text"><span class="phrase-row-ko">와이파이 비밀번호가 뭐예요?</span><span class="phrase-row-meaning" data-en="What's the Wi-Fi password?" data-zh="请问 Wi-Fi 密码是多少？">What's the Wi-Fi password?</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 콘센트 써도 되나요? to staff" data-p-ko="콘센트 써도 되나요?" data-p-ro="Konseonteu sseodo doenayo?" data-p-en="Can I use the power outlet?" data-p-zh="可以用插座吗？" data-p-cat-en="Café" data-p-cat-zh="咖啡厅">
+                <span class="phrase-row-text"><span class="phrase-row-ko">콘센트 써도 되나요?</span><span class="phrase-row-meaning" data-en="Can I use the power outlet?" data-zh="可以用插座吗？">Can I use the power outlet?</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 사진 좀 찍어주실 수 있나요? to staff" data-p-ko="사진 좀 찍어주실 수 있나요?" data-p-ro="Sajin jom jjigeojusil su innayo?" data-p-en="Could you take a photo for us?" data-p-zh="可以帮我们拍张照吗？" data-p-cat-en="Café" data-p-cat-zh="咖啡厅">
+                <span class="phrase-row-text"><span class="phrase-row-ko">사진 좀 찍어주실 수 있나요?</span><span class="phrase-row-meaning" data-en="Could you take a photo for us?" data-zh="可以帮我们拍张照吗？">Could you take a photo for us?</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
             </div>
           </div>
 
           <div class="phrase-group">
-            <div class="phrase-group-label"><span data-en="Taxi &amp; Shopping" data-zh="出租车 · 购物">Taxi &amp; Shopping</span><span class="phrase-group-ko">택시 · 쇼핑</span></div>
+            <div class="phrase-group-label"><span data-en="Taxi · Shopping · Getting Around" data-zh="出租车 · 购物 · 问路">Taxi · Shopping · Getting Around</span><span class="phrase-group-ko">택시 · 쇼핑 · 길찾기</span></div>
             <div class="phrase-list">
-              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 여기서 세워 주세요 to the driver" data-p-ko="여기서 세워 주세요" data-p-ro="Yeogiseo sewo juseyo" data-p-en="Please stop here." data-p-zh="请在这里停车。" data-p-cat-en="Taxi &amp; Shopping" data-p-cat-zh="出租车 · 购物">
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 여기서 세워 주세요 to the driver" data-p-ko="여기서 세워 주세요" data-p-ro="Yeogiseo sewo juseyo" data-p-en="Please stop here." data-p-zh="请在这里停车。" data-p-cat-en="Taxi · Shopping · Getting Around" data-p-cat-zh="出租车 · 购物 · 问路">
                 <span class="phrase-row-text"><span class="phrase-row-ko">여기서 세워 주세요</span><span class="phrase-row-meaning" data-en="Please stop here." data-zh="请在这里停车。">Please stop here.</span></span>
                 <span class="phrase-row-go" aria-hidden="true">↗</span>
               </button>
-              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 영수증 주세요 to staff" data-p-ko="영수증 주세요" data-p-ro="Yeongsujeung juseyo" data-p-en="A receipt, please." data-p-zh="请给我收据。" data-p-cat-en="Taxi &amp; Shopping" data-p-cat-zh="出租车 · 购物">
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 영수증 주세요 to staff" data-p-ko="영수증 주세요" data-p-ro="Yeongsujeung juseyo" data-p-en="A receipt, please." data-p-zh="请给我收据。" data-p-cat-en="Taxi · Shopping · Getting Around" data-p-cat-zh="出租车 · 购物 · 问路">
                 <span class="phrase-row-text"><span class="phrase-row-ko">영수증 주세요</span><span class="phrase-row-meaning" data-en="A receipt, please." data-zh="请给我收据。">A receipt, please.</span></span>
                 <span class="phrase-row-go" aria-hidden="true">↗</span>
               </button>
-              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 텍스 리펀 되나요? to staff" data-p-ko="텍스 리펀 되나요?" data-p-ro="Tekseu ripeon doenayo?" data-p-en="Can I get a tax refund?" data-p-zh="可以退税吗？" data-p-cat-en="Taxi &amp; Shopping" data-p-cat-zh="出租车 · 购物">
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 텍스 리펀 되나요? to staff" data-p-ko="텍스 리펀 되나요?" data-p-ro="Tekseu ripeon doenayo?" data-p-en="Can I get a tax refund?" data-p-zh="可以退税吗？" data-p-cat-en="Taxi · Shopping · Getting Around" data-p-cat-zh="出租车 · 购物 · 问路">
                 <span class="phrase-row-text"><span class="phrase-row-ko">텍스 리펀 되나요?</span><span class="phrase-row-meaning" data-en="Can I get a tax refund?" data-zh="可以退税吗？">Can I get a tax refund?</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 여기 어디로 가야 해요? to staff" data-p-ko="여기 어디로 가야 해요?" data-p-ro="Yeogi eodiro gaya haeyo?" data-p-en="How do I get here?" data-p-zh="请问这里怎么走？" data-p-cat-en="Taxi · Shopping · Getting Around" data-p-cat-zh="出租车 · 购物 · 问路">
+                <span class="phrase-row-text"><span class="phrase-row-ko">여기 어디로 가야 해요?</span><span class="phrase-row-meaning" data-en="How do I get here?" data-zh="请问这里怎么走？">How do I get here?</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 이거 얼마예요? to staff" data-p-ko="이거 얼마예요?" data-p-ro="Igeo eolmayeyo?" data-p-en="How much is this?" data-p-zh="这个多少钱？" data-p-cat-en="Taxi · Shopping · Getting Around" data-p-cat-zh="出租车 · 购物 · 问路">
+                <span class="phrase-row-text"><span class="phrase-row-ko">이거 얼마예요?</span><span class="phrase-row-meaning" data-en="How much is this?" data-zh="这个多少钱？">How much is this?</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 카드 결제 되나요? to staff" data-p-ko="카드 결제 되나요?" data-p-ro="Kadeu gyeolje doenayo?" data-p-en="Can I pay by card?" data-p-zh="可以刷卡吗？" data-p-cat-en="Taxi · Shopping · Getting Around" data-p-cat-zh="出租车 · 购物 · 问路">
+                <span class="phrase-row-text"><span class="phrase-row-ko">카드 결제 되나요?</span><span class="phrase-row-meaning" data-en="Can I pay by card?" data-zh="可以刷卡吗？">Can I pay by card?</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 새 상품으로 주세요 to staff" data-p-ko="새 상품으로 주세요" data-p-ro="Sae sangpumeuro juseyo" data-p-en="A new one, please." data-p-zh="请给我新的。" data-p-cat-en="Taxi · Shopping · Getting Around" data-p-cat-zh="出租车 · 购物 · 问路">
+                <span class="phrase-row-text"><span class="phrase-row-ko">새 상품으로 주세요</span><span class="phrase-row-meaning" data-en="A new one, please." data-zh="请给我新的。">A new one, please.</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 트렁크 좀 열어주세요 to the driver" data-p-ko="트렁크 좀 열어주세요" data-p-ro="Teureongkeu jom yeoreojuseyo" data-p-en="Could you open the trunk?" data-p-zh="请打开后备箱。" data-p-cat-en="Taxi · Shopping · Getting Around" data-p-cat-zh="出租车 · 购物 · 问路">
+                <span class="phrase-row-text"><span class="phrase-row-ko">트렁크 좀 열어주세요</span><span class="phrase-row-meaning" data-en="Could you open the trunk?" data-zh="请打开后备箱。">Could you open the trunk?</span></span>
                 <span class="phrase-row-go" aria-hidden="true">↗</span>
               </button>
             </div>
