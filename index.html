@@ -5053,7 +5053,7 @@
       <div class="phrase-ro" id="phraseModalRo">Ttaro gyesanhae juseyo</div>
       <div class="phrase-meaning" id="phraseModalMeaning" lang="en">Separate bills, please.</div>
     </div>
-    <div class="phrase-hint" id="phraseModalHint" data-en="Show this screen to the staff" data-zh="把这一页给店员看">Show this screen to the staff</div>
+    <div class="phrase-hint" id="phraseModalHint">Show this screen to the staff</div>
   </div>
 </div>
 
@@ -5538,6 +5538,7 @@
     const cat = document.getElementById('phraseModalCat');
     const enBtn = document.getElementById('phraseLangEn');
     const zhBtn = document.getElementById('phraseLangZh');
+    const hint = document.getElementById('phraseModalHint');
     if (ko) ko.innerText = currentPhrase.ko;
     if (ro) ro.innerText = currentPhrase.ro;
     if (meaning) {
@@ -5545,6 +5546,11 @@
       meaning.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
     }
     if (cat) cat.innerText = lang === 'zh' ? currentPhrase.catZh : currentPhrase.catEn;
+    // The hint speaks to the traveller, so it follows the meaning language, not the site.
+    if (hint) {
+      hint.innerText = lang === 'zh' ? '把这一页给店员看' : 'Show this screen to the staff';
+      hint.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+    }
     if (enBtn) {
       enBtn.classList.toggle('is-on', lang !== 'zh');
       enBtn.setAttribute('aria-pressed', lang !== 'zh' ? 'true' : 'false');
