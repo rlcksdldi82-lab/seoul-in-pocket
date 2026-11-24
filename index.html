@@ -1021,6 +1021,141 @@
       border-top: 1px solid var(--line);
     }
 
+    /* ── Korean survival phrase cards ───────────────────────────────────── */
+    .phrase-section { border-bottom: 1px solid var(--line); }
+    .phrase-body-inner { padding: 4px var(--pad) 20px; border-top: 1px solid var(--line-soft); }
+    .phrase-groups { display: grid; gap: 18px; }
+    @media (min-width: 900px) { .phrase-groups { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; } }
+    .phrase-group-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .56rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 9px;
+    }
+    .phrase-group-label::after { content: ""; flex: 1 1 auto; height: 1px; background: var(--line); }
+    .phrase-group-ko { font-weight: 600; letter-spacing: .04em; color: var(--muted); text-transform: none; }
+    .phrase-list { display: grid; gap: 6px; }
+    .phrase-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 9px 11px;
+      background: #FBFAF8;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      font-family: inherit;
+      color: var(--ink);
+      text-align: left;
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      transition: border-color .18s ease, background .18s ease;
+    }
+    .phrase-row:hover { background: #fff; border-color: var(--ink); }
+    .phrase-row:active { background: var(--accent-soft); }
+    .phrase-row:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .phrase-row-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1 1 auto; }
+    .phrase-row-ko { font-size: .86rem; font-weight: 600; line-height: 1.35; word-break: keep-all; }
+    .phrase-row-meaning { font-size: .66rem; line-height: 1.4; color: var(--muted); }
+    .phrase-row-go { flex: 0 0 auto; font-size: .82rem; line-height: 1; color: var(--accent); }
+
+    /* Show-to-staff card (full-screen Korean) */
+    .phrase-sheet {
+      max-width: 560px;
+      max-height: 92vh;
+      padding: 18px 20px calc(22px + env(safe-area-inset-bottom));
+      display: flex;
+      flex-direction: column;
+    }
+    .phrase-sheet-top { display: flex; align-items: center; gap: 10px; }
+    .phrase-cat {
+      flex: 1 1 auto;
+      min-width: 0;
+      font-size: .54rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .phrase-lang {
+      flex: 0 0 auto;
+      display: inline-flex;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .phrase-lang-btn {
+      font-family: inherit;
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      padding: 5px 9px;
+      background: transparent;
+      color: var(--muted);
+      border: 0;
+      cursor: pointer;
+      touch-action: manipulation;
+      transition: background .18s ease, color .18s ease;
+    }
+    .phrase-lang-btn.is-on { background: var(--ink); color: #fff; }
+    .phrase-stage {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 14px;
+      padding: 26px 16px;
+      min-height: 46vh;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      text-align: center;
+    }
+    .phrase-ko {
+      font-family: 'Noto Sans KR', var(--font-sans);
+      font-weight: 700;
+      font-size: clamp(1.85rem, 9vw, 3rem);
+      line-height: 1.26;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      word-break: keep-all;
+    }
+    .phrase-ro {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.02rem;
+      line-height: 1.4;
+      color: var(--muted);
+    }
+    .phrase-meaning {
+      padding-top: 12px;
+      border-top: 1px solid var(--line-soft);
+      font-size: .92rem;
+      font-weight: 600;
+      line-height: 1.45;
+      color: var(--ink-soft);
+    }
+    .phrase-hint {
+      margin-top: 12px;
+      text-align: center;
+      font-size: .56rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
     /* ── Partner band ───────────────────────────────────────────────────── */
     .partner-banner {
       margin-top: 48px;
@@ -1584,6 +1719,92 @@
       </div>
     </div>
   </div>
+  <!-- Korean survival phrase cards: show to staff -->
+  <div class="coupon-section phrase-section" id="phraseCards">
+    <button type="button" class="coupon-head" id="phraseToggle" aria-expanded="false" aria-controls="phraseBody" aria-label="Show Korean phrase cards" onclick="togglePhraseSection()">
+      <span class="coupon-head-title" data-en="Korean Phrase Cards" data-zh="韩语生存句卡">Korean Phrase Cards</span>
+      <span class="coupon-head-badge">
+        <span class="coupon-badge-full" data-en="12 phrases · Show to staff" data-zh="12 句 · 出示给店员">12 phrases · Show to staff</span>
+        <span class="coupon-badge-short" data-en="12 phrases" data-zh="12 句">12 phrases</span>
+      </span>
+      <span class="coupon-head-toggle" id="phraseToggleLabel" data-en="Show ▼" data-zh="展开 ▼">Show ▼</span>
+    </button>
+    <div class="coupon-body" id="phraseBody" aria-hidden="true">
+      <div class="phrase-body-inner">
+        <div class="coupon-head-sub" data-en="Tap a line to open a full-screen Korean card, then hold the phone up to the staff or the driver. The Korean is set big, with the reading and the meaning underneath. Works offline once the page has loaded." data-zh="点一句就打开全屏韩语卡片，把手机递给店员或司机看。韩文字很大，下面有发音和意思。页面加载后离线也能用。">Tap a line to open a full-screen Korean card, then hold the phone up to the staff or the driver. The Korean is set big, with the reading and the meaning underneath. Works offline once the page has loaded.</div>
+        <div class="phrase-groups">
+
+          <div class="phrase-group">
+            <div class="phrase-group-label"><span data-en="Dining" data-zh="餐厅">Dining</span><span class="phrase-group-ko">식당</span></div>
+            <div class="phrase-list">
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 따로 계산해 주세요 to staff" data-p-ko="따로 계산해 주세요" data-p-ro="Ttaro gyesanhae juseyo" data-p-en="Separate bills, please." data-p-zh="请分开结账。" data-p-cat-en="Dining" data-p-cat-zh="餐厅">
+                <span class="phrase-row-text"><span class="phrase-row-ko">따로 계산해 주세요</span><span class="phrase-row-meaning" data-en="Separate bills, please." data-zh="请分开结账。">Separate bills, please.</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 덜 맵게 해주세요 to staff" data-p-ko="덜 맵게 해주세요" data-p-ro="Deol maepge haejuseyo" data-p-en="Less spicy, please." data-p-zh="请做得不太辣。" data-p-cat-en="Dining" data-p-cat-zh="餐厅">
+                <span class="phrase-row-text"><span class="phrase-row-ko">덜 맵게 해주세요</span><span class="phrase-row-meaning" data-en="Less spicy, please." data-zh="请做得不太辣。">Less spicy, please.</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 물 / 반찬 좀 더 주세요 to staff" data-p-ko="물 / 반찬 좀 더 주세요" data-p-ro="Mul / banchan jom deo juseyo" data-p-en="More water and side dishes, please." data-p-zh="请再给一点水和配菜。" data-p-cat-en="Dining" data-p-cat-zh="餐厅">
+                <span class="phrase-row-text"><span class="phrase-row-ko">물 / 반찬 좀 더 주세요</span><span class="phrase-row-meaning" data-en="More water and side dishes, please." data-zh="请再给一点水和配菜。">More water and side dishes, please.</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 고수 빼주세요 to staff" data-p-ko="고수 빼주세요" data-p-ro="Gosu ppaejuseyo" data-p-en="No cilantro, please." data-p-zh="请不要放香菜。" data-p-cat-en="Dining" data-p-cat-zh="餐厅">
+                <span class="phrase-row-text"><span class="phrase-row-ko">고수 빼주세요</span><span class="phrase-row-meaning" data-en="No cilantro, please." data-zh="请不要放香菜。">No cilantro, please.</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 견과류 알레르기 있어요 to staff" data-p-ko="견과류 알레르기 있어요" data-p-ro="Gyeongwaryu allereuji isseoyo" data-p-en="I'm allergic to nuts." data-p-zh="我对坚果过敏。" data-p-cat-en="Dining" data-p-cat-zh="餐厅">
+                <span class="phrase-row-text"><span class="phrase-row-ko">견과류 알레르기 있어요</span><span class="phrase-row-meaning" data-en="I'm allergic to nuts." data-zh="我对坚果过敏。">I'm allergic to nuts.</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 저기요, 주문할게요 to staff" data-p-ko="저기요, 주문할게요" data-p-ro="Jeogiyo, jumunhalgeyo" data-p-en="Excuse me, we'd like to order." data-p-zh="你好，我们要点餐。" data-p-cat-en="Dining" data-p-cat-zh="餐厅">
+                <span class="phrase-row-text"><span class="phrase-row-ko">저기요, 주문할게요</span><span class="phrase-row-meaning" data-en="Excuse me, we'd like to order." data-zh="你好，我们要点餐。">Excuse me, we'd like to order.</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="phrase-group">
+            <div class="phrase-group-label"><span data-en="Café" data-zh="咖啡厅">Café</span><span class="phrase-group-ko">카페</span></div>
+            <div class="phrase-list">
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 여기서 먹고 갈게요 to staff" data-p-ko="여기서 먹고 갈게요" data-p-ro="Yeogiseo meokgo galgeyo" data-p-en="For here, please." data-p-zh="在这里吃（堂食）。" data-p-cat-en="Café" data-p-cat-zh="咖啡厅">
+                <span class="phrase-row-text"><span class="phrase-row-ko">여기서 먹고 갈게요</span><span class="phrase-row-meaning" data-en="For here, please." data-zh="在这里吃（堂食）。">For here, please.</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 포장해 주세요 to staff" data-p-ko="포장해 주세요" data-p-ro="Pojanghae juseyo" data-p-en="To go, please." data-p-zh="请打包。" data-p-cat-en="Café" data-p-cat-zh="咖啡厅">
+                <span class="phrase-row-text"><span class="phrase-row-ko">포장해 주세요</span><span class="phrase-row-meaning" data-en="To go, please." data-zh="请打包。">To go, please.</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 얼음 적게 주세요 to staff" data-p-ko="얼음 적게 주세요" data-p-ro="Eoreum jeokge juseyo" data-p-en="Less ice, please." data-p-zh="请少放冰。" data-p-cat-en="Café" data-p-cat-zh="咖啡厅">
+                <span class="phrase-row-text"><span class="phrase-row-ko">얼음 적게 주세요</span><span class="phrase-row-meaning" data-en="Less ice, please." data-zh="请少放冰。">Less ice, please.</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="phrase-group">
+            <div class="phrase-group-label"><span data-en="Taxi &amp; Shopping" data-zh="出租车 · 购物">Taxi &amp; Shopping</span><span class="phrase-group-ko">택시 · 쇼핑</span></div>
+            <div class="phrase-list">
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 여기서 세워 주세요 to the driver" data-p-ko="여기서 세워 주세요" data-p-ro="Yeogiseo sewo juseyo" data-p-en="Please stop here." data-p-zh="请在这里停车。" data-p-cat-en="Taxi &amp; Shopping" data-p-cat-zh="出租车 · 购物">
+                <span class="phrase-row-text"><span class="phrase-row-ko">여기서 세워 주세요</span><span class="phrase-row-meaning" data-en="Please stop here." data-zh="请在这里停车。">Please stop here.</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 영수증 주세요 to staff" data-p-ko="영수증 주세요" data-p-ro="Yeongsujeung juseyo" data-p-en="A receipt, please." data-p-zh="请给我收据。" data-p-cat-en="Taxi &amp; Shopping" data-p-cat-zh="出租车 · 购物">
+                <span class="phrase-row-text"><span class="phrase-row-ko">영수증 주세요</span><span class="phrase-row-meaning" data-en="A receipt, please." data-zh="请给我收据。">A receipt, please.</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+              <button type="button" class="phrase-row" onclick="openPhraseCard(this)" aria-label="Show 텍스 리펀 되나요? to staff" data-p-ko="텍스 리펀 되나요?" data-p-ro="Tekseu ripeon doenayo?" data-p-en="Can I get a tax refund?" data-p-zh="可以退税吗？" data-p-cat-en="Taxi &amp; Shopping" data-p-cat-zh="出租车 · 购物">
+                <span class="phrase-row-text"><span class="phrase-row-ko">텍스 리펀 되나요?</span><span class="phrase-row-meaning" data-en="Can I get a tax refund?" data-zh="可以退税吗？">Can I get a tax refund?</span></span>
+                <span class="phrase-row-go" aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Metro banner -->
   <div class="map-banner-compact" id="mapCompactBanner" onclick="toggleMetroMap()">
     <div class="map-banner-left">
@@ -4815,6 +5036,27 @@
   </div>
 </div>
 
+<!-- Show-to-staff Korean phrase card -->
+<div class="modal-backdrop" id="phraseModal" role="dialog" aria-modal="true" aria-labelledby="phraseModalKo" onclick="closeModalOnBackdrop(event, this)">
+  <div class="modal-sheet phrase-sheet" onclick="event.stopPropagation()">
+    <div class="modal-handle"></div>
+    <div class="phrase-sheet-top">
+      <span class="phrase-cat" id="phraseModalCat">Dining</span>
+      <span class="phrase-lang" role="group" aria-label="Meaning language">
+        <button type="button" class="phrase-lang-btn is-on" id="phraseLangEn" onclick="setPhraseLang('en')" aria-pressed="true">EN</button>
+        <button type="button" class="phrase-lang-btn" id="phraseLangZh" onclick="setPhraseLang('zh')" aria-pressed="false">中文</button>
+      </span>
+      <button class="modal-close" type="button" onclick="closeModal('phraseModal')" aria-label="Close">✕</button>
+    </div>
+    <div class="phrase-stage">
+      <div class="phrase-ko" id="phraseModalKo" lang="ko">따로 계산해 주세요</div>
+      <div class="phrase-ro" id="phraseModalRo">Ttaro gyesanhae juseyo</div>
+      <div class="phrase-meaning" id="phraseModalMeaning" lang="en">Separate bills, please.</div>
+    </div>
+    <div class="phrase-hint" id="phraseModalHint" data-en="Show this screen to the staff" data-zh="把这一页给店员看">Show this screen to the staff</div>
+  </div>
+</div>
+
 <script>
 
   let currentTargetUrl = 'https://creatrip.com/en?utm_source=AFF-dt27gjl&aff_id=AFF-dt27gjl';
@@ -5189,6 +5431,138 @@
     setCouponOpen(head.getAttribute('aria-expanded') !== 'true');
   }
 
+  // ── Korean survival phrase cards ──────────────────────────────────────
+  let phraseBodyTimer = null;
+  let phraseLangOverride = null;   // null = follow the site language
+  let currentPhrase = null;
+
+  function updatePhraseToggle(open) {
+    const head = document.getElementById('phraseToggle');
+    const label = document.getElementById('phraseToggleLabel');
+    const body = document.getElementById('phraseBody');
+    const state = !!open;
+
+    if (head) {
+      head.setAttribute('aria-expanded', state ? 'true' : 'false');
+      head.setAttribute('aria-label', isChinese
+        ? (state ? '收起韩语生存句卡' : '展开韩语生存句卡')
+        : (state ? 'Hide the Korean phrase cards' : 'Show the Korean phrase cards'));
+    }
+    if (label) {
+      const en = state ? 'Hide ▲' : 'Show ▼';
+      const zh = state ? '收起 ▲' : '展开 ▼';
+      label.setAttribute('data-en', en);
+      label.setAttribute('data-zh', zh);
+      label.innerText = isChinese ? zh : en;
+    }
+    if (body) {
+      body.setAttribute('aria-hidden', state ? 'false' : 'true');
+    }
+  }
+
+  function setPhraseOpen(open) {
+    const section = document.getElementById('phraseCards');
+    const body = document.getElementById('phraseBody');
+    if (!section || !body) return;
+
+    const state = !!open;
+    if (phraseBodyTimer) {
+      clearTimeout(phraseBodyTimer);
+      phraseBodyTimer = null;
+    }
+    updatePhraseToggle(state);
+
+    if (state) {
+      section.classList.add('is-open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+      phraseBodyTimer = setTimeout(() => {
+        if (section.classList.contains('is-open')) body.style.maxHeight = 'none';
+      }, 380);
+      return;
+    }
+
+    // Collapse from wherever the open state left the height.
+    const shown = Math.round(body.getBoundingClientRect().height);
+    section.classList.remove('is-open');
+    if (shown > 0) {
+      body.style.transition = 'none';
+      body.style.maxHeight = shown + 'px';
+      void body.offsetHeight;
+      body.style.transition = '';
+      body.style.maxHeight = '0px';
+    } else {
+      body.style.maxHeight = '0px';
+    }
+  }
+
+  function togglePhraseSection() {
+    const head = document.getElementById('phraseToggle');
+    if (!head) return;
+    setPhraseOpen(head.getAttribute('aria-expanded') !== 'true');
+  }
+
+  // Language of the meaning line inside the show-to-staff card.
+  function phraseLang() {
+    return phraseLangOverride || (isChinese ? 'zh' : 'en');
+  }
+
+  function setPhraseLang(lang) {
+    if (lang !== 'en' && lang !== 'zh') return;
+    phraseLangOverride = lang;
+    renderPhraseCard();
+  }
+
+  function openPhraseCard(row) {
+    if (!row) return;
+    currentPhrase = {
+      ko: row.getAttribute('data-p-ko') || '',
+      ro: row.getAttribute('data-p-ro') || '',
+      en: row.getAttribute('data-p-en') || '',
+      zh: row.getAttribute('data-p-zh') || '',
+      catEn: row.getAttribute('data-p-cat-en') || '',
+      catZh: row.getAttribute('data-p-cat-zh') || ''
+    };
+    // Every card opens in the language the site is in right now.
+    phraseLangOverride = null;
+    renderPhraseCard();
+    const modal = document.getElementById('phraseModal');
+    if (modal) modal.classList.add('show');
+  }
+
+  function renderPhraseCard() {
+    if (!currentPhrase) return;
+    const lang = phraseLang();
+    const ko = document.getElementById('phraseModalKo');
+    const ro = document.getElementById('phraseModalRo');
+    const meaning = document.getElementById('phraseModalMeaning');
+    const cat = document.getElementById('phraseModalCat');
+    const enBtn = document.getElementById('phraseLangEn');
+    const zhBtn = document.getElementById('phraseLangZh');
+    if (ko) ko.innerText = currentPhrase.ko;
+    if (ro) ro.innerText = currentPhrase.ro;
+    if (meaning) {
+      meaning.innerText = lang === 'zh' ? currentPhrase.zh : currentPhrase.en;
+      meaning.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+    }
+    if (cat) cat.innerText = lang === 'zh' ? currentPhrase.catZh : currentPhrase.catEn;
+    if (enBtn) {
+      enBtn.classList.toggle('is-on', lang !== 'zh');
+      enBtn.setAttribute('aria-pressed', lang !== 'zh' ? 'true' : 'false');
+    }
+    if (zhBtn) {
+      zhBtn.classList.toggle('is-on', lang === 'zh');
+      zhBtn.setAttribute('aria-pressed', lang === 'zh' ? 'true' : 'false');
+    }
+  }
+
+  // Escape closes the show-to-staff card; the other sheets close on backdrop tap.
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' || e.key === 'Esc') {
+      const modal = document.getElementById('phraseModal');
+      if (modal && modal.classList.contains('show')) closeModal('phraseModal');
+    }
+  });
+
   // Copies without a toast so the caller can announce the result itself.
   function copyPlainText(text) {
     const input = document.createElement('input');
@@ -5364,9 +5738,15 @@
     if (metroTag) metroTag.innerText = mapToggleLabel();
     // Keep the coupon toggle label in step with the language and its open state.
     updateCouponToggle(document.getElementById('klookCouponToggle').getAttribute('aria-expanded') === 'true');
+    // Keep the Korean phrase cards, and any open show-to-staff card, in step too.
+    const phraseHead = document.getElementById('phraseToggle');
+    updatePhraseToggle(phraseHead ? phraseHead.getAttribute('aria-expanded') === 'true' : false);
+    phraseLangOverride = null;
+    renderPhraseCard();
   }
 
   updateCouponToggle(false);
+  updatePhraseToggle(false);
 </script>
 
 </body>
